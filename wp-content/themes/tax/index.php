@@ -20,7 +20,7 @@
 
 	<meta charset="utf-8">
 
-	<title>Home</title>
+	<title><?php bloginfo('name');?></title>
 	<meta name="description" content="">
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,7 +51,7 @@
 <header>
 	<div class="wrap">
 		<div class="left-side">
-			<a class="logo" href="index.html"><img src="<?php bloginfo('template_url');?>/img/logo.png" alt=""></a>
+			<a class="logo" href="<?=home_url();?>"><img src="<?php bloginfo('template_url');?>/img/logo.png" alt=""></a>
 			<div class="phone">
 				<p><i class="fa fa-phone" aria-hidden="true"></i>+38 (044) 249-72-22</p>
 				<a href="#callback-form" class="popUp-btn">Закзазать звонок</a>
