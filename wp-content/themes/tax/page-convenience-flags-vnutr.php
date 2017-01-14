@@ -85,7 +85,7 @@
 <header class="internal">
     <div class="wrap">
         <div class="left-side">
-            <a class="logo" href="index.html"><img src="img/logo.png" alt=""></a>
+            <a class="logo" href="index.html"><img src="<?php bloginfo('template_url');?>/img/logo.png" alt=""></a>
             <div class="phone">
                 <p><i class="fa fa-phone" aria-hidden="true"></i>+38 (044) 249-72-22</p>
                 <a href="#callback-form" class="popUp-btn">Закзазать звонок</a>
@@ -130,7 +130,7 @@
         <div class="title wow fadeInUp" data-wow-duration="1s">Бермудские острова:<br>
             Использование бермудского флага</div>
         <div class="img-block wow fadeInUp" data-wow-duration="1s">
-            <img src="img/flag-img.jpg" alt="">
+            <img src="<?php bloginfo('template_url');?>/img/flag-img.jpg" alt="">
         </div>
         <div class="text wow fadeInUp" data-wow-duration="1s">
             <p>Бермудские острова являются одним из старейших оффшорных центров в мире. По тоннажу судов бермудский судовой регистр занимает четвертое место в мире, при этом количество регистрируемых судов продолжает устойчиво возрастать. Особенность Бермудских островов в сфере судовладения и судопользования заключается в том, что законодательство не устанавливает каких-либо специальных форм для предприятий этой отрасли.</p>
@@ -171,7 +171,7 @@
                 <p>Сведения об окончательных бенефициарных владельцах в принципе могут оставаться закрытыми, однако информация о них должна быть предоставлена при регистрации компании. Директор компании должен быть резидентом Бермудских остовов. Минимально необходимое количество директоров - два. Собрания совета директоров являются обязательными. Необходимым является местный юридический адрес компании. Компания обязана составлять годовой отчет. Аудиторская проверка деятельности является формально обязательной, однако может быть исключена решением директоров собрания и общего собрания акционеров. Кроме того власти устанавливают дополнительные обязанности по подготовке и представлению финансовой отчетности, в частности директора компаний должны заверять ежеквартальные отчеты о финансовом положении компании. Важно отметить, что Бермуды первыми заключили с США договор об обмене информацией <span class="strong">(подписан 11 июля 1986 г., ратифицирован 1 декабря 1988 г.).</span> Впоследствии аналогичный договор США заключили с Панамой.</p>
             </div>
         <div class="img-block wow fadeInUp" data-wow-duration="1s">
-            <img src="img/flag-2.jpg" alt="">
+            <img src="<?php bloginfo('template_url');?>/img/flag-2.jpg" alt="">
         </div>
         <div class="text wow fadeInUp" data-wow-duration="1s">
             <p><span class="strong">Бермудские острова являются старейшей британской колонией</span> (зависимой территорией), что обусловило применение основных норм британского законодательства о компаниях и трастового законодательства. Использование бермудского флага обусловливается принадлежностью компаний, которая может быть создана на Бермудских островах, в Великобритании, на острове Мэн или в других государствах, включенных в специальный правительственный перечень. Разрешение на использование бермудского флага возможно только после прохождения специальных регистрационных, относительно длительных процедур. Важно отметить, что обязательным является предоставление подробных сведений о бенефициарных (окончательных) владельцах судна.</p>
@@ -297,8 +297,8 @@
 </footer>
 <!-- Optimized loading JS Start -->
 <script>var scr = {"scripts":[
-    {"src" : "js/libs.min.js", "async" : false},
-    {"src" : "js/common.js", "async" : false}
+    {"src" : "<?php bloginfo('template_url');?>/js/libs.min.js", "async" : false},
+    {"src" : "<?php bloginfo('template_url');?>/js/common.js", "async" : false}
 ]};!function(t,n,r){"use strict";var c=function(t){if("[object Array]"!==Object.prototype.toString.call(t))return!1;for(var r=0;r<t.length;r++){var c=n.createElement("script"),e=t[r];c.src=e.src,c.async=e.async,n.body.appendChild(c)}return!0};t.addEventListener?t.addEventListener("load",function(){c(r.scripts);},!1):t.attachEvent?t.attachEvent("onload",function(){c(r.scripts)}):t.onload=function(){c(r.scripts)}}(window,document,scr);
 </script>
 <!-- Optimized loading JS End -->

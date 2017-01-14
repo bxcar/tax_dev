@@ -85,7 +85,7 @@
 <header class="internal">
     <div class="wrap">
         <div class="left-side">
-            <a class="logo" href="index.html"><img src="img/logo.png" alt=""></a>
+            <a class="logo" href="index.html"><img src="<?php bloginfo('template_url');?>/img/logo.png" alt=""></a>
             <div class="phone">
                 <p><i class="fa fa-phone" aria-hidden="true"></i>+38 (044) 249-72-22</p>
                 <a href="#callback-form" class="popUp-btn">Закзазать звонок</a>
@@ -193,7 +193,7 @@
                 <div>
                     <a href="#" class="item">
                 <span class="img-block">
-                    <img src="img/flag-1.png" alt="">
+                    <img src="<?php bloginfo('template_url');?>/img/flag-1.png" alt="">
                 </span>
                         <span class="text">Специальные <br> предложения</span>
                     </a>
@@ -201,7 +201,7 @@
                 <div>
                     <a href="#" class="item">
                 <span class="img-block">
-                    <img src="img/flag-2.png" alt="">
+                    <img src="<?php bloginfo('template_url');?>/img/flag-2.png" alt="">
                 </span>
                         <span class="text">Удобные <br> флаги</span>
                     </a>
@@ -209,7 +209,7 @@
                 <div>
                     <a href="#" class="item">
                     <span class="img-block">
-                        <img src="img/flag-3.png" alt="">
+                        <img src="<?php bloginfo('template_url');?>/img/flag-3.png" alt="">
                     </span>
                         <span class="text">Центры <br> Юрисдикций</span>
                     </a>
@@ -217,7 +217,7 @@
                 <div>
                     <a href="#" class="item">
                 <span class="img-block">
-                    <img src="img/flag-4.png" alt="">
+                    <img src="<?php bloginfo('template_url');?>/img/flag-4.png" alt="">
                 </span>
                     <span class="text">Финансовые <br> компании</span>
                 </a>
@@ -307,8 +307,8 @@
 </footer>
 <!-- Optimized loading JS Start -->
 <script>var scr = {"scripts":[
-    {"src" : "js/libs.min.js", "async" : false},
-    {"src" : "js/common.js", "async" : false}
+    {"src" : "<?php bloginfo('template_url');?>/js/libs.min.js", "async" : false},
+    {"src" : "<?php bloginfo('template_url');?>/js/common.js", "async" : false}
 ]};!function(t,n,r){"use strict";var c=function(t){if("[object Array]"!==Object.prototype.toString.call(t))return!1;for(var r=0;r<t.length;r++){var c=n.createElement("script"),e=t[r];c.src=e.src,c.async=e.async,n.body.appendChild(c)}return!0};t.addEventListener?t.addEventListener("load",function(){c(r.scripts);},!1):t.attachEvent?t.attachEvent("onload",function(){c(r.scripts)}):t.onload=function(){c(r.scripts)}}(window,document,scr);
 </script>
 <!-- Optimized loading JS End -->

@@ -85,7 +85,7 @@
 <header class="internal">
     <div class="wrap">
         <div class="left-side">
-            <a class="logo" href="index.html"><img src="img/logo.png" alt=""></a>
+            <a class="logo" href="index.html"><img src="<?php bloginfo('template_url');?>/img/logo.png" alt=""></a>
             <div class="phone">
                 <p><i class="fa fa-phone" aria-hidden="true"></i>+38 (044) 249-72-22</p>
                 <a href="#callback-form" class="popUp-btn">Закзазать звонок</a>
@@ -129,7 +129,7 @@
     </section>
     <section class="facilities-services-info">
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="item"><img src="img/facilietis-services.png" alt=""></div>
+            <div class="item"><img src="<?php bloginfo('template_url');?>/img/facilietis-services.png" alt=""></div>
             <div class="item">
                 <div class="title">Консультации по счетам<br>
                     Paypal</div>
@@ -156,43 +156,43 @@
             <div class="owl-carousel carousel-4">
                 <a href="#" class="item">
                 <span class="img-block">
-                    <img src="img/f-services-1.png" alt="">
+                    <img src="<?php bloginfo('template_url');?>/img/f-services-1.png" alt="">
                 </span>
                     <span class="text">Регистрация торговых марок <br> и получение штрих кодов</span>
                 </a>
                 <a href="#" class="item">
                 <span class="img-block">
-                    <img src="img/f-services-2.png" alt="">
+                    <img src="<?php bloginfo('template_url');?>/img/f-services-2.png" alt="">
                 </span>
                     <span class="text">Получение <br> Сертификата происхождения <br> в Великобритании</span>
                 </a>
                 <a href="#" class="item">
                 <span class="img-block">
-                    <img src="img/f-services-3.png" alt="">
+                    <img src="<?php bloginfo('template_url');?>/img/f-services-3.png" alt="">
                 </span>
                     <span class="text">Консультации<br> по счетам Paypal</span>
                 </a>
                 <a href="#" class="item">
                 <span class="img-block">
-                    <img src="img/f-services-4.png" alt="">
+                    <img src="<?php bloginfo('template_url');?>/img/f-services-4.png" alt="">
                 </span>
                     <span class="text">Получения<br> номера EORI</span>
                 </a>
                 <a href="#" class="item">
                 <span class="img-block">
-                    <img src="img/f-services-5.png" alt="">
+                    <img src="<?php bloginfo('template_url');?>/img/f-services-5.png" alt="">
                 </span>
                     <span class="text">Аккредитация<br> представительства<br> в Украине</span>
                 </a>
                 <a href="#" class="item">
                 <span class="img-block">
-                    <img src="img/f-services-6.png" alt="">
+                    <img src="<?php bloginfo('template_url');?>/img/f-services-6.png" alt="">
                 </span>
                     <span class="text">Помощь специалиста по <br> сервису VAT в Европе</span>
                 </a>
                 <a href="#" class="item">
                 <span class="img-block">
-                    <img src="img/f-services-7.png" alt="">
+                    <img src="<?php bloginfo('template_url');?>/img/f-services-7.png" alt="">
                 </span>
                     <span class="text">Консультации по счетам<br> Interactive Brokers</span>
                 </a>
@@ -281,8 +281,8 @@
 </footer>
 <!-- Optimized loading JS Start -->
 <script>var scr = {"scripts":[
-    {"src" : "js/libs.min.js", "async" : false},
-    {"src" : "js/common.js", "async" : false}
+    {"src" : "<?php bloginfo('template_url');?>/js/libs.min.js", "async" : false},
+    {"src" : "<?php bloginfo('template_url');?>/js/common.js", "async" : false}
 ]};!function(t,n,r){"use strict";var c=function(t){if("[object Array]"!==Object.prototype.toString.call(t))return!1;for(var r=0;r<t.length;r++){var c=n.createElement("script"),e=t[r];c.src=e.src,c.async=e.async,n.body.appendChild(c)}return!0};t.addEventListener?t.addEventListener("load",function(){c(r.scripts);},!1):t.attachEvent?t.attachEvent("onload",function(){c(r.scripts)}):t.onload=function(){c(r.scripts)}}(window,document,scr);
 </script>
 <!-- Optimized loading JS End -->

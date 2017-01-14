@@ -36,7 +36,7 @@
 <header class="internal">
     <div class="wrap">
         <div class="left-side">
-            <a class="logo" href="index.html"><img src="img/logo.png" alt=""></a>
+            <a class="logo" href="index.html"><img src="<?php bloginfo('template_url');?>/img/logo.png" alt=""></a>
             <div class="phone">
                 <p><i class="fa fa-phone" aria-hidden="true"></i>+38 (044) 249-72-22</p>
                 <a href="#callback-form" class="popUp-btn">Закзазать звонок</a>
@@ -81,7 +81,7 @@
         <div class="wrap">
             <div class="blog">
                 <div class="item">
-                    <img class="wow fadeInUp" data-wow-duration="1s" src="img/news-1.jpg" alt="">
+                    <img class="wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/news-1.jpg" alt="">
                     <div class="text-info wow fadeInUp" data-wow-duration="1s">
                         <div class="top">
                             <div class="date">24 <span>окт</span></div>
@@ -98,7 +98,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img class=" wow fadeInUp" data-wow-duration="1s" src="img/news-2.jpg" alt="">
+                    <img class=" wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/news-2.jpg" alt="">
                     <div class="text-info wow fadeInUp" data-wow-duration="1s">
                         <div class="top">
                             <div class="date">24 <span>окт</span></div>
@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img class=" wow fadeInUp" data-wow-duration="1s" src="img/news-3.jpg" alt="">
+                    <img class=" wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/news-3.jpg" alt="">
                     <div class="text-info wow fadeInUp" data-wow-duration="1s">
                         <div class="top">
                             <div class="date">24 <span>окт</span></div>
@@ -132,7 +132,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img class=" wow fadeInUp" data-wow-duration="1s" src="img/news-4.jpg" alt="">
+                    <img class=" wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/news-4.jpg" alt="">
                     <div class="text-info wow fadeInUp" data-wow-duration="1s">
                         <div class="top">
                             <div class="date">24 <span>окт</span></div>
@@ -149,7 +149,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img class=" wow fadeInUp" data-wow-duration="1s" src="img/news-5.jpg" alt="">
+                    <img class=" wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/news-5.jpg" alt="">
                     <div class="text-info wow fadeInUp" data-wow-duration="1s">
                         <div class="top">
                             <div class="date">24 <span>окт</span></div>
@@ -197,17 +197,17 @@
                 <div class="pop-news wow fadeInUp" data-wow-duration="1s">
                     <div class="sidebar-title">Популярные новости</div>
                     <a href="#" class="item">
-                        <img src="img/p-news-1.jpg" alt="">
+                        <img src="<?php bloginfo('template_url');?>/img/p-news-1.jpg" alt="">
                         <p>Власти ухудшили прогноз роста экономики</p>
                         <div class="date">21 октября / Экономика </div>
                     </a>
                     <a href="#" class="item">
-                        <img src="img/p-news-2.jpg" alt="">
+                        <img src="<?php bloginfo('template_url');?>/img/p-news-2.jpg" alt="">
                         <p>Прибыль Samsung упала на 30% из-за Galaxy Note 7</p>
                         <div class="date">20 октября / Новости компаний</div>
                     </a>
                     <a href="#" class="item">
-                        <img src="img/p-news-3.jpg" alt="">
+                        <img src="<?php bloginfo('template_url');?>/img/p-news-3.jpg" alt="">
                         <p>Торги на биржах США завершились ростом</p>
                         <div class="date">19 октября / Финансы</div>
                     </a>
@@ -307,8 +307,8 @@
 </footer>
 <!-- Optimized loading JS Start -->
 <script>var scr = {"scripts":[
-    {"src" : "js/libs.min.js", "async" : false},
-    {"src" : "js/common.js", "async" : false}
+    {"src" : "<?php bloginfo('template_url');?>/js/libs.min.js", "async" : false},
+    {"src" : "<?php bloginfo('template_url');?>/js/common.js", "async" : false}
 ]};!function(t,n,r){"use strict";var c=function(t){if("[object Array]"!==Object.prototype.toString.call(t))return!1;for(var r=0;r<t.length;r++){var c=n.createElement("script"),e=t[r];c.src=e.src,c.async=e.async,n.body.appendChild(c)}return!0};t.addEventListener?t.addEventListener("load",function(){c(r.scripts);},!1):t.attachEvent?t.attachEvent("onload",function(){c(r.scripts)}):t.onload=function(){c(r.scripts)}}(window,document,scr);
 </script>
 <!-- Optimized loading JS End -->
