@@ -11,7 +11,7 @@
 
     <meta charset="utf-8">
 
-    <title><?php bloginfo('name');?></title>
+    <title><?php bloginfo('name'); ?></title>
     <meta name="description" content="">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,7 +42,7 @@
 <header>
     <div class="wrap">
         <div class="left-side">
-            <a class="logo" href="<?=home_url();?>"><img src="<?php bloginfo('template_url');?>/img/logo.png" alt=""></a>
+            <a class="logo" href="<?= home_url(); ?>"><img src="<?php bloginfo('template_url'); ?>/img/logo.png" alt=""></a>
             <div class="phone">
                 <p><i class="fa fa-phone" aria-hidden="true"></i>+38 (044) 249-72-22</p>
                 <a href="#callback-form" class="popUp-btn">Закзазать звонок</a>
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="menu">
-            <?php wp_nav_menu(array('theme_location' => 'menu-1', 'menu_class'=> '', 'container' => 'false')); ?>
+            <?php wp_nav_menu(array('theme_location' => 'menu-1', 'menu_class' => '', 'container' => 'false')); ?>
         </div>
     </div>
 </header>
@@ -71,7 +71,7 @@
 <main>
     <section class="head-block">
         <video autoplay loop muted class="bgvideo" id="bgvideo">
-            <source src="<?php bloginfo('template_url');?>/video/Final_Dark_WEB.mp4" type="video/mp4"></source>
+            <source src="<?php bloginfo('template_url'); ?>/video/Final_Dark_WEB.mp4" type="video/mp4"></source>
         </video>
         <div class="after-v-bg"></div>
         <div class="wrap">
@@ -92,13 +92,74 @@
                 <li></li>
             </ul>
 
-            <?php  $images = get_field('main_gallery');
-            foreach($images as $image) {
+            <?php $images = get_field('main_gallery');
+            foreach ($images as $image) {
                 ?>
                 <img src="<?= $image['sizes']['medium_large'] ?>" alt="<?= $image['id'] ?>">
-            <?php
+                <?php
             }
 
+            //            var_dump(get_field('main_sources'));
+            $sources = get_field('main_sources');
+            echo '<ul>';
+            foreach ($sources as $src) {
+                ?>
+                <li><strong><?= $src['main_src_title'] ?></strong> - <?= $src['main_src_description'] ?></li>
+                <?php
+            }
+            echo '</ul>';
+
+//            var_dump(get_field_objects());
+
+            $fields = get_field_objects();
+
+            foreach ($fields as $field) {
+                if($field['type'] == 'text') {
+                    ?>
+                    <strong><?= $field['label'] ?>:</strong> <span><?= $field['value'] ?></span>
+                    <br>
+                    <?php
+                }
+            }
+
+            $article_id = get_field('main_article');
+
+            $args = array(
+                'post_type' => 'page',
+                'posts_per_page' => 10,
+                'meta_query' => array(
+                    array(
+                        'key' => 'main_article',
+                        'value' => $article_id
+                    )
+                )
+            );
+
+            $wp_query = new WP_Query($args);
+
+            if ($wp_query->have_posts()) {
+                ?>
+                <div class="container">
+                    <?php
+                    while ($wp_query->have_posts()) {
+                        $wp_query->the_post();
+                        $post_id = get_the_ID();
+                        ?>
+                        <article class="article">
+                            <h3>
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php the_title(); ?>
+                                </a>
+                            </h3>
+                            <?php the_excerpt(); ?>
+                        </article>
+                        <?php
+                    }
+                    ?>
+                </div>
+                <?php
+                wp_reset_query();
+            }
             ?>
 
             <br><br>
@@ -112,15 +173,15 @@
             </div>
             <div class="services wow fadeInUp" data-wow-duration="1s">
                 <a href="services.html" class="item">
-                    <img src="<?php bloginfo('template_url');?>/img/service-1.png" alt="">
+                    <img src="<?php bloginfo('template_url'); ?>/img/service-1.png" alt="">
                     <p><span>01</span>Оффшорные компании</p>
                 </a>
                 <a href="services.html" class="item">
-                    <img src="<?php bloginfo('template_url');?>/img/service-2.png" alt="">
+                    <img src="<?php bloginfo('template_url'); ?>/img/service-2.png" alt="">
                     <p><span>02</span>Европейские компании</p>
                 </a>
                 <a href="services.html" class="item">
-                    <img src="<?php bloginfo('template_url');?>/img/service-3.png" alt="">
+                    <img src="<?php bloginfo('template_url'); ?>/img/service-3.png" alt="">
                     <p><span>03</span>Компании США, Канады</p>
                 </a>
             </div>
@@ -133,37 +194,42 @@
                 <div class="item">
                     <div class="item-wrap">
                         <p>Регистрация оффшорных компаний за 72 часа.</p>
-                        <a href="special-offer-vnutr.html">ПОДРОБНЕЕ<img src="<?php bloginfo('template_url');?>/img/right-arrow.png" alt=""></a>
+                        <a href="special-offer-vnutr.html">ПОДРОБНЕЕ<img
+                                src="<?php bloginfo('template_url'); ?>/img/right-arrow.png" alt=""></a>
                     </div>
                 </div>
                 <div class="item">
                     <div class="item-wrap">
                         <p>Компании в Гонконге со счетом в HSBC Bank</p>
-                        <a href="special-offer-vnutr.html">ПОДРОБНЕЕ<img src="<?php bloginfo('template_url');?>/img/right-arrow.png" alt=""></a>
+                        <a href="special-offer-vnutr.html">ПОДРОБНЕЕ<img
+                                src="<?php bloginfo('template_url'); ?>/img/right-arrow.png" alt=""></a>
                     </div>
                 </div>
                 <div class="item">
                     <div class="item-wrap">
                         <p>Регистрация и сопровождение компаний в Великобритании</p>
-                        <a href="special-offer-vnutr.html">ПОДРОБНЕЕ <img src="<?php bloginfo('template_url');?>/img/right-arrow.png" alt=""></a>
+                        <a href="special-offer-vnutr.html">ПОДРОБНЕЕ <img
+                                src="<?php bloginfo('template_url'); ?>/img/right-arrow.png" alt=""></a>
                     </div>
                 </div>
                 <div class="item">
                     <div class="item-wrap">
                         <p>Регистрация оффшорных компаний за 72 часа.</p>
-                        <a href="#">ПОДРОБНЕЕ<img src="<?php bloginfo('template_url');?>/img/right-arrow.png" alt=""></a>
+                        <a href="#">ПОДРОБНЕЕ<img src="<?php bloginfo('template_url'); ?>/img/right-arrow.png"
+                                                  alt=""></a>
                     </div>
                 </div>
                 <div class="item">
                     <div class="item-wrap">
                         <p>Компании в Гонконге со счетом в HSBC Bank</p>
-                        <a href="#">ПОДРОБНЕЕ<img src="<?php bloginfo('template_url');?>/img/right-arrow.png" alt=""></a>
+                        <a href="#">ПОДРОБНЕЕ<img src="<?php bloginfo('template_url'); ?>/img/right-arrow.png"
+                                                  alt=""></a>
                     </div>
                 </div>
                 <div class="item">
                     <div class="item-wrap">
                         <p>Регистрация и сопровождение компаний в Великобритании</p>
-                        <a href="#">ПОДРОБНЕЕ <img src="<?php bloginfo('template_url');?>/img/right-arrow.png" alt=""></a>
+                        <a href="#">ПОДРОБНЕЕ <img src="<?php bloginfo('template_url'); ?>/img/right-arrow.png" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -191,7 +257,7 @@
                     </p>
                 </div>
                 <div class="item bank">
-                    <img src="<?php bloginfo('template_url');?>/img/bank.png" alt="">
+                    <img src="<?php bloginfo('template_url'); ?>/img/bank.png" alt="">
                     <p>Возможность открытия счета в самых крупных мировых банках</p>
                 </div>
             </div>
@@ -205,7 +271,8 @@
                     <div class="item">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24">
-                                <path d="M16.613 13.785c.873-1.387 1.387-3.024 1.387-4.785 0-4.971-4.029-9-9-9s-9 4.029-9 9 4.029 9 9 9c1.761 0 3.397-.513 4.785-1.387l7.387 7.387 2.828-2.828-7.387-7.387zm-6.613 2.135v-3.92h-2v3.92c-3.059-.44-5.479-2.861-5.92-5.92h3.92v-2h-3.92c.441-3.059 2.861-5.479 5.92-5.92v3.92h2v-3.92c3.059.44 5.479 2.861 5.92 5.92h-3.92v2h3.92c-.441 3.059-2.861 5.479-5.92 5.92z"/>
+                                <path
+                                    d="M16.613 13.785c.873-1.387 1.387-3.024 1.387-4.785 0-4.971-4.029-9-9-9s-9 4.029-9 9 4.029 9 9 9c1.761 0 3.397-.513 4.785-1.387l7.387 7.387 2.828-2.828-7.387-7.387zm-6.613 2.135v-3.92h-2v3.92c-3.059-.44-5.479-2.861-5.92-5.92h3.92v-2h-3.92c.441-3.059 2.861-5.479 5.92-5.92v3.92h2v-3.92c3.059.44 5.479 2.861 5.92 5.92h-3.92v2h3.92c-.441 3.059-2.861 5.479-5.92 5.92z"/>
                             </svg>
                         </div>
                         <div class="shema">
@@ -217,7 +284,8 @@
                     <div class="item">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="61" height="83" viewBox="0 0 24 24">
-                                <path d="M5.495 2h16.505v-2h-17c-1.657 0-3 1.343-3 3v18c0 1.657 1.343 3 3 3h17v-20h-16.505c-1.375 0-1.375-2 0-2zm6.681 17c-.573 0-1.04-.467-1.04-1.042 0-.576.467-1.042 1.04-1.042.576 0 1.042.466 1.042 1.042 0 .575-.466 1.042-1.042 1.042zm.034-10c1.644 0 2.81 1.015 2.79 2.666-.015 1.134-.705 1.878-1.259 2.477-.832.896-.766 1.336-.766 1.941h-1.644c0-1.311-.045-1.84 1.174-2.999.469-.446.839-.799.788-1.493-.048-.66-.599-1.004-1.118-1.004-.883 0-1.26.785-1.26 1.746h-1.647c0-2.212 1.262-3.334 2.942-3.334z"/>
+                                <path
+                                    d="M5.495 2h16.505v-2h-17c-1.657 0-3 1.343-3 3v18c0 1.657 1.343 3 3 3h17v-20h-16.505c-1.375 0-1.375-2 0-2zm6.681 17c-.573 0-1.04-.467-1.04-1.042 0-.576.467-1.042 1.04-1.042.576 0 1.042.466 1.042 1.042 0 .575-.466 1.042-1.042 1.042zm.034-10c1.644 0 2.81 1.015 2.79 2.666-.015 1.134-.705 1.878-1.259 2.477-.832.896-.766 1.336-.766 1.941h-1.644c0-1.311-.045-1.84 1.174-2.999.469-.446.839-.799.788-1.493-.048-.66-.599-1.004-1.118-1.004-.883 0-1.26.785-1.26 1.746h-1.647c0-2.212 1.262-3.334 2.942-3.334z"/>
                             </svg>
                         </div>
                         <div class="shema">
@@ -229,7 +297,8 @@
                     <div class="item">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="57" height="69" viewBox="0 0 24 24">
-                                <path d="M4 22v-20h16v11.543c0 4.107-6 2.457-6 2.457s1.518 6-2.638 6h-7.362zm18-7.614v-14.386h-20v24h10.189c3.163 0 9.811-7.223 9.811-9.614zm-5-1.386h-10v-1h10v1zm0-4h-10v1h10v-1zm0-3h-10v1h10v-1z"/>
+                                <path
+                                    d="M4 22v-20h16v11.543c0 4.107-6 2.457-6 2.457s1.518 6-2.638 6h-7.362zm18-7.614v-14.386h-20v24h10.189c3.163 0 9.811-7.223 9.811-9.614zm-5-1.386h-10v-1h10v1zm0-4h-10v1h10v-1zm0-3h-10v1h10v-1z"/>
                             </svg>
                         </div>
                         <div class="shema">
@@ -241,7 +310,8 @@
                     <div class="item">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="99" height="73" viewBox="0 0 24 24">
-                                <path d="M19.5 11c-2.485 0-4.5 2.015-4.5 4.5s2.015 4.5 4.5 4.5 4.5-2.015 4.5-4.5-2.015-4.5-4.5-4.5zm-.469 6.484l-1.688-1.637.696-.697.991.94 2.116-2.169.696.696-2.811 2.867zm-15.031-2.484h5v1h-5v-1zm8-1h-8v-1h8v1zm1.502 4h-11.002c-.276 0-.5-.224-.5-.5v-6.5h12.82c1.184-1.23 2.842-2 4.68-2 .886 0 1.729.179 2.5.501v-3.501c0-1.104-.896-2-2-2h-18c-1.104 0-2 .896-2 2v12c0 1.104.896 2 2 2h12.82c-.553-.576-1.006-1.251-1.318-2zm-11.502-11.5c0-.276.224-.5.5-.5h17c.276 0 .5.224.5.5v1.5h-18v-1.5z"/>
+                                <path
+                                    d="M19.5 11c-2.485 0-4.5 2.015-4.5 4.5s2.015 4.5 4.5 4.5 4.5-2.015 4.5-4.5-2.015-4.5-4.5-4.5zm-.469 6.484l-1.688-1.637.696-.697.991.94 2.116-2.169.696.696-2.811 2.867zm-15.031-2.484h5v1h-5v-1zm8-1h-8v-1h8v1zm1.502 4h-11.002c-.276 0-.5-.224-.5-.5v-6.5h12.82c1.184-1.23 2.842-2 4.68-2 .886 0 1.729.179 2.5.501v-3.501c0-1.104-.896-2-2-2h-18c-1.104 0-2 .896-2 2v12c0 1.104.896 2 2 2h12.82c-.553-.576-1.006-1.251-1.318-2zm-11.502-11.5c0-.276.224-.5.5-.5h17c.276 0 .5.224.5.5v1.5h-18v-1.5z"/>
                             </svg>
                         </div>
                         <div class="shema">
@@ -254,7 +324,8 @@
                     <div class="item">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="73" height="67" viewBox="0 0 24 24">
-                                <path d="M12 3c5.514 0 10 3.592 10 8.007 0 4.917-5.145 7.961-9.91 7.961-1.937 0-3.383-.397-4.394-.644-1 .613-1.595 1.037-4.272 1.82.535-1.373.723-2.748.602-4.265-.838-1-2.025-2.4-2.025-4.872-.001-4.415 4.485-8.007 9.999-8.007zm0-2c-6.338 0-12 4.226-12 10.007 0 2.05.738 4.063 2.047 5.625.055 1.83-1.023 4.456-1.993 6.368 2.602-.47 6.301-1.508 7.978-2.536 1.418.345 2.775.503 4.059.503 7.084 0 11.91-4.837 11.91-9.961-.001-5.811-5.702-10.006-12.001-10.006zm-3.5 10c0 .829-.671 1.5-1.5 1.5-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5c.829 0 1.5-.671 1.5-1.5s-.671-1.5-1.5-1.5zm5 0c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5c.829 0 1.5-.671 1.5-1.5s-.671-1.5-1.5-1.5z"/>
+                                <path
+                                    d="M12 3c5.514 0 10 3.592 10 8.007 0 4.917-5.145 7.961-9.91 7.961-1.937 0-3.383-.397-4.394-.644-1 .613-1.595 1.037-4.272 1.82.535-1.373.723-2.748.602-4.265-.838-1-2.025-2.4-2.025-4.872-.001-4.415 4.485-8.007 9.999-8.007zm0-2c-6.338 0-12 4.226-12 10.007 0 2.05.738 4.063 2.047 5.625.055 1.83-1.023 4.456-1.993 6.368 2.602-.47 6.301-1.508 7.978-2.536 1.418.345 2.775.503 4.059.503 7.084 0 11.91-4.837 11.91-9.961-.001-5.811-5.702-10.006-12.001-10.006zm-3.5 10c0 .829-.671 1.5-1.5 1.5-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5c.829 0 1.5-.671 1.5-1.5s-.671-1.5-1.5-1.5zm5 0c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5c.829 0 1.5-.671 1.5-1.5s-.671-1.5-1.5-1.5z"/>
                             </svg>
                         </div>
                         <div class="shema">
@@ -394,15 +465,15 @@
         <div class="footer-top">
             <div class="item">
                 <div class="title">МЕНЮ</div>
-                <?php wp_nav_menu(array('theme_location' => 'menu-1', 'menu_class'=> '', 'container' => 'false')); ?>
+                <?php wp_nav_menu(array('theme_location' => 'menu-1', 'menu_class' => '', 'container' => 'false')); ?>
             </div>
             <div class="item">
                 <div class="title">ПРЕДЛОЖЕНИЯ</div>
-                <?php wp_nav_menu(array('theme_location' => 'menu-2', 'menu_class'=> '', 'container' => 'false')); ?>
+                <?php wp_nav_menu(array('theme_location' => 'menu-2', 'menu_class' => '', 'container' => 'false')); ?>
             </div>
             <div class="item">
                 <div class="title">НОВОСТИ</div>
-                <?php wp_nav_menu(array('theme_location' => 'menu-3', 'menu_class'=> '', 'container' => 'false')); ?>
+                <?php wp_nav_menu(array('theme_location' => 'menu-3', 'menu_class' => '', 'container' => 'false')); ?>
             </div>
             <div class="item subscribe">
                 <div class="title">ПОДПИСАТЬСЯ НА РАССЫЛКУ</div>

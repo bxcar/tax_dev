@@ -51,7 +51,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "80",
+                "width": "40",
                 "class": "",
                 "id": ""
             },
@@ -60,6 +60,72 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_587c0888e03dc",
+            "label": "ISBN \u0433\u043b\u0430\u0432\u043d\u043e\u0439",
+            "name": "main_isbn",
+            "type": "text",
+            "instructions": "\u0423\u043a\u0430\u0436\u0438\u0442\u0435 ISBN \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 100500,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_587be5b3d0b05",
+            "label": "\u0418\u0437\u0434\u0430\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e \u0433\u043b\u0430\u0432\u043d\u043e\u0439",
+            "name": "main_publisher",
+            "type": "select",
+            "instructions": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0438\u0437\u0434\u0430\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "drofa": "\u0414\u0440\u043e\u0444\u0430",
+                "knowlege": "\u041f\u0440\u043e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "array",
+            "placeholder": ""
+        },
+        {
+            "key": "field_587becc290762",
+            "label": "\u0421\u0442\u0430\u0442\u044c\u044f \u043f\u0440\u043e \u0433\u043b\u0430\u0432\u043d\u0443\u044e",
+            "name": "main_article",
+            "type": "post_object",
+            "instructions": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0441\u0442\u0430\u0442\u044c\u044e",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
         },
         {
             "key": "field_587b8e7a91987",
@@ -101,6 +167,81 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_587bdacfd166a",
+            "label": "\u0418\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0438",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_587bdb05d166c",
+            "label": "\u0418\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0438",
+            "name": "main_sources",
+            "type": "repeater",
+            "instructions": "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u043e\u0432",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_587bdc0cd166d",
+            "min": "",
+            "max": "",
+            "layout": "table",
+            "button_label": "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c",
+            "sub_fields": [
+                {
+                    "key": "field_587bdc0cd166d",
+                    "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0430",
+                    "name": "main_src_title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_587bdd13d166e",
+                    "label": "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0430",
+                    "name": "main_src_description",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -109,6 +250,13 @@
                 "param": "page_template",
                 "operator": "==",
                 "value": "page-main.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-about.php"
             }
         ]
     ],
@@ -120,5 +268,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1484498720
+    "modified": 1484524039
 }
