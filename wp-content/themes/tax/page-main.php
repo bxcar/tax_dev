@@ -62,12 +62,7 @@
             </div>
         </div>
         <div class="menu">
-            <ul>
-                <li><a href="index.html">ГЛАВНАЯ</a></li>
-                <li><a href="about.html">О ПРОЕКТЕ</a></li>
-                <li><a href="services.html">Услуги и цены</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
-            </ul>
+            <?php wp_nav_menu(array('theme_location' => 'menu-1', 'menu_class'=> '', 'container' => 'false')); ?>
         </div>
     </div>
 </header>
@@ -378,54 +373,15 @@
         <div class="footer-top">
             <div class="item">
                 <div class="title">МЕНЮ</div>
-                <ul>
-                    <li>
-                        <a href="index.html">Главная</a>
-                    </li>
-                    <li>
-                        <a href="about.html">О проекте</a>
-                    </li>
-                    <li>
-                        <a href="services.html">Услуги и цены</a>
-                    </li>
-                    <li>
-                        <a href="contacts.html">Контакты</a>
-                    </li>
-                </ul>
+                <?php wp_nav_menu(array('theme_location' => 'menu-1', 'menu_class'=> '', 'container' => 'false')); ?>
             </div>
             <div class="item">
                 <div class="title">ПРЕДЛОЖЕНИЯ</div>
-                <ul>
-                    <li>
-                        <a href="special-offer.html">Специальные предложения</a>
-                    </li>
-                    <li>
-                        <a href="jur-center.html">Центр юрисдикции</a>
-                    </li>
-                    <li>
-                        <a href="finance-companies.html">Финансовые компании</a>
-                    </li>
-                    <li>
-                        <a href="convenience-flags.html">Удобные флаги</a>
-                    </li>
-                </ul>
+                <?php wp_nav_menu(array('theme_location' => 'menu-2', 'menu_class'=> '', 'container' => 'false')); ?>
             </div>
             <div class="item">
                 <div class="title">НОВОСТИ</div>
-                <ul>
-                    <li>
-                        <a href="news.html">Новости бизнеса</a>
-                    </li>
-                    <li>
-                        <a href="facilities-services.html">Услуги и сервисы</a>
-                    </li>
-                    <li>
-                        <a href="helpful-information.html">Полезная информация</a>
-                    </li>
-                    <li>
-                        <a href="search-online.html">Поиск онлайн</a>
-                    </li>
-                </ul>
+                <?php wp_nav_menu(array('theme_location' => 'menu-3', 'menu_class'=> '', 'container' => 'false')); ?>
             </div>
             <div class="item subscribe">
                 <div class="title">ПОДПИСАТЬСЯ НА РАССЫЛКУ</div>
