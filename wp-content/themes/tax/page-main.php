@@ -91,6 +91,16 @@
                 <li></li>
                 <li></li>
             </ul>
+
+            <?php  $images = get_field('main_gallery');
+            foreach($images as $image) {
+                ?>
+                <img src="<?= $image['sizes']['medium_large'] ?>" alt="<?= $image['id'] ?>">
+            <?php
+            }
+
+            ?>
+
             <br><br>
             <!--##########################-->
 
