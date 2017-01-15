@@ -83,6 +83,17 @@
     <section class="our-services">
         <div class="wrap">
             <div class="title wow fadeInUp" data-wow-duration="1s">НАШИ УСЛУГИ</div>
+            <!--##########################-->
+            <ul>
+                <li> <?= get_post_meta(get_the_ID(), 'page_title', true); ?></li>
+                <li><?= get_field('page_title', get_the_ID(), false) ?></li>
+                <li><?php the_field('page_title', get_the_ID(), false) ?></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <br><br>
+            <!--##########################-->
+
             <div class="text wow fadeInUp" data-wow-duration="1s">Информация в этом разделе не является предложением о
                 продаже или предложением в приобретении услуг и предоставленна только в ознокомительных целях.
                 Использование информации в любой юрисдикции, где это запрещено законом, может повлечь за собой
