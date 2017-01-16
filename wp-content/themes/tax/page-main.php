@@ -77,7 +77,7 @@
         <div class="after-v-bg"></div>
         <div class="wrap">
             <h1><?php the_field('main_page_content_title') ?></h1>
-            <a href="#"><?php the_field('main_page_button_text') ?></a>
+            <a href="<?php the_field('main_page_button_link') ?>"><?php the_field('main_page_button_text') ?></a>
             <div class="icon-scroll"></div>
         </div>
     </section>
@@ -108,84 +108,69 @@
         </div>
     </section>
     <section class="special-offer">
-        <div class="offer-title wow fadeInUp" data-wow-duration="1s">Специальные предложения</div>
+        <div class="offer-title wow fadeInUp" data-wow-duration="1s"><?php the_field('main_page_so_title') ?></div>
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
             <div class="owl-carousel carousel-1">
-                <div class="item">
-                    <div class="item-wrap">
-                        <p>Регистрация оффшорных компаний за 72 часа.</p>
-                        <a href="special-offer-vnutr.html">ПОДРОБНЕЕ<img
-                                src="<?php bloginfo('template_url'); ?>/img/right-arrow.png" alt=""></a>
+                <?php $offers = get_field('main_page_so_offers');
+                foreach ($offers as $offer) {
+                    ?>
+                    <div class="item">
+                        <div class="item-wrap">
+                            <p><?=$offer['main_page_so_offers_single_offer_text']?></p>
+                            <a href="<?=$offer['main_page_so_offers_single_offer_link']?>">ПОДРОБНЕЕ<img
+                                    src="<?php bloginfo('template_url'); ?>/img/right-arrow.png" alt=""></a>
+                        </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="item-wrap">
-                        <p>Компании в Гонконге со счетом в HSBC Bank</p>
-                        <a href="special-offer-vnutr.html">ПОДРОБНЕЕ<img
-                                src="<?php bloginfo('template_url'); ?>/img/right-arrow.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="item-wrap">
-                        <p>Регистрация и сопровождение компаний в Великобритании</p>
-                        <a href="special-offer-vnutr.html">ПОДРОБНЕЕ <img
-                                src="<?php bloginfo('template_url'); ?>/img/right-arrow.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="item-wrap">
-                        <p>Регистрация оффшорных компаний за 72 часа.</p>
-                        <a href="#">ПОДРОБНЕЕ<img src="<?php bloginfo('template_url'); ?>/img/right-arrow.png"
-                                                  alt=""></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="item-wrap">
-                        <p>Компании в Гонконге со счетом в HSBC Bank</p>
-                        <a href="#">ПОДРОБНЕЕ<img src="<?php bloginfo('template_url'); ?>/img/right-arrow.png"
-                                                  alt=""></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="item-wrap">
-                        <p>Регистрация и сопровождение компаний в Великобритании</p>
-                        <a href="#">ПОДРОБНЕЕ <img src="<?php bloginfo('template_url'); ?>/img/right-arrow.png" alt=""></a>
-                    </div>
-                </div>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </section>
     <section class="results">
         <div class="wrap">
-            <div class="results-title wow fadeInUp" data-wow-duration="1s">РЕЗУЛЬТАТЫ В ЦИФРАХ</div>
+            <div class="results-title wow fadeInUp" data-wow-duration="1s">
+                <?php the_field('main_page_result_title') ?>
+            </div>
             <div class="result-items wow fadeInUp" data-wow-duration="1s">
                 <div class="item">
-                    <div class="number">20</div>
-                    <p>Более 20 лет успешного опытав сфере регистрации и обслуживания компаний </p>
-                    <div class="number">01</div>
-                    <p>Офис в мировом финансовом центре в Лондоне, компании в Лондоне за 1 час
+                    <div class="number">
+                        <?php the_field('main_page_result_1_number') ?>
+                    </div>
+                    <p>
+                        <?php the_field('main_page_result_1_text') ?>
+                    </p>
+                    <div class="number">
+                        <?php the_field('main_page_result_3_number') ?>
+                    </div>
+                    <p>
+                        <?php the_field('main_page_result_3_text') ?>
                     </p>
                 </div>
                 <div class="item">
-                    <div class="number">72</div>
-                    <p>Возможность регистрации
-                        офшорных компаний за 72 часа
+                    <div class="number">
+                        <?php the_field('main_page_result_2_number') ?>
+                    </div>
+                    <p>
+                        <?php the_field('main_page_result_2_text') ?>
                     </p>
-                    <div class="number">30</div>
-                    <p>Возможность регистрации компании
-                        в более 30 различных странах мира
+                    <div class="number">
+                        <?php the_field('main_page_result_4_number') ?>
+                    </div>
+                    <p>
+                        <?php the_field('main_page_result_4_text') ?>
                     </p>
                 </div>
                 <div class="item bank">
-                    <img src="<?php bloginfo('template_url'); ?>/img/bank.png" alt="">
-                    <p>Возможность открытия счета в самых крупных мировых банках</p>
+                    <img src="<?php the_field('main_page_result_img_in_circle') ?>" alt="">
+                    <p><?php the_field('main_page_result_text_in_circle') ?></p>
                 </div>
             </div>
         </div>
     </section>
     <section class="our-work">
         <div class="wrap">
-            <div class="title wow fadeInUp" data-wow-duration="1s">КАК МЫ РАБОТАЕМ</div>
+            <div class="title wow fadeInUp" data-wow-duration="1s"><?php the_field('main_page_hww_title') ?></div>
             <div class="work-item wow fadeInUp" data-wow-duration="1s">
                 <div class="rotate-wrap">
                     <div class="item">
@@ -199,7 +184,7 @@
                             <div class="circle"></div>
                             <div class="rectangle"></div>
                         </div>
-                        <p>Определяем цели и задачи<br> для регистрации компании</p>
+                        <p><?php the_field('main_page_hww_text1') ?></p>
                     </div>
                     <div class="item">
                         <div>
@@ -212,7 +197,7 @@
                             <div class="circle"></div>
                             <div class="rectangle"></div>
                         </div>
-                        <p>Выбираем название и<br> юрисдикцию компании</p>
+                        <p><?php the_field('main_page_hww_text2') ?></p>
                     </div>
                     <div class="item">
                         <div>
@@ -225,7 +210,7 @@
                             <div class="circle"></div>
                             <div class="rectangle"></div>
                         </div>
-                        <p>Консультируем в отношении<br> ведения бухгалтерии и<br> налогового планирования</p>
+                        <p><?php the_field('main_page_hww_text3') ?></p>
                     </div>
                     <div class="item">
                         <div>
@@ -238,8 +223,7 @@
                             <div class="circle"></div>
                             <div class="rectangle"></div>
                         </div>
-                        <p>Выбираем банк для<br>
-                            открытия счета</p>
+                        <p><?php the_field('main_page_hww_text4') ?></p>
                     </div>
                     <div class="item">
                         <div>
@@ -252,7 +236,7 @@
                             <div class="circle"></div>
                             <div class="rectangle"></div>
                         </div>
-                        <p>Консультируем в отношении<br> дальнейшего <br>администрирования компании</p>
+                        <p><?php the_field('main_page_hww_text5') ?></p>
                     </div>
                 </div>
             </div>
@@ -261,16 +245,19 @@
     <section class="advanteges">
         <div class="wrap">
             <div class="item">
-                <div class="title wow fadeInUp" data-wow-duration="1s">НАШИ ПРЕИМУЩЕСТВА</div>
-                <p class="wow fadeInUp" data-wow-duration="1s"><span>01</span>Мы помогаем вести бизнес без налогов,
-                    а не ищем пути уклонения от них.</p>
-                <p class="wow fadeInUp" data-wow-duration="1s"><span>02</span>Мы не предлагаем стандартных решений,
-                    к каждому клиенту ищем индивидуальный подход.</p>
-                <p class="wow fadeInUp" data-wow-duration="1s"><span>03</span>Оперативность в выполнении поставленных
-                    задач.</p>
-                <p class="wow fadeInUp" data-wow-duration="1s"><span>04</span>Отсутствие скрытых расходов.</p>
-                <p class="wow fadeInUp" data-wow-duration="1s"><span>05</span>Информация обо всех текущих изменениях
-                    в законодательстве.</p>
+                <div class="title wow fadeInUp" data-wow-duration="1s">
+                    <?php the_field('main_page_oa_title') ?>
+                </div>
+                <?php $adventures = get_field('main_page_oa_adv');
+                foreach ($adventures as $adventure) {
+                    ?>
+                    <p class="wow fadeInUp" data-wow-duration="1s">
+                        <span><?=$adventure['main_page_oa_adv_number']?></span>
+                        <?=$adventure['main_page_oa_adv_text']?>
+                    </p>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </section>
