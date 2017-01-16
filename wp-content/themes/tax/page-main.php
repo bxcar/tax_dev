@@ -11,10 +11,21 @@
 
     <meta charset="utf-8">
 
-    <title><?php the_field('main_page_title') ?></title>
-    <meta name="description" content="<?php the_field('main_page_description') ?>">
-    <meta name="keywords" content="<?php the_field('main_page_keywords') ?>">
-
+    <title><?php
+        if(get_field('main_page_title')) {
+            the_field('main_page_title');
+        }
+        ?></title>
+    <meta name="description" content="<?php
+    if(get_field('main_page_description')) {
+        the_field('main_page_description');
+    }
+    ?>">
+    <meta name="keywords" content="<?php
+    if(get_field('main_page_keywords')) {
+        the_field('main_page_keywords');
+    }
+    ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -43,10 +54,24 @@
 <header>
     <div class="wrap">
         <div class="left-side">
-            <a class="logo" href="<?= home_url(); ?>"><img src="<?php the_field('main_page_logo') ?>" alt=""></a>
+            <a class="logo" href="<?= home_url(); ?>">
+                <img src="<?php
+                if(get_field('main_page_logo')) {
+                    the_field('main_page_logo');
+                }
+                ?>" alt="">
+            </a>
             <div class="phone">
-                <p><i class="fa fa-phone" aria-hidden="true"></i><?php the_field('main_page_phone') ?></p>
-                <a href="#callback-form" class="popUp-btn"><?php the_field('main_page_text_under_phone') ?></a>
+                <p><i class="fa fa-phone" aria-hidden="true"></i><?php
+                    if(get_field('main_page_phone')) {
+                        the_field('main_page_phone');
+                    }
+                    ?></p>
+                <a href="#callback-form" class="popUp-btn"><?php
+                    if(get_field('main_page_text_under_phone')) {
+                        the_field('main_page_text_under_phone');
+                    }
+                    ?></a>
                 <div class="hidden">
                     <div class="feadback-form" id="callback-form">
                         <div class="form-wrap">
