@@ -11,8 +11,9 @@
 
     <meta charset="utf-8">
 
-    <title><?php bloginfo('name'); ?></title>
-    <meta name="description" content="">
+    <title><?php the_field('main_page_title') ?></title>
+    <meta name="description" content="<?php the_field('main_page_description') ?>">
+    <meta name="keywords" content="<?php the_field('main_page_keywords') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -42,10 +43,10 @@
 <header>
     <div class="wrap">
         <div class="left-side">
-            <a class="logo" href="<?= home_url(); ?>"><img src="<?php bloginfo('template_url'); ?>/img/logo.png" alt=""></a>
+            <a class="logo" href="<?= home_url(); ?>"><img src="<?php the_field('main_page_logo') ?>" alt=""></a>
             <div class="phone">
-                <p><i class="fa fa-phone" aria-hidden="true"></i>+38 (044) 249-72-22</p>
-                <a href="#callback-form" class="popUp-btn">Закзазать звонок</a>
+                <p><i class="fa fa-phone" aria-hidden="true"></i><?php the_field('main_page_phone') ?></p>
+                <a href="#callback-form" class="popUp-btn"><?php the_field('main_page_text_under_phone') ?></a>
                 <div class="hidden">
                     <div class="feadback-form" id="callback-form">
                         <div class="form-wrap">
@@ -71,119 +72,38 @@
 <main>
     <section class="head-block">
         <video autoplay loop muted class="bgvideo" id="bgvideo">
-            <source src="<?php bloginfo('template_url'); ?>/video/Final_Dark_WEB.mp4" type="video/mp4"></source>
+            <source src="<?php the_field('main_page_video') ?>" type="video/mp4"></source>
         </video>
         <div class="after-v-bg"></div>
         <div class="wrap">
-            <h1>Бизнес — <br> в любой точке мира!</h1>
-            <a href="#">узнать как</a>
+            <h1><?php the_field('main_page_content_title') ?></h1>
+            <a href="#"><?php the_field('main_page_button_text') ?></a>
             <div class="icon-scroll"></div>
         </div>
     </section>
     <section class="our-services">
         <div class="wrap">
-            <div class="title wow fadeInUp" data-wow-duration="1s">НАШИ УСЛУГИ</div>
-            <!--##########################-->
-            <ul>
-                <li> <?= get_post_meta(get_the_ID(), 'page_title', true); ?></li>
-                <li><?= get_field('page_title', get_the_ID(), false) ?></li>
-                <li><?php the_field('page_title', get_the_ID(), false) ?></li>
-                <li></li>
-                <li></li>
-            </ul>
-
-            <?php $images = get_field('main_gallery');
-            foreach ($images as $image) {
-                ?>
-                <img src="<?= $image['sizes']['medium_large'] ?>" alt="<?= $image['id'] ?>">
-                <?php
-            }
-
-            //            var_dump(get_field('main_sources'));
-            $sources = get_field('main_sources');
-            echo '<ul>';
-            foreach ($sources as $src) {
-                ?>
-                <li><strong><?= $src['main_src_title'] ?></strong> - <?= $src['main_src_description'] ?></li>
-                <?php
-            }
-            echo '</ul>';
-
-//            var_dump(get_field_objects());
-
-            $fields = get_field_objects();
-
-            foreach ($fields as $field) {
-                if($field['type'] == 'text') {
-                    ?>
-                    <strong><?= $field['label'] ?>:</strong> <span><?= $field['value'] ?></span>
-                    <br>
-                    <?php
-                }
-            }
-
-            $article_id = get_field('main_article');
-
-            $args = array(
-                'post_type' => 'page',
-                'posts_per_page' => 10,
-                'meta_query' => array(
-                    array(
-                        'key' => 'main_article',
-                        'value' => $article_id
-                    )
-                )
-            );
-
-            $wp_query = new WP_Query($args);
-
-            if ($wp_query->have_posts()) {
-                ?>
-                <div class="container">
-                    <?php
-                    while ($wp_query->have_posts()) {
-                        $wp_query->the_post();
-                        $post_id = get_the_ID();
-                        ?>
-                        <article class="article">
-                            <h3>
-                                <a href="<?php the_permalink(); ?>">
-                                    <?php the_title(); ?>
-                                </a>
-                            </h3>
-                            <?php the_excerpt(); ?>
-                        </article>
-                        <?php
-                    }
-                    ?>
-                </div>
-                <?php
-                wp_reset_query();
-            }
-            ?>
-
-            <br><br>
-            <!--##########################-->
-
-            <div class="text wow fadeInUp" data-wow-duration="1s">Информация в этом разделе не является предложением о
-                продаже или предложением в приобретении услуг и предоставленна только в ознокомительных целях.
-                Использование информации в любой юрисдикции, где это запрещено законом, может повлечь за собой
-                преследование по соответствующим статьям существующего законодательства. Консультации предоставляются
-                нерезидентам Украины или выезжающим за рубеж.
+            <div class="title wow fadeInUp" data-wow-duration="1s">
+                <?php the_field('main_page_os_title') ?>
+            </div>
+            <!--############# -->
+            <div class="text wow fadeInUp" data-wow-duration="1s">
+                <?php the_field('main_page_os_description') ?>
             </div>
             <div class="services wow fadeInUp" data-wow-duration="1s">
-                <a href="services.html" class="item">
-                    <img src="<?php bloginfo('template_url'); ?>/img/service-1.png" alt="">
-                    <p><span>01</span>Оффшорные компании</p>
-                </a>
-                <a href="services.html" class="item">
-                    <img src="<?php bloginfo('template_url'); ?>/img/service-2.png" alt="">
-                    <p><span>02</span>Европейские компании</p>
-                </a>
-                <a href="services.html" class="item">
-                    <img src="<?php bloginfo('template_url'); ?>/img/service-3.png" alt="">
-                    <p><span>03</span>Компании США, Канады</p>
-                </a>
+                <?php $services = get_field('main_page_os_services');
+                foreach ($services as $service) {
+                    ?>
+                    <a href="<?=$service['main_page_os_services_single_service_link']?>" class="item">
+                        <img src="<?=$service['main_page_os_services_single_service_img']?>" alt="">
+                        <p>
+                            <span><?=$service['main_page_os_services_single_service_number']?></span>
+                            <?=$service['main_page_os_services_single_service_text']?>
+                        </p>
+                    </a>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </section>
