@@ -263,46 +263,42 @@
     </section>
     <section class="helpful-info">
         <div class="wrap">
-            <div class="title wow fadeInUp" data-wow-duration="1s">ПОЛЕЗНАЯ ИНФОРМАЦИЯ</div>
+            <div class="title wow fadeInUp" data-wow-duration="1s"><?php the_field('main_page_hi_title') ?></div>
             <div class="info-item wow fadeInUp" data-wow-duration="1s">
-                <div class="item">
-                    <a href="helpful-information-vnutr.html">Что нарушают компании из США?</a>
-                </div>
-                <div class="item">
-                    <a href="helpful-information-vnutr.html">Перечень оффшорных территорий,<br> Министерство Финансов РФ</a>
-                </div>
-                <div class="item">
-                    <a href="helpful-information-vnutr.html">Морские юридические услуги в Панаме</a>
-                </div>
-                <div class="item">
-                    <a href="helpful-information-vnutr.html">Возможности оффшорных компаний</a>
-                </div>
-                <div class="item">
-                    <a href="helpful-information-vnutr.html">Инструкция о порядке выдачи<br> индивидуальных лицензий No
-                        478</a>
-                </div>
-                <div class="item">
-                    <a href="helpful-information-vnutr.html">Государственная пошлина на Кипре</a>
-                </div>
+                <?php $helpful_information = get_field('main_page_hi_inf');
+                foreach ($helpful_information as $helpful_inf) {
+                    ?>
+                    <div class="item">
+                        <a href="<?=$helpful_inf['main_page_hi_inf_link']?>">
+                            <?=$helpful_inf['main_page_hi_inf_text']?>
+                        </a>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
             <div class="see-more">
-                <a href="helpful-information.html">ПОКАЗАТЬ БОЛЬШЕ</a>
+                <a href="<?php the_field('main_page_hi_button_link') ?>">
+                    <?php the_field('main_page_hi_button_text') ?>
+                </a>
             </div>
         </div>
     </section>
     <section class="feadback-form">
         <div class="form-wrap">
-            <div class="title-form wow fadeInUp" data-wow-duration="1s">НАПИСАТЬ НАМ</div>
+            <div class="title-form wow fadeInUp" data-wow-duration="1s">
+                <?php the_field('main_page_wo_title') ?>
+            </div>
             <form action="" class="wow fadeInUp" data-wow-duration="1s">
-                <input type="text" placeholder="Имя">
-                <input type="email" placeholder="Email">
-                <textarea name="" placeholder="Текст"></textarea>
-                <input type="submit" value="Отправить">
+                <input type="text" placeholder="<?php the_field('main_page_wo_placeholder1') ?>">
+                <input type="email" placeholder="<?php the_field('main_page_wo_placeholder2') ?>">
+                <textarea name="" placeholder="<?php the_field('main_page_wo_placeholder3') ?>"></textarea>
+                <input type="submit" value="<?php the_field('main_page_wo_button_text') ?>">
             </form>
         </div>
     </section>
     <section class="news-front">
-        <div class="title wow fadeInUp" data-wow-duration="1s">НОВОСТИ</div>
+        <div class="title wow fadeInUp" data-wow-duration="1s"><?php the_field('main_page_news_title') ?></div>
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
             <div class="owl-carousel carousel-2">
                 <div class="item">
@@ -371,25 +367,25 @@
     <div class="wrap">
         <div class="footer-top">
             <div class="item">
-                <div class="title">МЕНЮ</div>
+                <div class="title"><?php the_field('main_page_footer_h_f_m') ?></div>
                 <?php wp_nav_menu(array('theme_location' => 'menu-1', 'menu_class' => '', 'container' => 'false')); ?>
             </div>
             <div class="item">
-                <div class="title">ПРЕДЛОЖЕНИЯ</div>
+                <div class="title"><?php the_field('main_page_footer_h_s_m') ?></div>
                 <?php wp_nav_menu(array('theme_location' => 'menu-2', 'menu_class' => '', 'container' => 'false')); ?>
             </div>
             <div class="item">
-                <div class="title">НОВОСТИ</div>
+                <div class="title"><?php the_field('main_page_footer_h_t_m') ?></div>
                 <?php wp_nav_menu(array('theme_location' => 'menu-3', 'menu_class' => '', 'container' => 'false')); ?>
             </div>
             <div class="item subscribe">
-                <div class="title">ПОДПИСАТЬСЯ НА РАССЫЛКУ</div>
+                <div class="title"><?php the_field('main_page_footer_email_title') ?></div>
                 <form action="">
-                    <input type="email" placeholder="Введите Email">
+                    <input type="email" placeholder="<?php the_field('main_page_footer_email_placeholder') ?>">
                     <input type="submit" placeholder="">
                 </form>
                 <div class="social-block small">
-                    <div class="title">Мы в соцсетях</div>
+                    <div class="title"><?php the_field('main_page_footer_social_title') ?></div>
                     <div class="social-link">
                         <a href="" class="linked"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                         <a href="" class="inst"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -400,7 +396,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© Проект «Tax.ua», 2002—2016.</p>
+            <p><?php the_field('main_page_footer_copyright') ?></p>
             <a href="http://dizz.in.ua/ru">Сделано в Dizz.</a>
         </div>
     </div>
