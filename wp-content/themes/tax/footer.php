@@ -16,25 +16,25 @@
 	<div class="wrap">
 		<div class="footer-top">
 			<div class="item">
-				<div class="title">МЕНЮ</div>
-				<?php wp_nav_menu(array('theme_location' => 'menu-1', 'menu_class'=> '', 'container' => 'false')); ?>
+				<div class="title"><?php the_field('footer_h_f_m', 'option') ?></div>
+				<?php wp_nav_menu(array('theme_location' => 'menu-1', 'menu_class' => '', 'container' => 'false')); ?>
 			</div>
 			<div class="item">
-				<div class="title">ПРЕДЛОЖЕНИЯ</div>
-				<?php wp_nav_menu(array('theme_location' => 'menu-2', 'menu_class'=> '', 'container' => 'false')); ?>
+				<div class="title"><?php the_field('footer_h_s_m', 'option') ?></div>
+				<?php wp_nav_menu(array('theme_location' => 'menu-2', 'menu_class' => '', 'container' => 'false')); ?>
 			</div>
 			<div class="item">
-				<div class="title">НОВОСТИ</div>
-				<?php wp_nav_menu(array('theme_location' => 'menu-3', 'menu_class'=> '', 'container' => 'false')); ?>
+				<div class="title"><?php the_field('footer_h_t_m', 'option') ?></div>
+				<?php wp_nav_menu(array('theme_location' => 'menu-3', 'menu_class' => '', 'container' => 'false')); ?>
 			</div>
 			<div class="item subscribe">
-				<div class="title">ПОДПИСАТЬСЯ НА РАССЫЛКУ</div>
+				<div class="title"><?php the_field('footer_email_title', 'option') ?></div>
 				<form action="">
-					<input type="email" placeholder="Введите Email">
+					<input type="email" placeholder="<?php the_field('footer_email_placeholder', 'option') ?>">
 					<input type="submit" placeholder="">
 				</form>
 				<div class="social-block small">
-					<div class="title">Мы в соцсетях</div>
+					<div class="title"><?php the_field('footer_social_title', 'option') ?></div>
 					<div class="social-link">
 						<a href="" class="linked"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 						<a href="" class="inst"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -45,7 +45,7 @@
 			</div>
 		</div>
 		<div class="footer-bottom">
-			<p>© Проект «Tax.ua», 2002—2016.</p>
+			<p><?php the_field('footer_copyright', 'option') ?></p>
 			<a href="http://dizz.in.ua/ru">Сделано в Dizz.</a>
 		</div>
 	</div>

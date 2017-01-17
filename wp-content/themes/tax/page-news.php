@@ -37,35 +37,7 @@
 
 <body>
 <!-- Custom HTML -->
-<!-- Header -->
-<header class="internal">
-    <div class="wrap">
-        <div class="left-side">
-            <a class="logo" href="<?=home_url();?>"><img src="<?php bloginfo('template_url');?>/img/logo.png" alt=""></a>
-            <div class="phone">
-                <p><i class="fa fa-phone" aria-hidden="true"></i>+38 (044) 249-72-22</p>
-                <a href="#callback-form" class="popUp-btn">Закзазать звонок</a>
-                <div class="hidden">
-                    <div class="feadback-form" id="callback-form">
-                        <div class="form-wrap">
-                            <div class="title-form">Заказать обратный звонок</div>
-                            <form action="">
-                                <input type="text" placeholder="Имя">
-                                <input type="email" placeholder="Email">
-                                <textarea name="" placeholder="Текст"></textarea>
-                                <input type="submit" value="Отправить">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="menu">
-            <?php wp_nav_menu(array('theme_location' => 'menu-1', 'menu_class'=> '', 'container' => 'false')); ?>
-        </div>
-    </div>
-</header>
-<!-- End header -->
+<? get_header() ?>
 <!-- Content -->
 <main>
     <section class="top-block top-news">
