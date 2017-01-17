@@ -326,62 +326,28 @@
         <div class="title wow fadeInUp" data-wow-duration="1s"><?php the_field('main_page_news_title') ?></div>
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
             <div class="owl-carousel carousel-2">
-                <div class="item">
-                    <div class="item-wrap">
-                        <div class="date">29 июня 2016</div>
-                        <p>Британские Виргинские о-ва: новые требований для Регулируемых компаний и Взаимных фондов</p>
-                        <a href="news-vnutr.html"></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="item-wrap">
-                        <div class="date">27 января 2016</div>
-                        <p>Британские Виргинские о-ва: новые требований для Регулируемых компаний и Взаимных фондов</p>
-                        <a href="news-vnutr.html"></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="item-wrap">
-                        <div class="date">29 июня 2016</div>
-                        <p>Британские Виргинские о-ва: новые требований для Регулируемых компаний и Взаимных фондов</p>
-                        <a href="news-vnutr.html"></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="item-wrap">
-                        <div class="date">27 января 2016</div>
-                        <p>Британские Виргинские о-ва: новые требований для Регулируемых компаний и Взаимных фондов</p>
-                        <a href="news-vnutr.html"></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="item-wrap">
-                        <div class="date">29 июня 2016</div>
-                        <p>Британские Виргинские о-ва: новые требований для Регулируемых компаний и Взаимных фондов</p>
-                        <a href="news-vnutr.html"></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="item-wrap">
-                        <div class="date">27 января 2016</div>
-                        <p>Британские Виргинские о-ва: новые требований для Регулируемых компаний и Взаимных фондов</p>
-                        <a href="news-vnutr.html"></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="item-wrap">
-                        <div class="date">29 июня 2016</div>
-                        <p>Британские Виргинские о-ва: новые требований для Регулируемых компаний и Взаимных фондов</p>
-                        <a href="news-vnutr.html"></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="item-wrap">
-                        <div class="date">27 января 2016</div>
-                        <p>Британские Виргинские о-ва: новые требований для Регулируемых компаний и Взаимных фондов</p>
-                        <a href="news-vnutr.html"></a>
-                    </div>
-                </div>
+
+                <?php
+                $args_last_news = array(
+                    'numberposts' => -1,
+                    'post_type' => 'tax_news',
+                    'posts_per_page' => 8
+                );
+
+                // query
+                $the_query_last_news = new WP_Query($args_last_news);
+                if ($the_query_last_news->have_posts()) {
+                    while ($the_query_last_news->have_posts()) {
+                        $the_query_last_news->the_post(); ?>
+                        <div class="item">
+                            <div class="item-wrap">
+                                <div class="date"><?= get_the_date('j F Y') ?></div>
+                                <p><?php the_title(); ?></p>
+                                <a href="<?php the_permalink(); ?>"></a>
+                            </div>
+                        </div>
+                    <?php }
+                } ?>
             </div>
         </div>
     </section>
