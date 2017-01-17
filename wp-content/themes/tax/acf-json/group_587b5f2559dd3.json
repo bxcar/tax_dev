@@ -1219,13 +1219,6 @@
                 "operator": "==",
                 "value": "page-main.php"
             }
-        ],
-        [
-            {
-                "param": "page_template",
-                "operator": "==",
-                "value": "page-about.php"
-            }
         ]
     ],
     "menu_order": 0,
@@ -1239,5 +1232,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1484629394
+    "modified": 1484632625
 }
