@@ -326,7 +326,6 @@
         <div class="title wow fadeInUp" data-wow-duration="1s"><?php the_field('main_page_news_title') ?></div>
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
             <div class="owl-carousel carousel-2">
-
                 <?php
                 $args_last_news = array(
                     'numberposts' => -1,
