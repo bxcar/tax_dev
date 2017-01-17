@@ -11,18 +11,52 @@
 
 ?>
 
-	</div><!-- #content -->
-
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'tax' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'tax' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'tax' ), 'tax', '<a href="https://automattic.com/" rel="designer">Underscores.me</a>' ); ?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
-
-<?php wp_footer(); ?>
-
+<!-- Footer -->
+<footer class="wow fadeInUp" data-wow-duration="1s">
+	<div class="wrap">
+		<div class="footer-top">
+			<div class="item">
+				<div class="title">МЕНЮ</div>
+				<?php wp_nav_menu(array('theme_location' => 'menu-1', 'menu_class'=> '', 'container' => 'false')); ?>
+			</div>
+			<div class="item">
+				<div class="title">ПРЕДЛОЖЕНИЯ</div>
+				<?php wp_nav_menu(array('theme_location' => 'menu-2', 'menu_class'=> '', 'container' => 'false')); ?>
+			</div>
+			<div class="item">
+				<div class="title">НОВОСТИ</div>
+				<?php wp_nav_menu(array('theme_location' => 'menu-3', 'menu_class'=> '', 'container' => 'false')); ?>
+			</div>
+			<div class="item subscribe">
+				<div class="title">ПОДПИСАТЬСЯ НА РАССЫЛКУ</div>
+				<form action="">
+					<input type="email" placeholder="Введите Email">
+					<input type="submit" placeholder="">
+				</form>
+				<div class="social-block small">
+					<div class="title">Мы в соцсетях</div>
+					<div class="social-link">
+						<a href="" class="linked"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						<a href="" class="inst"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+						<a class="fb" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+						<a href="" class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<p>© Проект «Tax.ua», 2002—2016.</p>
+			<a href="http://dizz.in.ua/ru">Сделано в Dizz.</a>
+		</div>
+	</div>
+</footer>
+<!-- Optimized loading JS Start -->
+<script>var scr = {"scripts":[
+		{"src" : "<?php bloginfo('template_url');?>/js/libs.min.js", "async" : false},
+		{"src" : "<?php bloginfo('template_url');?>/js/common.js", "async" : false}
+	]};!function(t,n,r){"use strict";var c=function(t){if("[object Array]"!==Object.prototype.toString.call(t))return!1;for(var r=0;r<t.length;r++){var c=n.createElement("script"),e=t[r];c.src=e.src,c.async=e.async,n.body.appendChild(c)}return!0};t.addEventListener?t.addEventListener("load",function(){c(r.scripts);},!1):t.attachEvent?t.attachEvent("onload",function(){c(r.scripts)}):t.onload=function(){c(r.scripts)}}(window,document,scr);
+</script>
+<!-- Optimized loading JS End -->
+<?php wp_footer() ?>
 </body>
 </html>

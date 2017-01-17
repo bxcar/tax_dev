@@ -84,6 +84,32 @@ function get_footer( $name = null ) {
 	locate_template( $templates, true );
 }
 
+function get_footer_main_page( $name = null ) {
+	/**
+	 * Fires before the footer template file is loaded.
+	 *
+	 * The hook allows a specific footer template file to be used in place of the
+	 * default footer template file. If your file is called footer-new.php,
+	 * you would specify the filename in the hook as get_footer( 'new' ).
+	 *
+	 * @since 2.1.0
+	 * @since 2.8.0 $name parameter added.
+	 *
+	 * @param string|null $name Name of the specific footer file to use. null for the default footer.
+	 */
+	do_action( 'get_footer_main_page', $name );
+
+	$templates = array();
+	$name = (string) $name;
+	if ( '' !== $name ) {
+		$templates[] = "footer-{$name}.php";
+	}
+
+	$templates[]    = 'footer-main_page.php';
+
+	locate_template( $templates, true );
+}
+
 /**
  * Load sidebar template.
  *
