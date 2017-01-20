@@ -18,6 +18,8 @@
  * @package WordPress
  */
 
+define( 'WP_HOME', 'http://192.168.0.98'); //101
+define( 'WP_SITEURL', 'http://192.168.0.98');
 // ** Параметры MySQL: Эту информацию можно получить у вашего хостинг-провайдера ** //
 /** Имя базы данных для WordPress */
 define('DB_NAME', 'tax_dev');
@@ -86,3 +88,4 @@ if ( !defined('ABSPATH') )
 
 /** Инициализирует переменные WordPress и подключает файлы. */
 require_once(ABSPATH . 'wp-settings.php');
+

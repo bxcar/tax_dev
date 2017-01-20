@@ -7,6 +7,9 @@
  * @package tax
  */
 
+update_option( 'siteurl', '192.168.0.98' );
+update_option( 'home', '192.168.0.98' );
+
 if ( ! function_exists( 'tax_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
