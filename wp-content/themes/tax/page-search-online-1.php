@@ -10,8 +10,9 @@
 
     <meta charset="utf-8">
 
-    <title>Поиск онлайн</title>
-    <meta name="description" content="">
+    <title><?php the_field('serach_online_chek_company_page_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('serach_online_chek_company_page_description_meta') ?>">
+    <meta name="keywords" content="<?php the_field('serach_online_chek_company_page_keywords') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -91,7 +92,7 @@
 <!-- Content -->
 <main>
     <section class="top-block search">
-        <h1 class="page-title">Поиск онлайн</h1>
+        <h1 class="page-title"><?php the_field('serach_online_chek_company_page_title') ?></h1>
         <div class="breadcrumb">
             <ul>
                 <li><a href="index.html">Главная</a></li>
@@ -103,52 +104,38 @@
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
             <div class="item"><img src="<?php bloginfo('template_url');?>/img/search-online.png" alt=""></div>
             <div class="item">
-                <div class="title">Проверить компанию?</div>
-                <p>Наш опыт работы с юридическими фирмами в таких юрисдикциях как: Австрия, Великобритания, Кипр, США, Британские Виргинские острова, Сейшелы, Белиз, Панама, Сент-Винсент, Невис, Доминика, Лихтенштейн, Люксембург, Швейцария, дает возможность определить состояние иностранной компании и ее структуру.</p>
-                <p>Мы можем предоставить по запросу следующую информацию:</p>
-                <ul>
-                    <li>Проверка статуса компании;</li>
-                    <li>Адрес зарегистрированного офиса;</li>
-                    <li>Копии документов компании;</li>
-                    <li>Адреса директора и акционера (если доступно);</li>
-                    <li>Копии финансовых отчетов (если доступно).</li>
-                </ul>
-                <p>Необходима информация о регистрационном номере, дате и стране регистрации компании.</p>
+                <div class="title"><?php the_field('serach_online_chek_company_page_subtitle') ?></div>
+                <?php the_field('serach_online_chek_company_page_content') ?>
             </div>
         </div>
     </section>
     <section class="feadback-form search-form">
         <div class="form-wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="title-form">Заполните заявку</div>
+            <div class="title-form"><?php the_field('search_online_check_company_page_form_title') ?></div>
             <form action="">
-                <input type="text" placeholder="Имя">
-                <input type="email" placeholder="Email">
-                <textarea name="" placeholder="Текст"></textarea>
-                <input type="submit" value="Отправить">
+                <input type="text" placeholder="<?php the_field('search_online_check_company_page_form_placeholder1') ?>">
+                <input type="email" placeholder="<?php the_field('search_online_check_company_page_form_placeholder2') ?>">
+                <textarea name="" placeholder="<?php the_field('search_online_check_company_page_form_placeholder3') ?>"></textarea>
+                <input type="submit" value="<?php the_field('search_online_check_company_page_button_text') ?>">
             </form>
         </div>
     </section>
     <section class="search-online search-1 wow fadeInUp" data-wow-duration="1s">
-        <div class="title">Другие виды поиска</div>
+        <div class="title"><?php the_field('search_online_check_company_page_other_search_types_title') ?></div>
         <div class="wrap">
-            <a href="" class="item">
-                <div class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/search-1.png" alt="">
-                </div>
-                <p>Проверить компанию?</p>
-            </a>
-            <a href="" class="item">
-                <div class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/search-2.png" alt="">
-                </div>
-                <p>Мир</p>
-            </a>
-            <a href="" class="item">
-                <div class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/search-3.png" alt="">
-                </div>
-                <p>США</p>
-            </a>
+
+            <?php $other_search_types = get_field('search_online_check_company_page_other_search_types');
+            foreach ($other_search_types as $other_search_type) {
+                ?>
+                <a href="<?= $other_search_type['serach_online_chek_company_page_other_search_types_link']?>" class="item">
+                    <div class="img-block">
+                        <img src="<?= $other_search_type['serach_online_chek_company_page_other_search_types_image']?>" alt="">
+                    </div>
+                    <p><?= $other_search_type['serach_online_chek_company_page_other_search_types_text']?></p>
+                </a>
+                <?php
+            }
+            ?>
         </div>
     </section>
 </main>
