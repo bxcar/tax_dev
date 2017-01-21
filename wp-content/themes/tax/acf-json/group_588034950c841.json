@@ -21,7 +21,7 @@
         {
             "key": "field_588036cf8a408",
             "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b(title)",
-            "name": "serach_online_world_page_title_meta",
+            "name": "search_online_world_page_title_meta",
             "type": "text",
             "instructions": "\u041e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u0442\u0441\u044f \u0432\u043e \u0432\u043a\u043b\u0430\u0434\u043a\u0435 \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0430",
             "required": 1,
@@ -40,7 +40,7 @@
         {
             "key": "field_588037058a409",
             "label": "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b(description)",
-            "name": "serach_online_world_page_description_meta",
+            "name": "search_online_world_page_description_meta",
             "type": "textarea",
             "instructions": "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f \u043f\u043e\u0438\u0441\u043a\u043e\u0432\u044b\u043c\u0438 \u0441\u0438\u0441\u0442\u0435\u043c\u0430\u043c\u0438 \u0434\u043b\u044f \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u0432 \u0441\u043d\u0438\u043f\u043f\u0435\u0442\u0435",
             "required": 1,
@@ -59,7 +59,7 @@
         {
             "key": "field_588037568a40a",
             "label": "\u041a\u043b\u044e\u0447\u0435\u0432\u044b\u0435 \u0441\u043b\u043e\u0432\u0430",
-            "name": "serach_online_world_page_keywords",
+            "name": "search_online_world_page_keywords",
             "type": "text",
             "instructions": "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f \u043f\u043e\u0438\u0441\u043a\u043e\u0432\u044b\u043c\u0438 \u0441\u0438\u0441\u0442\u0435\u043c\u0430\u043c\u0438 \u0434\u043b\u044f \u0440\u0430\u043d\u0436\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u043e\u0432 \u0432\u044b\u0434\u0430\u0447\u0438",
             "required": 0,
@@ -94,7 +94,7 @@
         {
             "key": "field_588038d524d03",
             "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b",
-            "name": "serach_online_world_page_title",
+            "name": "search_online_world_page_title",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -112,8 +112,8 @@
         },
         {
             "key": "field_5880390624d04",
-            "label": "\u0420\u0430\u0437\u0434\u0435\u043b\u044b \u043f\u043e\u0438\u0441\u043a\u0430",
-            "name": "serach_online_world_page_search",
+            "label": "\u0421\u0442\u0440\u0430\u043d\u044b",
+            "name": "search_online_world_page_search",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -126,38 +126,14 @@
             "collapsed": "field_5880395e24d06",
             "min": "",
             "max": "",
-            "layout": "table",
+            "layout": "block",
             "button_label": "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c",
             "sub_fields": [
                 {
-                    "key": "field_5880393324d05",
-                    "label": "\u0418\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435",
-                    "name": "serach_online_world_page_search_image",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "url",
-                    "preview_size": "full",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": ""
-                },
-                {
                     "key": "field_5880395e24d06",
-                    "label": "\u0422\u0435\u043a\u0441\u0442",
-                    "name": "serach_online_world_page_search_text",
-                    "type": "text",
+                    "label": "\u041e\u0442\u0434\u0435\u043b\u044c\u043d\u0430\u044f \u043a\u043e\u043b\u043e\u043d\u043a\u0430",
+                    "name": "serach_online_world_page_search_column",
+                    "type": "repeater",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -166,11 +142,51 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "collapsed": "field_5883998bc105b",
+                    "min": "",
+                    "max": "",
+                    "layout": "table",
+                    "button_label": "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c",
+                    "sub_fields": [
+                        {
+                            "key": "field_5883998bc105b",
+                            "label": "\u0421\u0442\u0440\u0430\u043d\u0430",
+                            "name": "serach_online_world_page_search_column_punkt",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_58839eaf10703",
+                            "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
+                            "name": "serach_online_world_page_search_column_link",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        }
+                    ]
                 }
             ]
         }
@@ -194,5 +210,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1484798448
+    "modified": 1485022351
 }

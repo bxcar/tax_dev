@@ -10,8 +10,9 @@
 
     <meta charset="utf-8">
 
-    <title>Поиск онлайн</title>
-    <meta name="description" content="">
+    <title><?php the_field('search_online_world_page_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('search_online_world_page_description_meta') ?>">
+    <meta name="keywords" content="<?php the_field('search_online_world_page_keywords') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -42,7 +43,7 @@
 <!-- Content -->
 <main>
     <section class="top-block search">
-        <h1 class="page-title">Поиск онлайн</h1>
+        <h1 class="page-title"><?php the_field('search_online_world_page_title') ?></h1>
         <div class="breadcrumb">
             <ul>
                 <li><a href="index.html">Главная</a></li>
@@ -54,75 +55,27 @@
         <div class="wrap">
             <div class="title">Мир</div>
             <div class="search-list">
-                <div class="list">
-                    <ul>
-                        <li><a href="">Andorra</a></li>
-                        <li><a href="">Anguilla</a></li>
-                        <li><a href="">Aruba</a></li>
-                        <li><a href="">Australia</a></li>
-                        <li><a href="">Austria</a></li>
-                        <li><a href="">Bahrain</a></li>
-                        <li><a href="">Belgium</a></li>
-                        <li><a href="">Bermuda</a></li>
-                        <li><a href="">Brazil</a></li>
-                        <li><a href="">British Virgin Islands</a></li>
-                        <li><a href="">Canada</a></li>
-                        <li><a href="">Colombian Chamber of Commerce</a></li>
-                        <li><a href="">Cook Islands</a></li>
-                        <li><a href="">Curaçao</a></li>
-                        <li><a href="">Cyprus (Greek/English)</a></li>
-                        <li><a href="">Czech Republic (Czech)</a></li>
-                        <li><a href="">Denmark (Danish)</a></li>
-                        <li><a href="">Dubai</a></li>
-                        <li><a href="">Estonia</a></li>
-                        <li><a href="">Finland (Finnish/Swedish/English)</a></li>
-                        <li><a href="">France - Infogreffe</a></li>
-                        <li><a href="">France - INPI</a></li>
-                        <li><a href="">Germany</a></li>
-                        <li><a href="">Ghana</a></li>
-                        <li><a href="">Gibraltar</a></li>
-                        <li><a href="">Greece</a></li>
-                        <li><a href="">Hong Kong</a></li>
-                        <li><a href="">Iceland</a></li>
-                        <li><a href="">India</a></li>
-                        <li><a href="">Ireland (Republic of)</a></li>
-                    </ul>
-                </div>
-                <div class="list">
-                    <ul>
-                        <li><a href="">Isle of Man</a></li>
-                        <li><a href="">Italy</a></li>
-                        <li><a href="">Jersey</a></li>
-                        <li><a href="">Jordan</a></li>
-                        <li><a href="">Latvia (Latvian/English)</a></li>
-                        <li><a href="">Luxembourg</a></li>
-                        <li><a href="">Liechtenstein</a></li>
-                        <li><a href="">Malaysia</a></li>
-                        <li><a href="">Malta</a></li>
-                        <li><a href="">Mauritius</a></li>
-                        <li><a href="">Netherlands</a></li>
-                        <li><a href="">New Zealand</a></li>
-                        <li><a href="">Nigeria</a></li>
-                        <li><a href="">Northern Ireland</a></li>
-                        <li><a href="">Norway (Norwegian/English)</a></li>
-                        <li><a href="">Panama</a></li>
-                        <li><a href="">Philippines</a></li>
-                        <li><a href="">Romania</a></li>
-                        <li><a href="">Seychelles</a></li>
-                        <li><a href="">Singapore</a></li>
-                        <li><a href="">Slovakia</a></li>
-                        <li><a href="">South Africa</a></li>
-                        <li><a href="">Spain (Spanish/English)</a></li>
-                        <li><a href="">Spain</a></li>
-                        <li><a href="">St. Kitts & Nevis</a></li>
-                        <li><a href="">St. Vincent West Indies</a></li>
-                        <li><a href="">Sweden (Swedish/English)</a></li>
-                        <li><a href="">Switzerland (German/French/Italian/English)</a></li>
-                        <li><a href="">Thailand</a></li>
-                        <li><a href="">United Kingdom</a></li>
-                        <li><a href="">Zambia</a></li>
-                    </ul>
-                </div>
+
+                <?php $columns_all = get_field('search_online_world_page_search');
+                foreach ($columns_all  as $columns_single) {
+                    ?>
+                    <div class="list">
+                        <ul>
+                        <?php
+                        foreach ($columns_single['serach_online_world_page_search_column'] as $columns_single_country) {
+                            ?>
+                            <li><a href="<?=$columns_single_country['serach_online_world_page_search_column_link']?>">
+                                    <?=$columns_single_country['serach_online_world_page_search_column_punkt']?>
+                                </a>
+                            </li>
+                            <?php
+                        }
+                        ?>
+                        </ul>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </section>
