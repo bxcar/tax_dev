@@ -43,7 +43,7 @@
         {
             "key": "field_587e6e5240167",
             "label": "Twitter",
-            "name": "news_social_twitter_link",
+            "name": "social_twitter_link",
             "type": "text",
             "instructions": "\u0421\u0441\u044b\u043b\u043a\u0430 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0443 twitter",
             "required": 0,
@@ -62,7 +62,7 @@
         {
             "key": "field_587e6e5240166",
             "label": "Vk",
-            "name": "news_social_vk_link",
+            "name": "social_vk_link",
             "type": "text",
             "instructions": "\u0421\u0441\u044b\u043b\u043a\u0430 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0443 vk",
             "required": 0,
@@ -81,9 +81,28 @@
         {
             "key": "field_587e6e5240165",
             "label": "LinkedIn",
-            "name": "news_social_linckedin_link",
+            "name": "social_linckedin_link",
             "type": "text",
             "instructions": "\u0421\u0441\u044b\u043b\u043a\u0430 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0443 linkedIn",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5883213f91575",
+            "label": "Instagram",
+            "name": "social_instagram_link",
+            "type": "text",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -115,5 +134,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1484681077
+    "modified": 1484988772
 }

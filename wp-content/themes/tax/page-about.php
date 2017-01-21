@@ -10,8 +10,9 @@
 
     <meta charset="utf-8">
 
-    <title>О проекте</title>
-    <meta name="description" content="">
+    <title><?php the_field('about_project_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('about_project_description_meta') ?>">
+    <meta name="keywords" content="<?php the_field('about_project_keywords_meta') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -42,63 +43,67 @@
 <!-- Content -->
 <main>
     <section class="top-block">
-        <h1 class="page-title">О ПРОЕКТЕ</h1>
+        <h1 class="page-title"><?php the_field('about_project_page_title') ?></h1>
         <div class="breadcrumb">
             <ul>
-                <li><a href="index.html">Главная</a></li>
+                <li><a href="<?=home_url();?>">Главная</a></li>
                 <li><span>О проекте</span></li>
             </ul>
         </div>
     </section>
     <section class="about-project-info">
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="title">Tax.ua - это</div>
-            <p>Сайт посвящен вопросам налогового планирования, создания и функционирования корпоративных структур различного профиля, холдингов и финансовых компаний, защитой имущества, персонального банкинга. Вы всегда получите самые свежие новости по изменению оффшорного законодательства, а также найдёте уникальный материал собранный со всех уголков земного шара.</p>
-            <p>Оффшор — один из самых известных и эффективных методов налогового планирования. Основой этого метода являются законодательства многих стран, частично или полностью освобождающие от налоговых сборов компании, владельцы которых — иностранные лица. Оффшорная компания, является обществом с ограниченной ответственностью или акционерным обществом, но в отличие от местных предпринимательских товариществ, такая компания полностью освобождена от уплаты налогов или платит низкие налоги в стране регистрации.</p>
-            <a href="#">Обращайтесь к нам в любое время!</a>
+            <div class="title"><?php the_field('about_project_page_subtitle') ?></div>
+            <?php the_field('about_project_page_description') ?>
         </div>
     </section>
     <section class="project-map">
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
             <div class="item">
-                <div class="number">1,8<span>млрд. грн</span></div>
-                <div class="text">Самая большая стоимость<br> застрахованного объекта</div>
+                <div class="number"><?php the_field('about_project_page_tom_left_number') ?>
+                    <span><?php the_field('about_project_page_tom_left_value') ?></span></div>
+                <div class="text"><?php the_field('about_project_page_tom_left_text') ?></div>
             </div>
             <div class="item">
-                <div class="number">1,23<span>млрд. грн</span></div>
-                <div class="text">Портфель страхования отдела личных<br> продуктов покрывает риски свыше<br>
-                    1,23 млрд. грн.</div>
+                <div class="number"><?php the_field('about_project_page_tom_middle_number') ?>
+                    <span><?php the_field('about_project_page_tom_middle_value') ?></span></div>
+                <div class="text"><?php the_field('about_project_page_tom_middle_text') ?></div>
             </div>
             <div class="item">
-                <div class="number">85<span>млрд. грн</span></div>
-                <div class="text">Отдел возмещения убытков закрыл<br> 816 убытков на общую сумму<br>
-                    39 млн грн.</div>
+                <div class="number"><?php the_field('about_project_page_tom_right_number') ?>
+                    <span><?php the_field('about_project_page_tom_right_value') ?></span></div>
+                <div class="text"><?php the_field('about_project_page_tom_right_text') ?></div>
             </div>
         </div>
     </section>
     <section class="advanteges internal">
         <div class="wrap">
             <div class="item wow fadeInUp" data-wow-duration="1s">
-                <div class="title">НАШИ	ПРЕИМУЩЕСТВА</div>
-                <p><span>01</span>Мы помогаем вести бизнес без налогов,
-                    а не ищем пути уклонения от них.</p>
-                <p><span>02</span>Мы не предлагаем стандартных решений,
-                    к каждому клиенту ищем индивидуальный подход.</p>
-                <p><span>03</span>Оперативность в выполнении поставленных задач.</p>
-                <p><span>04</span>Отсутствие скрытых расходов.</p>
-                <p><span>05</span>Информация обо всех текущих изменениях
-                    в законодательстве.</p>
+                <div class="title"><?php the_field('about_project_page_oa_title') ?></div>
+
+                <?php $advs = get_field('about_project_page_oa_adv');
+                foreach ($advs as $sdv) {
+                    ?>
+                    <p>
+                        <span>
+                            <?=$sdv['about_project_page_oa_adv_number']?>
+                        </span>
+                        <?=$sdv['about_project_page_oa_adv_text']?>
+                    </p>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </section>
     <section class="social-block">
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="title">Мы в соцсетях</div>
+            <div class="title"><?php the_field('about_project_page_social_title') ?></div>
             <div class="social-link">
-                <a href="" class="linked"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                <a href="" class="inst"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a class="fb" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="" class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="<?php the_field('social_linckedin_link', 'options') ?>" class="linked"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                <a href="<?php the_field('social_instagram_link', 'options') ?>" class="inst"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a class="fb" href="<?php the_field('social_facebook_link', 'options') ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="<?php the_field('social_twitter_link', 'options') ?>" class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             </div>
         </div>
     </section>

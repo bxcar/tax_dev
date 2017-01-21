@@ -36,10 +36,10 @@
 				<div class="social-block small">
 					<div class="title"><?php the_field('footer_social_title', 'option') ?></div>
 					<div class="social-link">
-						<a href="" class="linked"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-						<a href="" class="inst"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-						<a class="fb" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-						<a href="" class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+						<a href="<?php the_field('social_linckedin_link', 'options') ?>" class="linked"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						<a href="<?php the_field('social_instagram_link', 'options') ?>" class="inst"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+						<a class="fb" href="<?php the_field('social_facebook_link', 'options') ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+						<a href="<?php the_field('social_twitter_link', 'options') ?>" class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a>
 					</div>
 				</div>
 			</div>
