@@ -10,8 +10,9 @@
 
     <meta charset="utf-8">
 
-    <title>Статьи</title>
-    <meta name="description" content="">
+    <title><?php the_field('business_at_any_point_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('business_at_any_point_description_meta') ?>">
+    <meta name="keywords" content="<?php the_field('business_at_any_point_keywords_meta') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -91,47 +92,43 @@
 <!-- Content -->
 <main>
     <section class="top-block whole-world-business">
-        <h1 class="page-title">Статьи</h1>
+        <h1 class="page-title"><?php the_field('business_at_any_point_page_title') ?></h1>
         <div class="breadcrumb">
             <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href=""> Статьи </a></li>
+                <li><a href="<?=home_url();?>">Главная</a></li>
+<!--                <li><a href=""> Статьи </a></li>-->
                 <li><span>Бизнес - в любой точке мира</span></li>
             </ul>
         </div>
     </section>
     <section class="facilities-services-info">
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="item"><img src="<?php bloginfo('template_url');?>/img/all-world.jpg" alt=""></div>
+            <div class="item"><img src="<?php the_field('business_at_any_point_page_description_image') ?>" alt=""></div>
             <div class="item">
-                <div class="title">Бизнес — в любой<br>
-                    точке мира!</div>
-                <p>Наш сайт поможет вам найти необходимую информацию об оффшорных компаниях, страховых и судоходных компаниях во всем мире, информацию о создании европейских холдингов, оффшорных банков и трастов, коммерческих и некоммерческих фондов, регистрации VAT в странах Eвросоюза, а также создании представительства в торгово-промышленных палатах.</p>
-                <p>Мы оказываем юридические услуги за рубежом, такие как: подготока юридических заключений, подготовка финансовых отчетов, регистрация торговых марок, легализация документов, переводы документов и заверения документов в посольствах, бизнес эммиграция в страны Евросоюза.</p>
-                <p>Если Вы не уверены в отношении цены за услуги проконсультируйтесь у наших консультантов и вы получите детальное описание их стоимости.</p>
-                <p>Самый простой и быстрый способ связаться с нами отправить заказ в наш офис. Мы с удовольствием примем ваш заказ и ответим на любые вопросы.</p>
+                <div class="title"><?php the_field('business_at_any_point_page_subtitle') ?></div>
+                <?php the_field('business_at_any_point_page_description') ?>
             </div>
         </div>
     </section>
     <section class="feadback-form order-form">
         <div class="form-wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="title-form">ОФОРМЛЕНИЕ ЗАКАЗА</div>
+            <div class="title-form"><?php the_field('business_at_any_point_page_o_title') ?></div>
             <form action="">
-                <input type="text" placeholder="Имя">
-                <input type="email" placeholder="Email">
-                <textarea name="" placeholder="Текст"></textarea>
-                <input type="submit" value="Отправить">
+                <input type="text" placeholder="<?php the_field('business_at_any_point_page_o_placeholder1') ?>">
+                <input type="email" placeholder="<?php the_field('business_at_any_point_page_o_placeholder2') ?>">
+                <textarea name="" placeholder="<?php the_field('business_at_any_point_page_o_placeholder3') ?>"></textarea>
+                <input type="submit" value="<?php the_field('business_at_any_point_page_o_button_text') ?>">
             </form>
         </div>
     </section>
     <section class="social-block">
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="title">Мы в соцсетях</div>
+            <div class="title"><?php the_field('business_at_any_point_page_social_title') ?></div>
             <div class="social-link">
-                <a href="" class="linked"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                <a href="" class="inst"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a class="fb" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="" class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="<?php the_field('social_linckedin_link', 'options') ?>" class="linked"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                <a href="<?php the_field('social_instagram_link', 'options') ?>" class="inst"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a class="fb" href="<?php the_field('social_facebook_link', 'options') ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="<?php the_field('social_twitter_link', 'options') ?>" class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             </div>
         </div>
     </section>
