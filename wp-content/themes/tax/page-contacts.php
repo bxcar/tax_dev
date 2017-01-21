@@ -10,8 +10,9 @@
 
     <meta charset="utf-8">
 
-    <title>Контакты</title>
-    <meta name="description" content="">
+    <title><?php the_field('contacts_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('contacts_description_meta') ?>">
+    <meta name="keywords" content="<?php the_field('contacts_keywords_meta') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -91,31 +92,27 @@
 <!-- Content -->
 <main>
     <section class="top-block contacts">
-        <h1 class="page-title">КОНТАКТНАЯ ИНФОРМАЦИЯ</h1>
+        <h1 class="page-title"><?php the_field('contacts_page_title') ?></h1>
         <div class="breadcrumb">
             <ul>
-                <li><a href="index.html">Главная</a></li>
+                <li><a href="<?= home_url(); ?>">Главная</a></li>
                 <li><span> Контактная информация</span></li>
             </ul>
         </div>
     </section>
     <section class="contacts-info">
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="item">
-                <img src="<?php bloginfo('template_url');?>/img/phone.png" alt="">
-                <div class="item-title">Телефон</div>
-                <p>+380 (44) 249-7222</p>
-            </div>
-            <div class="item">
-                <img src="<?php bloginfo('template_url');?>/img/location.png" alt="">
-                <div class="item-title">Адрес</div>
-                <p>Украина, г. Киев, ул. Корабельная, 5</p>
-            </div>
-            <div class="item">
-                <img src="<?php bloginfo('template_url');?>/img/skype.png" alt="">
-                <div class="item-title">Skype</div>
-                <p>tax.ua</p>
-            </div>
+            <?php $contacts = get_field('contacts_page_contacts');
+            foreach ($contacts as $contact) {
+                ?>
+                <div class="item">
+                    <img src="<?=$contact['contacts_page_contacts_image']?>" alt="">
+                    <div class="item-title"><?=$contact['contacts_page_contacts_title']?></div>
+                    <p><?=$contact['contacts_page_contacts_subtitle']?></p>
+                </div>
+                <?php
+            }
+            ?>
         </div>
     </section>
     <div class="custom-g-map wow fadeInUp" data-wow-duration="1s">
@@ -123,26 +120,27 @@
     </div>
     <section class="feadback-form">
         <div class="form-wrap wow fadeInUp" data-wow-duration="1s">
-        <div class="title-form">НАПИСАТЬ НАМ</div>
+        <div class="title-form"><?php the_field('contacts_page_wo_title') ?></div>
         <form action="">
-            <input type="text" placeholder="Имя">
-            <input type="email" placeholder="Email">
-            <textarea name="" placeholder="Текст"></textarea>
-            <input type="submit" value="Отправить">
+            <input type="text" placeholder="<?php the_field('contacts_page_wo_placeholder1') ?>">
+            <input type="email" placeholder="<?php the_field('contacts_page_wo_placeholder2') ?>">
+            <textarea name="" placeholder="<?php the_field('contacts_page_wo_placeholder3') ?>"></textarea>
+            <input type="submit" value="<?php the_field('contacts_page_wo_button_text') ?>">
         </form>
     </div>
     </section>
     <section class="social-block">
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="title">Мы в соцсетях</div>
+            <div class="title"><?php the_field('contacts_page_social_title') ?></div>
             <div class="social-link">
-                <a href="" class="linked"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                <a href="" class="inst"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a class="fb" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="" class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="<?php the_field('social_linckedin_link', 'options') ?>" class="linked"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                <a href="<?php the_field('social_instagram_link', 'options') ?>" class="inst"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a class="fb" href="<?php the_field('social_facebook_link', 'options') ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="<?php the_field('social_twitter_link', 'options') ?>" class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             </div>
         </div>
     </section>
 </main>
 <!-- End content -->
 <? get_footer() ?>
+
