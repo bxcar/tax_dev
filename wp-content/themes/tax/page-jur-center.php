@@ -10,8 +10,9 @@
 
     <meta charset="utf-8">
 
-    <title>Удобные флаги</title>
-    <meta name="description" content="">
+    <title><?php the_field('jur_centers_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('jur_centers_description_meta') ?>">
+    <meta name="keywords" content="<?php the_field('jur_centers_keywords_meta') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -91,7 +92,7 @@
 <!-- Content -->
 <main>
     <section class="top-block top-jur-center">
-        <h1 class="page-title">Центр юрисдикций</h1>
+        <h1 class="page-title"><?php the_field('jur_centers_page_title') ?></h1>
         <div class="breadcrumb">
             <ul>
                 <li><a href="index.html">Главная</a></li>
@@ -101,100 +102,69 @@
     </section>
     <section class="flags-info jur-center-info">
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="item">
-                <div class="title-item">Азия</div>
-                <a href="jur-center-vnutr.html">Гонконг</a>
-                <a href="jur-center-vnutr.html">Сингапур</a>
 
-                <div class="title-item">Африка</div>
-                <a href="jur-center-vnutr.html">Маврикий</a>
-                <a href="jur-center-vnutr.html">Мадейра</a>
-                <a href="jur-center-vnutr.html">Сейшельские острова</a>
+            <!-- NEXT FIELDS COPY FROM CONVENIENCE FLAGS-->
+            <?php $regions_all_block = get_field('convenience_flags_page_regions');
+            foreach ($regions_all_block as $region_single_column) {
+                ?>
+                <div class="item">
+                    <?php $region_single_column_all_block = $region_single_column['convenience_flags_page_regions_punkts_in_one_column'];
+                    //repeater field in repeater field
+                    foreach ($region_single_column_all_block as $region_single_column_single_block) {
+                        ?>
+                        <div class="title-item">
+                            <?=$region_single_column_single_block['convenience_flags_page_regions_punkts_in_one_column_title']?>
+                        </div>
 
-                <div class="title-item">КАРИБСКИЙ РЕГИОН</div>
-                <a href="jur-center-vnutr.html">Багамские острова</a>
-                <a href="jur-center-vnutr.html">Британская Ангилья</a>
-                <a href="jur-center-vnutr.html">Британские Виргинские острова</a>
-                <a href="jur-center-vnutr.html">Сент Винсент и Гренадины</a>
-            </div>
-            <div class="item">
-                <div class="title-item">Европа</div>
-                <a href="jur-center-vnutr.html">Австрия</a>
-                <a href="jur-center-vnutr.html">Великобритания</a>
-                <a href="jur-center-vnutr.html">Гибралтар</a>
-                <a href="jur-center-vnutr.html">Дания</a>
-                <a href="jur-center-vnutr.html">Ирландия</a>
-                <a href="jur-center-vnutr.html">Лихтенштейн</a>
-                <a href="jur-center-vnutr.html">Люксембург</a>
-                <a href="jur-center-vnutr.html">Мальта</a>
-                <a href="jur-center-vnutr.html">Остров Мэн</a>
-                <a href="jur-center-vnutr.html">Швейцария</a>
-                <a href="jur-center-vnutr.html">Кипр</a>
-
-            </div>
-            <div class="item">
-                <div class="title-item">Северная Америка</div>
-                <a href="jur-center-vnutr.html">Белиз</a>
-                <a href="jur-center-vnutr.html">Британские Виргинские острова</a>
-                <a href="jur-center-vnutr.html">Доминика</a>
-                <a href="jur-center-vnutr.html">Невис</a>
-                <a href="jur-center-vnutr.html"> Панама</a>
-                <a href="jur-center-vnutr.html">Сент Люсия</a>
-
-                <div class="title-item">Об Удобных флагах</div>
-                <a href="jur-center-vnutr.html">Маршалловые острова</a>
-                <a href="jur-center-vnutr.html">Новая Зеландия</a>
-                <a href="jur-center-vnutr.html">Самоа</a>
-            </div>
+                        <?php $region_single_column_single_block_all_punkts = $region_single_column_single_block['convenience_flags_page_regions_punkts_in_one_column_description'];
+                        //repeater field in repeater field in repeater field (too complicated, but it works:))
+                        foreach ($region_single_column_single_block_all_punkts as $region_single_column_single_block_single_punkts) {
+                            ?>
+                            <a href="<?=$region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link']?>">
+                                <?=$region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_text']?>
+                            </a>
+                            <?php
+                        }
+                    }
+                    ?>
+                </div>
+                <?php
+            }
+            ?>
         </div>
     </section>
     <section class="feadback-form flags-form">
         <div class="form-wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="title-form">Получить консультацию</div>
+            <div class="title-form"><?php the_field('jur_centers_page_gc_title') ?></div>
             <form action="">
-                <input type="text" placeholder="Имя">
-                <input type="email" placeholder="Email">
-                <textarea name="" placeholder="Текст"></textarea>
-                <input type="submit" value="Отправить">
+                <input type="text" placeholder="<?php the_field('jur_centers_page_gc_placeholder1') ?>">
+                <input type="email" placeholder="<?php the_field('jur_centers_page_gc_placeholder2') ?>">
+                <textarea name="" placeholder="<?php the_field('jur_centers_page_gc_placeholder3') ?>"></textarea>
+                <input type="submit" value="<?php the_field('jur_centers_page_gc_button_text') ?>">
             </form>
         </div>
     </section>
     <section class="more-services more-flags more-jur-center wow fadeInUp" data-wow-duration="1s">
-        <div class="title">Другие Предложения</div>
+        <div class="title"><?php the_field('jur_centers_page_other_offers_title') ?></div>
         <div class="wrap">
             <div class="owl-carousel carousel-5">
-                <div>
-                    <a href="#" class="item">
+
+                <?php $other_offers = get_field('jur_centers_page_other_offers_punkts');
+                foreach ($other_offers as $other_offer) {
+                    ?>
+                    <div>
+                        <a href="<?= $other_offer['jur_centers_page_other_offers_punkts_link']?>" class="item">
                 <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/flag-1.png" alt="">
+                    <img src="<?= $other_offer['jur_centers_page_other_offers_punkts_image']?>" alt="">
                 </span>
-                        <span class="text">Специальные <br> предложения</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="#" class="item">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/flag-2.png" alt="">
-                </span>
-                        <span class="text">Удобные <br> флаги</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="#" class="item">
-                    <span class="img-block">
-                        <img src="<?php bloginfo('template_url');?>/img/flag-3.png" alt="">
-                    </span>
-                        <span class="text">Центры <br> Юрисдикций</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="#" class="item">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/flag-4.png" alt="">
-                </span>
-                    <span class="text">Финансовые <br> компании</span>
-                </a>
-                </div>
+                            <span class="text">
+                                <?= $other_offer['jur_centers_page_other_offers_punkts_text']?>
+                            </span>
+                        </a>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </section>
