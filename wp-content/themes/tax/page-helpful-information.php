@@ -10,8 +10,9 @@
 
     <meta charset="utf-8">
 
-    <title>Полезная информация</title>
-    <meta name="description" content="">
+    <title><?php the_field('helpful_information_page_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('helpful_information_page_description_meta') ?>">
+    <meta name="keywords" content="<?php the_field('helpful_information_page_keywords') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -41,7 +42,7 @@
 <!-- Content -->
 <main>
     <section class="top-block top-helpful-info">
-        <h1 class="page-title">Полезная информация</h1>
+        <h1 class="page-title"><?php the_field('helpful_information_page_title') ?></h1>
         <div class="breadcrumb">
             <ul>
                 <li><a href="index.html">Главная</a></li>
@@ -156,7 +157,7 @@
                     </form>
                 </div>
                 <div class="category wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title">Категории</div>
+                    <div class="sidebar-title"><?php the_field('helpful_information_page_title_category') ?></div>
                     <ul>
                         <li><a href="#">Экономика</a></li>
                         <li class="active"><a href="#">Новости компаний</a></li>
@@ -167,7 +168,7 @@
                     </ul>
                 </div>
                 <div class="tags wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title">Тэги</div>
+                    <div class="sidebar-title"><?php the_field('helpful_information_page_title_tags') ?></div>
                     <div class="tag">Новый закон</div>
                     <div class="tag">Полезная информация</div>
                     <div class="tag">Налоги</div>
