@@ -177,6 +177,7 @@
                 ?>
                 <div class="item">
                     <?php $region_single_column_all_block = $region_single_column['convenience_flags_page_regions_punkts_in_one_column'];
+                    //repeater field in repeater field
                     foreach ($region_single_column_all_block as $region_single_column_single_block) {
                         ?>
                         <div class="title-item">
@@ -184,6 +185,7 @@
                         </div>
 
                         <?php $region_single_column_single_block_all_punkts = $region_single_column_single_block['convenience_flags_page_regions_punkts_in_one_column_description'];
+                        //repeater field in repeater field in repeater field (too complicated, but it works:))
                         foreach ($region_single_column_single_block_all_punkts as $region_single_column_single_block_single_punkts) {
                             ?>
                             <a href="<?=$region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link']?>">
@@ -197,99 +199,44 @@
                 <?php
             }
             ?>
-
-            <!--<div class="item">
-                <div class="title-item">Азия</div>
-                <a href="convenience-flags-vnutr.html">Сингапур: Право использования флага</a>
-                <div class="title-item">ТИХООКЕАНСКИЙ РЕГИОН</div>
-                <a href="convenience-flags-vnutr.html">Бермудские острова: Использование<br> бермудского флага</a>
-            </div>
-
-            <div class="item">
-                <div class="title-item">Европа</div>
-                <a href="convenience-flags-vnutr.html">Кипр: Регистрация судоходных компаний<br> и судов</a>
-                <a href="convenience-flags-vnutr.html">Остров Мэн: Судоходные компании</a>
-
-            </div>
-            <div class="item">
-                <div class="title-item">Северная Америка</div>
-                <a href="convenience-flags-vnutr.html">Панама: Регистрация судов, пошлины и<br> сборыа</a>
-                <div class="title-item">Об Удобных флагах</div>
-                <a href="convenience-flags-vnutr.html">Что такое “Удобные флаги”?</a>
-            </div>-->
         </div>
     </section>
     <section class="feadback-form flags-form">
         <div class="form-wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="title-form">Получить консультацию</div>
+            <div class="title-form"><?php the_field('convenience_flags_page_gc_title') ?></div>
             <form action="">
-                <input type="text" placeholder="Имя">
-                <input type="email" placeholder="Email">
-                <textarea name="" placeholder="Текст"></textarea>
-                <input type="submit" value="Отправить">
+                <input type="text" placeholder="<?php the_field('convenience_flags_gc_placeholder1') ?>">
+                <input type="email" placeholder="<?php the_field('convenience_flags_gc_placeholder2') ?>">
+                <textarea name="" placeholder="<?php the_field('convenience_flags_gc_placeholder3') ?>"></textarea>
+                <input type="submit" value="<?php the_field('convenience_flags_page_gc_button_text') ?>">
             </form>
         </div>
     </section>
     <section class="more-services more-flags wow fadeInUp" data-wow-duration="1s">
-        <div class="title">Другие Предложения</div>
+        <div class="title"><?php the_field('convenience_flags_other_offers_title') ?></div>
         <div class="wrap">
             <div class="owl-carousel carousel-3">
-                <div>
-                    <a href="#" class="item">
+
+                <?php $offers = get_field('convenience_flags_page_other_offers');
+                foreach ($offers as $offer) {
+                    ?>
+                    <div>
+                        <a href="<?=$offer['convenience_flags_page_other_offers_offer_link_1']?>" class="item">
                 <span class="img-block">
-                    <img src="<?php bloginfo('template_url'); ?>/img/flag-1.png" alt="">
+                    <img src="<?=$offer['convenience_flags_page_other_offers_offer_image_1']?>" alt="">
                 </span>
-                        <span class="text">Специальные предложения</span>
-                    </a>
-                    <a href="#" class="item">
+                            <span class="text"><?=$offer['convenience_flags_page_other_offers_offer_title_1']?></span>
+                        </a>
+                        <a href="<?=$offer['convenience_flags_page_other_offers_offer_link_2']?>" class="item">
                 <span class="img-block">
-                    <img src="<?php bloginfo('template_url'); ?>/img/flag-2.png" alt="">
+                    <img src="<?=$offer['convenience_flags_page_other_offers_offer_image_2']?>" alt="">
                 </span>
-                        <span class="text">Удобные флаги</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="#" class="item">
-                    <span class="img-block">
-                        <img src="<?php bloginfo('template_url'); ?>/img/flag-3.png" alt="">
-                    </span>
-                        <span class="text">Центры Юрисдикций</span>
-                    </a>
-                    <a href="#" class="item">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url'); ?>/img/flag-4.png" alt="">
-                </span>
-                        <span class="text">Финансовые компании</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="#" class="item">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url'); ?>/img/flag-1.png" alt="">
-                </span>
-                        <span class="text">Специальные предложения</span>
-                    </a>
-                    <a href="#" class="item">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url'); ?>/img/flag-2.png" alt="">
-                </span>
-                        <span class="text">Удобные флаги</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="#" class="item">
-                    <span class="img-block">
-                        <img src="<?php bloginfo('template_url'); ?>/img/flag-3.png" alt="">
-                    </span>
-                        <span class="text">Центры Юрисдикций</span>
-                    </a>
-                    <a href="#" class="item">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url'); ?>/img/flag-4.png" alt="">
-                </span>
-                        <span class="text">Финансовые компании</span>
-                    </a>
-                </div>
+                            <span class="text"><?=$offer['convenience_flags_page_other_offers_offer_title_2']?></span>
+                        </a>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </section>
