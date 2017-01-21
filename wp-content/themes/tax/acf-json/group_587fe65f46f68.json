@@ -171,6 +171,25 @@
                     "maxlength": "",
                     "rows": 1,
                     "new_lines": "br"
+                },
+                {
+                    "key": "field_588395cbe3b10",
+                    "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
+                    "name": "serach_online_search_types_link",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         }
@@ -194,5 +213,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1484777572
+    "modified": 1485019145
 }

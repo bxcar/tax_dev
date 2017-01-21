@@ -10,8 +10,9 @@
 
     <meta charset="utf-8">
 
-    <title>Search online</title>
-    <meta name="description" content="">
+    <title><?php the_field('search_online_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('search_online_description_meta') ?>">
+    <meta name="keywords" content="<?php the_field('search_online_keywords_meta') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -42,7 +43,7 @@
 <!-- Content -->
 <main>
     <section class="top-block search">
-        <h1 class="page-title">Поиск онлайн</h1>
+        <h1 class="page-title"><?php the_field('serach_online_page_title') ?></h1>
         <div class="breadcrumb">
             <ul>
                 <li><a href="index.html">Главная</a></li>
@@ -52,24 +53,19 @@
     </section>
     <section class="search-online">
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
-            <a href="" class="item">
-                <div class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/search-1.png" alt="">
-                </div>
-                <p>Проверить компанию?</p>
-            </a>
-            <a href="" class="item">
-                <div class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/search-2.png" alt="">
-                </div>
-                <p>Мир</p>
-            </a>
-            <a href="" class="item">
-                <div class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/search-3.png" alt="">
-                </div>
-                <p>США</p>
-            </a>
+
+            <?php $search_punkts = get_field('serach_online_search_types');
+            foreach ($search_punkts as $search_punkt) {
+                ?>
+                <a href="<?=$search_punkt['serach_online_search_types_link']?>" class="item">
+                    <div class="img-block">
+                        <img src="<?=$search_punkt['serach_online_search_types_image']?>" alt="">
+                    </div>
+                    <p><?=$search_punkt['serach_online_search_types_text']?></p>
+                </a>
+                <?php
+            }
+            ?>
         </div>
     </section>
 </main>
