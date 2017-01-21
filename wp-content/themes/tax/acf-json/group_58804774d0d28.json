@@ -77,7 +77,7 @@
         },
         {
             "key": "field_58804774de7eb",
-            "label": "\u0420\u0435\u0433\u0438\u043e\u043d\u044b",
+            "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0438 \u0440\u0435\u0433\u0438\u043e\u043d\u044b",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -92,6 +92,25 @@
             "endpoint": 0
         },
         {
+            "key": "field_58834a463f1e6",
+            "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b",
+            "name": "convenience_flags_page_title",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 1,
+            "new_lines": "br"
+        },
+        {
             "key": "field_58804774df3a3",
             "label": "\u0420\u0435\u0433\u0438\u043e\u043d\u044b",
             "name": "convenience_flags_page_regions",
@@ -104,17 +123,17 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "field_588047751f178",
+            "collapsed": "field_588350915f7fb",
             "min": "",
             "max": "",
-            "layout": "table",
+            "layout": "block",
             "button_label": "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c",
             "sub_fields": [
                 {
-                    "key": "field_588047751f178",
-                    "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u0435\u0433\u0438\u043e\u043d\u0430 1",
-                    "name": "convenience_flags_page_regions_1_title",
-                    "type": "text",
+                    "key": "field_588350915f7fb",
+                    "label": "\u0420\u0435\u0433\u0438\u043e\u043d\u044b \u0432 \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u043e\u0439 \u043a\u043e\u043b\u043e\u043d\u043a\u0435",
+                    "name": "convenience_flags_page_regions_punkts_in_one_column",
+                    "type": "repeater",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -123,68 +142,91 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_58804854361ae",
-                    "label": "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0440\u0435\u0433\u0438\u043e\u043d\u0430 1",
-                    "name": "convenience_flags_page_regions_1_text",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": 4,
-                    "new_lines": "br"
-                },
-                {
-                    "key": "field_58804886361af",
-                    "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u0435\u0433\u0438\u043e\u043d\u0430 2",
-                    "name": "convenience_flags_page_regions_2_title",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_58804889361b0",
-                    "label": "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0440\u0435\u0433\u0438\u043e\u043d\u0430 2",
-                    "name": "convenience_flags_page_regions_2_text",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": 4,
-                    "new_lines": "br"
+                    "collapsed": "field_588350de5f7fc",
+                    "min": "",
+                    "max": "",
+                    "layout": "block",
+                    "button_label": "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c",
+                    "sub_fields": [
+                        {
+                            "key": "field_588350de5f7fc",
+                            "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a",
+                            "name": "convenience_flags_page_regions_punkts_in_one_column_title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_588351195f7fd",
+                            "label": "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0440\u0435\u0433\u0438\u043e\u043d\u0430 (\u043f\u0443\u043d\u043a\u0442\u044b)",
+                            "name": "convenience_flags_page_regions_punkts_in_one_column_description",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "collapsed": "field_5883518e5f7ff",
+                            "min": "",
+                            "max": "",
+                            "layout": "block",
+                            "button_label": "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c",
+                            "sub_fields": [
+                                {
+                                    "key": "field_588351575f7fe",
+                                    "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
+                                    "name": "convenience_flags_page_regions_punkts_in_one_column_description_link",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_5883518e5f7ff",
+                                    "label": "\u0422\u0435\u043a\u0441\u0442",
+                                    "name": "convenience_flags_page_regions_punkts_in_one_column_description_text",
+                                    "type": "textarea",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "maxlength": "",
+                                    "rows": 3,
+                                    "new_lines": "br"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -354,25 +396,6 @@
             "button_label": "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c",
             "sub_fields": [
                 {
-                    "key": "field_588049e10211b",
-                    "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a",
-                    "name": "convenience_flags_page_other_offers_offer_title",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
                     "key": "field_58804a130211f",
                     "label": "\u0418\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435",
                     "name": "convenience_flags_page_other_offers_offer_image",
@@ -395,6 +418,25 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": ""
+                },
+                {
+                    "key": "field_588049e10211b",
+                    "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a",
+                    "name": "convenience_flags_page_other_offers_offer_title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         }
@@ -418,5 +460,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1484802713
+    "modified": 1485002225
 }
