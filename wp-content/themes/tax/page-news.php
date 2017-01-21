@@ -10,8 +10,9 @@
 
     <meta charset="utf-8">
 
-    <title>News</title>
-    <meta name="description" content="">
+    <title><?php the_field('business_news_page_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('business_news_page_description_meta') ?>">
+    <meta name="keywords" content="<?php the_field('business_news_page_keywords') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -41,7 +42,7 @@
 <!-- Content -->
 <main>
     <section class="top-block top-news">
-        <h1 class="page-title">Новости бизнеса</h1>
+        <h1 class="page-title"><?php the_field('business_news_page_title') ?></h1>
         <div class="breadcrumb">
             <ul>
                 <li><a href="index.html">Главная</a></li>
@@ -156,7 +157,7 @@
                     </form>
                 </div>
                 <div class="category wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title">Категории</div>
+                    <div class="sidebar-title"><?php the_field('business_news_page_title_category') ?></div>
                     <ul>
                         <li><a href="#">Экономика</a></li>
                         <li class="active"><a href="#">Новости компаний</a></li>
@@ -167,7 +168,7 @@
                     </ul>
                 </div>
                 <div class="pop-news wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title">Популярные новости</div>
+                    <div class="sidebar-title"><?php the_field('business_news_page_title_popular_news') ?></div>
                     <a href="#" class="item">
                         <img src="<?php bloginfo('template_url');?>/img/p-news-1.jpg" alt="">
                         <p>Власти ухудшили прогноз роста экономики</p>
@@ -185,7 +186,7 @@
                     </a>
                 </div>
                 <div class="archive wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title">Арихив новостей</div>
+                    <div class="sidebar-title"><?php the_field('business_news_page_title_archive') ?></div>
                     <ul>
                         <li><a href="#">Сентябрь</a></li>
                         <li class="active"><a href="#">Август</a></li>
