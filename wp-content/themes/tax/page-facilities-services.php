@@ -10,8 +10,9 @@
 
     <meta charset="utf-8">
 
-    <title>Услуги и сервисы</title>
-    <meta name="description" content="">
+    <title><?php the_field('facilities_and_services_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('facilities_and_services_description_meta') ?>">
+    <meta name="keywords" content="<?php the_field('facilities_and_services_keywords_meta') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -91,60 +92,32 @@
 <!-- Content -->
 <main>
     <section class="top-block facilities-services">
-        <h1 class="page-title">Услуги и сервисы</h1>
+        <h1 class="page-title"><?php the_field('facilities_and_services_page_title') ?></h1>
         <div class="breadcrumb">
             <ul>
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="index.html"> Услуги и сервисы</a></li>
-                <li><span>Консультация по счетам Paypal</span></li>
+<!--                <li><span>Консультация по счетам Paypal</span></li>-->
             </ul>
         </div>
     </section>
     <section class="facilities-services-block">
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
-            <a href="facilities-services-vnutr.html" class="item">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/f-services-1.png" alt="">
-                </span>
-                <span class="text">Регистрация торговых марок <br> и получение штрих кодов</span>
-            </a>
-            <a href="facilities-services-vnutr.html" class="item">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/f-services-2.png" alt="">
-                </span>
-                <span class="text">Получение <br> Сертификата происхождения <br> в Великобритании</span>
-            </a>
-            <a href="facilities-services-vnutr.html" class="item">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/f-services-3.png" alt="">
-                </span>
-                <span class="text">Консультации<br> по счетам Paypal</span>
-            </a>
-            <a href="facilities-services-vnutr.html" class="item">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/f-services-4.png" alt="">
-                </span>
-                <span class="text">Получения<br> номера EORI</span>
-            </a>
-            <a href="facilities-services-vnutr.html" class="item">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/f-services-5.png" alt="">
-                </span>
-                <span class="text">Аккредитация<br> представительства<br> в Украине</span>
-            </a>
-            <a href="#" class="item">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/f-services-6.png" alt="">
-                </span>
-                <span class="text">Помощь специалиста по <br> сервису VAT в Европе</span>
-            </a>
-            <a href="facilities-services-vnutr.html" class="item">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/f-services-7.png" alt="">
-                </span>
-                <span class="text">Консультации по счетам<br> Interactive Brokers</span>
-            </a>
 
+            <?php $services = get_field('facilities_and_services_page_services');
+            foreach ($services as $service) {
+                ?>
+                <a href="<?=$service['facilities_and_services_page_services_link']?>" class="item">
+                <span class="img-block">
+                    <img src="<?=$service['facilities_and_services_page_services_image']?>" alt="">
+                </span>
+                    <span class="text">
+                        <?=$service['facilities_and_services_page_services_text']?>
+                    </span>
+                </a>
+                <?php
+            }
+            ?>
         </div>
     </section>
 </main>

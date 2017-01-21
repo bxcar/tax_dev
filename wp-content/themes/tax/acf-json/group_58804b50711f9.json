@@ -171,6 +171,25 @@
                     "maxlength": "",
                     "rows": 4,
                     "new_lines": "br"
+                },
+                {
+                    "key": "field_58836b6bda79c",
+                    "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
+                    "name": "facilities_and_services_page_services_link",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         }
@@ -194,5 +213,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1484806495
+    "modified": 1485008037
 }

@@ -10,8 +10,9 @@
 
     <meta charset="utf-8">
 
-    <title>Финансовые компании</title>
-    <meta name="description" content="">
+    <title><?php the_field('finance_companies_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('finance_companies_description_meta') ?>">
+    <meta name="description" content="<?php the_field('finance_companies_keywords_meta') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -91,7 +92,7 @@
 <!-- Content -->
 <main>
     <section class="top-block top-finance-companies">
-        <h1 class="page-title">Финансовые компании</h1>
+        <h1 class="page-title"><?php the_field('finance_companies_page_title') ?></h1>
         <div class="breadcrumb">
             <ul>
                 <li><a href="index.html">Главная</a></li>
@@ -102,47 +103,55 @@
     </section>
     <section class="flags-info finance-companies">
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="item">
-                <div class="title-item">Информация</div>
-                <a href="finance-companies-vnutr.html">Как выбрать юрисдикцию для вашей холдинговой компании</a>
-                <div class="title-item">Карибский регион</div>
-                <a href="finance-companies-vnutr.html">Британские Виргинские острова: Банковое лицензирование</a>
-                <a href="finance-companies-vnutr.html">Британские Виргинские острова: Кэптивные страховые компании</a>
-                <a href="finance-companies-vnutr.html">Британские Виргинские острова: Трасты VISTA</a>
-                <a href="finance-companies-vnutr.html">Сент-Винсент и Гренадины: Страховые компании</a>
-            </div>
-            <div class="item">
-                <div class="title-item">Европа</div>
-                <a href="finance-companies-vnutr.html">Австрия: Частный Фонд</a>
-                <a href="finance-companies-vnutr.html">Великобритания: Холдинговые компании</a>
-                <a href="finance-companies-vnutr.html">Люксембург: Специализированные фонды SPV</a>
-                <a href="finance-companies-vnutr.html">Нидерланды: Холдинговая компания</a>
-                <a href="finance-companies-vnutr.html">Кипр: Холдинговые и инвестиционные компании</a>
-                <div class="title-item">Северная Америка</div>
-                <a href="finance-companies-vnutr.html">Белиз: Оффшорный банк, класса “B” </a>
-                <a href="finance-companies-vnutr.html">Сент-Люсия: Cтраховые компании</a>
-            </div>
+        <!-- NEXT FIELDS COPY FROM CONVENIENCE FLAGS-->
+            <?php $regions_all_block = get_field('convenience_flags_page_regions');
+            foreach ($regions_all_block as $region_single_column) {
+                ?>
+                <div class="item">
+                    <?php $region_single_column_all_block = $region_single_column['convenience_flags_page_regions_punkts_in_one_column'];
+                    //repeater field in repeater field
+                    foreach ($region_single_column_all_block as $region_single_column_single_block) {
+                        ?>
+                        <div class="title-item">
+                            <?=$region_single_column_single_block['convenience_flags_page_regions_punkts_in_one_column_title']?>
+                        </div>
+
+                        <?php $region_single_column_single_block_all_punkts = $region_single_column_single_block['convenience_flags_page_regions_punkts_in_one_column_description'];
+                        //repeater field in repeater field in repeater field (too complicated, but it works:))
+                        foreach ($region_single_column_single_block_all_punkts as $region_single_column_single_block_single_punkts) {
+                            ?>
+                            <a href="<?=$region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link']?>">
+                                <?=$region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_text']?>
+                            </a>
+                            <?php
+                        }
+                    }
+                    ?>
+                </div>
+                <?php
+            }
+            ?>
         </div>
     </section>
     <section class="feadback-form flags-form wow fadeInUp" data-wow-duration="1s">
         <div class="form-wrap">
-            <div class="title-form">Получить консультацию</div>
+            <div class="title-form"><?php the_field('finance_companies_page_gc_title') ?></div>
             <form action="">
-                <input type="text" placeholder="Имя">
-                <input type="email" placeholder="Email">
-                <textarea name="" placeholder="Текст"></textarea>
-                <input type="submit" value="Отправить">
+                <input type="text" placeholder="<?php the_field('finance_companies_page_gc_placeholder1') ?>">
+                <input type="email" placeholder="<?php the_field('finance_companies_page_gc_placeholder2') ?>">
+                <textarea name="" placeholder="<?php the_field('finance_companies_page_gc_placeholder3') ?>"></textarea>
+                <input type="submit" value="<?php the_field('finance_companies_page_gc_button_text') ?>">
             </form>
         </div>
     </section>
     <section class="social-block wow fadeInUp" data-wow-duration="1s">
         <div class="wrap">
-            <div class="title">Мы в соцсетях</div>
+            <div class="title"><?php the_field('finance_companies_page_social_title') ?></div>
             <div class="social-link">
-                <a href="" class="linked"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                <a href="" class="inst"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a class="fb" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="" class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="<?php the_field('social_linckedin_link', 'options') ?>" class="linked"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                <a href="<?php the_field('social_instagram_link', 'options') ?>" class="inst"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a class="fb" href="<?php the_field('social_facebook_link', 'options') ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="<?php the_field('social_twitter_link', 'options') ?>" class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             </div>
         </div>
     </section>

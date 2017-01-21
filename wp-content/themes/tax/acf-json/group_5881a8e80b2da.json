@@ -113,8 +113,8 @@
         {
             "key": "field_5881a97051218",
             "label": "\u041e \u0444\u0438\u043d\u0430\u043d\u0441\u043e\u0432\u044b\u0445 \u043a\u043e\u043c\u043f\u043d\u0438\u044f\u0445",
-            "name": "finance_companies_page_about_companies",
-            "type": "repeater",
+            "name": "fc",
+            "type": "clone",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -123,169 +123,13 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "field_5881a9b751219",
-            "min": "",
-            "max": "",
+            "clone": [
+                "field_58804774df3a3"
+            ],
+            "display": "seamless",
             "layout": "block",
-            "button_label": "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c",
-            "sub_fields": [
-                {
-                    "key": "field_5881a9b751219",
-                    "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a_1",
-                    "name": "finance_companies_page_about_companies_title1",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": 2,
-                    "new_lines": "br"
-                },
-                {
-                    "key": "field_5881aa0a5121c",
-                    "label": "\u041f\u0443\u043d\u043a\u0442\u044b1",
-                    "name": "finance_companies_page_about_companies_punkts1",
-                    "type": "repeater",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "collapsed": "field_5881aa315121d",
-                    "min": "",
-                    "max": "",
-                    "layout": "table",
-                    "button_label": "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c",
-                    "sub_fields": [
-                        {
-                            "key": "field_5881aa315121d",
-                            "label": "\u041f\u0443\u043d\u043a\u0442",
-                            "name": "finance_companies_page_about_companies_punkts1_single_punkt",
-                            "type": "textarea",
-                            "instructions": "",
-                            "required": "",
-                            "conditional_logic": "",
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "maxlength": "",
-                            "rows": 4,
-                            "new_lines": "br"
-                        },
-                        {
-                            "key": "field_5881b15f7d3f6",
-                            "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
-                            "name": "finance_companies_page_about_companies_punkts1_single_link",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
-                        }
-                    ]
-                },
-                {
-                    "key": "field_5881aa005121b",
-                    "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a_2",
-                    "name": "finance_companies_page_about_companies_title2",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": 2,
-                    "new_lines": "br"
-                },
-                {
-                    "key": "field_5881aa7b5121e",
-                    "label": "\u041f\u0443\u043d\u043a\u0442\u044b2",
-                    "name": "finance_companies_page_about_companies_punkts2",
-                    "type": "repeater",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "collapsed": "field_5881aa7b5121f",
-                    "min": "",
-                    "max": "",
-                    "layout": "table",
-                    "button_label": "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c",
-                    "sub_fields": [
-                        {
-                            "key": "field_5881aa7b5121f",
-                            "label": "\u041f\u0443\u043d\u043a\u0442",
-                            "name": "finance_companies_page_about_companies_punkts2_single_punkt",
-                            "type": "textarea",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "maxlength": "",
-                            "rows": 4,
-                            "new_lines": "br"
-                        },
-                        {
-                            "key": "field_5881b1da7d3f7",
-                            "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
-                            "name": "finance_companies_page_about_companies_punkts2_single_link",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
-                        }
-                    ]
-                }
-            ]
+            "prefix_label": 0,
+            "prefix_name": 0
         },
         {
             "key": "field_5881a8e819186",
@@ -453,5 +297,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1484894750
+    "modified": 1485010431
 }
