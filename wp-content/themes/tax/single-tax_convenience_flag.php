@@ -183,25 +183,28 @@ if ($the_query->have_posts()):
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
             <div class="title"><?php the_field('single_convenience_flag_other_flags_title'); ?></div>
             <div class="info-item">
-                <div class="item">
-                    <a href="#">Остров Мэн: Судоходные компании</a>
-                </div>
-                <div class="item">
-                    <a href="#">Панама: Регистрация судов, пошлины и сборы</a>
-                </div>
-                <div class="item">
-                    <a href="#">Кипр: Регистрация судоходных компаний
-                        и судов</a>
-                </div>
-                <div class="item">
-                    <a href="#">Бермудские острова: Использование бермудского флага</a>
-                </div>
-                <div class="item">
-                    <a href="#">Сингапур: Право использования флага</a>
-                </div>
-                <div class="item">
-                    <a href="#">Что такое “Удобные флаги”?</a>
-                </div>
+
+                <?php
+                $id = get_the_ID();
+
+                $args_last_convenience_flags = array(
+                    'numberposts' => -1,
+                    'post_type' => 'tax_convenience_flag',
+                    'posts_per_page' => 2,
+                    'post__not_in' => array( $id ),
+                    'orderby' => 'rand'
+                );
+
+                // query
+                $the_query_last_convenience_flags = new WP_Query($args_last_convenience_flags);
+                if ($the_query_last_convenience_flags->have_posts()) {
+                     while ($the_query_last_convenience_flags->have_posts()) {
+                        $the_query_last_convenience_flags->the_post(); ?>
+                        <div class="item">
+                            <a href="<?php the_permalink();?>"><?php the_title();?></a>
+                        </div>
+                    <?php }
+                } ?>
             </div>
         </div>
     </section>
