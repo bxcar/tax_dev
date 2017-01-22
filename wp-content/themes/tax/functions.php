@@ -225,9 +225,29 @@ function convenience_flag_table() {
     $table = '<script>
                     window.onload = function() {
                         var replaced_element = document.getElementsByClassName("capital");
+                        var replaced_element_2 = document.getElementsByClassName("tax");
                         for(var i = 0; i < replaced_element.length; i++)
                         {
                             replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("до",\'g\'),"<span>до</span>");
+                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("до",\'g\'),"<span>до</span>");
+                            
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("более",\'g\'),"<span>более</span>");
+                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("более",\'g\'),"<span>более</span>");
+                            
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("от",\'g\'),"<span>от</span>");
+                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("от",\'g\'),"<span>от</span>");
+                           
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("USD",\'g\'),"<span>USD</span>");
+                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("USD",\'g\'),"<span>USD</span>");
+                           
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("грн.",\'g\'),"<span>грн.</span>");
+                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("грн.",\'g\'),"<span>грн.</span>");
+                            
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("грн",\'g\'),"<span>грн</span>");
+                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("грн",\'g\'),"<span>грн</span>");
+                            
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("EUR",\'g\'),"<span>EUR</span>");
+                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("EUR",\'g\'),"<span>EUR</span>");
                         }
                     }
               </script>
@@ -238,40 +258,11 @@ function convenience_flag_table() {
                 </div>';
 
     $table_fields = get_field('single_convenience_flag_table');
-    $total = count($table_fields);
-    $counter = 0;
     foreach ($table_fields as $table_field) {
-        $counter++;
-        if($counter == $total){
             $table .= '<div class="row">';
-            $table .= '<div class="capital"><span>более </span>'.$table_field['single_convenience_flag_table_capital'].
-                '<span> USD</span></div>';
-            $table .= '<div class="tax">'.$table_field['single_convenience_flag_table_dues_sum'].
-                '<span> USD</span></div>';
+            $table .= '<div class="capital">'.$table_field['single_convenience_flag_table_capital']. '</div>';
+            $table .= '<div class="tax">'.$table_field['single_convenience_flag_table_dues_sum']. '</div>';
             $table .= '</div>';
-
-            $table .= '</div>';
-            return $table;
-        }
-
-        if($counter == 1) {
-            $table .= '<div class="row">';
-            $table .= '<div class="capital">'.$table_field['single_convenience_flag_table_capital'].
-                '<span> USD</span></div>';
-            $table .= '<div class="tax">'.$table_field['single_convenience_flag_table_dues_sum'].
-                '<span> USD</span></div>';
-            $table .= '</div>';
-        }
-
-        else {
-            $table .= '<div class="row">';
-            $table .= '<div class="capital"><span>от </span>'.$table_field['single_convenience_flag_table_capital'].
-                '<span> USD</span></div>';
-            $table .= '<div class="tax">'.$table_field['single_convenience_flag_table_dues_sum'].
-                '<span> USD</span></div>';
-            $table .= '</div>';
-        }
-
     }
 
     $table .= '</div>';
