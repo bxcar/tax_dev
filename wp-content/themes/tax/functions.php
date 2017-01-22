@@ -168,7 +168,7 @@ if (function_exists('acf_add_options_page')) {
         'menu_title' => 'Общие настройки',
         'menu_slug' => 'theme-general-settings',
         'capability' => 'manage_options',
-        'redirect' => false
+        'redirect' => true
     ));
 
     acf_add_options_sub_page(array(
@@ -272,9 +272,11 @@ function register_my_custom_menu_page(){
     // Add a second submenu to the custom top-level menu:
     add_submenu_page('custompage', 'Новости', 'Новости', 8, '/edit.php?post_type=tax_news');
     add_submenu_page('custompage', 'Удобные флаги', 'Удобные флаги', 8, '/edit.php?post_type=tax_convenience_flag');
+    add_submenu_page('custompage', 'Услуги и сервисы', 'Услуги и сервисы', 8, '/edit.php?post_type=tax_facilities_serv');
     remove_submenu_page('custompage','custompage');
 }
 
 function my_custom_menu_page(){
     echo "<h3>Выберите нужный вам раздел для редактирования, которые отображены слева в подменю данного раздела.</h3>";
 }
+

@@ -1,3 +1,22 @@
+<?php
+/**
+ * Template Name: tax_facilities_serv
+ */
+?>
+<?php
+// args
+$args = array(
+    'numberposts' => -1,
+    'post_type' => 'tax_facilities_serv',
+    'p' => get_the_ID()
+);
+
+
+// query
+$the_query = new WP_Query($args);
+if ($the_query->have_posts()):
+while ($the_query->have_posts()) :
+$the_query->the_post(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -76,6 +95,52 @@
             }
         }
     </script>
+    <style>
+        .facilities-services-info blockquote {
+            background-color: #fcfcfd;
+            padding: 40px 40px 38px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .facilities-services-info ul,
+        .facilities-services-info ol {
+            margin-bottom: 30px;
+            list-style: none;
+        }
+
+        .facilities-services-info strong {
+            font-weight: 700;
+        }
+
+        .facilities-services-info li {
+            color: #928f8f;
+            font-size: .8125rem;
+            font-weight: 400;
+            line-height: 34px;
+        }
+
+        .facilities-services-info li:before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: #3ca04f;
+            display: inline-block;
+            margin-bottom: 2px;
+            margin-right: 23px;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        .facilities-services-info p {
+            font-size: .8125rem;
+            font-weight: 400;
+            color: #928f8f;
+            line-height: 22px;
+            padding-bottom: 15px;
+        }
+    </style>
+
     <?php wp_head() ?>
 </head>
 
@@ -170,3 +235,8 @@
 </main>
 <!-- End content -->
 <? get_footer() ?>
+
+<?php endwhile; ?>
+<?php endif; ?>
+
+<?php wp_reset_query();     // Restore global post data stomped by the_post(). ?>
