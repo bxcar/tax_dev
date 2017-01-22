@@ -193,34 +193,6 @@ if (function_exists('acf_add_options_page')) {
     ));
 }
 
-
-/*function jjj()
-{
-    $menu =   '<div class="entry-content dishes">';
-// check if the repeater field has rows of data
-    if( have_rows('menu_sections') ):
-        while ( have_rows('menu_sections') ) : the_row();
-            // Your loop code
-            $menu .= '<h2>' . get_sub_field('section_title') . '</h2>';
-            if( have_rows('sections_items') ):
-                $menu .= '<table><thead><tr><td class="ja_name">Name</td><td class="ja_description">Description</td><td class="ja_price">Price</td></tr></thead>';
-                while ( have_rows('sections_items') ) : the_row();
-                    // Your loop code
-                    $menu .= '<tr><td>'.the_sub_field('dish_names').'</td><td>'.the_sub_field('dish_description').'</td><td>$ '.the_sub_field('dish_price').'</td></tr>';
-                endwhile;
-                $menu .= '</table> ';
-            else :
-                // no rows found
-            endif;
-        endwhile;
-    else :
-        // no rows found
-    endif;
-    $menu .= '</div>';
-    // Code
-    return $menu;
-}*/
-
 function convenience_flag_table() {
     $table = '<script>
                     window.onload = function() {
@@ -271,3 +243,21 @@ function convenience_flag_table() {
 }
 
 add_shortcode('table', 'convenience_flag_table');
+
+function animation_start () {
+    return '<div class="wow fadeInUp" data-wow-duration="1s">';
+}
+
+add_shortcode('animation_start', 'animation_start');
+
+function animation_end () {
+    return '</div>';
+}
+
+add_shortcode('animation_end', 'animation_end');
+
+function new_raw () {
+    return '<br>';
+}
+
+add_shortcode('r', 'new_raw');

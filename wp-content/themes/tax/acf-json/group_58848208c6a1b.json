@@ -172,7 +172,7 @@
         {
             "key": "field_5884840722cf3",
             "label": "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0444\u043e\u0440\u043c\u044b",
-            "name": "\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435_\u0444\u043e\u0440\u043c\u044b",
+            "name": "convenience_flag_page_form_title",
             "type": "textarea",
             "instructions": "",
             "required": 0,
@@ -301,5 +301,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1485091092
+    "modified": 1485094187
 }
