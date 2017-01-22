@@ -193,28 +193,6 @@ if (function_exists('acf_add_options_page')) {
     ));
 }
 
-//[foobar]
-/*function foobar_func()
-{
-    $menu = '';
-    $offers = get_field('main_page_so_offers');
-    foreach ($offers as $offer) {
-//        ob_start();
-        */?><!--
-        <?php /*$menu .= '<div class="item">'*/?>
-        <?php /*$menu .= '<div class="item-wrap">'*/?>
-        <?php /*$menu .= '<p>'. $offer['main_page_so_offers_single_offer_text']. '</p>'*/?>
-        <?php /*$menu .= '<a href="'. $offer['main_page_so_offers_single_offer_link'] .
-            '">ПОДРОБНЕЕ<img src="'. bloginfo('template_url') . '/img/right-arrow.png" alt=""></a>'*/?>
-            <?php /*$menu .= '</div>'*/?>
-            <?php /*$menu .= '</div>'*/?>
-        --><?php
-/*//        return ob_get_clean();
-    }
-    return $menu;
-}
-
-add_shortcode('foobar', 'foobar_func');*/
 
 /*function jjj()
 {
@@ -244,18 +222,56 @@ add_shortcode('foobar', 'foobar_func');*/
 }*/
 
 function convenience_flag_table() {
-    $table = '<div class="table wow fadeInUp" data-wow-duration="1s">
+    $table = '<script>
+                    window.onload = function() {
+                        var replaced_element = document.getElementsByClassName("capital");
+                        for(var i = 0; i < replaced_element.length; i++)
+                        {
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("до",\'g\'),"<span>до</span>");
+                        }
+                    }
+              </script>
+    <div class="table wow fadeInUp" data-wow-duration="1s">
                 <div class="top row">
                     <div class="capital">Капитал</div>
                     <div class="tax">Сумма ежегодного сбора</div>
                 </div>';
 
     $table_fields = get_field('single_convenience_flag_table');
+    $total = count($table_fields);
+    $counter = 0;
     foreach ($table_fields as $table_field) {
-        $table .= '<div class="row">';
-        $table .= '<div class="capital">'.$table_field['single_convenience_flag_table_capital']. '</div>';
-        $table .= '<div class="tax">'.$table_field['single_convenience_flag_table_dues_sum']. '</div>';
-        $table .= '</div>';
+        $counter++;
+        if($counter == $total){
+            $table .= '<div class="row">';
+            $table .= '<div class="capital"><span>более </span>'.$table_field['single_convenience_flag_table_capital'].
+                '<span> USD</span></div>';
+            $table .= '<div class="tax">'.$table_field['single_convenience_flag_table_dues_sum'].
+                '<span> USD</span></div>';
+            $table .= '</div>';
+
+            $table .= '</div>';
+            return $table;
+        }
+
+        if($counter == 1) {
+            $table .= '<div class="row">';
+            $table .= '<div class="capital">'.$table_field['single_convenience_flag_table_capital'].
+                '<span> USD</span></div>';
+            $table .= '<div class="tax">'.$table_field['single_convenience_flag_table_dues_sum'].
+                '<span> USD</span></div>';
+            $table .= '</div>';
+        }
+
+        else {
+            $table .= '<div class="row">';
+            $table .= '<div class="capital"><span>от </span>'.$table_field['single_convenience_flag_table_capital'].
+                '<span> USD</span></div>';
+            $table .= '<div class="tax">'.$table_field['single_convenience_flag_table_dues_sum'].
+                '<span> USD</span></div>';
+            $table .= '</div>';
+        }
+
     }
 
     $table .= '</div>';
