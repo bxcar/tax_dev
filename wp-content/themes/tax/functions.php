@@ -7,8 +7,8 @@
  * @package tax
  */
 
-update_option('siteurl', '192.168.0.98');
-update_option('home', '192.168.0.98');
+/*update_option('siteurl', '192.168.0.98');
+update_option('home', '192.168.0.98');*/
 
 if (!function_exists('tax_setup')) :
     /**
@@ -261,3 +261,19 @@ function new_raw () {
 }
 
 add_shortcode('r', 'new_raw');
+
+
+////////////
+add_action( 'admin_menu', 'register_my_custom_menu_page' );
+function register_my_custom_menu_page(){
+    add_menu_page(
+        'custom menu title', 'Контентные разделы', 'manage_options', 'custompage', 'my_custom_menu_page', 'dashicons-format-aside', 6
+    );
+    // Add a second submenu to the custom top-level menu:
+    add_submenu_page('custompage', 'Новости', 'Новости', 8, '/edit.php?post_type=tax_news');
+    add_submenu_page('custompage', 'Удобные флаги', 'Удобные флаги', 8, '/edit.php?post_type=tax_convenience_flag');
+}
+
+function my_custom_menu_page(){
+    echo "<h3>Выберите нужный вам раздел для редактирования, которые отображены в подменю данного раздела.</h3>";
+}
