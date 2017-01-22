@@ -10,8 +10,9 @@
 
     <meta charset="utf-8">
 
-    <title>Специальные предложения</title>
-    <meta name="description" content="">
+    <title><?php the_field('special_offers_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('special_offers_description_meta') ?>">
+    <meta name="keywords" content="<?php the_field('special_offers_keywords_meta') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -91,7 +92,7 @@
 <!-- Content -->
 <main>
     <section class="top-block special-offer">
-        <h1 class="page-title">Специальное предложение</h1>
+        <h1 class="page-title"><?php the_field('special_offers_page_title') ?></h1>
         <div class="breadcrumb">
             <ul>
                 <li><a href="index.html">Главная</a></li>
@@ -100,59 +101,44 @@
         </div>
     </section>
     <section class="offer-block">
-        <div class="subtitle wow fadeInUp" data-wow-duration="1s">Наши специальные предложения охватывают пять континентов, и предоставляют практически любые возможности по регистрации компаний в следующих юрисдикциях:</div>
+        <div class="subtitle wow fadeInUp" data-wow-duration="1s">
+            <?php the_field('special_offers_page_up_text') ?>
+            </div>
         <div class="wrap">
-            <a href="#" class="item wow fadeInUp" data-wow-duration="1s">
+
+            <?php $special_offers = get_field('special_offers_page_special_offers');
+            foreach ($special_offers as $special_offer) {
+                ?>
+                <a href="<?=$special_offer['about_project_page_oa_adv_number']?>" class="item wow fadeInUp" data-wow-duration="1s">
                 <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/specia-offer-1.png" alt="">
+                    <img src="<?=$special_offer['special_offers_offer_image']?>" alt="">
                 </span>
-                <span class="text">Срочные услуги - регистрация за 72 часа</span>
-            </a>
-            <a href="#" class="item wow fadeInUp" data-wow-duration="1s">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/specia-offer-2.png" alt="">
-                </span>
-                <span class="text">Регистрация бизнеса в Австрии</span>
-            </a>
-            <a href="#" class="item wow fadeInUp" data-wow-duration="1s">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/specia-offer-3.png" alt="">
-                </span>
-                <span class="text">Регистрация компаний в Великобритании</span>
-            </a>
-            <a href="#" class="item wow fadeInUp" data-wow-duration="1s">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/specia-offer-4.png" alt="">
-                </span>
-                <span class="text">Регистрация компаний в Великобритании</span>
-            </a>
-            <a href="#" class="item wow fadeInUp" data-wow-duration="1s">
-                <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/specia-offer-5.png" alt="">
-                </span>
-                <span class="text">Подготовка отчетов для компаний США и Великобритании</span>
-            </a>
+                    <span class="text"><?=$special_offer['special_offers_page_offer_title']?></span>
+                </a>
+                <?php
+            }
+            ?>
         </div>
     </section>
     <section class="feadback-form order-form">
         <div class="form-wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="title-form">ОФОРМЛЕНИЕ ЗАКАЗА</div>
+            <div class="title-form"><?php the_field('special_offers_page_o_title') ?></div>
             <form action="">
-                <input type="text" placeholder="Имя">
-                <input type="email" placeholder="Email">
-                <textarea name="" placeholder="Текст"></textarea>
-                <input type="submit" value="Отправить">
+                <input type="text" placeholder="<?php the_field('special_offers_o_placeholder1') ?>">
+                <input type="email" placeholder="<?php the_field('special_offers_o_placeholder2') ?>">
+                <textarea name="" placeholder="<?php the_field('special_offers_o_placeholder3') ?>"></textarea>
+                <input type="submit" value="<?php the_field('special_offers_page_o_button_text') ?>">
             </form>
         </div>
     </section>
     <section class="social-block">
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="title">Мы в соцсетях</div>
+            <div class="title"><?php the_field('special_offers_social_title') ?></div>
             <div class="social-link">
-                <a href="" class="linked"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                <a href="" class="inst"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a class="fb" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="" class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="<?php the_field('social_linckedin_link', 'options') ?>" class="linked"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                <a href="<?php the_field('social_instagram_link', 'options') ?>" class="inst"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a class="fb" href="<?php the_field('social_facebook_link', 'options') ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="<?php the_field('social_twitter_link', 'options') ?>" class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             </div>
         </div>
     </section>

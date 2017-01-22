@@ -114,7 +114,7 @@
             "key": "field_588044a9f09b1",
             "label": "\u0412\u0435\u0440\u0445\u043d\u0438\u0439 \u0442\u0435\u043a\u0441\u0442",
             "name": "special_offers_page_up_text",
-            "type": "text",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -124,10 +124,9 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1
         },
         {
             "key": "field_588043008e4ee",
@@ -145,7 +144,7 @@
             "collapsed": "field_58804300d5d87",
             "min": "",
             "max": "",
-            "layout": "table",
+            "layout": "block",
             "button_label": "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c",
             "sub_fields": [
                 {
@@ -176,6 +175,25 @@
                     "key": "field_58804300d5d87",
                     "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a",
                     "name": "special_offers_page_offer_title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5883d88944896",
+                    "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
+                    "name": "special_offers_page_offer_link",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -359,5 +377,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1484801686
+    "modified": 1485077527
 }
