@@ -190,7 +190,7 @@ if ($the_query->have_posts()):
                 $args_last_convenience_flags = array(
                     'numberposts' => -1,
                     'post_type' => 'tax_convenience_flag',
-                    'posts_per_page' => 2,
+                    'posts_per_page' => get_field('single_convenience_flag_other_flags_amount'),
                     'post__not_in' => array( $id ),
                     'orderby' => 'rand'
                 );
