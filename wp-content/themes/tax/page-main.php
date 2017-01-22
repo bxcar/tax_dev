@@ -352,5 +352,5 @@
     </section>
 </main>
 <!-- End content -->
-<? get_footer_main_page() ?>
+<? get_footer() ?>
 

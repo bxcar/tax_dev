@@ -24,8 +24,9 @@ $the_query->the_post(); ?>
 
     <meta charset="utf-8">
 
-    <title>Услуги и сервисы</title>
-    <meta name="description" content="">
+    <title><?php the_field('single_facilities_services_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('single_facilities_services_description_meta') ?>">
+    <meta name="keywords" content="<?php the_field('single_facilities_services_keywords_meta') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -162,73 +163,112 @@ $the_query->the_post(); ?>
     </section>
     <section class="facilities-services-info">
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="item"><img src="<?php bloginfo('template_url');?>/img/facilietis-services.png" alt=""></div>
+            <div class="item"><img src="<?php the_field('single_facilities_services_page_description_image') ?>" alt=""></div>
             <div class="item">
-                <div class="title">Консультации по счетам<br>
-                    Paypal</div>
-                <p>Консультируем по вопросам работы в Business или Premium Account в расчётной системе Paypal.</p>
-                <p>Уровень Business или Premium Account позволяет не только делать оплаты за услуги но и получать средства от других пользователей Paypal, организовывать приём кредитных карт, а также делать вывод полученных средств на Ваш банковский счёт.</p>
-                <p>Для получения бесплатной консультаций по открытию Paypal счёта и связанных с этим вопросам, просим обращаться к специалистам нашей компании.</p>
+                <div class="title"><?php the_field('single_facilities_services_page_subtitle') ?></div>
+                <?php the_field('single_facilities_services_page_description') ?>
             </div>
         </div>
     </section>
     <section class="feadback-form order-form wow fadeInUp" data-wow-duration="1s">
         <div class="form-wrap">
-            <div class="title-form">Получить консультацию</div>
+            <div class="title-form"><?php the_field('single_facilities_services_page_o_title') ?></div>
             <form action="">
-                <input type="text" placeholder="Имя">
-                <input type="email" placeholder="Email">
-                <textarea name="" placeholder="Текст"></textarea>
-                <input type="submit" value="Отправить">
+                <input type="text" placeholder="<?php the_field('single_facilities_services_page_o_placeholder1') ?>">
+                <input type="email" placeholder="<?php the_field('single_facilities_services_page_o_placeholder2') ?>">
+                <textarea name="" placeholder="<?php the_field('single_facilities_services_page_o_placeholder3') ?>"></textarea>
+                <input type="submit" value="<?php the_field('single_facilities_services_page_o_button_text') ?>">
             </form>
         </div>
     </section>
     <section class="more-services wow fadeInUp" data-wow-duration="1s">
-        <div class="title">Другие услуги</div>
+        <div class="title"><?php the_field('single_facilities_services_page_social_title') ?></div>
         <div class="wrap">
             <div class="owl-carousel carousel-4">
-                <a href="#" class="item">
+
+                <?php
+                $p = get_the_permalink();
+                $permalink = $p;
+
+
+                $args_last_facilities_serv = array(
+                    'page_id' => '47',
+                );
+
+                // query
+                $the_query_last_facilities_serv = new WP_Query($args_last_facilities_serv);
+                if ($the_query_last_facilities_serv->have_posts()) {
+                    while ($the_query_last_facilities_serv->have_posts()) {
+                        $the_query_last_facilities_serv->the_post(); ?>
+
+
+                        <?php $services = get_field('facilities_and_services_page_services');
+                        foreach ($services as $service) {
+                            if($permalink == $service['facilities_and_services_page_services_link']) {
+                                continue;
+                            }
+                            ?>
+                            <a href="<?=$service['facilities_and_services_page_services_link']?>" class="item">
+                            <span class="img-block">
+                                <img src="<?=$service['facilities_and_services_page_services_image']?>" alt="">
+                            </span>
+                                <span class="text">
+                                    <?=$service['facilities_and_services_page_services_text']?>
+                                </span>
+                            </a>
+                            <?php
+                        }
+                        ?>
+
+
+                    <?php }
+                } ?>
+
+
+
+
+                <!--<a href="#" class="item">
                 <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/f-services-1.png" alt="">
+                    <img src="<?php /*bloginfo('template_url');*/?>/img/f-services-1.png" alt="">
                 </span>
                     <span class="text">Регистрация торговых марок <br> и получение штрих кодов</span>
                 </a>
                 <a href="#" class="item">
                 <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/f-services-2.png" alt="">
+                    <img src="<?php /*bloginfo('template_url');*/?>/img/f-services-2.png" alt="">
                 </span>
                     <span class="text">Получение <br> Сертификата происхождения <br> в Великобритании</span>
                 </a>
                 <a href="#" class="item">
                 <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/f-services-3.png" alt="">
+                    <img src="<?php /*bloginfo('template_url');*/?>/img/f-services-3.png" alt="">
                 </span>
                     <span class="text">Консультации<br> по счетам Paypal</span>
                 </a>
                 <a href="#" class="item">
                 <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/f-services-4.png" alt="">
+                    <img src="<?php /*bloginfo('template_url');*/?>/img/f-services-4.png" alt="">
                 </span>
                     <span class="text">Получения<br> номера EORI</span>
                 </a>
                 <a href="#" class="item">
                 <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/f-services-5.png" alt="">
+                    <img src="<?php /*bloginfo('template_url');*/?>/img/f-services-5.png" alt="">
                 </span>
                     <span class="text">Аккредитация<br> представительства<br> в Украине</span>
                 </a>
                 <a href="#" class="item">
                 <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/f-services-6.png" alt="">
+                    <img src="<?php /*bloginfo('template_url');*/?>/img/f-services-6.png" alt="">
                 </span>
                     <span class="text">Помощь специалиста по <br> сервису VAT в Европе</span>
                 </a>
                 <a href="#" class="item">
                 <span class="img-block">
-                    <img src="<?php bloginfo('template_url');?>/img/f-services-7.png" alt="">
+                    <img src="<?php /*bloginfo('template_url');*/?>/img/f-services-7.png" alt="">
                 </span>
                     <span class="text">Консультации по счетам<br> Interactive Brokers</span>
-                </a>
+                </a>-->
             </div>
         </div>
     </section>
