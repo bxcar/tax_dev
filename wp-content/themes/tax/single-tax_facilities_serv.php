@@ -189,6 +189,9 @@ $the_query->the_post(); ?>
                 <?php
                 $p = get_the_permalink();
                 $permalink = $p;
+                $a = get_field('single_facilities_services_page_other_services_amount');
+                $amount_limit = $a;
+                $i = 0;
 
 
                 $args_last_facilities_serv = array(
@@ -207,6 +210,10 @@ $the_query->the_post(); ?>
                             if($permalink == $service['facilities_and_services_page_services_link']) {
                                 continue;
                             }
+                            $i++;
+                            if($i > $amount_limit) {
+                                break;
+                            }
                             ?>
                             <a href="<?=$service['facilities_and_services_page_services_link']?>" class="item">
                             <span class="img-block">
@@ -223,52 +230,6 @@ $the_query->the_post(); ?>
 
                     <?php }
                 } ?>
-
-
-
-
-                <!--<a href="#" class="item">
-                <span class="img-block">
-                    <img src="<?php /*bloginfo('template_url');*/?>/img/f-services-1.png" alt="">
-                </span>
-                    <span class="text">Регистрация торговых марок <br> и получение штрих кодов</span>
-                </a>
-                <a href="#" class="item">
-                <span class="img-block">
-                    <img src="<?php /*bloginfo('template_url');*/?>/img/f-services-2.png" alt="">
-                </span>
-                    <span class="text">Получение <br> Сертификата происхождения <br> в Великобритании</span>
-                </a>
-                <a href="#" class="item">
-                <span class="img-block">
-                    <img src="<?php /*bloginfo('template_url');*/?>/img/f-services-3.png" alt="">
-                </span>
-                    <span class="text">Консультации<br> по счетам Paypal</span>
-                </a>
-                <a href="#" class="item">
-                <span class="img-block">
-                    <img src="<?php /*bloginfo('template_url');*/?>/img/f-services-4.png" alt="">
-                </span>
-                    <span class="text">Получения<br> номера EORI</span>
-                </a>
-                <a href="#" class="item">
-                <span class="img-block">
-                    <img src="<?php /*bloginfo('template_url');*/?>/img/f-services-5.png" alt="">
-                </span>
-                    <span class="text">Аккредитация<br> представительства<br> в Украине</span>
-                </a>
-                <a href="#" class="item">
-                <span class="img-block">
-                    <img src="<?php /*bloginfo('template_url');*/?>/img/f-services-6.png" alt="">
-                </span>
-                    <span class="text">Помощь специалиста по <br> сервису VAT в Европе</span>
-                </a>
-                <a href="#" class="item">
-                <span class="img-block">
-                    <img src="<?php /*bloginfo('template_url');*/?>/img/f-services-7.png" alt="">
-                </span>
-                    <span class="text">Консультации по счетам<br> Interactive Brokers</span>
-                </a>-->
             </div>
         </div>
     </section>
