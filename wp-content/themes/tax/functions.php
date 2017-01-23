@@ -371,3 +371,4 @@ previous_posts_link( 'Newer Entries' );*/
 //                    previous_posts_link('Newer Entries');
 //posts_nav_link();
 //echo paginate_links_func();
+

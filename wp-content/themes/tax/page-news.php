@@ -37,6 +37,48 @@
             .current-cat a {
                 color: #424242 !important;
             }
+
+            span.current
+            {
+                width: 30px;
+                height: 30px;
+                margin: 0 5px;
+                text-align: center;
+                font-size: .75rem;
+                font-weight: 400;
+                line-height: 30px;
+                display: inline-block;
+                transition: all ease-in .2s;
+                background-color: #3ca04f;
+                color: #fff;
+            }
+            a.page-numbers,
+            span.dots{
+                width: 30px;
+                height: 30px;
+                margin: 0 5px;
+                text-align: center;
+                background-color: #f9fafb;
+                color: #424242 !important;
+                font-size: .75rem;
+                font-weight: 400;
+                line-height: 30px;
+                display: inline-block;
+                transition: all ease-in .2s;
+            }
+            a.next::before {
+                content: url(/wp-content/themes/tax/img/next-post.png);
+            }
+            a.prev::before {
+                content: url(/wp-content/themes/tax/img/prev-post.png);
+                transform: scale(-1, 1);
+            }
+            .pagination a:hover,
+            .pagination a:focus,
+            .pagination a:active{
+                background-color: #e1e3e6;
+                text-decoration: none;
+            }
         </style>
 
         <?php wp_head() ?>
@@ -129,28 +171,41 @@
 
                         <?php
                     }
-
-//                     the_posts_pagination();
-
                 }
                 ?>
 
                 <div class="pagination wow fadeInUp" data-wow-duration="1s">
                     <ul>
-                        <?php if(get_previous_posts_link_custom()) { ?>
-                            <li><a href="<?= get_previous_posts_link_custom(); ?>" class="prev"></a></li>
-                        <?php } ?>
+                       <!-- <?php /*if (get_previous_posts_link_custom()) { */?>
+                            <li><a href="<?/*= get_previous_posts_link_custom(); */?>" class="prev"></a></li>
+                        <?php /*} */?>
 
                         <li class="active"><span class="page-num">1</span></li>
                         <li><a href="#" class="page-num">2</a></li>
                         <li><a href="#" class="page-num">3</a></li>
                         <li><a href="#" class="page-num">4</a></li>
 
-                        <?php if(get_next_posts_link_custom()) { ?>
-                            <li><a href="<?= get_next_posts_link_custom(); ?>" class="next"></a></li>
-                        <?php } ?>
-                        
-                        <?php the_posts_pagination(); ?>
+                        <?php /*if (get_next_posts_link_custom()) { */?>
+                            <li><a href="<?/*= get_next_posts_link_custom(); */?>" class="next"></a></li>
+                        --><?php /*} */?>
+
+                        <?php
+
+                        $args_pagination = array(
+                            'show_all'     => false, // показаны все страницы участвующие в пагинации
+                            'end_size'     => 1,     // количество страниц на концах
+                            'mid_size'     => 1,     // количество страниц вокруг текущей
+                            'prev_next'    => true,  // выводить ли боковые ссылки "предыдущая/следующая страница".
+                            'prev_text'    => __(''),
+                            'next_text'    => __(''),
+                            'add_args'     => false, // Массив аргументов (переменных запроса), которые нужно добавить к ссылкам.
+                            'add_fragment' => '',     // Текст который добавиться ко всем ссылкам.
+                            'screen_reader_text' => __( 'Posts navigation' ),
+                        );
+
+                        the_posts_pagination($args_pagination);
+
+                        ?>
                     </ul>
                 </div>
             </div>
