@@ -328,3 +328,46 @@ function get_previous_posts_link_custom( $label = null ) {
         return previous_posts( false );
     }
 }
+
+
+/*
+function paginate_links_func($atts='') {
+    global $WP_Views;
+    $page = $WP_Views->get_current_page_number();
+    if (!isset($page)){
+        $page = 0;
+    }
+    $add_args = $_GET;
+    if (!is_array($add_args)) {
+        $add_args = array();
+    }
+    if (!array_key_exists('wpv_view_count', $add_args)) {
+        $add_args['wpv_view_count'] = $WP_Views->get_view_count();
+    }
+    if (array_key_exists('wpv_paged', $add_args)) {
+        unset($add_args['wpv_paged']);
+    }
+    $args = array(
+        'base' => '%_%',
+        'format' => '?wpv_view_count='.$add_args['wpv_view_count'].'&wpv_paged=%#%',
+        'total' => $WP_Views->get_max_pages(),
+        'current' => $page,
+        'show_all' => False,
+        'end_size' => 1,
+        'mid_size' => 2,
+        'prev_next' => True,
+        'prev_text' => __('Â" Previous','ec'),
+        'next_text' => __('Next Â"','ec'),
+        'type' => 'list',
+        'add_args' => $add_args,
+        'add_fragment' => false
+    );
+    return paginate_links($args);
+}*/
+
+/*next_posts_link( 'Older Entries', $the_query_last_news->max_num_pages );
+previous_posts_link( 'Newer Entries' );*/
+//                    next_posts_link('Older Entries');
+//                    previous_posts_link('Newer Entries');
+//posts_nav_link();
+//echo paginate_links_func();

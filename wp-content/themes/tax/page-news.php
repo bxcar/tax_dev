@@ -125,12 +125,12 @@
                                 <a href="<?php the_permalink(); ?>">ПОДРОБНЕЕ</a>
                             </div>
                         </div>
+                        <!--nextpage-->
+
                         <?php
                     }
-                    /*next_posts_link( 'Older Entries', $the_query_last_news->max_num_pages );
-                    previous_posts_link( 'Newer Entries' );*/
-                    next_posts_link('Older Entries');
-                    previous_posts_link('Newer Entries');
+
+//                     the_posts_pagination();
 
                 }
                 ?>
@@ -149,6 +149,8 @@
                         <?php if(get_next_posts_link_custom()) { ?>
                             <li><a href="<?= get_next_posts_link_custom(); ?>" class="next"></a></li>
                         <?php } ?>
+                        
+                        <?php the_posts_pagination(); ?>
                     </ul>
                 </div>
             </div>
