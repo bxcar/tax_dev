@@ -3,44 +3,44 @@
  * Template Name: news
  */
 ?>
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
-<head>
+    <head>
 
-    <meta charset="utf-8">
+        <meta charset="utf-8">
 
-    <title><?php the_field('business_news_page_title_meta') ?></title>
-    <meta name="description" content="<?php the_field('business_news_page_description_meta') ?>">
-    <meta name="keywords" content="<?php the_field('business_news_page_keywords') ?>">
+        <title><?php the_field('business_news_page_title_meta') ?></title>
+        <meta name="description" content="<?php the_field('business_news_page_description_meta') ?>">
+        <meta name="keywords" content="<?php the_field('business_news_page_keywords') ?>">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- Template Basic Images Start -->
-    <meta property="og:image" content="path/to/image.jpg">
-    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
-    <!-- Template Basic Images End -->
+        <!-- Template Basic Images Start -->
+        <meta property="og:image" content="path/to/image.jpg">
+        <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+        <!-- Template Basic Images End -->
 
-    <!-- Custom Browsers Color Start -->
-    <!-- Chrome, Firefox OS and Opera -->
-    <meta name="theme-color" content="#000">
-    <!-- Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#000">
-    <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="#000">
-    <!-- Custom Browsers Color End -->
-    <style>
-        .current-cat a {
-            color: #424242 !important;
-        }
-    </style>
+        <!-- Custom Browsers Color Start -->
+        <!-- Chrome, Firefox OS and Opera -->
+        <meta name="theme-color" content="#000">
+        <!-- Windows Phone -->
+        <meta name="msapplication-navbutton-color" content="#000">
+        <!-- iOS Safari -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+        <!-- Custom Browsers Color End -->
+        <style>
+            .current-cat a {
+                color: #424242 !important;
+            }
+        </style>
 
-    <?php wp_head() ?>
-</head>
+        <?php wp_head() ?>
+    </head>
 
 <body>
 <!-- Custom HTML -->
@@ -63,11 +63,9 @@
                 <?php
                 function object_to_array($data)
                 {
-                    if (is_array($data) || is_object($data))
-                    {
+                    if (is_array($data) || is_object($data)) {
                         $result = array();
-                        foreach ($data as $key => $value)
-                        {
+                        foreach ($data as $key => $value) {
                             $result[$key] = object_to_array($value);
                         }
                         return $result;
@@ -75,29 +73,46 @@
                     return $data;
                 }
 
-                $args_last_news = array(
-                    'numberposts' => -1,
-                    'post_type' => 'tax_news',
-                    'posts_per_page' => 1
-                );
+                /* $args_last_news = array(
+                     'numberposts' => -1,
+                     'post_type' => 'tax_news',
+                     'posts_per_page' => 1
+                 );*/
 
                 // query
-                $the_query_last_news = new WP_Query($args_last_news);
-                if ($the_query_last_news->have_posts()) {
-                    while ($the_query_last_news->have_posts()) {
-                        $the_query_last_news->the_post(); ?>
+                //                $the_query_last_news = new WP_Query($args_last_news);
+
+
+                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                $the_query_last_news = query_posts(
+                    array(
+                        'numberposts' => -1,
+                        'post_type' => 'tax_news',
+                        'posts_per_page' => 1,
+                        'paged' => $paged
+                    )
+                );
+
+
+                /* if ($the_query_last_news->have_posts()) {
+                     while ($the_query_last_news->have_posts()) {
+                         $the_query_last_news->the_post(); */
+                if (have_posts()) {
+                    while (have_posts()) {
+                        the_post(); ?>
                         <div class="item">
-                            <img class="wow fadeInUp" data-wow-duration="1s" src="<?php the_field('news_image')?>" alt="">
+                            <img class="wow fadeInUp" data-wow-duration="1s" src="<?php the_field('news_image') ?>"
+                                 alt="">
                             <div class="text-info wow fadeInUp" data-wow-duration="1s">
                                 <div class="top">
                                     <div class="date"><?php echo get_the_date('j'); ?>
                                         <span><?php echo get_the_date('M'); ?>
                                     </div>
-                                    <div class="blog-title"><?php the_title();?></div>
+                                    <div class="blog-title"><?php the_title(); ?></div>
                                 </div>
-                                <div class="text"><?php the_field('news_quote')?></div>
+                                <div class="text"><?php the_field('news_quote') ?></div>
                                 <div class="sub-info">
-                                    <span class="author"><?php the_field('news_author')?></span>
+                                    <span class="author"><?php the_field('news_author') ?></span>
                                     <?php
 
                                     $cat = object_to_array(get_the_category());
@@ -107,32 +122,41 @@
                                     <span class="view">10 просмотров</span>
                                     <span class="comment">2 комментария</span>
                                 </div>
-                                <a href="<?php the_permalink();?>">ПОДРОБНЕЕ</a>
+                                <a href="<?php the_permalink(); ?>">ПОДРОБНЕЕ</a>
                             </div>
                         </div>
-                    <?php
+                        <?php
                     }
-                    next_posts_link( 'Older Entries', $the_query_last_news->max_num_pages );
-                    previous_posts_link( 'Newer Entries' );
+                    /*next_posts_link( 'Older Entries', $the_query_last_news->max_num_pages );
+                    previous_posts_link( 'Newer Entries' );*/
+                    next_posts_link('Older Entries');
+                    previous_posts_link('Newer Entries');
+
                 }
                 ?>
 
                 <div class="pagination wow fadeInUp" data-wow-duration="1s">
                     <ul>
-                        <li><a href="#" class="prev"></a></li>
+                        <?php if(get_previous_posts_link_custom()) { ?>
+                            <li><a href="<?= get_previous_posts_link_custom(); ?>" class="prev"></a></li>
+                        <?php } ?>
+
                         <li class="active"><span class="page-num">1</span></li>
                         <li><a href="#" class="page-num">2</a></li>
                         <li><a href="#" class="page-num">3</a></li>
                         <li><a href="#" class="page-num">4</a></li>
-                        <li><a href="#" class="next"></a></li>
+
+                        <?php if(get_next_posts_link_custom()) { ?>
+                            <li><a href="<?= get_next_posts_link_custom(); ?>" class="next"></a></li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
-<!--            --><?php //get_sidebar('sidebar-custom');?>
+            <!--            --><?php //get_sidebar('sidebar-custom');?>
             <div class="sidebar">
                 <div class="search wow fadeInUp" data-wow-duration="1s">
-                    <form  role="search" method="get" id="searchform" action="<?php echo home_url( '/' ) ?>">
-                        <input type="text"  value="<?php echo get_search_query() ?>" name="s" id="s"
+                    <form role="search" method="get" id="searchform" action="<?php echo home_url('/') ?>">
+                        <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s"
                                placeholder="Поиск...">
                         <input type="submit" id="searchsubmit">
                     </form>
@@ -143,53 +167,53 @@
                         <?php
 
                         $args = array(
-                            'show_option_all'    => '',
-                            'show_option_none'   => __('No categories'),
-                            'orderby'            => 'name',
-                            'order'              => 'DESC',
-                            'show_last_update'   => 0,
-                            'style'              => 'list',
-                            'show_count'         => 0,
-                            'hide_empty'         => 0,
+                            'show_option_all' => '',
+                            'show_option_none' => __('No categories'),
+                            'orderby' => 'name',
+                            'order' => 'DESC',
+                            'show_last_update' => 0,
+                            'style' => 'list',
+                            'show_count' => 0,
+                            'hide_empty' => 0,
                             'use_desc_for_title' => 1,
-                            'child_of'           => 0,
-                            'feed'               => '',
-                            'feed_type'          => '',
-                            'feed_image'         => '',
-                            'exclude'            => '1',
-                            'exclude_tree'       => '',
-                            'include'            => '',
-                            'hierarchical'       => true,
-                            'title_li'           => '',
-                            'number'             => NULL,
-                            'echo'               => 1,
-                            'depth'              => 0,
-                            'current_category'   => 5,
-                            'pad_counts'         => 0,
-                            'taxonomy'           => 'category',
-                            'walker'             => 'Walker_Category',
+                            'child_of' => 0,
+                            'feed' => '',
+                            'feed_type' => '',
+                            'feed_image' => '',
+                            'exclude' => '1',
+                            'exclude_tree' => '',
+                            'include' => '',
+                            'hierarchical' => true,
+                            'title_li' => '',
+                            'number' => NULL,
+                            'echo' => 1,
+                            'depth' => 0,
+                            'current_category' => 5,
+                            'pad_counts' => 0,
+                            'taxonomy' => 'category',
+                            'walker' => 'Walker_Category',
                             'hide_title_if_empty' => false,
-                            'separator'          => '<br />',
+                            'separator' => '<br />',
                         );
 
-                        wp_list_categories( $args );
+                        wp_list_categories($args);
                         ?>
                     </ul>
                 </div>
                 <div class="pop-news wow fadeInUp" data-wow-duration="1s">
                     <div class="sidebar-title"><?php the_field('business_news_page_title_popular_news') ?></div>
                     <a href="#" class="item">
-                        <img src="<?php bloginfo('template_url');?>/img/p-news-1.jpg" alt="">
+                        <img src="<?php bloginfo('template_url'); ?>/img/p-news-1.jpg" alt="">
                         <p>Власти ухудшили прогноз роста экономики</p>
-                        <div class="date">21 октября / Экономика </div>
+                        <div class="date">21 октября / Экономика</div>
                     </a>
                     <a href="#" class="item">
-                        <img src="<?php bloginfo('template_url');?>/img/p-news-2.jpg" alt="">
+                        <img src="<?php bloginfo('template_url'); ?>/img/p-news-2.jpg" alt="">
                         <p>Прибыль Samsung упала на 30% из-за Galaxy Note 7</p>
                         <div class="date">20 октября / Новости компаний</div>
                     </a>
                     <a href="#" class="item">
-                        <img src="<?php bloginfo('template_url');?>/img/p-news-3.jpg" alt="">
+                        <img src="<?php bloginfo('template_url'); ?>/img/p-news-3.jpg" alt="">
                         <p>Торги на биржах США завершились ростом</p>
                         <div class="date">19 октября / Финансы</div>
                     </a>
