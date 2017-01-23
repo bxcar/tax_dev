@@ -38,7 +38,7 @@
             color: #424242 !important;
         }
     </style>
-    
+
     <?php wp_head() ?>
 </head>
 
@@ -59,91 +59,59 @@
     <section class="blog-layaut">
         <div class="wrap">
             <div class="blog">
-                <div class="item">
-                    <img class="wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/news-1.jpg" alt="">
-                    <div class="text-info wow fadeInUp" data-wow-duration="1s">
-                        <div class="top">
-                            <div class="date">24 <span>окт</span></div>
-                            <div class="blog-title">В МИУ планируют снизить размер речных сборов</div>
+
+                <?php
+                function object_to_array($data)
+                {
+                    if (is_array($data) || is_object($data))
+                    {
+                        $result = array();
+                        foreach ($data as $key => $value)
+                        {
+                            $result[$key] = object_to_array($value);
+                        }
+                        return $result;
+                    }
+                    return $data;
+                }
+
+                $args_last_news = array(
+                    'numberposts' => -1,
+                    'post_type' => 'tax_news',
+                    'posts_per_page' => 5
+                );
+
+                // query
+                $the_query_last_news = new WP_Query($args_last_news);
+                if ($the_query_last_news->have_posts()) {
+                    while ($the_query_last_news->have_posts()) {
+                        $the_query_last_news->the_post(); ?>
+                        <div class="item">
+                            <img class="wow fadeInUp" data-wow-duration="1s" src="<?php the_field('news_image')?>" alt="">
+                            <div class="text-info wow fadeInUp" data-wow-duration="1s">
+                                <div class="top">
+                                    <div class="date"><?php echo get_the_date('j'); ?>
+                                        <span><?php echo get_the_date('M'); ?>
+                                    </div>
+                                    <div class="blog-title"><?php the_title();?></div>
+                                </div>
+                                <div class="text"><?php the_field('news_quote')?></div>
+                                <div class="sub-info">
+                                    <span class="author"><?php the_field('news_author')?></span>
+                                    <?php
+
+                                    $cat = object_to_array(get_the_category());
+
+                                    ?>
+                                    <span class="themes"><?= $cat['0']['cat_name']; ?></span>
+                                    <span class="view">10 просмотров</span>
+                                    <span class="comment">2 комментария</span>
+                                </div>
+                                <a href="<?php the_permalink();?>">ПОДРОБНЕЕ</a>
+                            </div>
                         </div>
-                        <div class="text">В Министерстве инфраструктуры Украины (МИУ) хотят снизить размер речных сборов и пересмотреть методику их начисления. Об этом идет речь в законопроекте "О внутреннем водном транспорте" №2475а , который планируется подать на рассмотрение в Верховную Раду в середине ноября.</div>
-                        <div class="sub-info">
-                            <span class="author">Автор</span>
-                            <span class="themes">Экономика</span>
-                            <span class="view">10 просмотров</span>
-                            <span class="comment">2 комментария</span>
-                        </div>
-                        <a href="news-vnutr.html">ПОДРОБНЕЕ</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class=" wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/news-2.jpg" alt="">
-                    <div class="text-info wow fadeInUp" data-wow-duration="1s">
-                        <div class="top">
-                            <div class="date">24 <span>окт</span></div>
-                            <div class="blog-title">Бельгия готова подписать соглашение о ЗСТ между Евросоюзом и Канадой</div>
-                        </div>
-                        <div class="text">В Министерстве инфраструктуры Украины (МИУ) хотят снизить размер речных сборов и пересмотреть методику их начисления. Об этом идет речь в законопроекте "О внутреннем водном транспорте" №2475а , который планируется подать на рассмотрение в Верховную Раду в середине ноября.</div>
-                        <div class="sub-info">
-                            <span class="author">Автор</span>
-                            <span class="themes">Экономика</span>
-                            <span class="view">10 просмотров</span>
-                            <span class="comment">2 комментария</span>
-                        </div>
-                        <a href="news-vnutr.html">ПОДРОБНЕЕ</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class=" wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/news-3.jpg" alt="">
-                    <div class="text-info wow fadeInUp" data-wow-duration="1s">
-                        <div class="top">
-                            <div class="date">24 <span>окт</span></div>
-                            <div class="blog-title">Свободный рынок: США выдавливают у себя импортную сталь</div>
-                        </div>
-                        <div class="text">В Министерстве инфраструктуры Украины (МИУ) хотят снизить размер речных сборов и пересмотреть методику их начисления. Об этом идет речь в законопроекте "О внутреннем водном транспорте" №2475а , который планируется подать на рассмотрение в Верховную Раду в середине ноября.</div>
-                        <div class="sub-info">
-                            <span class="author">Автор</span>
-                            <span class="themes">Экономика</span>
-                            <span class="view">10 просмотров</span>
-                            <span class="comment">2 комментария</span>
-                        </div>
-                        <a href="news-vnutr.html">ПОДРОБНЕЕ</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class=" wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/news-4.jpg" alt="">
-                    <div class="text-info wow fadeInUp" data-wow-duration="1s">
-                        <div class="top">
-                            <div class="date">24 <span>окт</span></div>
-                            <div class="blog-title">Forbes назвал топ-10 налогоплательщиков Украины</div>
-                        </div>
-                        <div class="text">В Министерстве инфраструктуры Украины (МИУ) хотят снизить размер речных сборов и пересмотреть методику их начисления. Об этом идет речь в законопроекте "О внутреннем водном транспорте" №2475а , который планируется подать на рассмотрение в Верховную Раду в середине ноября.</div>
-                        <div class="sub-info">
-                            <span class="author">Автор</span>
-                            <span class="themes">Экономика</span>
-                            <span class="view">10 просмотров</span>
-                            <span class="comment">2 комментария</span>
-                        </div>
-                        <a href="news-vnutr.html">ПОДРОБНЕЕ</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class=" wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/news-5.jpg" alt="">
-                    <div class="text-info wow fadeInUp" data-wow-duration="1s">
-                        <div class="top">
-                            <div class="date">24 <span>окт</span></div>
-                            <div class="blog-title">В Германии бастуют бортпроводники Eurowings и Germanwings</div>
-                        </div>
-                        <div class="text">В Министерстве инфраструктуры Украины (МИУ) хотят снизить размер речных сборов и пересмотреть методику их начисления. Об этом идет речь в законопроекте "О внутреннем водном транспорте" №2475а , который планируется подать на рассмотрение в Верховную Раду в середине ноября.</div>
-                        <div class="sub-info">
-                            <span class="author">Автор</span>
-                            <span class="themes">Экономика</span>
-                            <span class="view">10 просмотров</span>
-                            <span class="comment">2 комментария</span>
-                        </div>
-                        <a href="news-vnutr.html">ПОДРОБНЕЕ</a>
-                    </div>
-                </div>
+                    <?php }
+                } ?>
                 <div class="pagination wow fadeInUp" data-wow-duration="1s">
                     <ul>
                         <li><a href="#" class="prev"></a></li>

@@ -145,8 +145,18 @@ $the_query->the_post(); ?>
                     </div>
                 </div>
                 <div class="prev-next-post wow fadeInUp" data-wow-duration="1s">
-                    <a href="" class="prev">Предыдущая новость</a>
-                    <a href="" class="next">Следующая новость</a>
+                    <?php if(get_permalink(get_adjacent_post(false,'',true)) != get_the_permalink()){
+                        ?>
+                        <a href="<?= get_permalink(get_adjacent_post(false,'',true));?>" class="prev">Предыдущая новость</a>
+                    <?php
+                    }?>
+
+                    <?php if(get_permalink(get_adjacent_post(false,'',false)) != get_the_permalink()){
+                        ?>
+                        <a href="#"></a>
+                        <a style="" href="<?= get_permalink(get_adjacent_post(false,'',false));?>" class="next">Слудующая новость</a>
+                        <?php
+                    }?>
                 </div>
                 <div class="news-front more-news wow fadeInUp" data-wow-duration="1s">
                     <div class="title"><?php the_field('news_list_title') ?></div>
