@@ -107,6 +107,16 @@ function tax_widgets_init()
         'before_title' => '<h2 class="widget-title">',
         'after_title' => '</h2>',
     ));
+
+    register_sidebar(array(
+        'name' => esc_html__('Sidebar_custom', 'tax'),
+        'id' => 'sidebar-custom',
+        'description' => esc_html__('Add widgets here.', 'tax'),
+        'before_widget' => '<div class="wow fadeInUp" data-wow-duration="1s">',
+        'after_widget' => '</div>',
+        'before_title' => '<div class="sidebar-title">',
+        'after_title' => '</div>',
+    ));
 }
 
 add_action('widgets_init', 'tax_widgets_init');

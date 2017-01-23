@@ -115,7 +115,7 @@ $the_query->the_post(); ?>
                          src="<?php the_field('news_image'); ?>" alt="">
                     <div class="text-info">
                         <div class="top wow fadeInUp" data-wow-duration="1s">
-                            <div class="date">24 <span>окт</span></div>
+                            <div class="date"><?php echo get_the_date('j'); ?> <span><?php echo get_the_date('M'); ?></span></div>
                             <div class="blog-title">
                                 <?php the_title(); ?>
                             </div>

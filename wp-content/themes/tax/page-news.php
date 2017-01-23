@@ -33,6 +33,12 @@
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#000">
     <!-- Custom Browsers Color End -->
+    <style>
+        .current-cat a {
+            color: #424242 !important;
+        }
+    </style>
+    
     <?php wp_head() ?>
 </head>
 
@@ -149,22 +155,52 @@
                     </ul>
                 </div>
             </div>
+<!--            --><?php //get_sidebar('sidebar-custom');?>
             <div class="sidebar">
                 <div class="search wow fadeInUp" data-wow-duration="1s">
-                    <form action="">
-                        <input type="text" placeholder="Поиск...">
-                        <input type="submit">
+                    <form  role="search" method="get" id="searchform" action="<?php echo home_url( '/' ) ?>">
+                        <input type="text"  value="<?php echo get_search_query() ?>" name="s" id="s"
+                               placeholder="Поиск...">
+                        <input type="submit" id="searchsubmit">
                     </form>
                 </div>
                 <div class="category wow fadeInUp" data-wow-duration="1s">
                     <div class="sidebar-title"><?php the_field('business_news_page_title_category') ?></div>
                     <ul>
-                        <li><a href="#">Экономика</a></li>
-                        <li class="active"><a href="#">Новости компаний</a></li>
-                        <li><a href="#">Финансы</a></li>
-                        <li><a href="#">Недвижимость</a></li>
-                        <li><a href="#">Налоги</a></li>
-                        <li><a href="#">Индексы</a></li>
+                        <?php
+
+                        $args = array(
+                            'show_option_all'    => '',
+                            'show_option_none'   => __('No categories'),
+                            'orderby'            => 'name',
+                            'order'              => 'DESC',
+                            'show_last_update'   => 0,
+                            'style'              => 'list',
+                            'show_count'         => 0,
+                            'hide_empty'         => 0,
+                            'use_desc_for_title' => 1,
+                            'child_of'           => 0,
+                            'feed'               => '',
+                            'feed_type'          => '',
+                            'feed_image'         => '',
+                            'exclude'            => '1',
+                            'exclude_tree'       => '',
+                            'include'            => '',
+                            'hierarchical'       => true,
+                            'title_li'           => '',
+                            'number'             => NULL,
+                            'echo'               => 1,
+                            'depth'              => 0,
+                            'current_category'   => 5,
+                            'pad_counts'         => 0,
+                            'taxonomy'           => 'category',
+                            'walker'             => 'Walker_Category',
+                            'hide_title_if_empty' => false,
+                            'separator'          => '<br />',
+                        );
+
+                        wp_list_categories( $args );
+                        ?>
                     </ul>
                 </div>
                 <div class="pop-news wow fadeInUp" data-wow-duration="1s">

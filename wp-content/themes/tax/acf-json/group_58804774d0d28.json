@@ -190,7 +190,7 @@
                                     "key": "field_588351575f7fe",
                                     "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
                                     "name": "convenience_flags_page_regions_punkts_in_one_column_description_link",
-                                    "type": "text",
+                                    "type": "page_link",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -199,11 +199,11 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "maxlength": ""
+                                    "post_type": [],
+                                    "taxonomy": [],
+                                    "allow_null": 0,
+                                    "allow_archives": 1,
+                                    "multiple": 0
                                 },
                                 {
                                     "key": "field_5883518e5f7ff",
@@ -541,5 +541,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1485006082
+    "modified": 1485158867
 }
