@@ -78,7 +78,7 @@
                 $args_last_news = array(
                     'numberposts' => -1,
                     'post_type' => 'tax_news',
-                    'posts_per_page' => 5
+                    'posts_per_page' => 1
                 );
 
                 // query
@@ -110,8 +110,13 @@
                                 <a href="<?php the_permalink();?>">ПОДРОБНЕЕ</a>
                             </div>
                         </div>
-                    <?php }
-                } ?>
+                    <?php
+                    }
+                    next_posts_link( 'Older Entries', $the_query_last_news->max_num_pages );
+                    previous_posts_link( 'Newer Entries' );
+                }
+                ?>
+
                 <div class="pagination wow fadeInUp" data-wow-duration="1s">
                     <ul>
                         <li><a href="#" class="prev"></a></li>
