@@ -204,6 +204,7 @@
                         );
 
                         the_posts_pagination($args_pagination);
+                        wp_reset_query();
 
                         ?>
                     </ul>
