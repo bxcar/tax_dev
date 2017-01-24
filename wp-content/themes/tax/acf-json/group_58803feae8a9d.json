@@ -198,6 +198,43 @@
             "layout": "vertical",
             "toggle": 0,
             "return_format": "value"
+        },
+        {
+            "key": "field_5887a0cba1b62",
+            "label": "\u041d\u043e\u0432\u043e\u0441\u0442\u0435\u0439 \u043d\u0430 \u043e\u0434\u043d\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5887a0f4a1b63",
+            "label": "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043d\u043e\u0432\u043e\u0441\u0442\u0435\u0439, \u0432\u044b\u0432\u043e\u0434\u0438\u043c\u044b\u0445 \u043d\u0430 \u043e\u0434\u043d\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435",
+            "name": "business_news_page_amount_news_per_page",
+            "type": "number",
+            "instructions": "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c 0 \u0438\u043b\u0438 \u0431\u043e\u043b\u044c\u0448\u0435. 0 - \u043e\u0437\u043d\u0430\u0447\u0430\u0435\u0442 \u0432\u044b\u0432\u0435\u0441\u0442\u0438 \u0432\u0441\u0435 \u043d\u043e\u0432\u043e\u0441\u0442\u0438 \u043d\u0430 \u043e\u0434\u043d\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 5,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 0,
+            "max": "",
+            "step": ""
         }
     ],
     "location": [
@@ -219,5 +256,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1485201417
+    "modified": 1485284458
 }

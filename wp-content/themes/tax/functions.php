@@ -388,3 +388,22 @@ function my_navigation_template( $template, $class ){
 	</nav>    
 	';
 }
+
+
+function my_post_queries( $query ) {
+    // do not alter the query on wp-admin pages and only alter it if it's the main query
+    if (!is_admin() && $query->is_main_query()){
+
+        // alter the query for the home and category pages
+
+       /* if(is_home()){
+            $query->set('posts_per_page', 1);
+        }*/
+
+        if(is_category()){
+            $query->set('posts_per_page', get_field('business_news_page_amount_news_per_page', 55));
+        }
+
+    }
+}
+add_action( 'pre_get_posts', 'my_post_queries' );
