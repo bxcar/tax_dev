@@ -434,6 +434,16 @@ function set_posts_per_page( $query ) {
     /*else*/if ( ( ! is_admin() ) && ( $query === $wp_the_query ) && ( $query->is_archive() ) ) {
         $query->set( 'posts_per_page', get_field('business_news_page_amount_news_per_page', 55) );
     }
+
+    /*if( is_category() ) {
+        $post_type = get_query_var('post_type');
+        if($post_type)
+            $post_type = $post_type;
+        else
+            $post_type = array('nav_menu_item', 'post', 'movies'); // don't forget nav_menu_item to allow menus to work!
+        $query->set('post_type',$post_type);
+        return $query;
+    }*/
     // Etc..
 
     return $query;

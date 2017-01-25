@@ -38,7 +38,6 @@
             .current-archive {
                 color: #424242 !important;
             }
-
             span.current {
                 width: 30px;
                 height: 30px;
@@ -52,7 +51,6 @@
                 background-color: #3ca04f;
                 color: #fff;
             }
-
             a.page-numbers,
             span.dots {
                 width: 30px;
@@ -67,16 +65,13 @@
                 display: inline-block;
                 transition: all ease-in .2s;
             }
-
             a.next::before {
                 content: url(/wp-content/themes/tax/img/next-post.png);
             }
-
             a.prev::before {
                 content: url(/wp-content/themes/tax/img/prev-post.png);
                 transform: scale(-1, 1);
             }
-
             .pagination a:hover,
             .pagination a:focus,
             .pagination a:active {
@@ -107,17 +102,13 @@
             <div class="blog">
 
                 <?php
-
                 /* $args_last_news = array(
                      'numberposts' => -1,
                      'post_type' => 'tax_news',
                      'posts_per_page' => 1
                  );*/
-
                 // query
                 //                $the_query_last_news = new WP_Query($args_last_news);
-
-
                 /*$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                 $the_query_last_news = query_posts(
                     array(
@@ -127,8 +118,6 @@
                         'paged' => $paged
                     )
                 );*/
-
-
                 /* if ($the_query_last_news->have_posts()) {
                      while ($the_query_last_news->have_posts()) {
                          $the_query_last_news->the_post(); */
@@ -149,9 +138,7 @@
                                 <div class="sub-info">
                                     <span class="author"><?php the_field('news_author') ?></span>
                                     <?php
-
                                     $cat = object_to_array(get_the_category());
-
                                     ?>
                                     <span class="themes"><?= $cat['0']['cat_name']; ?></span>
                                     <span class="view">10 просмотров</span>
@@ -169,7 +156,6 @@
                 <div class="pagination wow fadeInUp" data-wow-duration="1s">
                     <ul>
                         <?php
-
                         $args_pagination = array(
                             'show_all' => false, // показаны все страницы участвующие в пагинации
                             'end_size' => 1,     // количество страниц на концах
@@ -181,7 +167,6 @@
                             'add_fragment' => '',     // Текст который добавиться ко всем ссылкам.
                             'screen_reader_text' => __('Posts navigation'),
                         );
-
                         the_posts_pagination($args_pagination);
                         wp_reset_query();
                         ?>
@@ -200,10 +185,9 @@
                     <div class="sidebar-title"><?php the_field('business_news_page_title_category', 55) ?></div>
                     <ul>
                         <li class="all-item">
-                            <a href="<?= get_permalink(); ?>">Все новости</a>
+                            <a href="<?= home_url().'/news'?>">Все новости</a>
                         </li>
                         <?php
-
                         $args = array(
                             'show_option_all' => '',
                             'show_option_none' => __('No categories'),
@@ -233,7 +217,6 @@
                             'hide_title_if_empty' => false,
                             'separator' => '<br />',
                         );
-
                         wp_list_categories($args);
                         ?>
                     </ul>
@@ -266,13 +249,10 @@
                          <li><a href="#">Май</a></li>-->
 
                         <?php
-
-
                         //echo get_post_type_archive_link('tax_news');
                         //get_archive_link('tax_news');
                         //echo get_the_archive_title();
                         //echo get_permalink( get_option( 'tax_news' ) );
-
                         //get current archive url
                         global $wp;
                         $current_url = home_url() . add_query_arg(home_url($wp->request));
@@ -286,7 +266,6 @@
                             }
                         </script>
                         <?php
-
                         $args_archives = array(
                             'type' => 'monthly',
 //                            'limit'           => 10,
