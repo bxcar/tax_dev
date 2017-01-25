@@ -123,7 +123,7 @@
                     array(
                         'numberposts' => -1,
                         'post_type' => 'tax_news',
-                        'posts_per_page' => get_field('business_news_page_amount_news_per_page'),
+                        'posts_per_page' => get_field('business_news_page_amount_news_per_page', 55),
                         'paged' => $paged
                     )
                 );*/
@@ -183,7 +183,7 @@
                         );
 
                         the_posts_pagination($args_pagination);
-//                        wp_reset_query();
+                        wp_reset_query();
                         ?>
                     </ul>
                 </div>

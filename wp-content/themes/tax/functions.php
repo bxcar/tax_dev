@@ -420,3 +420,21 @@ function object_to_array($data)
     }
     return $data;
 }
+
+
+//post per page for archives
+add_action( 'pre_get_posts',  'set_posts_per_page'  );
+function set_posts_per_page( $query ) {
+
+    global $wp_the_query;
+
+   /* if ( ( ! is_admin() ) && ( $query === $wp_the_query ) && ( $query->is_search() ) ) {
+        $query->set( 'posts_per_page', 3 );
+    }*/
+    /*else*/if ( ( ! is_admin() ) && ( $query === $wp_the_query ) && ( $query->is_archive() ) ) {
+        $query->set( 'posts_per_page', get_field('business_news_page_amount_news_per_page', 55) );
+    }
+    // Etc..
+
+    return $query;
+}
