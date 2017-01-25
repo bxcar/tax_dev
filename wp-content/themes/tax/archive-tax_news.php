@@ -34,7 +34,8 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="#000">
         <!-- Custom Browsers Color End -->
         <style>
-            .all-item a {
+            .all-item a,
+            .current-archive {
                 color: #424242 !important;
             }
 
@@ -182,8 +183,7 @@
                         );
 
                         the_posts_pagination($args_pagination);
-                        wp_reset_query();
-
+//                        wp_reset_query();
                         ?>
                     </ul>
                 </div>
@@ -200,7 +200,7 @@
                     <div class="sidebar-title"><?php the_field('business_news_page_title_category', 55) ?></div>
                     <ul>
                         <li class="all-item">
-                            <a href="<?= get_permalink();?>" >Все новости</a>
+                            <a href="<?= get_permalink(); ?>">Все новости</a>
                         </li>
                         <?php
 
@@ -264,17 +264,40 @@
                          <li><a href="#">Июль</a></li>
                          <li><a href="#">Июнь</a></li>
                          <li><a href="#">Май</a></li>-->
-                        <?php $args_archives = array(
-                            'type'            => 'monthly',
+
+                        <?php
+
+
+                        //echo get_post_type_archive_link('tax_news');
+                        //get_archive_link('tax_news');
+                        //echo get_the_archive_title();
+                        //echo get_permalink( get_option( 'tax_news' ) );
+
+                        //get current archive url
+                        global $wp;
+                        $current_url = home_url() . add_query_arg(home_url($wp->request));
+                        ?>
+                        <!-- add class current-archive to active archive link in sidebar-->
+                        <script>
+                            window.onload = function () {
+                                var active_archive = document.querySelectorAll('.archive ul li a[href="<?=$current_url?>"]')[0];
+                                active_archive.className += ' current-archive';
+                            }
+                        </script>
+                        <?php
+
+                        $args_archives = array(
+                            'type' => 'monthly',
 //                            'limit'           => 10,
-                            'format'          => 'html',
-                            'before'          => '',
-                            'after'           => '',
+                            'format' => 'html',
+                            'before' => '',
+                            'after' => '',
                             'show_post_count' => false,
-                            'echo'            => 1,
-                            'post_type'       => 'tax_news'
+                            'echo' => 1,
+                            'post_type' => 'tax_news'
                         );
-                        wp_get_archives( $args_archives ); ?>
+                        wp_get_archives($args_archives);
+                        ?>
                     </ul>
                 </div>
             </div>
