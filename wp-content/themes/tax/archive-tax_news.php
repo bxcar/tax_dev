@@ -276,6 +276,7 @@
                         //get current archive url
                         global $wp;
                         $current_url = home_url() . add_query_arg(home_url($wp->request));
+                        $current_url = preg_replace('/\/page\/[0-9]+/','', $current_url);
                         ?>
                         <!-- add class current-archive to active archive link in sidebar-->
                         <script>
