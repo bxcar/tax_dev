@@ -101,18 +101,7 @@
             <div class="blog">
 
                 <?php
-                function object_to_array($data)
-                {
-                    if (is_array($data) || is_object($data)) {
-                        $result = array();
-                        foreach ($data as $key => $value) {
-                            $result[$key] = object_to_array($value);
-                        }
-                        return $result;
-                    }
-                    return $data;
-                }
-
+                
                 /* $args_last_news = array(
                      'numberposts' => -1,
                      'post_type' => 'tax_news',
@@ -204,6 +193,9 @@
                 <div class="category wow fadeInUp" data-wow-duration="1s">
                     <div class="sidebar-title"><?php the_field('business_news_page_title_category', 55) ?></div>
                     <ul>
+                        <li class="all-item">
+                            <a href="<?= get_permalink(55);?>" >Все новости</a>
+                        </li>
                         <?php
 
                         $args = array(
@@ -228,7 +220,7 @@
                             'number' => NULL,
                             'echo' => 1,
                             'depth' => 0,
-                            'current_category' => 5,
+                            'current_category' => '',
                             'pad_counts' => 0,
                             'taxonomy' => 'category',
                             'walker' => 'Walker_Category',
@@ -261,11 +253,17 @@
                 <div class="archive wow fadeInUp" data-wow-duration="1s">
                     <div class="sidebar-title"><?php the_field('business_news_page_title_archive', 55) ?></div>
                     <ul>
-                        <li><a href="#">Сентябрь</a></li>
-                        <li class="active"><a href="#">Август</a></li>
-                        <li><a href="#">Июль</a></li>
-                        <li><a href="#">Июнь</a></li>
-                        <li><a href="#">Май</a></li>
+                        <?php $args_archives = array(
+                            'type'            => 'monthly',
+//                            'limit'           => 10,
+                            'format'          => 'html',
+                            'before'          => '',
+                            'after'           => '',
+                            'show_post_count' => false,
+                            'echo'            => 1,
+                            'post_type'       => 'tax_news'
+                        );
+                        wp_get_archives( $args_archives ); ?>
                     </ul>
                 </div>
             </div>
