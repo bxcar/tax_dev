@@ -123,7 +123,6 @@
                 );*/
 
 
-
                 /* if ($the_query_last_news->have_posts()) {
                      while ($the_query_last_news->have_posts()) {
                          $the_query_last_news->the_post(); */
@@ -142,13 +141,24 @@
                                 </div>
                                 <div class="text"><?php the_field('news_quote') ?></div>
                                 <div class="sub-info">
-                                    <span class="author"><?php the_field('news_author') ?></span>
+<!--                                    <span class="author">--><?php //the_field('news_author') ?><!--</span>-->
                                     <?php
 
-                                    $cat = object_to_array(get_the_category());
+                                    //                                    $cat = object_to_array(get_the_category());
+
+                                    /*$cur_terms = get_the_terms($post->ID, 'tetrad_tax');
+                                    foreach ($cur_terms as $cur_term) {
+                                        echo '<a href="' . get_term_link((int)$cur_term->term_id, $cur_term->taxonomy) . '">' . $cur_term->name . '</a>,';
+                                    }*/
+
+                                    $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
+                                    foreach ($cur_terms as $cur_term) {
+                                        echo '<span class="themes">' . $cur_term->name . '</span> ';
+                                    }
 
                                     ?>
-                                    <span class="themes"><?= $cat['0']['cat_name']; ?></span>
+                                    <!--                                    <span class="themes">-->
+                                    <?//= $cat['0']['cat_name']; ?><!--</span>-->
                                     <span class="view">10 просмотров</span>
                                     <span class="comment">2 комментария</span>
                                 </div>
@@ -194,7 +204,7 @@
                     <div class="sidebar-title"><?php the_field('business_news_page_title_category', 55) ?></div>
                     <ul>
                         <li class="all-item">
-                            <a href="<?= get_permalink(55);?>" >Все новости</a>
+                            <a href="<?= get_permalink(55); ?>">Все новости</a>
                         </li>
                         <?php
 
@@ -254,16 +264,16 @@
                     <div class="sidebar-title"><?php the_field('business_news_page_title_archive', 55) ?></div>
                     <ul>
                         <?php $args_archives = array(
-                            'type'            => 'monthly',
+                            'type' => 'monthly',
 //                            'limit'           => 10,
-                            'format'          => 'html',
-                            'before'          => '',
-                            'after'           => '',
+                            'format' => 'html',
+                            'before' => '',
+                            'after' => '',
                             'show_post_count' => false,
-                            'echo'            => 1,
-                            'post_type'       => 'tax_news'
+                            'echo' => 1,
+                            'post_type' => 'tax_news'
                         );
-                        wp_get_archives( $args_archives ); ?>
+                        wp_get_archives($args_archives); ?>
                     </ul>
                 </div>
             </div>
