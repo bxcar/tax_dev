@@ -284,9 +284,19 @@ function register_my_custom_menu_page(){
     add_submenu_page('custompage', 'Удобные флаги', 'Удобные флаги', 8, '/edit.php?post_type=tax_convenience_flag');
     add_submenu_page('custompage', 'Услуги и сервисы', 'Услуги и сервисы', 8, '/edit.php?post_type=tax_facilities_serv');
     remove_submenu_page('custompage','custompage');
+
+    add_menu_page(
+        'custom taxonomy title', 'Таксономии', 'manage_options', 'customtaxonomies', 'my_custom_taxonomy_page', 'dashicons-list-view', 22.3
+    );
+    add_submenu_page('customtaxonomies', 'Категории_новости', 'Категории_новости', 8, '/edit-tags.php?taxonomy=customcat_for_tax_news');
+//    remove_submenu_page('customtaxonomies','customtaxonomies');
 }
 
 function my_custom_menu_page(){
+    echo "<h3>Выберите нужный вам раздел для редактирования, которые отображены слева в подменю данного раздела.</h3>";
+}
+
+function my_custom_taxonomy_page(){
     echo "<h3>Выберите нужный вам раздел для редактирования, которые отображены слева в подменю данного раздела.</h3>";
 }
 

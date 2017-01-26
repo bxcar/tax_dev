@@ -27,25 +27,6 @@
             "mime_types": ""
         },
         {
-            "key": "field_587e67c796f9b",
-            "label": "\u0410\u0432\u0442\u043e\u0440 \u043d\u043e\u0432\u043e\u0441\u0442\u0438",
-            "name": "news_author",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
             "key": "field_5885f91d92938",
             "label": "\u041e\u0442\u0440\u044b\u0432\u043e\u043a \u0434\u043b\u044f \u043f\u043e\u043a\u0430\u0437\u0430 \u0432 \u043b\u0435\u043d\u0442\u0435 \u043d\u043e\u0432\u043e\u0441\u0442\u0435\u0439",
             "name": "news_quote",
@@ -247,5 +228,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1485175123
+    "modified": 1485463868
 }

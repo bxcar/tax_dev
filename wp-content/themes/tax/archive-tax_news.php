@@ -136,11 +136,14 @@
                                 </div>
                                 <div class="text"><?php the_field('news_quote') ?></div>
                                 <div class="sub-info">
-                                    <span class="author"><?php the_field('news_author') ?></span>
                                     <?php
-                                    $cat = object_to_array(get_the_category());
+
+                                    $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
+                                    foreach ($cur_terms as $cur_term) {
+                                        echo '<span class="themes">' . $cur_term->name . '</span> ';
+                                    }
+
                                     ?>
-                                    <span class="themes"><?= $cat['0']['cat_name']; ?></span>
                                     <span class="view">10 просмотров</span>
                                     <span class="comment">2 комментария</span>
                                 </div>
@@ -210,13 +213,14 @@
                             'number' => NULL,
                             'echo' => 1,
                             'depth' => 0,
-                            'current_category' => 5,
+                            'current_category' => '',
                             'pad_counts' => 0,
-                            'taxonomy' => 'category',
+                            'taxonomy' => 'customcat_for_tax_news',
                             'walker' => 'Walker_Category',
                             'hide_title_if_empty' => false,
                             'separator' => '<br />',
                         );
+
                         wp_list_categories($args);
                         ?>
                     </ul>
