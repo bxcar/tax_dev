@@ -3,89 +3,89 @@
  * Template Name: news
  */
 ?>
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
-<head>
+    <head>
 
-    <meta charset="utf-8">
+        <meta charset="utf-8">
 
-    <title><?php the_field('business_news_page_title_meta') ?></title>
-    <meta name="description" content="<?php the_field('business_news_page_description_meta') ?>">
-    <meta name="keywords" content="<?php the_field('business_news_page_keywords') ?>">
+        <title><?php the_field('business_news_page_title_meta') ?></title>
+        <meta name="description" content="<?php the_field('business_news_page_description_meta') ?>">
+        <meta name="keywords" content="<?php the_field('business_news_page_keywords') ?>">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- Template Basic Images Start -->
-    <meta property="og:image" content="path/to/image.jpg">
-    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
-    <!-- Template Basic Images End -->
+        <!-- Template Basic Images Start -->
+        <meta property="og:image" content="path/to/image.jpg">
+        <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+        <!-- Template Basic Images End -->
 
-    <!-- Custom Browsers Color Start -->
-    <!-- Chrome, Firefox OS and Opera -->
-    <meta name="theme-color" content="#000">
-    <!-- Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#000">
-    <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="#000">
-    <!-- Custom Browsers Color End -->
-    <style>
-        .all-item a {
-            color: #424242 !important;
-        }
+        <!-- Custom Browsers Color Start -->
+        <!-- Chrome, Firefox OS and Opera -->
+        <meta name="theme-color" content="#000">
+        <!-- Windows Phone -->
+        <meta name="msapplication-navbutton-color" content="#000">
+        <!-- iOS Safari -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+        <!-- Custom Browsers Color End -->
+        <style>
+            .all-item a {
+                color: #424242 !important;
+            }
 
-        span.current {
-            width: 30px;
-            height: 30px;
-            margin: 0 5px;
-            text-align: center;
-            font-size: .75rem;
-            font-weight: 400;
-            line-height: 30px;
-            display: inline-block;
-            transition: all ease-in .2s;
-            background-color: #3ca04f;
-            color: #fff;
-        }
+            span.current {
+                width: 30px;
+                height: 30px;
+                margin: 0 5px;
+                text-align: center;
+                font-size: .75rem;
+                font-weight: 400;
+                line-height: 30px;
+                display: inline-block;
+                transition: all ease-in .2s;
+                background-color: #3ca04f;
+                color: #fff;
+            }
 
-        a.page-numbers,
-        span.dots {
-            width: 30px;
-            height: 30px;
-            margin: 0 5px;
-            text-align: center;
-            background-color: #f9fafb;
-            color: #424242 !important;
-            font-size: .75rem;
-            font-weight: 400;
-            line-height: 30px;
-            display: inline-block;
-            transition: all ease-in .2s;
-        }
+            a.page-numbers,
+            span.dots {
+                width: 30px;
+                height: 30px;
+                margin: 0 5px;
+                text-align: center;
+                background-color: #f9fafb;
+                color: #424242 !important;
+                font-size: .75rem;
+                font-weight: 400;
+                line-height: 30px;
+                display: inline-block;
+                transition: all ease-in .2s;
+            }
 
-        a.next::before {
-            content: url(/wp-content/themes/tax/img/next-post.png);
-        }
+            a.next::before {
+                content: url(/wp-content/themes/tax/img/next-post.png);
+            }
 
-        a.prev::before {
-            content: url(/wp-content/themes/tax/img/prev-post.png);
-            transform: scale(-1, 1);
-        }
+            a.prev::before {
+                content: url(/wp-content/themes/tax/img/prev-post.png);
+                transform: scale(-1, 1);
+            }
 
-        .pagination a:hover,
-        .pagination a:focus,
-        .pagination a:active {
-            background-color: #e1e3e6;
-            text-decoration: none;
-        }
-    </style>
+            .pagination a:hover,
+            .pagination a:focus,
+            .pagination a:active {
+                background-color: #e1e3e6;
+                text-decoration: none;
+            }
+        </style>
 
-    <?php wp_head() ?>
-</head>
+        <?php wp_head() ?>
+    </head>
 
 <body>
 <!-- Custom HTML -->
@@ -146,13 +146,14 @@
                                 </div>
                                 <div class="text"><?php the_field('news_quote') ?></div>
                                 <div class="sub-info">
-                                    <span class="author"><?php the_field('news_author') ?></span>
                                     <?php
 
-                                    $cat = object_to_array(get_the_category());
+                                    $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
+                                    foreach ($cur_terms as $cur_term) {
+                                        echo '<span class="themes">' . $cur_term->name . '</span> ';
+                                    }
 
                                     ?>
-                                    <span class="themes"><?= $cat['0']['cat_name']; ?></span>
                                     <span class="view">10 просмотров</span>
                                     <span class="comment">2 комментария</span>
                                 </div>
@@ -215,7 +216,7 @@
                     <div class="sidebar-title"><?php the_field('business_news_page_title_category') ?></div>
                     <ul>
                         <li class="all-item">
-                            <a href="<?= get_permalink();?>" >Все новости</a>
+                            <a href="<?= get_permalink(); ?>">Все новости</a>
                         </li>
                         <?php
 
@@ -255,41 +256,77 @@
                 </div>
                 <div class="pop-news wow fadeInUp" data-wow-duration="1s">
                     <div class="sidebar-title"><?php the_field('business_news_page_title_popular_news') ?></div>
-                    <a href="#" class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/img/p-news-1.jpg" alt="">
+
+                    <?php
+                    $args_popular_news = array(
+                        'post_type' => 'tax_news', //slag
+                        'posts_per_page' => 3,
+                        'orderby' => 'rand'
+                    );
+                    $popular_news = new WP_Query($args_popular_news);
+
+                    //loop
+                    $i = 0;
+                    if ($popular_news->have_posts()) :
+                        $result = object_to_array($popular_news);
+
+                        while ($popular_news->have_posts()) :
+                            $popular_news->the_post();
+                            //display list
+                            ?>
+                            <a href="<?php the_permalink(); ?>" class="item">
+                                <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
+                                <p><?php the_title(); ?></p>
+                                <div class="date"><?php echo get_the_date('j'); ?> <?php echo get_the_date('M');
+
+                                    $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
+                                    echo ' / ' . $cur_terms[0]->name;
+                                    ?>
+                                </div>
+                            </a>
+
+                            <?php
+                        endwhile;
+
+                    endif;
+                    wp_reset_postdata(); // return global variables to state of main query ?>
+
+
+                    <!--<a href="#" class="item">
+                        <img src="<?php /*bloginfo('template_url'); */ ?>/img/p-news-1.jpg" alt="">
                         <p>Власти ухудшили прогноз роста экономики</p>
                         <div class="date">21 октября / Экономика</div>
                     </a>
                     <a href="#" class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/img/p-news-2.jpg" alt="">
+                        <img src="<?php /*bloginfo('template_url'); */ ?>/img/p-news-2.jpg" alt="">
                         <p>Прибыль Samsung упала на 30% из-за Galaxy Note 7</p>
                         <div class="date">20 октября / Новости компаний</div>
                     </a>
                     <a href="#" class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/img/p-news-3.jpg" alt="">
+                        <img src="<?php /*bloginfo('template_url'); */ ?>/img/p-news-3.jpg" alt="">
                         <p>Торги на биржах США завершились ростом</p>
                         <div class="date">19 октября / Финансы</div>
-                    </a>
+                    </a>-->
                 </div>
                 <div class="archive wow fadeInUp" data-wow-duration="1s">
                     <div class="sidebar-title"><?php the_field('business_news_page_title_archive') ?></div>
                     <ul>
-                       <!-- <li><a href="#">Сентябрь</a></li>
-                        <li class="active"><a href="#">Август</a></li>
-                        <li><a href="#">Июль</a></li>
-                        <li><a href="#">Июнь</a></li>
-                        <li><a href="#">Май</a></li>-->
+                        <!-- <li><a href="#">Сентябрь</a></li>
+                         <li class="active"><a href="#">Август</a></li>
+                         <li><a href="#">Июль</a></li>
+                         <li><a href="#">Июнь</a></li>
+                         <li><a href="#">Май</a></li>-->
                         <?php $args_archives = array(
-                            'type'            => 'monthly',
+                            'type' => 'monthly',
 //                            'limit'           => 10,
-                            'format'          => 'html',
-                            'before'          => '',
-                            'after'           => '',
+                            'format' => 'html',
+                            'before' => '',
+                            'after' => '',
                             'show_post_count' => false,
-                            'echo'            => 1,
-                            'post_type'       => 'tax_news'
+                            'echo' => 1,
+                            'post_type' => 'tax_news'
                         );
-                        wp_get_archives( $args_archives ); ?>
+                        wp_get_archives($args_archives); ?>
                     </ul>
                 </div>
             </div>
