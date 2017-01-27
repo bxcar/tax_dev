@@ -99,7 +99,8 @@
 
             }
 
-            .archive-year-span {
+            .archive-year-span,
+            .archive-month-list{
                 margin-left: 10px;
             }
         </style>

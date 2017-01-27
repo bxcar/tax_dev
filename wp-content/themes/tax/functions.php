@@ -570,6 +570,8 @@ function wp_custom_archive($post_type_cust = 'post', $args = '')
         return $output;
 }
 
+//   /List archives by year, then month(work, but I use wp_custom_archive_new)
+
 
 //another function for custom display archives
 function wp_custom_archive_new($post_type_cust = 'post')
@@ -598,7 +600,7 @@ function wp_custom_archive_new($post_type_cust = 'post')
                 <img id="transform-right-arrow-arch-by-month" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
             </div>
 
-            <ul class="archive-list" id="archive-by-month-block-hidden" style="display: none;">
+            <ul class="archive-month-list" class="archive-list" id="archive-by-month-block-hidden" style="display: none;">
         <?php }
         $monthes = array(
             1 => 'Январь', 2 => 'Февраль', 3 => 'Март', 4 => 'Апрель',
