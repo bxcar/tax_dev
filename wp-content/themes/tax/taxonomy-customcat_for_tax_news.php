@@ -83,6 +83,25 @@
             text-decoration: none !important;
             cursor: pointer;
         }
+
+        .archive-year,
+        .archive-year-span {
+            font-size: .8125rem;
+            font-weight: 400;
+            line-height: 33px;
+            color: #9e9e9e !important;
+            cursor: pointer;
+
+        }
+
+        .archive-year-span,
+        .archive-month-list {
+            margin-left: 10px;
+        }
+
+        .archive-month-list a {
+            line-height: 27px !important;
+        }
     </style>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -119,31 +138,6 @@
             <div class="blog">
 
                 <?php
-
-                /* $args_last_news = array(
-                     'numberposts' => -1,
-                     'post_type' => 'tax_news',
-                     'posts_per_page' => 1
-                 );*/
-
-                // query
-                //                $the_query_last_news = new WP_Query($args_last_news);
-
-
-                /*$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-                $the_query_last_news = query_posts(
-                    array(
-                        'numberposts' => -1,
-                        'post_type' => 'tax_news',
-                        'posts_per_page' => get_field('business_news_page_amount_news_per_page'),
-                        'paged' => $paged
-                    )
-                );*/
-
-
-                /* if ($the_query_last_news->have_posts()) {
-                     while ($the_query_last_news->have_posts()) {
-                         $the_query_last_news->the_post(); */
                 if (have_posts()) {
                     while (have_posts()) {
                         the_post(); ?>
@@ -159,25 +153,12 @@
                                 </div>
                                 <div class="text"><?php the_field('news_quote') ?></div>
                                 <div class="sub-info">
-                                    <!--                                    <span class="author">-->
-                                    <?php //the_field('news_author') ?><!--</span>-->
                                     <?php
-
-                                    //                                    $cat = object_to_array(get_the_category());
-
-                                    /*$cur_terms = get_the_terms($post->ID, 'tetrad_tax');
-                                    foreach ($cur_terms as $cur_term) {
-                                        echo '<a href="' . get_term_link((int)$cur_term->term_id, $cur_term->taxonomy) . '">' . $cur_term->name . '</a>,';
-                                    }*/
-
                                     $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
                                     foreach ($cur_terms as $cur_term) {
                                         echo '<span class="themes">' . $cur_term->name . '</span> ';
                                     }
-
                                     ?>
-                                    <!--                                    <span class="themes">-->
-                                    <?//= $cat['0']['cat_name']; ?><!--</span>-->
                                     <span class="view">10 просмотров</span>
                                     <span class="comment">2 комментария</span>
                                 </div>
@@ -358,17 +339,7 @@
                         </a>
                     </div>
                     <ul id="arch-hidden-block" style="display: none;">
-                        <?php $args_archives = array(
-                            'type' => 'monthly',
-//                            'limit'           => 10,
-                            'format' => 'html',
-                            'before' => '',
-                            'after' => '',
-                            'show_post_count' => false,
-                            'echo' => 1,
-                            'post_type' => 'tax_news'
-                        );
-                        wp_get_archives($args_archives); ?>
+                        <?php wp_custom_archive_new('tax_news'); ?>
                     </ul>
                 </div>
             </div>

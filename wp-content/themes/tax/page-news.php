@@ -103,6 +103,10 @@
             .archive-month-list{
                 margin-left: 10px;
             }
+
+            .archive-month-list a {
+                line-height: 27px !important;
+            }
         </style>
 
 
@@ -341,21 +345,6 @@
                         </a>
                     </div>
                     <ul id="arch-hidden-block" style="display: none;">
-                        <?php /*$args_archives = array(
-                            'type' => 'monthly',
-//                            'limit'           => 1,
-                            'format' => 'html',
-                            'before' => '',
-                            'after' => '',
-                            'show_post_count' => false,
-                            'echo' => 1,
-                            'post_type' => 'tax_news'
-                        );
-                        wp_get_archives($args_archives);
-//                        echo get_archives_link( '/2013', 'Архив за 2013 год' );
-                        */ ?>
-
-
                         <?php wp_custom_archive_new('tax_news'); ?>
                     </ul>
                 </div>
