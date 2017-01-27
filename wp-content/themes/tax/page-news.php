@@ -256,57 +256,83 @@
                 </div>
                 <div class="pop-news wow fadeInUp" data-wow-duration="1s">
                     <div class="sidebar-title"><?php the_field('business_news_page_title_popular_news') ?></div>
-
                     <?php
-                    $args_popular_news = array(
-                        'post_type' => 'tax_news', //slag
-                        'posts_per_page' => 3,
-                        'orderby' => 'rand'
-                    );
-                    $popular_news = new WP_Query($args_popular_news);
 
-                    //loop
-                    $i = 0;
-                    if ($popular_news->have_posts()) :
-                        $result = object_to_array($popular_news);
+                    //default popular news displayed randomly
+                    if (!get_field('business_news_page_sidebar_popular_news')) {
 
-                        while ($popular_news->have_posts()) :
-                            $popular_news->the_post();
-                            //display list
-                            ?>
-                            <a href="<?php the_permalink(); ?>" class="item">
-                                <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
-                                <p><?php the_title(); ?></p>
-                                <div class="date"><?php echo get_the_date('j'); ?> <?php echo get_the_date('M');
+                        $args_popular_news = array(
+                            'post_type' => 'tax_news', //slag
+                            'posts_per_page' => 3,
+                            'orderby' => 'rand'
+                        );
+                        $popular_news = new WP_Query($args_popular_news);
 
-                                    $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
-                                    echo ' / ' . $cur_terms[0]->name;
-                                    ?>
-                                </div>
-                            </a>
+                        //loop
+                        $i = 0;
+                        if ($popular_news->have_posts()) :
+                            $result = object_to_array($popular_news);
 
-                            <?php
-                        endwhile;
+                            while ($popular_news->have_posts()) :
+                                $popular_news->the_post();
+                                //display list
+                                ?>
+                                <a href="<?php the_permalink(); ?>" class="item">
+                                    <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
+                                    <p><?php the_title(); ?></p>
+                                    <div class="date"><?php echo get_the_date('j'); ?>&nbsp;<?php echo get_the_date('M');
 
-                    endif;
-                    wp_reset_postdata(); // return global variables to state of main query ?>
+                                        $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
+                                        echo ' / ' . $cur_terms[0]->name;
+                                        ?>
+                                    </div>
+                                </a>
+                                <?php
+                            endwhile;
+                        endif;
+                        wp_reset_postdata(); // return global variables to state of main query
+                    }
 
+                    //if pupular news defined in admin panel than displayed defined popular news
+                    else {
+                        $popular_news_all = get_field('business_news_page_sidebar_popular_news');
 
-                    <!--<a href="#" class="item">
-                        <img src="<?php /*bloginfo('template_url'); */ ?>/img/p-news-1.jpg" alt="">
-                        <p>Власти ухудшили прогноз роста экономики</p>
-                        <div class="date">21 октября / Экономика</div>
-                    </a>
-                    <a href="#" class="item">
-                        <img src="<?php /*bloginfo('template_url'); */ ?>/img/p-news-2.jpg" alt="">
-                        <p>Прибыль Samsung упала на 30% из-за Galaxy Note 7</p>
-                        <div class="date">20 октября / Новости компаний</div>
-                    </a>
-                    <a href="#" class="item">
-                        <img src="<?php /*bloginfo('template_url'); */ ?>/img/p-news-3.jpg" alt="">
-                        <p>Торги на биржах США завершились ростом</p>
-                        <div class="date">19 октября / Финансы</div>
-                    </a>-->
+                        foreach ($popular_news_all as $popular_news_single) {
+
+                            $args_popular_news = array(
+                                'post_type' => 'tax_news' //slag
+                            );
+                            $popular_news = new WP_Query($args_popular_news);
+
+                            //loop
+                            $i = 0;
+                            if ($popular_news->have_posts()) :
+                                $result = object_to_array($popular_news);
+
+                                while ($popular_news->have_posts()) :
+                                    $popular_news->the_post();
+                                    if (get_the_permalink() == $popular_news_single['business_news_page_sidebar_popular_news_single']) {
+                                        //display list
+                                        ?>
+                                        <a href="<?php the_permalink(); ?>" class="item">
+                                            <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
+                                            <p><?php the_title(); ?></p>
+                                            <div
+                                                class="date"><?php echo get_the_date('j'); ?>&nbsp;<?php echo get_the_date('M');
+
+                                                $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
+                                                echo ' / ' . $cur_terms[0]->name;
+                                                ?>
+                                            </div>
+                                        </a>
+                                        <?php
+                                    }
+                                endwhile;
+                            endif;
+                            wp_reset_postdata(); // return global variables to state of main query
+                        }
+                    }
+                    ?>
                 </div>
                 <div class="archive wow fadeInUp" data-wow-duration="1s">
                     <div class="sidebar-title"><?php the_field('business_news_page_title_archive') ?></div>
