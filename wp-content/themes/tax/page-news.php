@@ -4,97 +4,105 @@
  */
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
+    <!DOCTYPE html>
+    <html>
+    <head>
 
-    <meta charset="utf-8">
+        <meta charset="utf-8">
 
-    <title><?php the_field('business_news_page_title_meta') ?></title>
-    <meta name="description" content="<?php the_field('business_news_page_description_meta') ?>">
-    <meta name="keywords" content="<?php the_field('business_news_page_keywords') ?>">
+        <title><?php the_field('business_news_page_title_meta') ?></title>
+        <meta name="description" content="<?php the_field('business_news_page_description_meta') ?>">
+        <meta name="keywords" content="<?php the_field('business_news_page_keywords') ?>">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- Template Basic Images Start -->
-    <meta property="og:image" content="path/to/image.jpg">
-    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
-    <!-- Template Basic Images End -->
+        <!-- Template Basic Images Start -->
+        <meta property="og:image" content="path/to/image.jpg">
+        <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+        <!-- Template Basic Images End -->
 
-    <!-- Custom Browsers Color Start -->
-    <!-- Chrome, Firefox OS and Opera -->
-    <meta name="theme-color" content="#000">
-    <!-- Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#000">
-    <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="#000">
-    <!-- Custom Browsers Color End -->
-    <style>
-        .all-item a {
-            color: #424242 !important;
-        }
+        <!-- Custom Browsers Color Start -->
+        <!-- Chrome, Firefox OS and Opera -->
+        <meta name="theme-color" content="#000">
+        <!-- Windows Phone -->
+        <meta name="msapplication-navbutton-color" content="#000">
+        <!-- iOS Safari -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+        <!-- Custom Browsers Color End -->
+        <style>
+            .all-item a {
+                color: #424242 !important;
+            }
 
-        span.current {
-            width: 30px;
-            height: 30px;
-            margin: 0 5px;
-            text-align: center;
-            font-size: .75rem;
-            font-weight: 400;
-            line-height: 30px;
-            display: inline-block;
-            transition: all ease-in .2s;
-            background-color: #3ca04f;
-            color: #fff;
-        }
+            span.current {
+                width: 30px;
+                height: 30px;
+                margin: 0 5px;
+                text-align: center;
+                font-size: .75rem;
+                font-weight: 400;
+                line-height: 30px;
+                display: inline-block;
+                transition: all ease-in .2s;
+                background-color: #3ca04f;
+                color: #fff;
+            }
 
-        a.page-numbers,
-        span.dots {
-            width: 30px;
-            height: 30px;
-            margin: 0 5px;
-            text-align: center;
-            background-color: #f9fafb;
-            color: #424242 !important;
-            font-size: .75rem;
-            font-weight: 400;
-            line-height: 30px;
-            display: inline-block;
-            transition: all ease-in .2s;
-        }
+            a.page-numbers,
+            span.dots {
+                width: 30px;
+                height: 30px;
+                margin: 0 5px;
+                text-align: center;
+                background-color: #f9fafb;
+                color: #424242 !important;
+                font-size: .75rem;
+                font-weight: 400;
+                line-height: 30px;
+                display: inline-block;
+                transition: all ease-in .2s;
+            }
 
-        a.next::before {
-            content: url(/wp-content/themes/tax/img/next-post.png);
-        }
+            a.next::before {
+                content: url(/wp-content/themes/tax/img/next-post.png);
+            }
 
-        a.prev::before {
-            content: url(/wp-content/themes/tax/img/prev-post.png);
-            transform: scale(-1, 1);
-        }
+            a.prev::before {
+                content: url(/wp-content/themes/tax/img/prev-post.png);
+                transform: scale(-1, 1);
+            }
 
-        .pagination a:hover,
-        .pagination a:focus,
-        .pagination a:active {
-            background-color: #e1e3e6;
-            text-decoration: none;
-        }
+            .pagination a:hover,
+            .pagination a:focus,
+            .pagination a:active {
+                background-color: #e1e3e6;
+                text-decoration: none;
+            }
 
-        .display_cat_arch {
-            color: #424242 !important;
-            text-decoration: none !important;
-            cursor: pointer;
-        }
-    </style>
+            .display_cat_arch {
+                color: #424242 !important;
+                text-decoration: none !important;
+                cursor: pointer;
+            }
+
+            .archive-year {
+                font-size: .8125rem;
+                font-weight: 400;
+                line-height: 33px;
+                color: #9e9e9e;
+                cursor: pointer;
+            }
+        </style>
 
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script src="<?php bloginfo('template_url') ?>/js/animate-cat-arch.js"></script>
-    <?php wp_head() ?>
-</head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script src="<?php bloginfo('template_url') ?>/js/animate-cat-arch.js"></script>
+        <?php wp_head() ?>
+    </head>
 
 <body>
 <!-- Custom HTML -->
@@ -321,10 +329,11 @@
                     <div class="sidebar-title">
                         <a class="display_cat_arch" id="link-display-arch">
                             <?php the_field('business_news_page_title_archive') ?>&nbsp;
-                            <img id="transform-right-arrow-arch" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
+                            <img id="transform-right-arrow-arch"
+                                 src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
                         </a>
                     </div>
-<!--                    <ul id="arch-hidden-block" style="display: none;">-->
+                    <ul id="arch-hidden-block" style="display: none;">
                         <?php /*$args_archives = array(
                             'type' => 'monthly',
 //                            'limit'           => 1,
@@ -337,41 +346,11 @@
                         );
                         wp_get_archives($args_archives);
 //                        echo get_archives_link( '/2013', 'Архив за 2013 год' );
-                        */?>
+                        */ ?>
 
 
-
-                        <?php
-                        global $wpdb;
-                        $year_prev = null;
-                        $months = $wpdb->get_results("SELECT DISTINCT MONTH( post_date ) AS month ,
-								YEAR( post_date ) AS year,
-								COUNT( id ) as post_count FROM $wpdb->posts
-								WHERE post_status = 'publish' and post_date <= now( )
-								and post_type = 'tax_news'
-								GROUP BY month , year
-								ORDER BY post_date DESC");
-                        foreach($months as $month) :
-                        $year_current = $month->year;
-                        if ($year_current != $year_prev){
-                        if ($year_prev != null){?>
+                        <?php wp_custom_archive_new('tax_news'); ?>
                     </ul>
-                    <?php } ?>
-                    <h3><?php echo $month->year; ?></h3>
-                    <ul class="archive-list">
-                        <?php } ?>
-                        <li>
-                            <a href="<?php bloginfo('url') ?>/<?php echo $month->year; ?>/<?php echo date("m", mktime(0, 0, 0, $month->month, 1, $month->year)) ?>">
-                                <span class="archive-month"><?php echo date("F", mktime(0, 0, 0, $month->month, 1, $month->year)) ?></span>
-                                <span class="archive-count"><?php echo $month->post_count; ?></span>
-                            </a>
-                        </li>
-                        <?php $year_prev = $year_current;
-                        endforeach; ?>
-                    </ul>
-
-
-<!--                    </ul>-->
                 </div>
             </div>
         </div>
