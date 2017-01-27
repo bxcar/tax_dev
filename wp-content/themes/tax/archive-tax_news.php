@@ -1,133 +1,128 @@
-<?php
-/**
- * Template Name: news
- */
-?>
-    <!DOCTYPE html>
-    <html>
+<!DOCTYPE html>
+<html>
 
-    <head>
+<head>
 
-        <meta charset="utf-8">
+    <meta charset="utf-8">
 
-        <title><?php the_field('business_news_page_title_meta', 55) ?></title>
-        <meta name="description" content="<?php the_field('business_news_page_description_meta', 55) ?>">
-        <meta name="keywords" content="<?php the_field('business_news_page_keywords', 55) ?>">
+    <title><?php the_field('business_news_page_title_meta', 55) ?></title>
+    <meta name="description" content="<?php the_field('business_news_page_description_meta', 55) ?>">
+    <meta name="keywords" content="<?php the_field('business_news_page_keywords', 55) ?>">
 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-        <!-- Template Basic Images Start -->
-        <meta property="og:image" content="path/to/image.jpg">
-        <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
-        <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
-        <!-- Template Basic Images End -->
+    <!-- Template Basic Images Start -->
+    <meta property="og:image" content="path/to/image.jpg">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+    <!-- Template Basic Images End -->
 
-        <!-- Custom Browsers Color Start -->
-        <!-- Chrome, Firefox OS and Opera -->
-        <meta name="theme-color" content="#000">
-        <!-- Windows Phone -->
-        <meta name="msapplication-navbutton-color" content="#000">
-        <!-- iOS Safari -->
-        <meta name="apple-mobile-web-app-status-bar-style" content="#000">
-        <!-- Custom Browsers Color End -->
-        <style>
-            .all-item a,
-            .current-archive {
-                color: #424242 !important;
-            }
+    <!-- Custom Browsers Color Start -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#000">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#000">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+    <!-- Custom Browsers Color End -->
+    <style>
+        .all-item a,
+        .current-archive {
+            color: #424242 !important;
+        }
 
-            span.current {
-                width: 30px;
-                height: 30px;
-                margin: 0 5px;
-                text-align: center;
-                font-size: .75rem;
-                font-weight: 400;
-                line-height: 30px;
-                display: inline-block;
-                transition: all ease-in .2s;
-                background-color: #3ca04f;
-                color: #fff;
-            }
+        span.current {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px;
+            text-align: center;
+            font-size: .75rem;
+            font-weight: 400;
+            line-height: 30px;
+            display: inline-block;
+            transition: all ease-in .2s;
+            background-color: #3ca04f;
+            color: #fff;
+        }
 
-            a.page-numbers,
-            span.dots {
-                width: 30px;
-                height: 30px;
-                margin: 0 5px;
-                text-align: center;
-                background-color: #f9fafb;
-                color: #424242 !important;
-                font-size: .75rem;
-                font-weight: 400;
-                line-height: 30px;
-                display: inline-block;
-                transition: all ease-in .2s;
-            }
+        a.page-numbers,
+        span.dots {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px;
+            text-align: center;
+            background-color: #f9fafb;
+            color: #424242 !important;
+            font-size: .75rem;
+            font-weight: 400;
+            line-height: 30px;
+            display: inline-block;
+            transition: all ease-in .2s;
+        }
 
-            a.next::before {
-                content: url(/wp-content/themes/tax/img/next-post.png);
-            }
+        a.next::before {
+            content: url(/wp-content/themes/tax/img/next-post.png);
+        }
 
-            a.prev::before {
-                content: url(/wp-content/themes/tax/img/prev-post.png);
-                transform: scale(-1, 1);
-            }
+        a.prev::before {
+            content: url(/wp-content/themes/tax/img/prev-post.png);
+            transform: scale(-1, 1);
+        }
 
-            .pagination a:hover,
-            .pagination a:focus,
-            .pagination a:active {
-                background-color: #e1e3e6;
-                text-decoration: none;
-            }
+        .pagination a:hover,
+        .pagination a:focus,
+        .pagination a:active {
+            background-color: #e1e3e6;
+            text-decoration: none;
+        }
 
-            .display_cat_arch {
-                color: #424242 !important;
-                text-decoration: none !important;
-                cursor: pointer;
-            }
+        .display_cat_arch {
+            color: #424242 !important;
+            text-decoration: none !important;
+            cursor: pointer;
+        }
 
-            .archive-year,
-            .archive-year-span {
-                font-size: .8125rem;
-                font-weight: 400;
-                line-height: 33px;
-                color: #9e9e9e;
-                cursor: pointer;
+        .archive-year,
+        .archive-year-span {
+            font-size: .8125rem;
+            font-weight: 400;
+            line-height: 33px;
+            color: #9e9e9e;
+            cursor: pointer;
 
-            }
+        }
 
-            .archive-year-span,
-            .archive-month-list {
-                margin-left: 10px;
-            }
+        .archive-year-span,
+        .archive-month-list {
+            margin-left: 10px;
+        }
 
-            .archive-month-list a {
-                line-height: 27px !important;
-            }
+        .archive-month-list a {
+            line-height: 27px !important;
+        }
 
-            .archive a:visited {
-                color: #9e9e9e;
-            }
-        </style>
+        .archive a:visited {
+            color: #9e9e9e;
+        }
+    </style>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#transform-right-arrow-arch').animate({borderSpacing: 90}, {
-                    step: function (now, fx) {
-                        $(this).css('transform', 'rotate(' + now + 'deg)');
-                    },
-                    duration: 'slow'
-                }, 'linear');
-            });
-        </script>
-        <script src="<?php bloginfo('template_url') ?>/js/animate-cat-arch.js"></script>
-        <?php wp_head() ?>
-    </head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#transform-right-arrow-arch').animate({borderSpacing: 90}, {
+                step: function (now, fx) {
+                    $(this).css('transform', 'rotate(' + now + 'deg)');
+                },
+                duration: 'slow'
+            }, 'linear');
+        });
+    </script>
+    <script src="<?php bloginfo('template_url') ?>/js/animate-cat-arch.js"></script>
+    <?php wp_head() ?>
+</head>
 
 <body>
 <!-- Custom HTML -->
@@ -350,11 +345,6 @@
                     </div>
                     <ul id="arch-hidden-block">
                         <?php
-                        //echo get_post_type_archive_link('tax_news');
-                        //get_archive_link('tax_news');
-                        //echo get_the_archive_title();
-                        //echo get_permalink( get_option( 'tax_news' ) );
-                        //get current archive url
                         global $wp;
                         $current_url = home_url() . add_query_arg(home_url($wp->request));
                         $current_url = preg_replace('/\/page\/[0-9]+/', '', $current_url);
@@ -364,10 +354,10 @@
                             window.onload = function () {
                                 var active_archive = document.querySelectorAll('.archive ul a[href="<?=$current_url?>"]')[0];
                                 active_archive.className += ' current-archive';
-                                
+
                                 $(active_archive).parent().parent().animate({height: 'show'}, 500);
 
-                                $(active_archive).parent().parent().prev().find('img').animate({borderSpacing: 90}, {
+                                $(active_archive).parent().parent().prev().find('img#transform-right-arrow-arch-by-month').animate({borderSpacing: 90}, {
                                     step: function (now, fx) {
                                         $(this).css('transform', 'rotate(' + now + 'deg)');
                                     },
