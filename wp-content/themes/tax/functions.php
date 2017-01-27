@@ -203,7 +203,8 @@ if (function_exists('acf_add_options_page')) {
     ));
 }
 
-function convenience_flag_table() {
+function convenience_flag_table()
+{
     $table = '<script>
                     window.onload = function() {
                         var replaced_element = document.getElementsByClassName("capital");
@@ -241,10 +242,10 @@ function convenience_flag_table() {
 
     $table_fields = get_field('single_convenience_flag_table');
     foreach ($table_fields as $table_field) {
-            $table .= '<div class="row">';
-            $table .= '<div class="capital">'.$table_field['single_convenience_flag_table_capital']. '</div>';
-            $table .= '<div class="tax">'.$table_field['single_convenience_flag_table_dues_sum']. '</div>';
-            $table .= '</div>';
+        $table .= '<div class="row">';
+        $table .= '<div class="capital">' . $table_field['single_convenience_flag_table_capital'] . '</div>';
+        $table .= '<div class="tax">' . $table_field['single_convenience_flag_table_dues_sum'] . '</div>';
+        $table .= '</div>';
     }
 
     $table .= '</div>';
@@ -254,19 +255,22 @@ function convenience_flag_table() {
 
 add_shortcode('table', 'convenience_flag_table');
 
-function animation_start () {
+function animation_start()
+{
     return '<div class="wow fadeInUp" data-wow-duration="1s">';
 }
 
 add_shortcode('animation_start', 'animation_start');
 
-function animation_end () {
+function animation_end()
+{
     return '</div>';
 }
 
 add_shortcode('animation_end', 'animation_end');
 
-function new_raw () {
+function new_raw()
+{
     return '<br>';
 }
 
@@ -274,8 +278,9 @@ add_shortcode('r', 'new_raw');
 
 
 ////////////
-add_action( 'admin_menu', 'register_my_custom_menu_page' );
-function register_my_custom_menu_page(){
+add_action('admin_menu', 'register_my_custom_menu_page');
+function register_my_custom_menu_page()
+{
     add_menu_page(
         'custom menu title', 'Контентные разделы', 'manage_options', 'custompage', 'my_custom_menu_page', 'dashicons-format-aside', 21.3
     );
@@ -288,7 +293,7 @@ function register_my_custom_menu_page(){
     add_submenu_page('custompage', 'Центры юрисдикций', 'Центры юрисдикций', 8, '/edit.php?post_type=tax_jur_centers');
     add_submenu_page('custompage', 'Услуги и цены', 'Услуги и цены', 8, '/edit.php?post_type=tax_serv_and_price');
     add_submenu_page('custompage', 'Специальные предложения', 'Специальные предложения', 8, '/edit.php?post_type=tax_special_offers');
-    remove_submenu_page('custompage','custompage');
+    remove_submenu_page('custompage', 'custompage');
 
     add_menu_page(
         'custom taxonomy title', 'Таксономии', 'manage_options', 'customtaxonomies', 'my_custom_taxonomy_page', 'dashicons-list-view', 22.3
@@ -297,50 +302,53 @@ function register_my_custom_menu_page(){
 //    remove_submenu_page('customtaxonomies','customtaxonomies');
 }
 
-function my_custom_menu_page(){
+function my_custom_menu_page()
+{
     echo "<h3>Выберите нужный вам раздел для редактирования, которые отображены слева в подменю данного раздела.</h3>";
 }
 
-function my_custom_taxonomy_page(){
+function my_custom_taxonomy_page()
+{
     echo "<h3>Выберите нужный вам раздел для редактирования, которые отображены слева в подменю данного раздела.</h3>";
 }
 
 
-
-function get_next_posts_link_custom( $label = null, $max_page = 0 ) {
+function get_next_posts_link_custom($label = null, $max_page = 0)
+{
     global $paged, $wp_query;
 
-    if ( !$max_page )
+    if (!$max_page)
         $max_page = $wp_query->max_num_pages;
 
-    if ( !$paged )
+    if (!$paged)
         $paged = 1;
 
     $nextpage = intval($paged) + 1;
 
-    if ( null === $label )
-        $label = __( 'Next Page &raquo;' );
+    if (null === $label)
+        $label = __('Next Page &raquo;');
 
-    if ( !is_single() && ( $nextpage <= $max_page ) ) {
+    if (!is_single() && ($nextpage <= $max_page)) {
 
-        $attr = apply_filters( 'next_posts_link_attributes', '' );
+        $attr = apply_filters('next_posts_link_attributes', '');
 
-        return next_posts( $max_page, false );
+        return next_posts($max_page, false);
     }
 }
 
 
-function get_previous_posts_link_custom( $label = null ) {
+function get_previous_posts_link_custom($label = null)
+{
     global $paged;
 
-    if ( null === $label )
-        $label = __( '&laquo; Previous Page' );
+    if (null === $label)
+        $label = __('&laquo; Previous Page');
 
-    if ( !is_single() && $paged > 1 ) {
-        
-        $attr = apply_filters( 'previous_posts_link_attributes', '' );
-        
-        return previous_posts( false );
+    if (!is_single() && $paged > 1) {
+
+        $attr = apply_filters('previous_posts_link_attributes', '');
+
+        return previous_posts(false);
     }
 }
 
@@ -387,8 +395,9 @@ previous_posts_link( 'Newer Entries' );*/
 //posts_nav_link();
 //echo paginate_links_func();
 
-add_filter('navigation_markup_template', 'my_navigation_template', 10, 2 );
-function my_navigation_template( $template, $class ){
+add_filter('navigation_markup_template', 'my_navigation_template', 10, 2);
+function my_navigation_template($template, $class)
+{
     /*
     Вид базового шаблона:
     <nav class="navigation %1$s" role="navigation">
@@ -405,23 +414,25 @@ function my_navigation_template( $template, $class ){
 }
 
 
-function my_post_queries( $query ) {
+function my_post_queries($query)
+{
     // do not alter the query on wp-admin pages and only alter it if it's the main query
-    if (!is_admin() && $query->is_main_query()){
+    if (!is_admin() && $query->is_main_query()) {
 
         // alter the query for the home and category pages
 
-       /* if(is_home()){
-            $query->set('posts_per_page', 1);
-        }*/
+        /* if(is_home()){
+             $query->set('posts_per_page', 1);
+         }*/
 
-        if(is_category()){
+        if (is_category()) {
             $query->set('posts_per_page', get_field('business_news_page_amount_news_per_page', 55));
         }
 
     }
 }
-add_action( 'pre_get_posts', 'my_post_queries' );
+
+add_action('pre_get_posts', 'my_post_queries');
 
 
 function object_to_array($data)
@@ -438,16 +449,18 @@ function object_to_array($data)
 
 
 //post per page for archives
-add_action( 'pre_get_posts',  'set_posts_per_page'  );
-function set_posts_per_page( $query ) {
+add_action('pre_get_posts', 'set_posts_per_page');
+function set_posts_per_page($query)
+{
 
     global $wp_the_query;
 
-   /* if ( ( ! is_admin() ) && ( $query === $wp_the_query ) && ( $query->is_search() ) ) {
-        $query->set( 'posts_per_page', 3 );
-    }*/
-    /*else*/if ( ( ! is_admin() ) && ( $query === $wp_the_query ) && ( $query->is_archive() ) ) {
-        $query->set( 'posts_per_page', get_field('business_news_page_amount_news_per_page', 55) );
+    /* if ( ( ! is_admin() ) && ( $query === $wp_the_query ) && ( $query->is_search() ) ) {
+         $query->set( 'posts_per_page', 3 );
+     }*/
+    /*else*/
+    if ((!is_admin()) && ($query === $wp_the_query) && ($query->is_archive())) {
+        $query->set('posts_per_page', get_field('business_news_page_amount_news_per_page', 55));
     }
 
     /*if( is_category() ) {
@@ -469,17 +482,18 @@ function template_chooser($template)
 {
     global $wp_query;
     $post_type = get_query_var('post_type');
-    if( $wp_query->is_search && $post_type == 'tax_news' )
-    {
+    if ($wp_query->is_search && $post_type == 'tax_news') {
         return locate_template('search-tax_news.php');  //  redirect to archive-search.php
     }
     return $template;
 }
+
 add_filter('template_include', 'template_chooser');
 
 
 //List archives by year, then month(work, but I use wp_custom_archive_new)
-function wp_custom_archive($post_type_cust = 'post', $args = '') {
+function wp_custom_archive($post_type_cust = 'post', $args = '')
+{
     global $wpdb, $wp_locale;
 
     $defaults = array(
@@ -489,12 +503,12 @@ function wp_custom_archive($post_type_cust = 'post', $args = '') {
         'echo' => 1
     );
 
-    $r = wp_parse_args( $args, $defaults );
-    extract( $r, EXTR_SKIP );
+    $r = wp_parse_args($args, $defaults);
+    extract($r, EXTR_SKIP);
 
-    if ( '' != $limit ) {
+    if ('' != $limit) {
         $limit = absint($limit);
-        $limit = ' LIMIT '.$limit;
+        $limit = ' LIMIT ' . $limit;
     }
 
     // over-ride general date format ? 0 = no: use the date format set in Options, 1 = yes: over-ride
@@ -505,42 +519,43 @@ function wp_custom_archive($post_type_cust = 'post', $args = '') {
 
     // options for weekly archive (only if you over-ride the general date format)
     $archive_week_start_date_format = 'Y/m/d';
-    $archive_week_end_date_format   = 'Y/m/d';
+    $archive_week_end_date_format = 'Y/m/d';
 
-    if ( !$archive_date_format_over_ride ) {
+    if (!$archive_date_format_over_ride) {
         $archive_day_date_format = get_option('date_format');
         $archive_week_start_date_format = get_option('date_format');
         $archive_week_end_date_format = get_option('date_format');
     }
 
     //filters
-    $where = apply_filters('customarchives_where', "WHERE post_type = '$post_type_cust' AND post_status = 'publish'", $r );
+    $where = apply_filters('customarchives_where', "WHERE post_type = '$post_type_cust' AND post_status = 'publish'", $r);
     $join = apply_filters('customarchives_join', "", $r);
 
     $output = '<ul>';
 
     $query = "SELECT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, count(ID) as posts FROM $wpdb->posts $join $where GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY post_date DESC $limit";
     $key = md5($query);
-    $cache = wp_cache_get( 'wp_custom_archive' , 'general');
-    if ( !isset( $cache[ $key ] ) ) {
+    $cache = wp_cache_get('wp_custom_archive', 'general');
+    if (!isset($cache[$key])) {
         $arcresults = $wpdb->get_results($query);
-        $cache[ $key ] = $arcresults;
-        wp_cache_set( 'wp_custom_archive', $cache, 'general' );
-    } else {
-        $arcresults = $cache[ $key ];
+        $cache[$key] = $arcresults;
+        wp_cache_set('wp_custom_archive', $cache, 'general');
     }
-    if ( $arcresults ) {
+    else {
+        $arcresults = $cache[$key];
+    }
+    if ($arcresults) {
         $afterafter = $after;
-        foreach ( (array) $arcresults as $arcresult ) {
-            $url = get_month_link( $arcresult->year, $arcresult->month ).'?post_type='.$post_type_cust;
-            $year_url = get_year_link($arcresult->year).'?post_type='.$post_type_cust;
+        foreach ((array)$arcresults as $arcresult) {
+            $url = get_month_link($arcresult->year, $arcresult->month) . '?post_type=' . $post_type_cust;
+            $year_url = get_year_link($arcresult->year) . '?post_type=' . $post_type_cust;
             /* translators: 1: month name, 2: 4-digit year */
             $text = sprintf(__('%s'), $wp_locale->get_month($arcresult->month));
             $year_text = sprintf('%d', $arcresult->year);
-            if ( $show_post_count )
-                $after = '&nbsp;('.$arcresult->posts.')' . $afterafter;
+            if ($show_post_count)
+                $after = '&nbsp;(' . $arcresult->posts . ')' . $afterafter;
             $year_output = get_archives_link($year_url, $year_text, $format, $before, $after);
-            $output .= ( $arcresult->year != $temp_year ) ? $year_output : '';
+            $output .= ($arcresult->year != $temp_year) ? $year_output : '';
             $output .= get_archives_link($url, $text, $format, $before, $after);
 
             $temp_year = $arcresult->year;
@@ -549,7 +564,7 @@ function wp_custom_archive($post_type_cust = 'post', $args = '') {
 
     $output .= '</ul>';
 
-    if ( $echo )
+    if ($echo)
         echo $output;
     else
         return $output;
@@ -557,41 +572,50 @@ function wp_custom_archive($post_type_cust = 'post', $args = '') {
 
 
 //another function for custom display archives
-function wp_custom_archive_new($post_type_cust = 'post') {
-global $wpdb;
-$year_prev = null;
-$months = $wpdb->get_results("SELECT DISTINCT MONTH( post_date ) AS month ,
+function wp_custom_archive_new($post_type_cust = 'post')
+{
+    global $wpdb;
+    $year_prev = null;
+    $months = $wpdb->get_results("SELECT DISTINCT MONTH( post_date ) AS month ,
 								YEAR( post_date ) AS year,
 								COUNT( id ) as post_count FROM $wpdb->posts
 								WHERE post_status = 'publish' and post_date <= now( )
 								and post_type = '$post_type_cust'
 								GROUP BY month , year
 								ORDER BY post_date DESC");
-foreach($months as $month) :
-$year_current = $month->year;
-if ($year_current != $year_prev){
-if ($year_prev != null){?>
-<!--    </ul>-->
-<?php } ?>
-<a  href="<?= $month->year ?> " class="archive-year"><?php echo $month->year; ?></a><br>
-    &nbsp;&nbsp;<span class="archive-year">(по месяцам)</span>
-    <img id="transform-right-arrow" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
-<ul class="archive-list">
-    <?php }
-    $monthes = array(
-        1 => 'Январь', 2 => 'Февраль', 3 => 'Март', 4 => 'Апрель',
-        5 => 'Май', 6 => 'Июнь', 7 => 'Июль', 8 => 'Август',
-        9 => 'Сентябрь', 10 => 'Октябрь', 11 => 'Ноябрь', 12 => 'Декабрь'
-    );
-    ?>
-    <li>
-        <a href="<?php bloginfo('url') ?>/<?php echo $month->year; ?>/<?php echo date("m", mktime(0, 0, 0, $month->month, 1, $month->year)).'?post_type='.$post_type_cust ?>">
-            <span class="archive-month"><?php echo $monthes[date("n", mktime(0, 0, 0, $month->month, 1, $month->year))] ?></span>
-<!--            <span class="archive-count">--><?php //echo $month->post_count; ?><!--</span>-->
-        </a>
-    </li>
-    <?php $year_prev = $year_current;
+    foreach ($months as $month) :
+        $year_current = $month->year;
+        if ($year_current != $year_prev) {
+            if ($year_prev != null) {
+                ?>
+                    </ul>
+            <?php } ?>
+            <a href="<?= $month->year . '?post_type=' . $post_type_cust ?> "
+               class="archive-year"><?php echo $month->year; ?></a><br>
+
+            <div id="archive-by-month" class="archive-year-span">
+                <span>(по месяцам)</span>
+                <img id="transform-right-arrow" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
+            </div>
+
+            <ul class="archive-list" id="archive-by-month-block-hidden" style="display: none;">
+        <?php }
+        $monthes = array(
+            1 => 'Январь', 2 => 'Февраль', 3 => 'Март', 4 => 'Апрель',
+            5 => 'Май', 6 => 'Июнь', 7 => 'Июль', 8 => 'Август',
+            9 => 'Сентябрь', 10 => 'Октябрь', 11 => 'Ноябрь', 12 => 'Декабрь'
+        );
+        ?>
+        <li>
+            <a href="<?php bloginfo('url') ?>/<?php echo $month->year; ?>/<?php echo date("m", mktime(0, 0, 0, $month->month, 1, $month->year)) . '?post_type=' . $post_type_cust ?>">
+                <span
+                    class="archive-month"><?php echo $monthes[date("n", mktime(0, 0, 0, $month->month, 1, $month->year))] ?></span>
+                <!--            <span class="archive-count">--><?php //echo $month->post_count;
+                ?><!--</span>-->
+            </a>
+        </li>
+        <?php $year_prev = $year_current;
     endforeach; ?>
-</ul>
-<?php
+    </ul>
+    <?php
 }

@@ -89,12 +89,18 @@
                 cursor: pointer;
             }
 
-            .archive-year {
+            .archive-year,
+            .archive-year-span{
                 font-size: .8125rem;
                 font-weight: 400;
                 line-height: 33px;
-                color: #9e9e9e;
+                color: #9e9e9e !important;
                 cursor: pointer;
+
+            }
+
+            .archive-year-span {
+                margin-left: 10px;
             }
         </style>
 
