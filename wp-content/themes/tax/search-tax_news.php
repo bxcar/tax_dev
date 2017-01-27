@@ -138,6 +138,12 @@
                         <?php
                     }
                 }
+
+                else {
+                    ?>
+                      <div>По вашему запросу новостей не найдено</div>
+                   <?php
+                }
                 ?>
 
                 <div class="pagination wow fadeInUp" data-wow-duration="1s">
@@ -169,6 +175,7 @@
                     <form role="search" method="get" id="searchform" action="<?php echo home_url('/') ?>">
                         <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s"
                                placeholder="Поиск...">
+                        <input type="hidden" name="post_type" value="tax_news" /> <!-- // hidden 'tax_news' value -->
                         <input type="submit" id="searchsubmit">
                     </form>
                 </div>
@@ -241,7 +248,7 @@
                                     <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
                                     <p><?php the_title(); ?></p>
                                     <div class="date"><?php echo get_the_date('j'); ?>
-                                        &nbsp;<?php echo get_the_date('M');
+                                        <?php echo get_the_date('M');
 
                                         $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
                                         echo ' / ' . $cur_terms[0]->name;

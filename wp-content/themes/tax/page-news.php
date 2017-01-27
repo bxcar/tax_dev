@@ -3,89 +3,129 @@
  * Template Name: news
  */
 ?>
-    <!DOCTYPE html>
-    <html>
 
-    <head>
+<!DOCTYPE html>
+<html>
+<head>
 
-        <meta charset="utf-8">
+    <meta charset="utf-8">
 
-        <title><?php the_field('business_news_page_title_meta') ?></title>
-        <meta name="description" content="<?php the_field('business_news_page_description_meta') ?>">
-        <meta name="keywords" content="<?php the_field('business_news_page_keywords') ?>">
+    <title><?php the_field('business_news_page_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('business_news_page_description_meta') ?>">
+    <meta name="keywords" content="<?php the_field('business_news_page_keywords') ?>">
 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-        <!-- Template Basic Images Start -->
-        <meta property="og:image" content="path/to/image.jpg">
-        <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
-        <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
-        <!-- Template Basic Images End -->
+    <!-- Template Basic Images Start -->
+    <meta property="og:image" content="path/to/image.jpg">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+    <!-- Template Basic Images End -->
 
-        <!-- Custom Browsers Color Start -->
-        <!-- Chrome, Firefox OS and Opera -->
-        <meta name="theme-color" content="#000">
-        <!-- Windows Phone -->
-        <meta name="msapplication-navbutton-color" content="#000">
-        <!-- iOS Safari -->
-        <meta name="apple-mobile-web-app-status-bar-style" content="#000">
-        <!-- Custom Browsers Color End -->
-        <style>
-            .all-item a {
-                color: #424242 !important;
-            }
+    <!-- Custom Browsers Color Start -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#000">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#000">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+    <!-- Custom Browsers Color End -->
+    <style>
+        .all-item a {
+            color: #424242 !important;
+        }
 
-            span.current {
-                width: 30px;
-                height: 30px;
-                margin: 0 5px;
-                text-align: center;
-                font-size: .75rem;
-                font-weight: 400;
-                line-height: 30px;
-                display: inline-block;
-                transition: all ease-in .2s;
-                background-color: #3ca04f;
-                color: #fff;
-            }
+        span.current {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px;
+            text-align: center;
+            font-size: .75rem;
+            font-weight: 400;
+            line-height: 30px;
+            display: inline-block;
+            transition: all ease-in .2s;
+            background-color: #3ca04f;
+            color: #fff;
+        }
 
-            a.page-numbers,
-            span.dots {
-                width: 30px;
-                height: 30px;
-                margin: 0 5px;
-                text-align: center;
-                background-color: #f9fafb;
-                color: #424242 !important;
-                font-size: .75rem;
-                font-weight: 400;
-                line-height: 30px;
-                display: inline-block;
-                transition: all ease-in .2s;
-            }
+        a.page-numbers,
+        span.dots {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px;
+            text-align: center;
+            background-color: #f9fafb;
+            color: #424242 !important;
+            font-size: .75rem;
+            font-weight: 400;
+            line-height: 30px;
+            display: inline-block;
+            transition: all ease-in .2s;
+        }
 
-            a.next::before {
-                content: url(/wp-content/themes/tax/img/next-post.png);
-            }
+        a.next::before {
+            content: url(/wp-content/themes/tax/img/next-post.png);
+        }
 
-            a.prev::before {
-                content: url(/wp-content/themes/tax/img/prev-post.png);
-                transform: scale(-1, 1);
-            }
+        a.prev::before {
+            content: url(/wp-content/themes/tax/img/prev-post.png);
+            transform: scale(-1, 1);
+        }
 
-            .pagination a:hover,
-            .pagination a:focus,
-            .pagination a:active {
-                background-color: #e1e3e6;
-                text-decoration: none;
-            }
-        </style>
+        .pagination a:hover,
+        .pagination a:focus,
+        .pagination a:active {
+            background-color: #e1e3e6;
+            text-decoration: none;
+        }
 
-        <?php wp_head() ?>
-    </head>
+        .display_cat_arch {
+            color: #424242 !important;
+            text-decoration: none !important;
+            cursor: pointer;
+        }
+    </style>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script>
+        //animate categories and archives block in sidebar
+        $(document).ready(function () {
+            $('a#link-display-cat').click(function (e) {
+                $(this).toggleClass('active');
+                if ($('#cat-hidden-block').css('display') == 'none') {
+
+                    $('#cat-hidden-block').animate({height: 'show'}, 500);
+
+                    $('#transform-right-arrow').animate({borderSpacing: 90}, {
+                        step: function (now, fx) {
+                            $(this).css('transform', 'rotate(' + now + 'deg)');
+                        },
+                        duration: 'slow'
+                    }, 'linear');
+                }
+                else {
+                    $('#cat-hidden-block').animate({height: 'hide'}, 500);
+
+                    $('#transform-right-arrow').animate({borderSpacing: 0}, {
+                        step: function (now, fx) {
+                            $(this).css('transform', 'rotate(' + now + 'deg)');
+                        },
+                        duration: 'slow'
+                    }, 'linear');
+                }
+                e.stopPropagation();
+            });
+        });
+
+    </script>
+
+    <?php wp_head() ?>
+</head>
 
 <body>
 <!-- Custom HTML -->
@@ -209,13 +249,18 @@
                     <form role="search" method="get" id="searchform" action="<?php echo home_url('/') ?>">
                         <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s"
                                placeholder="Поиск...">
-                        <input type="hidden" name="post_type" value="tax_news" /> <!-- // hidden 'tax_news' value -->
+                        <input type="hidden" name="post_type" value="tax_news"/> <!-- // hidden 'tax_news' value -->
                         <input type="submit" id="searchsubmit">
                     </form>
                 </div>
                 <div class="category wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title"><?php the_field('business_news_page_title_category') ?></div>
-                    <ul>
+                    <div class="sidebar-title">
+                        <a class="display_cat_arch" id="link-display-cat">
+                            <?php the_field('business_news_page_title_category') ?>&nbsp;
+                            <img id="transform-right-arrow" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
+                        </a>
+                    </div>
+                    <ul id="cat-hidden-block" style="display: none;">
                         <li class="all-item">
                             <a href="<?= get_permalink(); ?>">Все новости</a>
                         </li>
@@ -281,7 +326,8 @@
                                 <a href="<?php the_permalink(); ?>" class="item">
                                     <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
                                     <p><?php the_title(); ?></p>
-                                    <div class="date"><?php echo get_the_date('j'); ?>&nbsp;<?php echo get_the_date('M');
+                                    <div class="date"><?php echo get_the_date('j'); ?>
+                                        &nbsp;<?php echo get_the_date('M');
 
                                         $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
                                         echo ' / ' . $cur_terms[0]->name;
@@ -319,7 +365,8 @@
                                             <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
                                             <p><?php the_title(); ?></p>
                                             <div
-                                                class="date"><?php echo get_the_date('j'); ?>&nbsp;<?php echo get_the_date('M');
+                                                class="date"><?php echo get_the_date('j'); ?>
+                                                &nbsp;<?php echo get_the_date('M');
 
                                                 $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
                                                 echo ' / ' . $cur_terms[0]->name;
