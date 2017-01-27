@@ -38,6 +38,7 @@
             .current-archive {
                 color: #424242 !important;
             }
+
             span.current {
                 width: 30px;
                 height: 30px;
@@ -51,6 +52,7 @@
                 background-color: #3ca04f;
                 color: #fff;
             }
+
             a.page-numbers,
             span.dots {
                 width: 30px;
@@ -65,13 +67,16 @@
                 display: inline-block;
                 transition: all ease-in .2s;
             }
+
             a.next::before {
                 content: url(/wp-content/themes/tax/img/next-post.png);
             }
+
             a.prev::before {
                 content: url(/wp-content/themes/tax/img/prev-post.png);
                 transform: scale(-1, 1);
             }
+
             .pagination a:hover,
             .pagination a:focus,
             .pagination a:active {
@@ -86,7 +91,7 @@
             }
 
             .archive-year,
-            .archive-year-span{
+            .archive-year-span {
                 font-size: .8125rem;
                 font-weight: 400;
                 line-height: 33px;
@@ -96,7 +101,7 @@
             }
 
             .archive-year-span,
-            .archive-month-list{
+            .archive-month-list {
                 margin-left: 10px;
             }
 
@@ -203,7 +208,7 @@
                     <form role="search" method="get" id="searchform" action="<?php echo home_url('/') ?>">
                         <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s"
                                placeholder="Поиск...">
-                        <input type="hidden" name="post_type" value="tax_news" /> <!-- // hidden 'tax_news' value -->
+                        <input type="hidden" name="post_type" value="tax_news"/> <!-- // hidden 'tax_news' value -->
                         <input type="submit" id="searchsubmit">
                     </form>
                 </div>
@@ -216,7 +221,7 @@
                     </div>
                     <ul id="cat-hidden-block" style="display: none;">
                         <li class="all-item">
-                            <a href="<?= home_url().'/news'?>">Все новости</a>
+                            <a href="<?= home_url() . '/news' ?>">Все новости</a>
                         </li>
                         <?php
                         $args = array(
@@ -279,7 +284,8 @@
                                 <a href="<?php the_permalink(); ?>" class="item">
                                     <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
                                     <p><?php the_title(); ?></p>
-                                    <div class="date"><?php echo get_the_date('j'); ?>&nbsp;<?php echo get_the_date('M');
+                                    <div class="date"><?php echo get_the_date('j'); ?>
+                                        &nbsp;<?php echo get_the_date('M');
 
                                         $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
                                         echo ' / ' . $cur_terms[0]->name;
@@ -317,7 +323,8 @@
                                             <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
                                             <p><?php the_title(); ?></p>
                                             <div
-                                                class="date"><?php echo get_the_date('j'); ?>&nbsp;<?php echo get_the_date('M');
+                                                class="date"><?php echo get_the_date('j'); ?>
+                                                &nbsp;<?php echo get_the_date('M');
 
                                                 $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
                                                 echo ' / ' . $cur_terms[0]->name;
@@ -337,7 +344,8 @@
                     <div class="sidebar-title">
                         <a class="display_cat_arch" id="link-display-arch">
                             <?php the_field('business_news_page_title_archive', 55) ?>&nbsp;
-                            <img id="transform-right-arrow-arch" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
+                            <img id="transform-right-arrow-arch"
+                                 src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
                         </a>
                     </div>
                     <ul id="arch-hidden-block">
@@ -349,13 +357,22 @@
                         //get current archive url
                         global $wp;
                         $current_url = home_url() . add_query_arg(home_url($wp->request));
-                        $current_url = preg_replace('/\/page\/[0-9]+/','', $current_url);
+                        $current_url = preg_replace('/\/page\/[0-9]+/', '', $current_url);
                         ?>
                         <!-- add class current-archive to active archive link in sidebar-->
                         <script>
                             window.onload = function () {
                                 var active_archive = document.querySelectorAll('.archive ul a[href="<?=$current_url?>"]')[0];
                                 active_archive.className += ' current-archive';
+                                
+                                $(active_archive).parent().parent().animate({height: 'show'}, 500);
+
+                                $(active_archive).parent().parent().prev().find('img').animate({borderSpacing: 90}, {
+                                    step: function (now, fx) {
+                                        $(this).css('transform', 'rotate(' + now + 'deg)');
+                                    },
+                                    duration: 'slow'
+                                }, 'linear');
                             }
                         </script>
                         <?php wp_custom_archive_new('tax_news'); ?>
