@@ -215,7 +215,7 @@
                         </a>
                     </div>
                     <ul id="cat-hidden-block" style="display: none;">
-                        <li class="all-item">
+                        <li class="">
                             <a href="<?= home_url() . '/news' ?>">Все новости</a>
                         </li>
                         <?php

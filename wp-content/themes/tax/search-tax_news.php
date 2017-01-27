@@ -34,9 +34,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#000">
     <!-- Custom Browsers Color End -->
     <style>
-        .all-item a {
+        /*.all-item a {
             color: #424242 !important;
-        }
+        }*/
 
         span.current {
             width: 30px;
@@ -82,8 +82,35 @@
             background-color: #e1e3e6;
             text-decoration: none;
         }
-    </style>
 
+        .display_cat_arch {
+            color: #424242 !important;
+            text-decoration: none !important;
+            cursor: pointer;
+        }
+
+        .archive-year,
+        .archive-year-span{
+            font-size: .8125rem;
+            font-weight: 400;
+            line-height: 33px;
+            color: #9e9e9e !important;
+            cursor: pointer;
+
+        }
+
+        .archive-year-span,
+        .archive-month-list{
+            margin-left: 10px;
+        }
+
+        .archive-month-list a {
+            line-height: 27px !important;
+        }
+    </style>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="<?php bloginfo('template_url') ?>/js/animate-cat-arch.js"></script>
     <?php wp_head() ?>
 </head>
 
@@ -105,7 +132,6 @@
         <div class="wrap">
             <div class="blog">
                 <?php
-
                 if (have_posts()) {
                     while (have_posts()) {
                         the_post(); ?>
@@ -138,18 +164,16 @@
                         <?php
                     }
                 }
-
                 else {
                     ?>
-                      <div>По вашему запросу новостей не найдено</div>
-                   <?php
+                    <div>По вашему запросу новостей не найдено</div>
+                    <?php
                 }
                 ?>
 
                 <div class="pagination wow fadeInUp" data-wow-duration="1s">
                     <ul>
                         <?php
-
                         $args_pagination = array(
                             'show_all' => false, // показаны все страницы участвующие в пагинации
                             'end_size' => 1,     // количество страниц на концах
@@ -163,25 +187,27 @@
                         );
 
                         the_posts_pagination($args_pagination);
-                        wp_reset_query();
-
-                        ?>
+                        wp_reset_query(); ?>
                     </ul>
                 </div>
             </div>
-            <!--            --><?php //get_sidebar('sidebar-custom');?>
             <div class="sidebar">
                 <div class="search wow fadeInUp" data-wow-duration="1s">
                     <form role="search" method="get" id="searchform" action="<?php echo home_url('/') ?>">
                         <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s"
                                placeholder="Поиск...">
-                        <input type="hidden" name="post_type" value="tax_news" /> <!-- // hidden 'tax_news' value -->
+                        <input type="hidden" name="post_type" value="tax_news"/> <!-- // hidden 'tax_news' value -->
                         <input type="submit" id="searchsubmit">
                     </form>
                 </div>
                 <div class="category wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title"><?php the_field('business_news_page_title_category', 55) ?></div>
-                    <ul>
+                    <div class="sidebar-title">
+                        <a class="display_cat_arch" id="link-display-cat">
+                            <?php the_field('business_news_page_title_category', 55) ?>&nbsp;
+                            <img id="transform-right-arrow" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
+                        </a>
+                    </div>
+                    <ul id="cat-hidden-block" style="display: none;">
                         <li class="all-item">
                             <a href="<?= get_permalink(55); ?>">Все новости</a>
                         </li>
@@ -304,19 +330,15 @@
                     ?>
                 </div>
                 <div class="archive wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title"><?php the_field('business_news_page_title_archive', 55) ?></div>
-                    <ul>
-                        <?php $args_archives = array(
-                            'type' => 'monthly',
-//                            'limit'           => 10,
-                            'format' => 'html',
-                            'before' => '',
-                            'after' => '',
-                            'show_post_count' => false,
-                            'echo' => 1,
-                            'post_type' => 'tax_news'
-                        );
-                        wp_get_archives($args_archives); ?>
+                    <div class="sidebar-title">
+                        <a class="display_cat_arch" id="link-display-arch">
+                            <?php the_field('business_news_page_title_archive', 55) ?>&nbsp;
+                            <img id="transform-right-arrow-arch"
+                                 src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
+                        </a>
+                    </div>
+                    <ul id="arch-hidden-block" style="display: none;">
+                        <?php wp_custom_archive_new('tax_news'); ?>
                     </ul>
                 </div>
             </div>

@@ -132,7 +132,6 @@
     <section class="blog-layaut">
         <div class="wrap">
             <div class="blog">
-
                 <?php
                 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                 $the_query_last_news = query_posts(
