@@ -84,6 +84,29 @@
                 text-decoration: none !important;
                 cursor: pointer;
             }
+
+            .archive-year,
+            .archive-year-span{
+                font-size: .8125rem;
+                font-weight: 400;
+                line-height: 33px;
+                color: #9e9e9e;
+                cursor: pointer;
+
+            }
+
+            .archive-year-span,
+            .archive-month-list{
+                margin-left: 10px;
+            }
+
+            .archive-month-list a {
+                line-height: 27px !important;
+            }
+
+            .archive a:visited {
+                color: #9e9e9e;
+            }
         </style>
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -120,25 +143,6 @@
             <div class="blog">
 
                 <?php
-                /* $args_last_news = array(
-                     'numberposts' => -1,
-                     'post_type' => 'tax_news',
-                     'posts_per_page' => 1
-                 );*/
-                // query
-                //                $the_query_last_news = new WP_Query($args_last_news);
-                /*$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-                $the_query_last_news = query_posts(
-                    array(
-                        'numberposts' => -1,
-                        'post_type' => 'tax_news',
-                        'posts_per_page' => get_field('business_news_page_amount_news_per_page', 55),
-                        'paged' => $paged
-                    )
-                );*/
-                /* if ($the_query_last_news->have_posts()) {
-                     while ($the_query_last_news->have_posts()) {
-                         $the_query_last_news->the_post(); */
                 if (have_posts()) {
                     while (have_posts()) {
                         the_post(); ?>
@@ -337,12 +341,6 @@
                         </a>
                     </div>
                     <ul id="arch-hidden-block">
-                        <!-- <li><a href="#">Сентябрь</a></li>
-                         <li class="active"><a href="#">Август</a></li>
-                         <li><a href="#">Июль</a></li>
-                         <li><a href="#">Июнь</a></li>
-                         <li><a href="#">Май</a></li>-->
-
                         <?php
                         //echo get_post_type_archive_link('tax_news');
                         //get_archive_link('tax_news');
@@ -356,23 +354,11 @@
                         <!-- add class current-archive to active archive link in sidebar-->
                         <script>
                             window.onload = function () {
-                                var active_archive = document.querySelectorAll('.archive ul li a[href="<?=$current_url?>"]')[0];
+                                var active_archive = document.querySelectorAll('.archive ul a[href="<?=$current_url?>"]')[0];
                                 active_archive.className += ' current-archive';
                             }
                         </script>
-                        <?php
-                        $args_archives = array(
-                            'type' => 'monthly',
-//                            'limit'           => 10,
-                            'format' => 'html',
-                            'before' => '',
-                            'after' => '',
-                            'show_post_count' => false,
-                            'echo' => 1,
-                            'post_type' => 'tax_news'
-                        );
-                        wp_get_archives($args_archives);
-                        ?>
+                        <?php wp_custom_archive_new('tax_news'); ?>
                     </ul>
                 </div>
             </div>

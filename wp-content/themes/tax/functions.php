@@ -592,7 +592,7 @@ function wp_custom_archive_new($post_type_cust = 'post')
                 ?>
                     </ul>
             <?php } ?>
-            <a href="<?= get_home_url().'/'. $month->year . '?post_type=' . $post_type_cust ?> "
+            <a href="<?= get_home_url().'/'. $month->year . '?post_type=' . $post_type_cust ?>"
                class="archive-year"><?php echo $month->year; ?></a><br>
 
             <div id="archive-by-month" class="archive-year-span">
