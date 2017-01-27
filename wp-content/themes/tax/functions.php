@@ -595,7 +595,7 @@ function wp_custom_archive_new($post_type_cust = 'post')
 
             <div id="archive-by-month" class="archive-year-span">
                 <span>(по месяцам)</span>
-                <img id="transform-right-arrow" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
+                <img id="transform-right-arrow-arch-by-month" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
             </div>
 
             <ul class="archive-list" id="archive-by-month-block-hidden" style="display: none;">

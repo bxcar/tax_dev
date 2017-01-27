@@ -40,10 +40,41 @@ $(document).ready(function () {
                 duration: 'slow'
             }, 'linear');
 
-            $('a#link-display-arch').click(function (e) {
-                
-            })
+
+
             
+            //  click by month
+            $('div#archive-by-month').click(function (e) {
+                if ($('#archive-by-month-block-hidden').css('display') == 'none') {
+                    $(this).toggleClass('active');
+                    $('#archive-by-month-block-hidden').animate({height: 'show'}, 500);
+
+                    $('#transform-right-arrow-arch-by-month').animate({borderSpacing: 90}, {
+                        step: function (now, fx) {
+                            $(this).css('transform', 'rotate(' + now + 'deg)');
+                        },
+                        duration: 'slow'
+                    }, 'linear');
+
+                }
+
+                else
+                {
+                    $('#archive-by-month-block-hidden').animate({height: 'hide'}, 500);
+
+                    $('#transform-right-arrow-arch-by-month').animate({borderSpacing: 0}, {
+                        step: function (now, fx) {
+                            $(this).css('transform', 'rotate(' + now + 'deg)');
+                        },
+                        duration: 'slow'
+                    }, 'linear');
+                }
+            });
+
+            //  /click by month
+
+
+
         }
         else {
             $('#arch-hidden-block').animate({height: 'hide'}, 500);
