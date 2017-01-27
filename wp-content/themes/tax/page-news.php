@@ -115,17 +115,6 @@
             <div class="blog">
 
                 <?php
-
-                /* $args_last_news = array(
-                     'numberposts' => -1,
-                     'post_type' => 'tax_news',
-                     'posts_per_page' => 1
-                 );*/
-
-                // query
-                //                $the_query_last_news = new WP_Query($args_last_news);
-
-
                 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                 $the_query_last_news = query_posts(
                     array(
@@ -136,10 +125,6 @@
                     )
                 );
 
-
-                /* if ($the_query_last_news->have_posts()) {
-                     while ($the_query_last_news->have_posts()) {
-                         $the_query_last_news->the_post(); */
                 if (have_posts()) {
                     while (have_posts()) {
                         the_post(); ?>
@@ -169,8 +154,6 @@
                                 <a href="<?php the_permalink(); ?>">ПОДРОБНЕЕ</a>
                             </div>
                         </div>
-                        <!--nextpage-->
-
                         <?php
                     }
                 }
@@ -178,21 +161,7 @@
 
                 <div class="pagination wow fadeInUp" data-wow-duration="1s">
                     <ul>
-                        <!-- <?php /*if (get_previous_posts_link_custom()) { */ ?>
-                            <li><a href="<? /*= get_previous_posts_link_custom(); */ ?>" class="prev"></a></li>
-                        <?php /*} */ ?>
-
-                        <li class="active"><span class="page-num">1</span></li>
-                        <li><a href="#" class="page-num">2</a></li>
-                        <li><a href="#" class="page-num">3</a></li>
-                        <li><a href="#" class="page-num">4</a></li>
-
-                        <?php /*if (get_next_posts_link_custom()) { */ ?>
-                            <li><a href="<? /*= get_next_posts_link_custom(); */ ?>" class="next"></a></li>
-                        --><?php /*} */ ?>
-
                         <?php
-
                         $args_pagination = array(
                             'show_all' => false, // показаны все страницы участвующие в пагинации
                             'end_size' => 1,     // количество страниц на концах
@@ -206,13 +175,10 @@
                         );
 
                         the_posts_pagination($args_pagination);
-                        wp_reset_query();
-
-                        ?>
+                        wp_reset_query(); ?>
                     </ul>
                 </div>
             </div>
-            <!--            --><?php //get_sidebar('sidebar-custom');?>
             <div class="sidebar">
                 <div class="search wow fadeInUp" data-wow-duration="1s">
                     <form role="search" method="get" id="searchform" action="<?php echo home_url('/') ?>">
@@ -358,15 +324,10 @@
                             <img id="transform-right-arrow-arch" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
                         </a>
                     </div>
-                    <ul id="arch-hidden-block" style="display: none;">
-                        <!-- <li><a href="#">Сентябрь</a></li>
-                         <li class="active"><a href="#">Август</a></li>
-                         <li><a href="#">Июль</a></li>
-                         <li><a href="#">Июнь</a></li>
-                         <li><a href="#">Май</a></li>-->
-                        <?php $args_archives = array(
+<!--                    <ul id="arch-hidden-block" style="display: none;">-->
+                        <?php /*$args_archives = array(
                             'type' => 'monthly',
-//                            'limit'           => 10,
+//                            'limit'           => 1,
                             'format' => 'html',
                             'before' => '',
                             'after' => '',
@@ -374,8 +335,43 @@
                             'echo' => 1,
                             'post_type' => 'tax_news'
                         );
-                        wp_get_archives($args_archives); ?>
+                        wp_get_archives($args_archives);
+//                        echo get_archives_link( '/2013', 'Архив за 2013 год' );
+                        */?>
+
+
+
+                        <?php
+                        global $wpdb;
+                        $year_prev = null;
+                        $months = $wpdb->get_results("SELECT DISTINCT MONTH( post_date ) AS month ,
+								YEAR( post_date ) AS year,
+								COUNT( id ) as post_count FROM $wpdb->posts
+								WHERE post_status = 'publish' and post_date <= now( )
+								and post_type = 'tax_news'
+								GROUP BY month , year
+								ORDER BY post_date DESC");
+                        foreach($months as $month) :
+                        $year_current = $month->year;
+                        if ($year_current != $year_prev){
+                        if ($year_prev != null){?>
                     </ul>
+                    <?php } ?>
+                    <h3><?php echo $month->year; ?></h3>
+                    <ul class="archive-list">
+                        <?php } ?>
+                        <li>
+                            <a href="<?php bloginfo('url') ?>/<?php echo $month->year; ?>/<?php echo date("m", mktime(0, 0, 0, $month->month, 1, $month->year)) ?>">
+                                <span class="archive-month"><?php echo date("F", mktime(0, 0, 0, $month->month, 1, $month->year)) ?></span>
+                                <span class="archive-count"><?php echo $month->post_count; ?></span>
+                            </a>
+                        </li>
+                        <?php $year_prev = $year_current;
+                        endforeach; ?>
+                    </ul>
+
+
+<!--                    </ul>-->
                 </div>
             </div>
         </div>

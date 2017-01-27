@@ -31,7 +31,7 @@ $(document).ready(function () {
         $(this).toggleClass('active');
         if ($('#arch-hidden-block').css('display') == 'none') {
 
-            $('#arch-hidden-block').animate({height: 'show'}, 400);
+            $('#arch-hidden-block').animate({height: 'show'}, 500);
 
             $('#transform-right-arrow-arch').animate({borderSpacing: 90}, {
                 step: function (now, fx) {
@@ -39,9 +39,30 @@ $(document).ready(function () {
                 },
                 duration: 'slow'
             }, 'linear');
+
+
+            /*function dump(obj) {
+                var out = '';
+                for (var i in obj) {
+                    out += i + ": " + obj[i] + "\n";
+                }
+
+                alert(out);
+
+                // or, if you wanted to avoid alerts...
+
+                var pre = document.createElement('pre');
+                pre.innerHTML = out;
+                document.body.appendChild(pre)
+            }
+
+            // alert($('#arch-hidden-block li:first-child a').html());
+            var str = $('#arch-hidden-block li:first-child a').html();
+
+            $('#arch-hidden-block li:first-child a').html(str.substring(str.length-4, str.length));*/
         }
         else {
-            $('#arch-hidden-block').animate({height: 'hide'}, 400);
+            $('#arch-hidden-block').animate({height: 'hide'}, 500);
 
             $('#transform-right-arrow-arch').animate({borderSpacing: 0}, {
                 step: function (now, fx) {
