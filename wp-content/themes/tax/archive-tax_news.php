@@ -78,8 +78,26 @@
                 background-color: #e1e3e6;
                 text-decoration: none;
             }
+
+            .display_cat_arch {
+                color: #424242 !important;
+                text-decoration: none !important;
+                cursor: pointer;
+            }
         </style>
 
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#transform-right-arrow-arch').animate({borderSpacing: 90}, {
+                    step: function (now, fx) {
+                        $(this).css('transform', 'rotate(' + now + 'deg)');
+                    },
+                    duration: 'slow'
+                }, 'linear');
+            });
+        </script>
+        <script src="<?php bloginfo('template_url') ?>/js/animate-cat-arch.js"></script>
         <?php wp_head() ?>
     </head>
 
@@ -186,8 +204,13 @@
                     </form>
                 </div>
                 <div class="category wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title"><?php the_field('business_news_page_title_category', 55) ?></div>
-                    <ul>
+                    <div class="sidebar-title">
+                        <a class="display_cat_arch" id="link-display-cat">
+                            <?php the_field('business_news_page_title_category', 55) ?>&nbsp;
+                            <img id="transform-right-arrow" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
+                        </a>
+                    </div>
+                    <ul id="cat-hidden-block" style="display: none;">
                         <li class="all-item">
                             <a href="<?= home_url().'/news'?>">Все новости</a>
                         </li>
@@ -307,8 +330,13 @@
                     ?>
                 </div>
                 <div class="archive wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title"><?php the_field('business_news_page_title_archive', 55) ?></div>
-                    <ul>
+                    <div class="sidebar-title">
+                        <a class="display_cat_arch" id="link-display-arch">
+                            <?php the_field('business_news_page_title_archive', 55) ?>&nbsp;
+                            <img id="transform-right-arrow-arch" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
+                        </a>
+                    </div>
+                    <ul id="arch-hidden-block">
                         <!-- <li><a href="#">Сентябрь</a></li>
                          <li class="active"><a href="#">Август</a></li>
                          <li><a href="#">Июль</a></li>

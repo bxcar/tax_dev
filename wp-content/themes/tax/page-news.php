@@ -92,38 +92,7 @@
 
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script>
-        //animate categories and archives block in sidebar
-        $(document).ready(function () {
-            $('a#link-display-cat').click(function (e) {
-                $(this).toggleClass('active');
-                if ($('#cat-hidden-block').css('display') == 'none') {
-
-                    $('#cat-hidden-block').animate({height: 'show'}, 500);
-
-                    $('#transform-right-arrow').animate({borderSpacing: 90}, {
-                        step: function (now, fx) {
-                            $(this).css('transform', 'rotate(' + now + 'deg)');
-                        },
-                        duration: 'slow'
-                    }, 'linear');
-                }
-                else {
-                    $('#cat-hidden-block').animate({height: 'hide'}, 500);
-
-                    $('#transform-right-arrow').animate({borderSpacing: 0}, {
-                        step: function (now, fx) {
-                            $(this).css('transform', 'rotate(' + now + 'deg)');
-                        },
-                        duration: 'slow'
-                    }, 'linear');
-                }
-                e.stopPropagation();
-            });
-        });
-
-    </script>
-
+    <script src="<?php bloginfo('template_url') ?>/js/animate-cat-arch.js"></script>
     <?php wp_head() ?>
 </head>
 
@@ -383,8 +352,13 @@
                     ?>
                 </div>
                 <div class="archive wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title"><?php the_field('business_news_page_title_archive') ?></div>
-                    <ul>
+                    <div class="sidebar-title">
+                        <a class="display_cat_arch" id="link-display-arch">
+                            <?php the_field('business_news_page_title_archive') ?>&nbsp;
+                            <img id="transform-right-arrow-arch" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
+                        </a>
+                    </div>
+                    <ul id="arch-hidden-block" style="display: none;">
                         <!-- <li><a href="#">Сентябрь</a></li>
                          <li class="active"><a href="#">Август</a></li>
                          <li><a href="#">Июль</a></li>

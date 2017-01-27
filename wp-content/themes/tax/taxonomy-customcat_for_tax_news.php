@@ -77,8 +77,26 @@
             background-color: #e1e3e6;
             text-decoration: none;
         }
+
+        .display_cat_arch {
+            color: #424242 !important;
+            text-decoration: none !important;
+            cursor: pointer;
+        }
     </style>
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#transform-right-arrow').animate({borderSpacing: 90}, {
+                step: function (now, fx) {
+                    $(this).css('transform', 'rotate(' + now + 'deg)');
+                },
+                duration: 'slow'
+            }, 'linear');
+        });
+    </script>
+    <script src="<?php bloginfo('template_url') ?>/js/animate-cat-arch.js"></script>
     <?php wp_head() ?>
 </head>
 
@@ -141,7 +159,8 @@
                                 </div>
                                 <div class="text"><?php the_field('news_quote') ?></div>
                                 <div class="sub-info">
-<!--                                    <span class="author">--><?php //the_field('news_author') ?><!--</span>-->
+                                    <!--                                    <span class="author">-->
+                                    <?php //the_field('news_author') ?><!--</span>-->
                                     <?php
 
                                     //                                    $cat = object_to_array(get_the_category());
@@ -197,13 +216,18 @@
                     <form role="search" method="get" id="searchform" action="<?php echo home_url('/') ?>">
                         <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s"
                                placeholder="Поиск...">
-                        <input type="hidden" name="post_type" value="tax_news" /> <!-- // hidden 'tax_news' value -->
+                        <input type="hidden" name="post_type" value="tax_news"/> <!-- // hidden 'tax_news' value -->
                         <input type="submit" id="searchsubmit">
                     </form>
                 </div>
                 <div class="category wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title"><?php the_field('business_news_page_title_category', 55) ?></div>
-                    <ul>
+                    <div class="sidebar-title">
+                        <a class="display_cat_arch" id="link-display-cat">
+                            <?php the_field('business_news_page_title_category', 55) ?>&nbsp;
+                            <img id="transform-right-arrow" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
+                        </a>
+                    </div>
+                    <ul id="cat-hidden-block">
                         <li class="all-item">
                             <a href="<?= get_permalink(55); ?>">Все новости</a>
                         </li>
@@ -269,7 +293,8 @@
                                 <a href="<?php the_permalink(); ?>" class="item">
                                     <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
                                     <p><?php the_title(); ?></p>
-                                    <div class="date"><?php echo get_the_date('j'); ?>&nbsp;<?php echo get_the_date('M');
+                                    <div class="date"><?php echo get_the_date('j'); ?>
+                                        &nbsp;<?php echo get_the_date('M');
 
                                         $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
                                         echo ' / ' . $cur_terms[0]->name;
@@ -307,7 +332,8 @@
                                             <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
                                             <p><?php the_title(); ?></p>
                                             <div
-                                                class="date"><?php echo get_the_date('j'); ?>&nbsp;<?php echo get_the_date('M');
+                                                class="date"><?php echo get_the_date('j'); ?>
+                                                &nbsp;<?php echo get_the_date('M');
 
                                                 $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
                                                 echo ' / ' . $cur_terms[0]->name;
@@ -324,8 +350,14 @@
                     ?>
                 </div>
                 <div class="archive wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title"><?php the_field('business_news_page_title_archive', 55) ?></div>
-                    <ul>
+                    <div class="sidebar-title">
+                        <a class="display_cat_arch" id="link-display-arch">
+                            <?php the_field('business_news_page_title_archive', 55) ?>&nbsp;
+                            <img id="transform-right-arrow-arch"
+                                 src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
+                        </a>
+                    </div>
+                    <ul id="arch-hidden-block" style="display: none;">
                         <?php $args_archives = array(
                             'type' => 'monthly',
 //                            'limit'           => 10,
