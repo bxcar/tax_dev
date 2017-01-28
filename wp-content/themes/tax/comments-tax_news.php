@@ -28,11 +28,12 @@ if (post_password_required()) {
         <div class="top-comment-info">
             <div class="quantity">
                 <?php
-                printf( // WPCS: XSS OK.
-                    esc_html(_nx('Один комментарий', '(%1$s) комментария', get_comments_number(), 'comments title', 'tax')),
+                /*printf( // WPCS: XSS OK.
+                    esc_html(_nx('Один комментарий', '(%1$s) комментар', get_comments_number(), 'comments title', 'tax')),
                     number_format_i18n(get_comments_number()),
                     ''
-                );
+                );*/
+                comments_number_ru();
                 ?>
             </div>
         </div><!-- .comments-title -->

@@ -631,26 +631,28 @@ function mytheme_comment($comment, $args, $depth)
         case '' :
             ?>
             <li <?php comment_class('comment'); ?> id="li-comment-<?php comment_ID() ?>">
-            <div class="comment-wrap" id="comment-<?php comment_ID(); ?>">
-                <div class="user-img">
-                    <?php echo get_avatar($comment->comment_author_email, $args['avatar_size']); ?>
-                </div>
+                <div class="comment-wrap" id="comment-<?php comment_ID(); ?>">
+                    <div class="user-img">
+                        <?php echo get_avatar($comment->comment_author_email, $args['avatar_size']); ?>
+                    </div>
 
-                <?php comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+                    <?php comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
 
-                <?php printf(__('<cite class="fn name">%s</cite>'), get_comment_author_link()) ?>
+                    <?php printf(__('<cite class="fn name">%s</cite>'), get_comment_author_link()) ?>
 
                     <div class="date"><?php printf(__('%1$s'), get_comment_date('j F Y'), '') ?></div>
 
-                <?php comment_text() ?>
-                <?php //edit_comment_link(__('Редактировать'), ' ');?>
+                    <?php comment_text() ?>
+                    <?php //edit_comment_link(__('Редактировать'), ' ');
+                    ?>
 
-                <?php if ($comment->comment_approved == '0') : ?>
-                    <div
-                        class="comment-awaiting-verification"><?php _e('Your comment is awaiting moderation.') ?></div>
-                    <br/>
-                <?php endif; ?>
-            </div>
+                    <?php if ($comment->comment_approved == '0') : ?>
+                        <div
+                            class="comment-awaiting-verification"><?php _e('Your comment is awaiting moderation.') ?></div>
+                        <br/>
+                    <?php endif; ?>
+                </div>
+            </li>
 
             <?php
             break;
@@ -683,40 +685,54 @@ function stefan_wrap_comment_text($class)
     return $class;
 }
 
-/*function default_comments_on( $data ) {
-    if( $data['post_type'] == 'tax_news' ) {
-        $data['comment_status'] = 1;
+/**
+ * Функция возвращает окончание для множественного числа слова на основании числа и массива окончаний
+ * @param  $number int Число на основе которого нужно сформировать окончание
+ * @param  $ending_arr  array Массив слов с правильными окончаниями для чисел (1, 2, 5),
+ *         например array('комментарий', 'комментария', 'комментариев')
+ * @return string
+ */
+function get_num_ending($number, $ending_arr)
+{
+    $number = $number % 100;
+    if ($number >= 11 && $number <= 19) {
+        $ending = $ending_arr[2];
     }
-
-    return $data;
+    else {
+        $i = $number % 10;
+        switch ($i) {
+            case (1):
+                $ending = $ending_arr[0];
+                break;
+            case (2):
+            case (3):
+            case (4):
+                $ending = $ending_arr[1];
+                break;
+            default:
+                $ending = $ending_arr[2];
+        }
+    }
+    return $ending;
 }
-add_filter( 'wp_insert_post_data', 'default_comments_on' );*/
 
 /**
- * Support for multiple post types for comments
- *
- * @param array $clauses
- * @param object $wpqc WP_Comment_Query
- * @return array $clauses
+ * Фильтр к стандартной функции WordPress comments_number()
+ * Возвращает строку с количеством комментариев к статье
+ * с правильными окончаниями слова "комментарий" (1 комментарий, 2 комментария, 5 комментариев)
  */
-/*function wpse_121051( $clauses, $wpqc )
+function comments_number_ru()
 {
-    global $wpdb;
+    global $id;
+    $number = get_comments_number($id);
 
-    // Remove the comments_clauses filter, we don't need it anymore. 
-    remove_filter( current_filter(), __FUNCTION__ );
-
-    // Add the multiple post type support.
-    if( isset( $wpqc->query_vars['post_type'][0] ) )
-    {
-
-        $join = join( "', '", array_map( 'esc_sql', $wpqc->query_vars['post_type'] ) );
-
-        $from = "$wpdb->posts.post_type = '" . $wpqc->query_vars['post_type'][0] . "'";
-        $to   = sprintf( "$wpdb->posts.post_type IN ( '%s' ) ", $join );
-
-        $clauses['where'] = str_replace( $from, $to, $clauses['where'] );
+    if ($number == 0) {
+        $output = 'Комментариев нет';
     }
+    else {
+        $output = '(' . $number . ') ' . get_num_ending($number, array('комментарий', 'комментария', 'комментариев'));
+    }
+    echo $output;
+}
 
-    return $clauses;
-}*/
+add_filter('comments_number', 'comments_number_ru');
