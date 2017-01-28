@@ -114,7 +114,6 @@
         $(document).ready(function () {
 
             $('#arch-hidden-block').css('display', 'block');
-            $('#cat-hidden-block').css('display', 'none');
             $('#cat-hidden-block li.all-item').removeClass('all-item');
 
             $('#transform-right-arrow-arch').animate({borderSpacing: 90}, {
@@ -225,7 +224,7 @@
                     </ul>
                 </div>
             </div>
-            <?php get_sidebar('sidebar-custom-with-archives')?>
+            <?php get_sidebar('custom-with-archives')?>
         </div>
     </section>
 </main>

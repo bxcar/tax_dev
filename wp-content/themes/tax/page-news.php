@@ -111,11 +111,6 @@
 
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#cat-hidden-block').css('display', 'none');
-            });
-        </script>
         <script src="<?php bloginfo('template_url') ?>/js/animate-cat-arch.js"></script>
         <?php wp_head() ?>
     </head>
@@ -202,7 +197,7 @@
                     </ul>
                 </div>
             </div>
-            <?php get_sidebar('sidebar-custom-with-archives')?>
+            <?php get_sidebar('custom-with-archives')?>
         </div>
     </section>
 </main>

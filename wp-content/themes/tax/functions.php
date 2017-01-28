@@ -110,7 +110,7 @@ function tax_widgets_init()
 
     register_sidebar(array(
         'name' => esc_html__('Sidebar_custom_with_archives', 'tax'),
-        'id' => 'sidebar-custom-with-archives',
+        'id' => 'custom-with-archives',
         'description' => esc_html__('Add widgets here.', 'tax'),
         'before_widget' => '',
         'after_widget' => '',

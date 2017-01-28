@@ -20,7 +20,7 @@ if ( ! is_active_sidebar( 'sidebar-custom' ) ) {
                 <img id="transform-right-arrow" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
             </a>
         </div>
-        <ul id="cat-hidden-block">
+        <ul id="cat-hidden-block" style="display: none">
             <li class="all-item">
                 <a href="<?= get_permalink(55); ?>">Все новости</a>
             </li>
