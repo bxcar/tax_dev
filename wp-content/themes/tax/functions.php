@@ -109,13 +109,13 @@ function tax_widgets_init()
     ));
 
     register_sidebar(array(
-        'name' => esc_html__('Sidebar_custom', 'tax'),
-        'id' => 'sidebar-custom',
+        'name' => esc_html__('Sidebar_custom_with_archives', 'tax'),
+        'id' => 'sidebar-custom-with-archives',
         'description' => esc_html__('Add widgets here.', 'tax'),
-        'before_widget' => '<div class="wow fadeInUp" data-wow-duration="1s">',
-        'after_widget' => '</div>',
-        'before_title' => '<div class="sidebar-title">',
-        'after_title' => '</div>',
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '',
+        'after_title' => '',
     ));
 }
 
