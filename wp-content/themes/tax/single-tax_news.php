@@ -267,17 +267,26 @@ $the_query->the_post(); ?>
                     <div class="wrap">
                         <div class="owl-carousel carousel-2">
                             <?php
+
+                            $buf = get_the_ID();
+                            $id_current_global = $buf;
+
                             $args_last_news = array(
                                 'numberposts' => -1,
                                 'post_type' => 'tax_news',
-                                'posts_per_page' => 4
+                                'posts_per_page' =>  get_field('news_single_read_more_block'),
+                                'orderby' => 'rand'
                             );
 
                             // query
                             $the_query_last_news = new WP_Query($args_last_news);
                             if ($the_query_last_news->have_posts()) {
                                 while ($the_query_last_news->have_posts()) {
-                                    $the_query_last_news->the_post(); ?>
+                                    $the_query_last_news->the_post();
+                                    if($id_current_global == get_the_ID()) {
+                                        continue;
+                                    }
+                                    ?>
                                     <div class="item">
                                         <div class="item-wrap">
                                             <div class="date"><?= get_the_date('j F Y') ?></div>
