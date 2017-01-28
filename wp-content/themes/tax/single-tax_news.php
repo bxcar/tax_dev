@@ -146,7 +146,7 @@ $the_query->the_post(); ?>
         }
 
         .archive-year,
-        .archive-year-span{
+        .archive-year-span {
             font-size: .8125rem;
             font-weight: 400;
             line-height: 33px;
@@ -156,12 +156,16 @@ $the_query->the_post(); ?>
         }
 
         .archive-year-span,
-        .archive-month-list{
+        .archive-month-list {
             margin-left: 10px;
         }
 
         .archive-month-list a {
             line-height: 27px !important;
+        }
+
+        .bottom-news-category {
+            color: #6f6f6f !important;
         }
     </style>
 
@@ -197,7 +201,8 @@ $the_query->the_post(); ?>
                          src="<?php the_field('news_image'); ?>" alt="">
                     <div class="text-info">
                         <div class="top wow fadeInUp" data-wow-duration="1s">
-                            <div class="date"><?php echo get_the_date('j'); ?> <span><?php echo get_the_date('M'); ?></span></div>
+                            <div class="date"><?php echo get_the_date('j'); ?>
+                                <span><?php echo get_the_date('M'); ?></span></div>
                             <div class="blog-title">
                                 <?php the_title(); ?>
                             </div>
@@ -209,7 +214,22 @@ $the_query->the_post(); ?>
                     </div>
                 </div>
                 <div class="social-block wow fadeInUp" data-wow-duration="1s">
-                    <div class="author-thema"><?php the_field('news_author') ?> / Экономика</div>
+                    <div class="author-thema">
+                    <?php
+                    $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
+                    $last = count($cur_terms);
+                    $counter = 0;
+                    foreach ($cur_terms as $cur_term) {
+                        $counter++;
+                        if($counter == $last) {
+                            echo '<a class="bottom-news-category" href="' . get_term_link((int)$cur_term->term_id, $cur_term->taxonomy) . '">' . $cur_term->name . '</a>';
+                        }
+                        else {
+                            echo '<a class="bottom-news-category" href="' . get_term_link((int)$cur_term->term_id, $cur_term->taxonomy) . '">' . $cur_term->name . '</a> / ';
+                        }
+                    }
+                    ?>
+                    </div>
                     <div class="share">
                         <div class="share-title">Поделиться:</div>
                         <div class="link">
@@ -227,18 +247,20 @@ $the_query->the_post(); ?>
                     </div>
                 </div>
                 <div class="prev-next-post wow fadeInUp" data-wow-duration="1s">
-                    <?php if(get_permalink(get_adjacent_post(false,'',true)) != get_the_permalink()){
+                    <?php if (get_permalink(get_adjacent_post(false, '', true)) != get_the_permalink()) {
                         ?>
-                        <a href="<?= get_permalink(get_adjacent_post(false,'',true));?>" class="prev">Предыдущая новость</a>
-                    <?php
-                    }?>
+                        <a href="<?= get_permalink(get_adjacent_post(false, '', true)); ?>" class="prev">Предыдущая
+                            новость</a>
+                        <?php
+                    } ?>
 
-                    <?php if(get_permalink(get_adjacent_post(false,'',false)) != get_the_permalink()){
+                    <?php if (get_permalink(get_adjacent_post(false, '', false)) != get_the_permalink()) {
                         ?>
                         <a href="#"></a>
-                        <a style="" href="<?= get_permalink(get_adjacent_post(false,'',false));?>" class="next">Слудующая новость</a>
+                        <a style="" href="<?= get_permalink(get_adjacent_post(false, '', false)); ?>" class="next">Слудующая
+                            новость</a>
                         <?php
-                    }?>
+                    } ?>
                 </div>
                 <div class="news-front more-news wow fadeInUp" data-wow-duration="1s">
                     <div class="title"><?php the_field('news_list_title') ?></div>
@@ -318,7 +340,7 @@ $the_query->the_post(); ?>
                     </div>
                 </div>
             </div>
-            <?php get_sidebar('custom-with-archives')?>
+            <?php get_sidebar('custom-with-archives') ?>
         </div>
     </section>
 </main>
