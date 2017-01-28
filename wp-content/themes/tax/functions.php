@@ -590,14 +590,15 @@ function wp_custom_archive_new($post_type_cust = 'post')
         if ($year_current != $year_prev) {
             if ($year_prev != null) {
                 ?>
-                    </ul>
+                </ul>
             <?php } ?>
-            <a href="<?= get_home_url().'/'. $month->year . '?post_type=' . $post_type_cust ?>"
+            <a href="<?= get_home_url() . '/' . $month->year . '?post_type=' . $post_type_cust ?>"
                class="archive-year"><?php echo $month->year; ?></a><br>
 
             <div id="archive-by-month" class="archive-year-span">
                 <span>(по месяцам)</span>
-                <img id="transform-right-arrow-arch-by-month" src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
+                <img id="transform-right-arrow-arch-by-month"
+                     src="<?php bloginfo('template_url') ?>/img/right-arrow.png">
             </div>
 
             <ul class="archive-month-list" class="archive-list" id="archive-by-month-block-hidden" style="display: none;">
@@ -626,29 +627,29 @@ function wp_custom_archive_new($post_type_cust = 'post')
 function mytheme_comment($comment, $args, $depth)
 {
     $GLOBALS['comment'] = $comment;
-    switch ( $comment->comment_type ) :
+    switch ($comment->comment_type) :
         case '' :
             ?>
-            <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
-            <div id="comment-<?php comment_ID(); ?>">
-                <div class="comment-author vcard">
-                    <?php edit_comment_link( __( 'Редактировать' ), ' ' ); ?>
-                    <?php echo get_avatar( $comment->comment_author_email, $args['avatar_size']); ?>
-                    <?php printf(__('<cite class="fn">%s</cite> <span class="says">says:</span>'), get_comment_author_link()) ?>
+            <li <?php comment_class('comment'); ?> id="li-comment-<?php comment_ID() ?>">
+            <div class="comment-wrap" id="comment-<?php comment_ID(); ?>">
+                <div class="user-img">
+                    <?php echo get_avatar($comment->comment_author_email, $args['avatar_size']); ?>
                 </div>
 
-                <div class="comment-meta commentmetadata">
-                    <a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf(__('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a>
-                </div>
+                <?php comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+
+                <?php printf(__('<cite class="fn name">%s</cite>'), get_comment_author_link()) ?>
+
+                    <div class="date"><?php printf(__('%1$s'), get_comment_date('j F Y'), '') ?></div>
+
+                <?php comment_text() ?>
+                <?php //edit_comment_link(__('Редактировать'), ' ');?>
 
                 <?php if ($comment->comment_approved == '0') : ?>
-                    <div class="comment-awaiting-verification"><?php _e('Your comment is awaiting moderation.') ?></div>
-                    <br />
+                    <div
+                        class="comment-awaiting-verification"><?php _e('Your comment is awaiting moderation.') ?></div>
+                    <br/>
                 <?php endif; ?>
-                <?php comment_text() ?>
-                <div class="reply">
-                    <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-                </div>
             </div>
 
             <?php
@@ -658,10 +659,28 @@ function mytheme_comment($comment, $args, $depth)
             ?>
             <li class="post pingback">
             <?php comment_author_link(); ?>
-            <?php edit_comment_link( __( 'Редактировать' ), ' ' ); ?>
+            <?php edit_comment_link(__('Редактировать'), ' '); ?>
             <?php
             break;
     endswitch;
+}
+
+add_filter('comment_reply_link', 'replace_reply_link_class');
+
+
+function replace_reply_link_class($class)
+{
+    $class = str_replace("class='comment-reply-link", "class='answer-link", $class);
+    return $class;
+}
+
+add_filter('comment_text', 'stefan_wrap_comment_text', 1000);
+
+function stefan_wrap_comment_text($class)
+{
+    $class = str_replace("<p>", "<div class='text'>", $class);
+    $class = str_replace("</p>", "</div>", $class);
+    return $class;
 }
 
 /*function default_comments_on( $data ) {
