@@ -89,7 +89,89 @@ $the_query->the_post(); ?>
             -webkit-border-radius: 50%;
             border-radius: 50%;
         }
+
+        .all-item a {
+            color: #424242 !important;
+        }
+
+        span.current {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px;
+            text-align: center;
+            font-size: .75rem;
+            font-weight: 400;
+            line-height: 30px;
+            display: inline-block;
+            transition: all ease-in .2s;
+            background-color: #3ca04f;
+            color: #fff;
+        }
+
+        a.page-numbers,
+        span.dots {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px;
+            text-align: center;
+            background-color: #f9fafb;
+            color: #424242 !important;
+            font-size: .75rem;
+            font-weight: 400;
+            line-height: 30px;
+            display: inline-block;
+            transition: all ease-in .2s;
+        }
+
+        a.next::before {
+            content: url(/wp-content/themes/tax/img/next-post.png);
+        }
+
+        a.prev::before {
+            content: url(/wp-content/themes/tax/img/prev-post.png);
+            transform: scale(-1, 1);
+        }
+
+        .pagination a:hover,
+        .pagination a:focus,
+        .pagination a:active {
+            background-color: #e1e3e6;
+            text-decoration: none;
+        }
+
+        .display_cat_arch {
+            color: #424242 !important;
+            text-decoration: none !important;
+            cursor: pointer;
+        }
+
+        .archive-year,
+        .archive-year-span{
+            font-size: .8125rem;
+            font-weight: 400;
+            line-height: 33px;
+            color: #9e9e9e !important;
+            cursor: pointer;
+
+        }
+
+        .archive-year-span,
+        .archive-month-list{
+            margin-left: 10px;
+        }
+
+        .archive-month-list a {
+            line-height: 27px !important;
+        }
     </style>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#cat-hidden-block li.all-item').removeClass('all-item');
+        });
+    </script>
+    <script src="<?php bloginfo('template_url') ?>/js/animate-cat-arch.js"></script>
     <?php wp_head() ?>
 </head>
 
@@ -236,53 +318,7 @@ $the_query->the_post(); ?>
                     </div>
                 </div>
             </div>
-            <div class="sidebar">
-                <div class="search wow fadeInUp" data-wow-duration="1s">
-                    <form action="">
-                        <input type="text" placeholder="Поиск...">
-                        <input type="submit">
-                    </form>
-                </div>
-                <div class="category wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title">Категории</div>
-                    <ul>
-                        <li><a href="#">Экономика</a></li>
-                        <li class="active"><a href="#">Новости компаний</a></li>
-                        <li><a href="#">Финансы</a></li>
-                        <li><a href="#">Недвижимость</a></li>
-                        <li><a href="#">Налоги</a></li>
-                        <li><a href="#">Индексы</a></li>
-                    </ul>
-                </div>
-                <div class="pop-news wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title">Популярные новости</div>
-                    <a href="#" class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/img/p-news-1.jpg" alt="">
-                        <p>Власти ухудшили прогноз роста экономики</p>
-                        <div class="date">21 октября / Экономика</div>
-                    </a>
-                    <a href="#" class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/img/p-news-2.jpg" alt="">
-                        <p>Прибыль Samsung упала на 30% из-за Galaxy Note 7</p>
-                        <div class="date">20 октября / Новости компаний</div>
-                    </a>
-                    <a href="#" class="item">
-                        <img src="<?php bloginfo('template_url'); ?>/img/p-news-3.jpg" alt="">
-                        <p>Торги на биржах США завершились ростом</p>
-                        <div class="date">19 октября / Финансы</div>
-                    </a>
-                </div>
-                <div class="archive wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title">Арихив новостей</div>
-                    <ul>
-                        <li><a href="#">Сентябрь</a></li>
-                        <li class="active"><a href="#">Август</a></li>
-                        <li><a href="#">Июль</a></li>
-                        <li><a href="#">Июнь</a></li>
-                        <li><a href="#">Май</a></li>
-                    </ul>
-                </div>
-            </div>
+            <?php get_sidebar('custom-with-archives')?>
         </div>
     </section>
 </main>
