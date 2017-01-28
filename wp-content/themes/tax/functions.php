@@ -621,3 +621,83 @@ function wp_custom_archive_new($post_type_cust = 'post')
     </ul>
     <?php
 }
+
+//c
+function mytheme_comment($comment, $args, $depth)
+{
+    $GLOBALS['comment'] = $comment;
+    switch ( $comment->comment_type ) :
+        case '' :
+            ?>
+            <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
+            <div id="comment-<?php comment_ID(); ?>">
+                <div class="comment-author vcard">
+                    <?php edit_comment_link( __( 'Редактировать' ), ' ' ); ?>
+                    <?php echo get_avatar( $comment->comment_author_email, $args['avatar_size']); ?>
+                    <?php printf(__('<cite class="fn">%s</cite> <span class="says">says:</span>'), get_comment_author_link()) ?>
+                </div>
+
+                <div class="comment-meta commentmetadata">
+                    <a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf(__('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a>
+                </div>
+
+                <?php if ($comment->comment_approved == '0') : ?>
+                    <div class="comment-awaiting-verification"><?php _e('Your comment is awaiting moderation.') ?></div>
+                    <br />
+                <?php endif; ?>
+                <?php comment_text() ?>
+                <div class="reply">
+                    <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+                </div>
+            </div>
+
+            <?php
+            break;
+        case 'pingback'  :
+        case 'trackback' :
+            ?>
+            <li class="post pingback">
+            <?php comment_author_link(); ?>
+            <?php edit_comment_link( __( 'Редактировать' ), ' ' ); ?>
+            <?php
+            break;
+    endswitch;
+}
+
+/*function default_comments_on( $data ) {
+    if( $data['post_type'] == 'tax_news' ) {
+        $data['comment_status'] = 1;
+    }
+
+    return $data;
+}
+add_filter( 'wp_insert_post_data', 'default_comments_on' );*/
+
+/**
+ * Support for multiple post types for comments
+ *
+ * @param array $clauses
+ * @param object $wpqc WP_Comment_Query
+ * @return array $clauses
+ */
+/*function wpse_121051( $clauses, $wpqc )
+{
+    global $wpdb;
+
+    // Remove the comments_clauses filter, we don't need it anymore. 
+    remove_filter( current_filter(), __FUNCTION__ );
+
+    // Add the multiple post type support.
+    if( isset( $wpqc->query_vars['post_type'][0] ) )
+    {
+
+        $join = join( "', '", array_map( 'esc_sql', $wpqc->query_vars['post_type'] ) );
+
+        $from = "$wpdb->posts.post_type = '" . $wpqc->query_vars['post_type'][0] . "'";
+        $to   = sprintf( "$wpdb->posts.post_type IN ( '%s' ) ", $join );
+
+        $clauses['where'] = str_replace( $from, $to, $clauses['where'] );
+    }
+
+    return $clauses;
+}*/

@@ -3,20 +3,6 @@
  * Template Name: tax_news
  */
 ?>
-<?php
-// args
-$args = array(
-    'numberposts' => -1,
-    'post_type' => 'tax_news',
-    'p' => get_the_ID()
-);
-
-
-// query
-$the_query = new WP_Query($args);
-if ($the_query->have_posts()):
-while ($the_query->have_posts()) :
-$the_query->the_post(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -197,38 +183,60 @@ $the_query->the_post(); ?>
         <div class="wrap">
             <div class="blog">
                 <div class="item">
-                    <img class="wow fadeInUp" data-wow-duration="1s"
-                         src="<?php the_field('news_image'); ?>" alt="">
-                    <div class="text-info">
-                        <div class="top wow fadeInUp" data-wow-duration="1s">
-                            <div class="date"><?php echo get_the_date('j'); ?>
-                                <span><?php echo get_the_date('M'); ?></span></div>
-                            <div class="blog-title">
-                                <?php the_title(); ?>
-                            </div>
-                        </div>
+                    <?php
+                    // args
+                    $args = array(
+                        'numberposts' => -1,
+                        'post_type' => 'tax_news',
+                        'p' => get_the_ID()
+                    );
 
-                        <div class="text wow fadeInUp news-content" data-wow-duration="1s">
-                            <?php the_content(); ?>
-                        </div>
-                    </div>
+
+                    // query
+                    $the_query = new WP_Query($args);
+                    if ($the_query->have_posts()):
+                        while ($the_query->have_posts()) :
+                            $the_query->the_post(); ?>
+
+                            <img class="wow fadeInUp" data-wow-duration="1s"
+                                 src="<?php the_field('news_image'); ?>" alt="">
+                            <div class="text-info">
+                                <div class="top wow fadeInUp" data-wow-duration="1s">
+                                    <div class="date"><?php echo get_the_date('j'); ?>
+                                        <span><?php echo get_the_date('M'); ?></span></div>
+                                    <div class="blog-title">
+                                        <?php the_title(); ?>
+                                    </div>
+                                </div>
+
+                                <div class="text wow fadeInUp news-content" data-wow-duration="1s">
+                                    <?php the_content(); ?>
+                                </div>
+                            </div>
+
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+
+                    <?php wp_reset_query();  // Restore global post data stomped by the_post(). ?>
+
+
                 </div>
                 <div class="social-block wow fadeInUp" data-wow-duration="1s">
                     <div class="author-thema">
-                    <?php
-                    $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
-                    $last = count($cur_terms);
-                    $counter = 0;
-                    foreach ($cur_terms as $cur_term) {
-                        $counter++;
-                        if($counter == $last) {
-                            echo '<a class="bottom-news-category" href="' . get_term_link((int)$cur_term->term_id, $cur_term->taxonomy) . '">' . $cur_term->name . '</a>';
+                        <?php
+                        $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
+                        $last = count($cur_terms);
+                        $counter = 0;
+                        foreach ($cur_terms as $cur_term) {
+                            $counter++;
+                            if ($counter == $last) {
+                                echo '<a class="bottom-news-category" href="' . get_term_link((int)$cur_term->term_id, $cur_term->taxonomy) . '">' . $cur_term->name . '</a>';
+                            }
+                            else {
+                                echo '<a class="bottom-news-category" href="' . get_term_link((int)$cur_term->term_id, $cur_term->taxonomy) . '">' . $cur_term->name . '</a> / ';
+                            }
                         }
-                        else {
-                            echo '<a class="bottom-news-category" href="' . get_term_link((int)$cur_term->term_id, $cur_term->taxonomy) . '">' . $cur_term->name . '</a> / ';
-                        }
-                    }
-                    ?>
+                        ?>
                     </div>
                     <div class="share">
                         <div class="share-title">Поделиться:</div>
@@ -274,7 +282,7 @@ $the_query->the_post(); ?>
                             $args_last_news = array(
                                 'numberposts' => -1,
                                 'post_type' => 'tax_news',
-                                'posts_per_page' =>  get_field('news_single_read_more_block'),
+                                'posts_per_page' => get_field('news_single_read_more_block'),
                                 'orderby' => 'rand'
                             );
 
@@ -283,7 +291,7 @@ $the_query->the_post(); ?>
                             if ($the_query_last_news->have_posts()) {
                                 while ($the_query_last_news->have_posts()) {
                                     $the_query_last_news->the_post();
-                                    if($id_current_global == get_the_ID()) {
+                                    if ($id_current_global == get_the_ID()) {
                                         continue;
                                     }
                                     ?>
@@ -296,17 +304,17 @@ $the_query->the_post(); ?>
                                     </div>
                                 <?php }
                             } ?>
+                            <?php wp_reset_query();  // Restore global post data stomped by the_post(). ?>
                         </div>
                     </div>
                 </div>
-                <div class="comment-block wow fadeInUp" data-wow-duration="1s">
-                    <div class="title"><?php the_field('news_comment_title') ?></div>
-                    <div class="top-comment-info">
+                <div class="title"><?php the_field('news_comment_title') ?></div>
+                <!--<div class="top-comment-info">
                         <div class="quantity">(4) комментария / (1) Ответ</div>
                     </div>
                     <div class="comment">
                         <div class="comment-wrap">
-                            <div class="user-img"><img src="<?php bloginfo('template_url'); ?>/img/user-1.jpg"
+                            <div class="user-img"><img src="<?php /*bloginfo('template_url'); */ ?>/img/user-1.jpg"
                                                        alt="">
                             </div>
                             <a href="#" class="answer-link">Ответить</a>
@@ -328,7 +336,7 @@ $the_query->the_post(); ?>
                     <div class="comment answer">
                         <div class="comment-wrap">
                             <div class="user-img"><img
-                                    src="<?php bloginfo('template_url'); ?>/img/user-default.jpg"
+                                    src="<?php /*bloginfo('template_url'); */ ?>/img/user-default.jpg"
                                     alt=""></div>
                             <a href="#" class="answer-link">Ответить</a>
                             <div class="name">Олег Лепендин</div>
@@ -337,15 +345,30 @@ $the_query->the_post(); ?>
                                 условно.
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div>-->
+                <?php comments_template('/comments-tax_news.php', true); ?>
+
                 <div class="leave-comment wow fadeInUp" data-wow-duration="1s">
                     <div class="form-title"><?php the_field('news_comment_leave_form_title') ?></div>
                     <div class="form-wrap">
-                        <input type="text" placeholder="Имя">
+                        <!--<input type="text" placeholder="Имя">
                         <input type="email" placeholder="Email">
                         <textarea name="" id="" cols="20" rows="5" placeholder="Текст"></textarea>
-                        <input type="submit" placeholder="ОТПРАВИТЬ">
+                        <input type="submit" placeholder="ОТПРАВИТЬ">-->
+                        <?php
+
+                        /* $commenter = wp_get_current_commenter();
+
+                         $args= array(
+                                 'author' => '<p class="comment-form-author">' . '<label for="author">' . __( 'Name' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
+                                     '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></p>',
+                                 'email'  => '<p class="comment-form-email"><label for="email">' . __( 'Email' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
+                                     '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></p>',
+                                 'url'    => '<p class="comment-form-url"><label for="url">' . __( 'Website' ) . '</label>' .
+                                     '<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></p>',
+                             );
+                         comment_form( $args, 1);*/
+                        ?>
                     </div>
                 </div>
             </div>
@@ -355,8 +378,3 @@ $the_query->the_post(); ?>
 </main>
 <!-- End content -->
 <? get_footer() ?>
-
-<?php endwhile; ?>
-<?php endif; ?>
-
-<?php wp_reset_query();     // Restore global post data stomped by the_post(). ?>
