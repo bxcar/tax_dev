@@ -7,7 +7,7 @@ if ( ! is_active_sidebar( 'sidebar-custom' ) ) {
 <div class="sidebar">
     <div class="search wow fadeInUp" data-wow-duration="1s">
         <form role="search" method="get" id="searchform" action="<?php echo home_url('/') ?>">
-            <input type="text" value="<?php echo get_search_query() ?>" name="s" id="s"
+            <input style="border-radius: 0;" type="text" value="<?php echo get_search_query() ?>" name="s" id="s"
                    placeholder="Поиск...">
             <input type="hidden" name="post_type" value="tax_news"/> <!-- // hidden 'tax_news' value -->
             <input type="submit" id="searchsubmit">

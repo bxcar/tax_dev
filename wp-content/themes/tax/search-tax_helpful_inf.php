@@ -1,9 +1,8 @@
 <?php
 /**
- * Template Name: news
+ * Template Name: tax_news_search
  */
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -11,9 +10,9 @@
 
     <meta charset="utf-8">
 
-    <title><?php the_field('business_news_page_title_meta') ?></title>
-    <meta name="description" content="<?php the_field('business_news_page_description_meta') ?>">
-    <meta name="keywords" content="<?php the_field('business_news_page_keywords') ?>">
+    <title><?php the_field('helpful_information_page_title_meta', 51) ?></title>
+    <meta name="description" content="<?php the_field('helpful_information_page_description_meta', 51) ?>">
+    <meta name="keywords" content="<?php the_field('helpful_information_page_keywords', 51) ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -35,9 +34,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#000">
     <!-- Custom Browsers Color End -->
     <style>
-        .all-item a {
+        /*.all-item a {
             color: #424242 !important;
-        }
+        }*/
 
         span.current {
             width: 30px;
@@ -91,7 +90,7 @@
         }
 
         .archive-year,
-        .archive-year-span {
+        .archive-year-span{
             font-size: .8125rem;
             font-weight: 400;
             line-height: 33px;
@@ -101,7 +100,7 @@
         }
 
         .archive-year-span,
-        .archive-month-list {
+        .archive-month-list{
             margin-left: 10px;
         }
 
@@ -109,7 +108,6 @@
             line-height: 27px !important;
         }
     </style>
-
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="<?php bloginfo('template_url') ?>/js/animate-cat-arch.js"></script>
@@ -122,11 +120,11 @@
 <!-- Content -->
 <main>
     <section class="top-block top-news">
-        <h1 class="page-title"><?php the_field('business_news_page_title') ?></h1>
+        <h1 class="page-title"><?php the_field('helpful_information_page_title', 51) ?></h1>
         <div class="breadcrumb">
             <ul>
                 <li><a href="index.html">Главная</a></li>
-                <li><span>Новости</span></li>
+                <li><span>Полезная информация</span></li>
             </ul>
         </div>
     </section>
@@ -134,16 +132,6 @@
         <div class="wrap">
             <div class="blog">
                 <?php
-                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-                $the_query_last_news = query_posts(
-                    array(
-                        'numberposts' => -1,
-                        'post_type' => 'tax_news',
-                        'posts_per_page' => get_field('business_news_page_amount_news_per_page'),
-                        'paged' => $paged
-                    )
-                );
-
                 if (have_posts()) {
                     while (have_posts()) {
                         the_post(); ?>
@@ -160,16 +148,14 @@
                                 <div class="text"><?php the_field('news_quote') ?></div>
                                 <div class="sub-info">
                                     <?php
-
-                                    $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
-                                    foreach ($cur_terms as $cur_term) {
-                                        echo '<span class="themes">' . $cur_term->name . '</span> ';
+                                    if (get_the_terms($post->ID, 'category-helpful-information')) {
+                                        $cur_terms = get_the_terms($post->ID, 'category-helpful-information');
+                                        foreach ($cur_terms as $cur_term) {
+                                            echo '<span class="themes">' . $cur_term->name . '</span> ';
+                                        }
                                     }
-
                                     ?>
-                                    <span class="view"><?php if (function_exists('get_the_views_custom')) {
-                                            echo get_the_views_custom();
-                                        } ?></span>
+                                    <span class="view"><?php if(function_exists('get_the_views_custom')) { echo get_the_views_custom(); } ?></span>
                                     <span class="comment"><?php comments_number_ru(); ?></span>
                                 </div>
                                 <a href="<?php the_permalink(); ?>">ПОДРОБНЕЕ</a>
@@ -177,6 +163,11 @@
                         </div>
                         <?php
                     }
+                }
+                else {
+                    ?>
+                    <div>По вашему запросу новостей не найдено</div>
+                    <?php
                 }
                 ?>
 
@@ -200,7 +191,7 @@
                     </ul>
                 </div>
             </div>
-            <?php get_sidebar('custom-with-archives') ?>
+            <?php get_sidebar('custom-with-tags')?>
         </div>
     </section>
 </main>

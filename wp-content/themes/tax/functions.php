@@ -117,6 +117,16 @@ function tax_widgets_init()
         'before_title' => '',
         'after_title' => '',
     ));
+
+    register_sidebar(array(
+        'name' => esc_html__('Сustom_with_archives', 'tax'),
+        'id' => 'custom-with-tags',
+        'description' => esc_html__('Add widgets here.', 'tax'),
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '',
+        'after_title' => '',
+    ));
 }
 
 add_action('widgets_init', 'tax_widgets_init');
@@ -298,7 +308,8 @@ function register_my_custom_menu_page()
     add_menu_page(
         'custom taxonomy title', 'Таксономии', 'manage_options', 'customtaxonomies', 'my_custom_taxonomy_page', 'dashicons-list-view', 22.3
     );
-    add_submenu_page('customtaxonomies', 'Категории_новости', 'Категории_новости', 8, '/edit-tags.php?taxonomy=customcat_for_tax_news');
+    add_submenu_page('customtaxonomies', 'Категории новости', 'Категории новости', 8, '/edit-tags.php?taxonomy=customcat_for_tax_news');
+    add_submenu_page('customtaxonomies', 'Категории полезная информация', 'Категории полезная информация', 8, '/edit-tags.php?taxonomy=category-helpful-information');
 //    remove_submenu_page('customtaxonomies','customtaxonomies');
 }
 
@@ -485,8 +496,14 @@ function template_chooser($template)
     if ($wp_query->is_search && $post_type == 'tax_news') {
         return locate_template('search-tax_news.php');  //  redirect to archive-search.php
     }
+
+    if ($wp_query->is_search && $post_type == 'tax_helpful_inf') {
+        return locate_template('search-tax_helpful_inf.php');
+    }
+
     return $template;
 }
+
 
 add_filter('template_include', 'template_chooser');
 
@@ -628,7 +645,7 @@ function mytheme_comment($comment, $args, $depth)
 {
     $GLOBALS['comment'] = $comment;
     //var_dump($comment);
-    if($comment->comment_parent) {
+    if ($comment->comment_parent) {
         switch ($comment->comment_type) :
             case '' :
 //                echo $comment->comment_parent;
@@ -715,25 +732,27 @@ function mytheme_comment($comment, $args, $depth)
 add_filter('comment_reply_link', 'replace_reply_link_class');
 
 //comment form button
-function awesome_comment_form_submit_button($button) {
+function awesome_comment_form_submit_button($button)
+{
     $button =
         '<input name="submit" type="submit" class="submit" id="submit" value="Отправить" />'; /*.
         get_comment_id_fields();*/
     return $button;
 }
+
 add_filter('comment_form_submit_button', 'awesome_comment_form_submit_button');
 
 
 //move comment textarea to bottom
-function wpb_move_comment_field_to_bottom( $fields ) {
+function wpb_move_comment_field_to_bottom($fields)
+{
     $comment_field = $fields['comment'];
-    unset( $fields['comment'] );
+    unset($fields['comment']);
     $fields['comment'] = $comment_field;
     return $fields;
 }
 
-add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );
-
+add_filter('comment_form_fields', 'wpb_move_comment_field_to_bottom');
 
 
 // add a new default avatar to the list in WordPress admin   ---I use plugin instead bottom code--
@@ -744,7 +763,6 @@ add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );
     return $avatar_defaults;
 }
 add_filter( 'avatar_defaults', 'mytheme_addgravatar' );*/
-
 
 
 // THIS MUST BE DELETED ON REAL HOST
@@ -845,11 +863,12 @@ add_filter('comments_number', 'comments_number_ru');
 
 
 //custom function for number of post views drom plugin wp-postViews
-function get_the_views_custom($display = true, $prefix = '', $postfix = '', $always = false) {
-    $post_views = intval( get_post_meta( get_the_ID(), 'views', true ) );
+function get_the_views_custom($display = true, $prefix = '', $postfix = '', $always = false)
+{
+    $post_views = intval(get_post_meta(get_the_ID(), 'views', true));
     $views_options = get_option('views_options');
     if ($always || should_views_be_displayed($views_options)) {
-        $output = number_format_i18n( $post_views );
+        $output = number_format_i18n($post_views);
         return $output . ' ' . get_num_ending($output, array('просмотр', 'просмотра', 'просмотров'));
 //        return $output;
     }

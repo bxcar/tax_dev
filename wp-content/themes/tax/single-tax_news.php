@@ -231,13 +231,15 @@
                         $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
                         $last = count($cur_terms);
                         $counter = 0;
-                        foreach ($cur_terms as $cur_term) {
-                            $counter++;
-                            if ($counter == $last) {
-                                echo '<a class="bottom-news-category" href="' . get_term_link((int)$cur_term->term_id, $cur_term->taxonomy) . '">' . $cur_term->name . '</a>';
-                            }
-                            else {
-                                echo '<a class="bottom-news-category" href="' . get_term_link((int)$cur_term->term_id, $cur_term->taxonomy) . '">' . $cur_term->name . '</a> / ';
+                        if($cur_terms) {
+                            foreach ($cur_terms as $cur_term) {
+                                $counter++;
+                                if ($counter == $last) {
+                                    echo '<a class="bottom-news-category" href="' . get_term_link((int)$cur_term->term_id, $cur_term->taxonomy) . '">' . $cur_term->name . '</a>';
+                                }
+                                else {
+                                    echo '<a class="bottom-news-category" href="' . get_term_link((int)$cur_term->term_id, $cur_term->taxonomy) . '">' . $cur_term->name . '</a> / ';
+                                }
                             }
                         }
                         ?>

@@ -1,10 +1,10 @@
 {
-    "key": "group_587e5f3fb7ab9",
-    "title": "\u041f\u043e\u043b\u044f \u0434\u043b\u044f \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u043e\u0439 \u043d\u043e\u0432\u043e\u0441\u0442\u0438",
+    "key": "group_588e0f752b17e",
+    "title": "\u041f\u043e\u043b\u044f \u0434\u043b\u044f \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u043e\u0439 \u043f\u043e\u043b\u0435\u0437\u043d\u043e\u0439 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438",
     "fields": [
         {
-            "key": "field_587e65cba14ef",
-            "label": "\u0418\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u043d\u043e\u0432\u043e\u0441\u0442\u0438",
+            "key": "field_588e0f75370e9",
+            "label": "\u0418\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u0437\u0430\u043f\u0438\u0441\u0438",
             "name": "news_image",
             "type": "image",
             "instructions": "",
@@ -27,8 +27,8 @@
             "mime_types": ""
         },
         {
-            "key": "field_5885f91d92938",
-            "label": "\u041e\u0442\u0440\u044b\u0432\u043e\u043a \u0434\u043b\u044f \u043f\u043e\u043a\u0430\u0437\u0430 \u0432 \u043b\u0435\u043d\u0442\u0435 \u043d\u043e\u0432\u043e\u0441\u0442\u0435\u0439",
+            "key": "field_588e0f75374d1",
+            "label": "\u041e\u0442\u0440\u044b\u0432\u043e\u043a \u0434\u043b\u044f \u043f\u043e\u043a\u0430\u0437\u0430 \u0432 \u043b\u0435\u043d\u0442\u0435 \u043f\u043e\u043b\u0435\u0437\u043d\u043e\u0439 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438",
             "name": "news_quote",
             "type": "textarea",
             "instructions": "",
@@ -46,7 +46,7 @@
             "new_lines": "br"
         },
         {
-            "key": "field_587e72ec01323",
+            "key": "field_588e0f75378b9",
             "label": "\u041c\u0435\u0442\u0430",
             "name": "",
             "type": "tab",
@@ -62,7 +62,7 @@
             "endpoint": 0
         },
         {
-            "key": "field_587e730601326",
+            "key": "field_588e0f7537ca1",
             "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b(title)",
             "name": "news_page_title_meta",
             "type": "text",
@@ -81,7 +81,7 @@
             "maxlength": ""
         },
         {
-            "key": "field_587e737801328",
+            "key": "field_588e0f7538089",
             "label": "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b(description)",
             "name": "news_page_description_meta",
             "type": "textarea",
@@ -100,7 +100,7 @@
             "new_lines": ""
         },
         {
-            "key": "field_587e737701327",
+            "key": "field_588e0f7538471",
             "label": "\u041a\u043b\u044e\u0447\u0435\u0432\u044b\u0435 \u0441\u043b\u043e\u0432\u0430",
             "name": "news_page_keywords_meta",
             "type": "text",
@@ -119,7 +119,7 @@
             "maxlength": ""
         },
         {
-            "key": "field_587e6c3197c2d",
+            "key": "field_588e0f7538859",
             "label": "\u0414\u0440\u0443\u0433\u043e\u0435",
             "name": "",
             "type": "tab",
@@ -135,7 +135,7 @@
             "endpoint": 0
         },
         {
-            "key": "field_587e6626a14f0",
+            "key": "field_588e0f7538c41",
             "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b",
             "name": "news_page_title",
             "type": "textarea",
@@ -147,15 +147,15 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "\u041d\u041e\u0412\u041e\u0421\u0422\u0418 \u0411\u0418\u0417\u041d\u0415\u0421\u0410",
+            "default_value": "\u041f\u041e\u041b\u0415\u0417\u041d\u0410\u042f \u0418\u041d\u0424\u041e\u0420\u041c\u0410\u0426\u0418\u042f",
             "placeholder": "",
             "maxlength": "",
             "rows": 2,
             "new_lines": "br"
         },
         {
-            "key": "field_587e6b16d812d",
-            "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0441\u043f\u0438\u0441\u043a\u0430 \u043d\u043e\u0432\u043e\u0441\u0442\u0435\u0439",
+            "key": "field_588e0f7539029",
+            "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0441\u043f\u0438\u0441\u043a\u0430 \u043f\u043e\u043b\u0435\u0437\u043d\u043e\u0439 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438",
             "name": "news_list_title",
             "type": "textarea",
             "instructions": "",
@@ -173,7 +173,7 @@
             "new_lines": "br"
         },
         {
-            "key": "field_587e6b64d812e",
+            "key": "field_588e0f7539411",
             "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u043a\u043e\u043c\u043c\u0435\u043d\u0442\u0430\u0440\u0438\u0435\u0432",
             "name": "news_comment_title",
             "type": "textarea",
@@ -192,7 +192,7 @@
             "new_lines": "br"
         },
         {
-            "key": "field_587e6b9fce4f9",
+            "key": "field_588e0f75397fa",
             "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0444\u043e\u0440\u043c\u044b \"\u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u043a\u043e\u043c\u043c\u0435\u043d\u0442\u0430\u0440\u0438\u0439\"",
             "name": "news_comment_leave_form_title",
             "type": "textarea",
@@ -211,8 +211,8 @@
             "new_lines": "br"
         },
         {
-            "key": "field_588c88aacfa56",
-            "label": "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0432\u044b\u0432\u043e\u0434\u0438\u043c\u044b\u0445 \u043d\u043e\u0432\u043e\u0441\u0442\u0435\u0439  \u0432 \u0440\u0430\u0437\u0434\u0435\u043b\u0435 \"\u0427\u0438\u0442\u0430\u0442\u044c \u0442\u0430\u043a\u0436\u0435\"",
+            "key": "field_588e0f7539be2",
+            "label": "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0432\u044b\u0432\u043e\u0434\u0438\u043c\u043e\u0439 \u043f\u043e\u043b\u0435\u0437\u043d\u043e\u0439 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438  \u0432 \u0440\u0430\u0437\u0434\u0435\u043b\u0435 \"\u0427\u0438\u0442\u0430\u0442\u044c \u0442\u0430\u043a\u0436\u0435\"",
             "name": "news_single_read_more_block",
             "type": "number",
             "instructions": "",
@@ -237,7 +237,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "tax_news"
+                "value": "tax_helpful_inf"
             }
         ]
     ],
@@ -249,5 +249,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1485705640
+    "modified": 1485705692
 }
