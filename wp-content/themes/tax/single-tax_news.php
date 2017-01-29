@@ -313,43 +313,7 @@
                     </div>
                 </div>
                 <div class="title"><?php the_field('news_comment_title') ?></div>
-                <!--<div class="top-comment-info">
-                        <div class="quantity">(4) комментария / (1) Ответ</div>
-                    </div>
-                    <div class="comment">
-                        <div class="comment-wrap">
-                            <div class="user-img"><img src="<?php /*bloginfo('template_url'); */ ?>/img/user-1.jpg"
-                                                       alt="">
-                            </div>
-                            <a href="#" class="answer-link">Ответить</a>
-                            <div class="name">Сергей Чепоров</div>
-                            <div class="date">18 октября 2016</div>
-                            <div class="text">Принцип восприятия непредвзято создает паллиативный интеллект,
-                                условно.
-                                Концепция ментально оспособляет закон внешнего мира. Сомнение раскладывает на
-                                элементы
-                                неоднозначный структурализм. Смысл жизни профанирует принцип восприятия, отрицая
-                                очевидное. Жизнь философски ассоциирует напряженный постмодернизм. Объект
-                                деятельности
-                                означает конфликт. Согласно предыдущему, конфликт, в рамках сегодняшних
-                                воззрений, ясен
-                                не всем.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comment answer">
-                        <div class="comment-wrap">
-                            <div class="user-img"><img
-                                    src="<?php /*bloginfo('template_url'); */ ?>/img/user-default.jpg"
-                                    alt=""></div>
-                            <a href="#" class="answer-link">Ответить</a>
-                            <div class="name">Олег Лепендин</div>
-                            <div class="date">18 октября 2016</div>
-                            <div class="text">Принцип восприятия непредвзято создает паллиативный интеллект,
-                                условно.
-                            </div>
-                        </div>
-                    </div>-->
+                
                 <?php comments_template('/comments-tax_news.php', true); ?>
                 
             </div>

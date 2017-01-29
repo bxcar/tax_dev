@@ -96,25 +96,26 @@ if (post_password_required()) {
     <?php
 
     /* $commenter = wp_get_current_commenter();*/
-
-    $fields = array(
-        'author' => '<div class="leave-comment wow fadeInUp" data-wow-duration="1s">
-        <div class="form-title">' . get_field('news_comment_leave_form_title') . '</div>
-        <div class="form-wrap">
-<div id="author-data"> 
-                                        <input placeholder="Имя" id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30"' . $aria_req . ' />',
-        'email' => '<input placeholder="Email" id="email" name="email" type="email" value="' . esc_attr($commenter['comment_author_email']) . '" size="30"' . $aria_req . ' />',
-        'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x('Comment', 'noun') . '</label> <textarea placeholder="Текст" id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p></div></div></div>'
-    );
-
-    $comments_args = array(
-        'fields' => $fields,
-        'comment_notes_before' => '',
-        'title_reply' => ''
-//        'comment_notes_after' => '</div></div>',
-    );
-
-    comment_form($comments_args);
     ?>
+    <?php
 
+            $fields = array(
+                'author' => '
+                
+        <input placeholder="Имя" id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30"' . $aria_req . ' />',
+                'email' => '<input placeholder="Email" id="email" name="email" type="email" value="' . esc_attr($commenter['comment_author_email']) . '" size="30"' . $aria_req . ' /></div></div>',
+//        'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x('Comment', 'noun') . '</label> <textarea placeholder="Текст" id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p></div></div></div>'
+            );
+
+            $comments_args = array(
+                'fields' => $fields,
+                'comment_notes_before' => '<div class="leave-comment wow fadeInUp" data-wow-duration="1s">
+        <div class="form-title">'. get_field('news_comment_leave_form_title').' </div>
+        <div class="form-wrap">',
+                'title_reply' => '',
+                'comment_notes_after' => '',
+            );
+
+            comment_form($comments_args);
+            ?>
 </div><!-- #comments -->

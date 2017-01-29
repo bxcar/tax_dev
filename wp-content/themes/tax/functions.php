@@ -631,6 +631,7 @@ function mytheme_comment($comment, $args, $depth)
     if($comment->comment_parent) {
         switch ($comment->comment_type) :
             case '' :
+//                echo $comment->comment_parent;
                 ?>
                 <li <?php comment_class('comment answer'); ?> id="li-comment-<?php comment_ID() ?>">
                     <div class="comment-wrap" id="comment-<?php comment_ID(); ?>">
@@ -716,22 +717,22 @@ add_filter('comment_reply_link', 'replace_reply_link_class');
 //comment form button
 function awesome_comment_form_submit_button($button) {
     $button =
-        '<input name="submit" type="submit" class="form-submit" tabindex="5" id="[args:id_submit]" value="Отправить" />' .
-        get_comment_id_fields();
+        '<input name="submit" type="submit" class="submit" id="submit" value="Отправить" />'; /*.
+        get_comment_id_fields();*/
     return $button;
 }
 add_filter('comment_form_submit_button', 'awesome_comment_form_submit_button');
 
 
 //move comment textarea to bottom
-/*function wpb_move_comment_field_to_bottom( $fields ) {
+function wpb_move_comment_field_to_bottom( $fields ) {
     $comment_field = $fields['comment'];
     unset( $fields['comment'] );
     $fields['comment'] = $comment_field;
     return $fields;
 }
 
-add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );*/
+add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );
 
 
 
