@@ -45,6 +45,9 @@ main .leave-comment input[type=email] {
 .logged-in-as a {
     color: #9e9e9e;
 }
+.logged-in-as a:visited {
+    color: #9e9e9e;
+}
 
 .logged-in-as a:hover {
     color: #3ca04f;

@@ -166,7 +166,7 @@
                                     }
 
                                     ?>
-                                    <span class="view"><?php if(function_exists('get_the_views_custom')) { echo get_the_views_custom(); } ?> </span>
+                                    <span class="view"><?php if(function_exists('get_the_views_custom')) { echo get_the_views_custom(); } ?></span>
                                     <span class="comment"><?php comments_number_ru(); ?></span>
                                 </div>
                                 <a href="<?php the_permalink(); ?>">ПОДРОБНЕЕ</a>

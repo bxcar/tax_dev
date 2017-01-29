@@ -162,8 +162,8 @@
                                         echo '<span class="themes">' . $cur_term->name . '</span> ';
                                     }
                                     ?>
-                                    <span class="view">10 просмотров</span>
-                                    <span class="comment">2 комментария</span>
+                                    <span class="view"><?php if(function_exists('get_the_views_custom')) { echo get_the_views_custom(); } ?></span>
+                                    <span class="comment"><?php comments_number_ru(); ?></span>
                                 </div>
                                 <a href="<?php the_permalink(); ?>">ПОДРОБНЕЕ</a>
                             </div>
