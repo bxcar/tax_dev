@@ -1,3 +1,7 @@
+main .leave-comment {
+    padding-bottom: 0 !important;
+}
+
 main .comment-block .comment {
     list-style: none;
 }
@@ -13,6 +17,42 @@ main .leave-comment input[type=email] {
     margin-left: 15px;
 }
 
-.comment-form > .comment-form-comment {
+.comment-form > .comment-form-comment{
     display: none;
+}
+
+.comment-respond h3 small a {
+    right: 0;
+    float: right;
+    color: #6f6f6f;
+    font-size: .8125rem;
+    font-weight: 400;
+    line-height: 30px;
+    text-decoration: none;
+}
+
+.comment-respond h3 small a:hover {
+    color: #3ca04f;
+    text-decoration: none;
+}
+
+.form-submit input[type="submit"] {
+    color: #fff;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 36px;
+    width: 100%;
+    max-width: 200px;
+    background-color: #3ca04f;
+    border: none;
+    text-transform: uppercase;
+    margin: 0 auto;
+    display: block;
+    -webkit-transition: all ease-in .2s;
+    transition: all ease-in .2s;
+    border-radius: 0;
+}
+
+.form-submit input[type="submit"]:hover {
+    background-color: #348744;
 }

@@ -88,33 +88,33 @@ if (post_password_required()) {
     endif;
 
     ?>
-    <div class="leave-comment wow fadeInUp" data-wow-duration="1s">
-        <div class="form-title"><?php the_field('news_comment_leave_form_title') ?></div>
+
+    <!--<input type="text" placeholder="Имя">
+    <input type="email" placeholder="Email">
+    <textarea name="" id="" cols="20" rows="5" placeholder="Текст"></textarea>
+    <input type="submit" placeholder="ОТПРАВИТЬ">-->
+    <?php
+
+    /* $commenter = wp_get_current_commenter();*/
+
+    $fields = array(
+        'author' => '<div class="leave-comment wow fadeInUp" data-wow-duration="1s">
+        <div class="form-title">' . get_field('news_comment_leave_form_title') . '</div>
         <div class="form-wrap">
-            <!--<input type="text" placeholder="Имя">
-            <input type="email" placeholder="Email">
-            <textarea name="" id="" cols="20" rows="5" placeholder="Текст"></textarea>
-            <input type="submit" placeholder="ОТПРАВИТЬ">-->
-            <?php
+<div id="author-data"> 
+                                        <input placeholder="Имя" id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30"' . $aria_req . ' />',
+        'email' => '<input placeholder="Email" id="email" name="email" type="email" value="' . esc_attr($commenter['comment_author_email']) . '" size="30"' . $aria_req . ' />',
+        'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x('Comment', 'noun') . '</label> <textarea placeholder="Текст" id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p></div></div></div>'
+    );
 
-            /* $commenter = wp_get_current_commenter();*/
+    $comments_args = array(
+        'fields' => $fields,
+        'comment_notes_before' => '',
+        'title_reply' => ''
+//        'comment_notes_after' => '</div></div>',
+    );
 
-            $fields = array(
-                'author' => '<div id="author-data"> 
-                                            <input placeholder="Имя" id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30"' . $aria_req . ' />',
-                'email' => '<input placeholder="Email" id="email" name="email" type="email" value="' . esc_attr($commenter['comment_author_email']) . '" size="30"' . $aria_req . ' />',
-                'label_submit' => 'Отправить',
-                'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p></div>'
-            );
-
-            $comments_args = array(
-                'fields' => $fields,
-                'comment_notes_after' => '',
-            );
-
-            comment_form($comments_args);
-            ?>
-        </div>
-    </div>
+    comment_form($comments_args);
+    ?>
 
 </div><!-- #comments -->
