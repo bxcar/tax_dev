@@ -174,7 +174,7 @@
 <? get_header() ?>
 <!-- Content -->
 <main>
-    <section class="top-block top-news">
+    <section class="top-block top-helpful-info">
         <h1 class="page-title"><?php the_field('news_page_title'); ?></h1>
         <div class="breadcrumb">
             <ul>
@@ -231,7 +231,7 @@
                         $cur_terms = get_the_terms($post->ID, 'category-helpful-information');
                         $last = count($cur_terms);
                         $counter = 0;
-                        if($cur_terms) {
+                        if ($cur_terms) {
                             foreach ($cur_terms as $cur_term) {
                                 $counter++;
                                 if ($counter == $last) {
@@ -276,10 +276,11 @@
                         <?php
                     } ?>
                 </div>
-                <div class="news-front more-news wow fadeInUp" data-wow-duration="1s">
-                    <div class="title"><?php the_field('news_list_title') ?></div>
+
+                <div class="helpful-info more-helpful-info wow fadeInUp" data-wow-duration="1s">
                     <div class="wrap">
-                        <div class="owl-carousel carousel-2">
+                        <div class="title"><?php the_field('news_list_title') ?></div>
+                        <div class="info-item">
                             <?php
 
                             $buf = get_the_ID();
@@ -302,11 +303,7 @@
                                     }
                                     ?>
                                     <div class="item">
-                                        <div class="item-wrap">
-                                            <div class="date"><?= get_the_date('j F Y') ?></div>
-                                            <p><?php the_title(); ?></p>
-                                            <a href="<?php the_permalink(); ?>"></a>
-                                        </div>
+                                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                     </div>
                                 <?php }
                             } ?>
@@ -314,6 +311,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="title"><?php the_field('news_comment_title') ?></div>
 
                 <?php comments_template('/comments-tax_news.php', true); ?>

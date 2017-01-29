@@ -119,7 +119,7 @@
 <? get_header() ?>
 <!-- Content -->
 <main>
-    <section class="top-block top-news">
+    <section class="top-block top-helpful-info">
         <h1 class="page-title"><?php the_field('helpful_information_page_title') ?></h1>
         <div class="breadcrumb">
             <ul>
@@ -141,7 +141,7 @@
                         'paged' => $paged
                     )
                 );
-                
+
                 if (have_posts()) {
                     while (have_posts()) {
                         the_post(); ?>

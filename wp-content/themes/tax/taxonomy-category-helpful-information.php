@@ -127,7 +127,7 @@
 <? get_header() ?>
 <!-- Content -->
 <main>
-    <section class="top-block top-news">
+    <section class="top-block top-helpful-info">
         <h1 class="page-title"><?php the_field('helpful_information_page_title', 51) ?></h1>
         <div class="breadcrumb">
             <ul>

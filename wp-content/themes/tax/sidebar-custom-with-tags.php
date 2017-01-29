@@ -9,6 +9,10 @@ if (!is_active_sidebar('sidebar-custom')) {
         background: #FBFBFB;
         color: #aeacac !important;
     }
+
+    .tag {
+        text-decoration: none !important;
+    }
 </style>
 <div class="sidebar" style="width: 310px;">
     <div class="search wow fadeInUp" data-wow-duration="1s">
