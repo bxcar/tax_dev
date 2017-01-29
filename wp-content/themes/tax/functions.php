@@ -713,6 +713,15 @@ function mytheme_comment($comment, $args, $depth)
 
 add_filter('comment_reply_link', 'replace_reply_link_class');
 
+//comment form button
+function awesome_comment_form_submit_button($button) {
+    $button =
+        '<input name="submit" type="submit" class="form-submit" tabindex="5" id="[args:id_submit]" value="Отправить" />' .
+        get_comment_id_fields();
+    return $button;
+}
+add_filter('comment_form_submit_button', 'awesome_comment_form_submit_button');
+
 
 
 // add a new default avatar to the list in WordPress admin   ---I use plugin instead bottom code--
