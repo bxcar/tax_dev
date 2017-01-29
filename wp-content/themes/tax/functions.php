@@ -627,47 +627,126 @@ function wp_custom_archive_new($post_type_cust = 'post')
 function mytheme_comment($comment, $args, $depth)
 {
     $GLOBALS['comment'] = $comment;
-    switch ($comment->comment_type) :
-        case '' :
-            ?>
-            <li <?php comment_class('comment'); ?> id="li-comment-<?php comment_ID() ?>">
-                <div class="comment-wrap" id="comment-<?php comment_ID(); ?>">
-                    <div class="user-img">
-                        <?php echo get_avatar($comment->comment_author_email, $args['avatar_size']); ?>
+    //var_dump($comment);
+    if($comment->comment_parent) {
+        switch ($comment->comment_type) :
+            case '' :
+                ?>
+                <li <?php comment_class('comment answer'); ?> id="li-comment-<?php comment_ID() ?>">
+                    <div class="comment-wrap" id="comment-<?php comment_ID(); ?>">
+                        <div class="user-img">
+                            <?php echo get_avatar($comment->comment_author_email, $args['avatar_size']); ?>
+                        </div>
+
+                        <?php comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+
+                        <?php printf(__('<cite class="fn name">%s</cite>'), get_comment_author_link()) ?>
+
+                        <div class="date"><?php printf(__('%1$s'), get_comment_date('j F Y'), '') ?></div>
+
+                        <?php comment_text() ?>
+                        <?php //edit_comment_link(__('Редактировать'), ' ');
+                        ?>
+
+                        <?php if ($comment->comment_approved == '0') : ?>
+                            <div
+                                class="comment-awaiting-verification"><?php _e('Your comment is awaiting moderation.') ?></div>
+                            <br/>
+                        <?php endif; ?>
                     </div>
+                </li>
 
-                    <?php comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+                <?php
+                break;
+            case 'pingback'  :
+            case 'trackback' :
+                ?>
+                <li class="post pingback">
+                <?php comment_author_link(); ?>
+                <?php edit_comment_link(__('Редактировать'), ' '); ?>
+                <?php
+                break;
+        endswitch;
+    }
 
-                    <?php printf(__('<cite class="fn name">%s</cite>'), get_comment_author_link()) ?>
+    else {
+        switch ($comment->comment_type) :
+            case '' :
+                ?>
+                <li <?php comment_class('comment'); ?> id="li-comment-<?php comment_ID() ?>">
+                    <div class="comment-wrap" id="comment-<?php comment_ID(); ?>">
+                        <div class="user-img">
+                            <?php echo get_avatar($comment->comment_author_email, $args['avatar_size']); ?>
+                        </div>
 
-                    <div class="date"><?php printf(__('%1$s'), get_comment_date('j F Y'), '') ?></div>
+                        <?php comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
 
-                    <?php comment_text() ?>
-                    <?php //edit_comment_link(__('Редактировать'), ' ');
-                    ?>
+                        <?php printf(__('<cite class="fn name">%s</cite>'), get_comment_author_link()) ?>
 
-                    <?php if ($comment->comment_approved == '0') : ?>
-                        <div
-                            class="comment-awaiting-verification"><?php _e('Your comment is awaiting moderation.') ?></div>
-                        <br/>
-                    <?php endif; ?>
-                </div>
-            </li>
+                        <div class="date"><?php printf(__('%1$s'), get_comment_date('j F Y'), '') ?></div>
 
-            <?php
-            break;
-        case 'pingback'  :
-        case 'trackback' :
-            ?>
-            <li class="post pingback">
-            <?php comment_author_link(); ?>
-            <?php edit_comment_link(__('Редактировать'), ' '); ?>
-            <?php
-            break;
-    endswitch;
+                        <?php comment_text() ?>
+                        <?php //edit_comment_link(__('Редактировать'), ' ');
+                        ?>
+
+                        <?php if ($comment->comment_approved == '0') : ?>
+                            <div
+                                class="comment-awaiting-verification"><?php _e('Your comment is awaiting moderation.') ?></div>
+                            <br/>
+                        <?php endif; ?>
+                    </div>
+                </li>
+
+                <?php
+                break;
+            case 'pingback'  :
+            case 'trackback' :
+                ?>
+                <li class="post pingback">
+                <?php comment_author_link(); ?>
+                <?php edit_comment_link(__('Редактировать'), ' '); ?>
+                <?php
+                break;
+        endswitch;
+    }
 }
 
 add_filter('comment_reply_link', 'replace_reply_link_class');
+
+//default gravatar
+add_filter( 'get_avatar' , 'my_custom_avatar' , 1 , 5 );
+
+function my_custom_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
+    $user = false;
+
+    if ( is_numeric( $id_or_email ) ) {
+
+        $id = (int) $id_or_email;
+        $user = get_user_by( 'id' , $id );
+
+    } elseif ( is_object( $id_or_email ) ) {
+
+        if ( ! empty( $id_or_email->user_id ) ) {
+            $id = (int) $id_or_email->user_id;
+            $user = get_user_by( 'id' , $id );
+        }
+
+    } else {
+        $user = get_user_by( 'email', $id_or_email );
+    }
+
+    if ( $user && is_object( $user ) ) {
+
+        if ( $user->data->ID == '1' ) {
+            $avatar = get_template_directory_uri(). '/img/user-default.jpg';
+            $avatar = "<img alt='{$alt}' src='{$avatar}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
+        }
+
+    }
+
+    return $avatar;
+}
+//   /default avatar
 
 
 function replace_reply_link_class($class)
