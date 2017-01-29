@@ -836,9 +836,21 @@ function comments_number_ru()
         $output = 'Комментариев нет';
     }
     else {
-        $output = '(' . $number . ') ' . get_num_ending($number, array('комментарий', 'комментария', 'комментариев'));
+        $output = '' . $number . ' ' . get_num_ending($number, array('комментарий', 'комментария', 'комментариев'));
     }
     echo $output;
 }
 
 add_filter('comments_number', 'comments_number_ru');
+
+
+//custom function for number of post views drom plugin wp-postViews
+function get_the_views_custom($display = true, $prefix = '', $postfix = '', $always = false) {
+    $post_views = intval( get_post_meta( get_the_ID(), 'views', true ) );
+    $views_options = get_option('views_options');
+    if ($always || should_views_be_displayed($views_options)) {
+        $output = number_format_i18n( $post_views );
+        return $output . ' ' . get_num_ending($output, array('просмотр', 'просмотра', 'просмотров'));
+//        return $output;
+    }
+}
