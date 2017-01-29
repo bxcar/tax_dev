@@ -32,7 +32,85 @@
     <meta name="msapplication-navbutton-color" content="#000">
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#000">
-    <!-- Custom Browsers Color End -->
+    <style>
+        .all-item a {
+            color: #424242 !important;
+        }
+
+        span.current {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px;
+            text-align: center;
+            font-size: .75rem;
+            font-weight: 400;
+            line-height: 30px;
+            display: inline-block;
+            transition: all ease-in .2s;
+            background-color: #3ca04f;
+            color: #fff;
+        }
+
+        a.page-numbers,
+        span.dots {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px;
+            text-align: center;
+            background-color: #f9fafb;
+            color: #424242 !important;
+            font-size: .75rem;
+            font-weight: 400;
+            line-height: 30px;
+            display: inline-block;
+            transition: all ease-in .2s;
+        }
+
+        a.next::before {
+            content: url(/wp-content/themes/tax/img/next-post.png);
+        }
+
+        a.prev::before {
+            content: url(/wp-content/themes/tax/img/prev-post.png);
+            transform: scale(-1, 1);
+        }
+
+        .pagination a:hover,
+        .pagination a:focus,
+        .pagination a:active {
+            background-color: #e1e3e6;
+            text-decoration: none;
+        }
+
+        .display_cat_arch {
+            color: #424242 !important;
+            text-decoration: none !important;
+            cursor: pointer;
+        }
+
+        .archive-year,
+        .archive-year-span {
+            font-size: .8125rem;
+            font-weight: 400;
+            line-height: 33px;
+            color: #9e9e9e !important;
+            cursor: pointer;
+
+        }
+
+        .archive-year-span,
+        .archive-month-list {
+            margin-left: 10px;
+        }
+
+        .archive-month-list a {
+            line-height: 27px !important;
+        }
+    </style>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="<?php bloginfo('template_url') ?>/js/animate-cat-arch.js"></script>
     <?php wp_head() ?>
 </head>
 
@@ -41,7 +119,7 @@
 <? get_header() ?>
 <!-- Content -->
 <main>
-    <section class="top-block top-helpful-info">
+    <section class="top-block top-news">
         <h1 class="page-title"><?php the_field('helpful_information_page_title') ?></h1>
         <div class="breadcrumb">
             <ul>
@@ -53,129 +131,75 @@
     <section class="blog-layaut">
         <div class="wrap">
             <div class="blog">
-                <div class="item">
-                    <img class="wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/helpful-1.jpg" alt="">
-                    <div class="text-info wow fadeInUp" data-wow-duration="1s">
-                        <div class="top">
-                            <div class="date">24 <span>окт</span></div>
-                            <div class="blog-title">Гонконг: Новый Закон о Компаниях</div>
+                <?php
+                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                $the_query_last_news = query_posts(
+                    array(
+                        'numberposts' => -1,
+                        'post_type' => 'tax_helpful_inf',
+                        'posts_per_page' => get_field('helpful_information_page_amount_help_inf_per_page'),
+                        'paged' => $paged
+                    )
+                );
+
+                if (have_posts()) {
+                    while (have_posts()) {
+                        the_post(); ?>
+                        <div class="item">
+                            <img class="wow fadeInUp" data-wow-duration="1s" src="<?php the_field('news_image') ?>"
+                                 alt="">
+                            <div class="text-info wow fadeInUp" data-wow-duration="1s">
+                                <div class="top">
+                                    <div class="date"><?php echo get_the_date('j'); ?>
+                                        <span><?php echo get_the_date('M'); ?>
+                                    </div>
+                                    <div class="blog-title"><?php the_title(); ?></div>
+                                </div>
+                                <div class="text"><?php the_field('news_quote') ?></div>
+                                <div class="sub-info">
+                                    <?php
+
+                                    $cur_terms = get_the_terms($post->ID, 'category-helpful-information');
+                                    if($cur_terms) {
+                                        foreach ($cur_terms as $cur_term) {
+                                            echo '<span class="themes">' . $cur_term->name . '</span> ';
+                                        }
+                                    }
+                                    ?>
+                                    <span class="view"><?php if (function_exists('get_the_views_custom')) {
+                                            echo get_the_views_custom();
+                                        } ?></span>
+                                    <span class="comment"><?php comments_number_ru(); ?></span>
+                                </div>
+                                <a href="<?php the_permalink(); ?>">ПОДРОБНЕЕ</a>
+                            </div>
                         </div>
-                        <div class="text">Отмена Меморандума об учреждении. Меморандум, который был обязателен в соответствии с действующим законодательством, будет отменен. Положения существующего Меморандума компании (например, статья, определяющая цели компании) будут считаться положениями Устава компании, за исключением того, что ...</div>
-                        <div class="sub-info">
-                            <span class="author">Автор</span>
-                            <span class="themes">Экономика</span>
-                            <span class="view">10 просмотров</span>
-                            <span class="comment">2 комментария</span>
-                        </div>
-                        <a href="helpful-information-vnutr.html">ПОДРОБНЕЕ</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class="wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/helpful-2.jpg" alt="">
-                    <div class="text-info wow fadeInUp" data-wow-duration="1s">
-                        <div class="top">
-                            <div class="date">24 <span>окт</span></div>
-                            <div class="blog-title">Регистрация компаний в Канаде</div>
-                        </div>
-                        <div class="text">На фоне недавнего мирового банковского кризиса и давления Организации экономического сотрудничества и развития на оффшорные юрисдикции, инвесторы развивающегося рынка и организации, занимающиеся минимизацией налогов на имущество, все чаще стремятся найти стабильную и надежную юрисдикцию для ...</div>
-                        <div class="sub-info">
-                            <span class="author">Автор</span>
-                            <span class="themes">Экономика</span>
-                            <span class="view">10 просмотров</span>
-                            <span class="comment">2 комментария</span>
-                        </div>
-                        <a href="helpful-information-vnutr.html">ПОДРОБНЕЕ</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class="wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/helpful-3.jpg" alt="">
-                    <div class="text-info wow fadeInUp" data-wow-duration="1s">
-                        <div class="top">
-                            <div class="date">24 <span>окт</span></div>
-                            <div class="blog-title">Государственная пошлина на Кипре</div>
-                        </div>
-                        <div class="text">Государственная пошлина для кипрских компаний появилась в 2011 году. Такое решение было принято Парламентом Республики Кипр, как одна из мер по улучшению кипрской экономики, закон вступил в силу в 2012 году, и с этого момента, все компании, зарегистрированные на Кипре должны уплачивать ежегодный сбор за ...</div>
-                        <div class="sub-info">
-                            <span class="author">Автор</span>
-                            <span class="themes">Экономика</span>
-                            <span class="view">10 просмотров</span>
-                            <span class="comment">2 комментария</span>
-                        </div>
-                        <a href="helpful-information-vnutr.html">ПОДРОБНЕЕ</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class="wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/helpful-4.jpg" alt="">
-                    <div class="text-info wow fadeInUp" data-wow-duration="1s">
-                        <div class="top">
-                            <div class="date">23<span>окт</span></div>
-                            <div class="blog-title">Панама: Акции на предъявителя – изъятие из обращения</div>
-                        </div>
-                        <div class="text">Выпуск акций на предъявителя стал возможен с момента принятия в 1927 году Панамского закона о корпорациях.В отличие от именных акций (которые выдаются на имя физического или юридического лица), в сертификатах акций на предъявителя не указывают данные физического или юридического лица, являющихся ...</div>
-                        <div class="sub-info">
-                            <span class="author">Автор</span>
-                            <span class="themes">Экономика</span>
-                            <span class="view">10 просмотров</span>
-                            <span class="comment">2 комментария</span>
-                        </div>
-                        <a href="helpful-information-vnutr.html">ПОДРОБНЕЕ</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class="wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/helpful-5.jpg" alt="">
-                    <div class="text-info wow fadeInUp" data-wow-duration="1s">
-                        <div class="top">
-                            <div class="date">01<span>окт</span></div>
-                            <div class="blog-title">Морские юридические услуги в Панаме</div>
-                        </div>
-                        <div class="text">Крупнейший торговый флот в мире (по размещению и вместимости судов) уверенно ходит под панамским флагом. Владельцы огромных судоходных компаний, а также яхт и прогулочных судов, выбирают Панаму для регистрации из-за многочисленных преимуществ в Судовом реестре, которые она предлагает. С помощью ... </div>
-                        <div class="sub-info">
-                            <span class="author">Автор</span>
-                            <span class="themes">Экономика</span>
-                            <span class="view">10 просмотров</span>
-                            <span class="comment">2 комментария</span>
-                        </div>
-                        <a href="helpful-information-vnutr.html">ПОДРОБНЕЕ</a>
-                    </div>
-                </div>
+                        <?php
+                    }
+                }
+                ?>
+
                 <div class="pagination wow fadeInUp" data-wow-duration="1s">
                     <ul>
-                        <li><a href="#" class="prev"></a></li>
-                        <li class="active"><span class="page-num">1</span></li>
-                        <li><a href="#" class="page-num">2</a></li>
-                        <li><a href="#" class="page-num">3</a></li>
-                        <li><a href="#" class="page-num">4</a></li>
-                        <li><a href="#" class="next"></a></li>
+                        <?php
+                        $args_pagination = array(
+                            'show_all' => false, // показаны все страницы участвующие в пагинации
+                            'end_size' => 1,     // количество страниц на концах
+                            'mid_size' => 1,     // количество страниц вокруг текущей
+                            'prev_next' => true,  // выводить ли боковые ссылки "предыдущая/следующая страница".
+                            'prev_text' => __(''),
+                            'next_text' => __(''),
+                            'add_args' => false, // Массив аргументов (переменных запроса), которые нужно добавить к ссылкам.
+                            'add_fragment' => '',     // Текст который добавиться ко всем ссылкам.
+                            'screen_reader_text' => __('Posts navigation'),
+                        );
+
+                        the_posts_pagination($args_pagination);
+                        wp_reset_query(); ?>
                     </ul>
                 </div>
             </div>
-            <div class="sidebar">
-                <div class="search wow fadeInUp" data-wow-duration="1s">
-                    <form action="">
-                        <input type="text" placeholder="Поиск...">
-                        <input type="submit">
-                    </form>
-                </div>
-                <div class="category wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title"><?php the_field('helpful_information_page_title_category') ?></div>
-                    <ul>
-                        <li><a href="#">Экономика</a></li>
-                        <li class="active"><a href="#">Новости компаний</a></li>
-                        <li><a href="#">Финансы</a></li>
-                        <li><a href="#">Недвижимость</a></li>
-                        <li><a href="#">Налоги</a></li>
-                        <li><a href="#">Индексы</a></li>
-                    </ul>
-                </div>
-                <div class="tags wow fadeInUp" data-wow-duration="1s">
-                    <div class="sidebar-title"><?php the_field('helpful_information_page_title_tags') ?></div>
-                    <div class="tag">Новый закон</div>
-                    <div class="tag">Полезная информация</div>
-                    <div class="tag">Налоги</div>
-                    <div class="tag">Финансы</div>
-                    <div class="tag">Удобные флаги</div>
-                </div>
-            </div>
+            <?php get_sidebar('custom-with-tags') ?>
         </div>
     </section>
 </main>

@@ -162,10 +162,11 @@
                                     <?php
 
                                     $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
-                                    foreach ($cur_terms as $cur_term) {
-                                        echo '<span class="themes">' . $cur_term->name . '</span> ';
+                                    if($cur_terms) {
+                                        foreach ($cur_terms as $cur_term) {
+                                            echo '<span class="themes">' . $cur_term->name . '</span> ';
+                                        } 
                                     }
-
                                     ?>
                                     <span class="view"><?php if (function_exists('get_the_views_custom')) {
                                             echo get_the_views_custom();
