@@ -308,8 +308,9 @@ function register_my_custom_menu_page()
     add_menu_page(
         'custom taxonomy title', 'Таксономии', 'manage_options', 'customtaxonomies', 'my_custom_taxonomy_page', 'dashicons-list-view', 22.3
     );
-    add_submenu_page('customtaxonomies', 'Категории новости', 'Категории новости', 8, '/edit-tags.php?taxonomy=customcat_for_tax_news');
-    add_submenu_page('customtaxonomies', 'Категории полезная информация', 'Категории полезная информация', 8, '/edit-tags.php?taxonomy=category-helpful-information');
+    add_submenu_page('customtaxonomies', 'Категории - новости', 'Категории - новости', 8, '/edit-tags.php?taxonomy=customcat_for_tax_news');
+    add_submenu_page('customtaxonomies', 'Категории - полезная информация', 'Категории - полезная информация', 8, '/edit-tags.php?taxonomy=category-helpful-information');
+    add_submenu_page('customtaxonomies', 'Теги - полезная информация', 'Теги - полезная информация', 8, '/edit-tags.php?taxonomy=helpful-information-tags');
 //    remove_submenu_page('customtaxonomies','customtaxonomies');
 }
 

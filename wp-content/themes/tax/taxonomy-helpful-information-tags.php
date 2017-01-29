@@ -105,19 +105,6 @@
     </style>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-
-            $('#cat-hidden-block').css('display', 'block');
-
-            $('#transform-right-arrow').animate({borderSpacing: 90}, {
-                step: function (now, fx) {
-                    $(this).css('transform', 'rotate(' + now + 'deg)');
-                },
-                duration: 'slow'
-            }, 'linear');
-        });
-    </script>
     <script src="<?php bloginfo('template_url') ?>/js/animate-cat-arch.js"></script>
     <?php wp_head() ?>
 </head>

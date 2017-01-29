@@ -1,9 +1,15 @@
 <?php
-if ( ! is_active_sidebar( 'sidebar-custom' ) ) {
+if (!is_active_sidebar('sidebar-custom')) {
     return;
 }
 ?>
-
+<style>
+    .tag:hover {
+        text-decoration: none;
+        background: #FBFBFB;
+        color: #aeacac !important;
+    }
+</style>
 <div class="sidebar" style="width: 310px;">
     <div class="search wow fadeInUp" data-wow-duration="1s">
         <form role="search" method="get" id="searchform" action="<?php echo home_url('/') ?>">
@@ -59,5 +65,20 @@ if ( ! is_active_sidebar( 'sidebar-custom' ) ) {
             wp_list_categories($args);
             ?>
         </ul>
+    </div>
+    <div class="tags wow fadeInUp" data-wow-duration="1s">
+        <div class="sidebar-title">Тэги</div>
+        <?php
+        $terms = get_terms(array(
+            'taxonomy' => 'helpful-information-tags',
+//            'hide_empty' => false,
+        ));
+
+        foreach ($terms as $term) {
+            ?>
+            <a class="tag" href="<?= get_term_link($term->slug, 'helpful-information-tags'); ?>"><?= $term->name ?></a>
+            <?php
+        }
+        ?>
     </div>
 </div>
