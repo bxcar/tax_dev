@@ -171,7 +171,8 @@
                 <?php
                 if (have_posts()) {
                     while (have_posts()) {
-                        the_post(); ?>
+                        the_post();
+                        ?>
                         <div class="item">
                             <img class="wow fadeInUp" data-wow-duration="1s" src="<?php the_field('news_image') ?>"
                                  alt="">

@@ -436,9 +436,12 @@ function my_post_queries($query)
              $query->set('posts_per_page', 1);
          }*/
 
-        if (is_category()) {
+        /*if (is_category('customcat_for_tax_news')) {
             $query->set('posts_per_page', get_field('business_news_page_amount_news_per_page', 55));
         }
+        else {
+            $query->set('posts_per_page', get_field('helpful_information_page_amount_help_inf_per_page', 51));
+        }*/
 
     }
 }
@@ -464,15 +467,36 @@ add_action('pre_get_posts', 'set_posts_per_page');
 function set_posts_per_page($query)
 {
 
-    global $wp_the_query;
+    /*global $wp_the_query;
+    global $wp_query;*/
+    $post_type = get_query_var('post_type');
 
     /* if ( ( ! is_admin() ) && ( $query === $wp_the_query ) && ( $query->is_search() ) ) {
          $query->set( 'posts_per_page', 3 );
      }*/
     /*else*/
-    if ((!is_admin()) && ($query === $wp_the_query) && ($query->is_archive())) {
+
+
+
+
+   /* if ((!is_admin()) && ($query === $wp_the_query) && ($query->is_archive())) {
         $query->set('posts_per_page', get_field('business_news_page_amount_news_per_page', 55));
+    }*/
+    if (!is_admin() && $query->is_main_query()) {
+
+        if (get_queried_object()->taxonomy == 'customcat_for_tax_news' ||
+            basename(get_page_template()) == 'single-tax_news.php' ||
+            basename(get_page_template()) == 'search-tax_news.php' ||
+            basename(get_archive_template()) == 'archive-tax_news.php'
+        ) {
+            $query->set('posts_per_page', get_field('business_news_page_amount_news_per_page', 55));
+        }
+
+        else {
+            $query->set('posts_per_page', get_field('helpful_information_page_amount_help_inf_per_page', 51));
+        }
     }
+
 
     /*if( is_category() ) {
         $post_type = get_query_var('post_type');
