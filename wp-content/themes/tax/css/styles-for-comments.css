@@ -1,3 +1,18 @@
 main .comment-block .comment {
     list-style: none;
 }
+
+main .leave-comment input,
+main .leave-comment textarea
+{
+    border-radius: 0;
+}
+
+main .leave-comment input[type=email] {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+.comment-form > .comment-form-comment {
+    display: none;
+}

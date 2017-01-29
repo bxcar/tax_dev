@@ -723,6 +723,17 @@ function awesome_comment_form_submit_button($button) {
 add_filter('comment_form_submit_button', 'awesome_comment_form_submit_button');
 
 
+//move comment textarea to bottom
+/*function wpb_move_comment_field_to_bottom( $fields ) {
+    $comment_field = $fields['comment'];
+    unset( $fields['comment'] );
+    $fields['comment'] = $comment_field;
+    return $fields;
+}
+
+add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );*/
+
+
 
 // add a new default avatar to the list in WordPress admin   ---I use plugin instead bottom code--
 /*function mytheme_addgravatar( $avatar_defaults ) {
