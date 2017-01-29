@@ -51,17 +51,17 @@ if (post_password_required()) {
             </nav><!-- #comment-nav-above -->
         <?php endif; // Check for comment navigation. ?>
 
-<!--        <ol class="comment-list">-->
-            <?php
-            wp_list_comments(array(
+        <!--        <ol class="comment-list">-->
+        <?php
+        wp_list_comments(array(
 //                'style' => 'ol',
-                'short_ping' => true,
-                'avatar_size' => 75,
-                'reply_text' => 'Ответить',
-                'callback' => 'mytheme_comment',
-            ));
-            ?>
-<!--        </ol><!-- .comment-list -->
+            'short_ping' => true,
+            'avatar_size' => 75,
+            'reply_text' => 'Ответить',
+            'callback' => 'mytheme_comment',
+        ));
+        ?>
+        <!--        </ol><!-- .comment-list -->
 
         <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : // Are there comments to navigate through? ?>
             <nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
@@ -87,7 +87,30 @@ if (post_password_required()) {
         <?php
     endif;
 
-    comment_form();
+    $fields = array(
+        'author' => '<div id="author-data"><p class="comment-form-author">' . '<label for="author">' . __('Name') . '</label> ' . ($req ? '<span class="required">*</span>' : '') .
+            '<input id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30"' . $aria_req . ' /></p>',
+        'email' => '<p class="comment-form-email"><label for="email">' . __('Email') . '</label> ' . ($req ? '<span class="required">*</span>' : '') .
+            '<input id="email" name="email" type="text" value="' . esc_attr($commenter['comment_author_email']) . '" size="30"' . $aria_req . ' /></p>',
+        'url' => '<p class="comment-form-url"><label for="url">' . __('Website') . '</label>' .
+            '<input id="url" name="url" type="text" value="' . esc_attr($commenter['comment_author_url']) . '" size="30" /></p></div>',
+    );
+
+    ?>
+
+    <!--<input type="text" placeholder="Имя">
+                        <input type="email" placeholder="Email">
+                        <textarea name="" id="" cols="20" rows="5" placeholder="Текст"></textarea>
+                        <input type="submit" placeholder="ОТПРАВИТЬ">-->
+
+    <?php
+
+    $comments_args = array(
+        'fields' => $fields,
+        'comment_notes_after' => '',
+    );
+
+    comment_form($comments_args);
     ?>
 
 </div><!-- #comments -->

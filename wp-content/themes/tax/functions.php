@@ -713,40 +713,46 @@ function mytheme_comment($comment, $args, $depth)
 
 add_filter('comment_reply_link', 'replace_reply_link_class');
 
-//default gravatar
-add_filter( 'get_avatar' , 'my_custom_avatar' , 1 , 5 );
 
-function my_custom_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
-    $user = false;
 
-    if ( is_numeric( $id_or_email ) ) {
+// add a new default avatar to the list in WordPress admin   ---I use plugin instead bottom code--
+/*function mytheme_addgravatar( $avatar_defaults ) {
+    $myavatar = get_bloginfo('template_directory') . '/img/user-default.jpg';
+//    $myavatar = 'http://front.dizz.in.ua/tax/img/user-default.jpg';
+    $avatar_defaults[$myavatar] = 'New Default Gravatar';
+    return $avatar_defaults;
+}
+add_filter( 'avatar_defaults', 'mytheme_addgravatar' );*/
 
-        $id = (int) $id_or_email;
-        $user = get_user_by( 'id' , $id );
 
-    } elseif ( is_object( $id_or_email ) ) {
 
-        if ( ! empty( $id_or_email->user_id ) ) {
-            $id = (int) $id_or_email->user_id;
-            $user = get_user_by( 'id' , $id );
-        }
+// THIS MUST BE DELETED ON REAL HOST
+/*add_filter( 'get_avatar', 'so_14088040_localhost_avatar', 10, 5 );
 
-    } else {
-        $user = get_user_by( 'email', $id_or_email );
-    }
+function so_14088040_localhost_avatar( $avatar, $id_or_email, $size, $default, $alt )
+{
+    $whitelist = array( 'localhost', '192.168.0.98' );
 
-    if ( $user && is_object( $user ) ) {
+    if( !in_array( $_SERVER['SERVER_ADDR'] , $whitelist ) )
+        return $avatar;
 
-        if ( $user->data->ID == '1' ) {
-            $avatar = get_template_directory_uri(). '/img/user-default.jpg';
-            $avatar = "<img alt='{$alt}' src='{$avatar}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
-        }
-
+    $doc = new DOMDocument;
+    $doc->loadHTML( $avatar );
+    $imgs = $doc->getElementsByTagName('img');
+    if ( $imgs->length > 0 )
+    {
+        $url = urldecode( $imgs->item(0)->getAttribute('src') );
+        $url2 = explode( 'd=', $url );
+        $url3 = explode( '&', $url2[1] );
+        $avatar= "<img src='{$url3[0]}' alt='' class='avatar avatar-64 photo' height='64' width='64' />";
     }
 
     return $avatar;
-}
-//   /default avatar
+}*/
+
+//     /THIS MUST BE DELETED ON REAL HOST
+
+// /add a new default avatar to the list in WordPress admin
 
 
 function replace_reply_link_class($class)
