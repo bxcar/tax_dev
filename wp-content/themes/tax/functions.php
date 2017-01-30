@@ -336,14 +336,14 @@ function animation_start()
     return '<div class="wow fadeInUp" data-wow-duration="1s">';
 }
 
-add_shortcode('animation_start', 'astart');
+add_shortcode('astart', 'animation_start');
 
 function animation_end()
 {
     return '</div>';
 }
 
-add_shortcode('animation_end', 'aend');
+add_shortcode('aend', 'animation_end');
 
 function new_raw()
 {

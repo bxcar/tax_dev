@@ -1,3 +1,22 @@
+<?php
+/**
+ * Template Name: tax_special_offers
+ */
+?>
+<?php
+// args
+$args = array(
+    'numberposts' => -1,
+    'post_type' => 'tax_special_offers',
+    'p' => get_the_ID()
+);
+
+
+// query
+$the_query = new WP_Query($args);
+if ($the_query->have_posts()):
+while ($the_query->have_posts()) :
+$the_query->the_post(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -5,8 +24,9 @@
 
     <meta charset="utf-8">
 
-    <title>Специальные предложения</title>
-    <meta name="description" content="">
+    <title><?php the_field('convenience_flag_page_title_meta'); ?></title>
+    <meta name="description" content="<?php the_field('convenience_flag_page_description_meta'); ?>">
+    <meta name="keywords" content="<?php the_field('convenience_flag_page_keywords_meta'); ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -42,13 +62,63 @@
                 scrollwheel: false,
                 panControl: false,
                 streetViewControl: false,
-                draggable : true,
+                draggable: true,
                 overviewMapControl: false,
                 overviewMapControlOptions: {
                     opened: false,
                 },
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
-                styles: [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}],
+                styles: [{
+                    "featureType": "water",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#e9e9e9"}, {"lightness": 17}]
+                }, {
+                    "featureType": "landscape",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#f5f5f5"}, {"lightness": 20}]
+                }, {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.fill",
+                    "stylers": [{"color": "#ffffff"}, {"lightness": 17}]
+                }, {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.stroke",
+                    "stylers": [{"color": "#ffffff"}, {"lightness": 29}, {"weight": 0.2}]
+                }, {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#ffffff"}, {"lightness": 18}]
+                }, {
+                    "featureType": "road.local",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#ffffff"}, {"lightness": 16}]
+                }, {
+                    "featureType": "poi",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#f5f5f5"}, {"lightness": 21}]
+                }, {
+                    "featureType": "poi.park",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#dedede"}, {"lightness": 21}]
+                }, {
+                    "elementType": "labels.text.stroke",
+                    "stylers": [{"visibility": "on"}, {"color": "#ffffff"}, {"lightness": 16}]
+                }, {
+                    "elementType": "labels.text.fill",
+                    "stylers": [{"saturation": 36}, {"color": "#333333"}, {"lightness": 40}]
+                }, {"elementType": "labels.icon", "stylers": [{"visibility": "off"}]}, {
+                    "featureType": "transit",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#f2f2f2"}, {"lightness": 19}]
+                }, {
+                    "featureType": "administrative",
+                    "elementType": "geometry.fill",
+                    "stylers": [{"color": "#fefefe"}, {"lightness": 20}]
+                }, {
+                    "featureType": "administrative",
+                    "elementType": "geometry.stroke",
+                    "stylers": [{"color": "#fefefe"}, {"lightness": 17}, {"weight": 1.2}]
+                }],
             }
             var mapElement = document.getElementById('map');
             var map = new google.maps.Map(mapElement, mapOptions);
@@ -56,11 +126,31 @@
                 ['Tax', 'undefined', 'undefined', 'undefined', 'undefined', 50.483787, 30.493169999999964, 'img/map-icon.png']
             ];
             for (i = 0; i < locations.length; i++) {
-                if (locations[i][1] =='undefined'){ description ='';} else { description = locations[i][1];}
-                if (locations[i][2] =='undefined'){ telephone ='';} else { telephone = locations[i][2];}
-                if (locations[i][3] =='undefined'){ email ='';} else { email = locations[i][3];}
-                if (locations[i][4] =='undefined'){ web ='';} else { web = locations[i][4];}
-                if (locations[i][7] =='undefined'){ markericon ='';} else { markericon = locations[i][7];}
+                if (locations[i][1] == 'undefined') {
+                    description = '';
+                } else {
+                    description = locations[i][1];
+                }
+                if (locations[i][2] == 'undefined') {
+                    telephone = '';
+                } else {
+                    telephone = locations[i][2];
+                }
+                if (locations[i][3] == 'undefined') {
+                    email = '';
+                } else {
+                    email = locations[i][3];
+                }
+                if (locations[i][4] == 'undefined') {
+                    web = '';
+                } else {
+                    web = locations[i][4];
+                }
+                if (locations[i][7] == 'undefined') {
+                    markericon = '';
+                } else {
+                    markericon = locations[i][7];
+                }
 
                 marker = new google.maps.Marker({
                     icon: markericon,
@@ -76,6 +166,78 @@
             }
         }
     </script>
+    <style>
+        .flags-vnutr-info blockquote {
+            background-color: #fcfcfd;
+            padding: 40px 40px 38px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .flags-vnutr-info ul,
+        .flags-vnutr-info ol {
+            margin-bottom: 30px;
+            list-style: none;
+        }
+
+        .flags-vnutr-info strong {
+            font-weight: 700;
+        }
+
+        .flags-vnutr-info li {
+            color: #928f8f;
+            font-size: .8125rem;
+            font-weight: 400;
+            line-height: 34px;
+        }
+
+        .flags-vnutr-info li:before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: #3ca04f;
+            display: inline-block;
+            margin-bottom: 2px;
+            margin-right: 23px;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        .service-vnutr-info p {
+            font-size: .8125rem;
+            font-weight: 400;
+            color: #928f8f;
+            line-height: 22px;
+            padding-bottom: 15px;
+        }
+
+        .offer-block-info h3 {
+            color: #424242;
+            font-family: georgia,sans-serif;
+            font-size: 1.1875rem;
+            font-weight: 700;
+            line-height: 51px;
+        }
+
+        .offer-block-info h3::before {
+            content: '';
+            width: 5px;
+            height: 14px;
+            background-color: #3ca04f;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .offer-info p {
+            color: #928f8f;
+            font-size: .8125rem;
+            font-weight: 400;
+            line-height: 22px;
+            padding-top: 20px;
+        }
+        }
+    </style>
+
     <?php wp_head() ?>
 </head>
 
@@ -86,7 +248,7 @@
 <!-- Content -->
 <main>
     <section class="top-block special-offer">
-        <h1 class="page-title">Специальные предложения</h1>
+        <h1 class="page-title">СПЕЦИАЛЬНЫЕ ПРЕДЛОЖЕНИЯ</h1>
         <div class="breadcrumb">
             <ul>
                 <li><a href="index.html">Главная</a></li>
@@ -94,97 +256,65 @@
             </ul>
         </div>
     </section>
-    <section class="offer-block-info">
-        <div class="subtitle wow fadeInUp" data-wow-duration="1s">Регистрация компаний<br>
-            в Великобритании</div>
-        <div class="wrap">
-            <div class="with-bg-block wow fadeInUp" data-wow-duration="1s">Великобритания является мировым финансовым центром. Превосходная репутация создала стабильные политические и экономические условия которые в полной мере можно использовать зарегистрировав компанию в Великобритании</div>
-            <div class="offer-info wow fadeInUp" data-wow-duration="1s">
-                <div class="info-title">Регистрация компаний LP в Шотландии</div>
-                <p>Компании LP не являются субъектами налога на прибыль (Corporation Tax). Доходы, полученные SLP, считаются доходами ее участников (партнеров), поэтому облагаются налогом на уровне участников. Кроме того нет необходимости готовить и подавать отчет в Реестр Компаний где не отображаются сроки подачи отчетов и деклараций для шотландских компаний. Компания с участниками - не резидентами не может получить сертификат о резидентности в Великобритании и соответственно не может воспользоваться договорами об избежании двойного налогообложения. Законодательство - <span class="strong">Закон о партнерствах 1907 года.</span></p>
-            </div>
-            <div class="offer-info wow fadeInUp" data-wow-duration="1s">
-                <div class="info-title">Партнерства с ограниченной отвественностью</div>
-                <p>Этот тип корпоративной структуры является с финансовой точки зрения транспарантным. Это значит, что налоговые обязательства выплачиваются не английскими <span class="strong">LLP</span>, а непосредственно самими партнерами, которые распределяют прибыль в зависимости от своих долей собственности и потом платят налоги в налоговые службы. Имея прибыль непосредственно от статуса финансовой транспарентности, а также, принимая определенные соглашения, становится возможным достижение окончательной налоговой ставки <span class="strong">близкой к 0%.</span></p>
-            </div>
-            <div class="offer-info wow fadeInUp" data-wow-duration="1s">
-                <div class="info-title">Финансовая система</div>
-                <p>Отличается высоким качеством предоставляемых профессиональных услуг. Такое мнение сложилось благодаря эффективности, быстроте и профессионализму - характерным чертам Западной Европы. В нашу профессиональную деятельность входит предоставление рекомендаций клиентам по выбору наиболее выгодных для них банков для компаний зарегистрированных в Великобритании.</p>
-            </div>
-            <div class="offer-info wow fadeInUp" data-wow-duration="1s">
-                <div class="info-title">Английский траст</div>
-                <p>Благодаря огромному количеству договоров об избежании двойного налогообложения подписанных Великобританией, стало возможным учреждение компании согласно английскому законодательству и управление этой компанией из другой юрисдикции. В этом случае английская компания не является субъектом местной налоговой системы, но выплачивает налоги согласно законам территории, на которой фактически ведется администрирование. На пример, компания, зарегистрированная согласно английским законам с администрацией на Кипре может иметь хорошее имя и прекрасную репутацию, таким образом, достигать налоговой ставки всего лишь в <span class="strong">10%</span>. На сегодняшний день это самая низкая налоговая корпоративная ставка во всей Европе.</p>
-            </div>
-            <div class="offer-info wow fadeInUp" data-wow-duration="1s">
-                <div class="info-title">Отчисления роялти за использование права собственности</div>
-                <p>Роялти отчисляются за использование прав на интеллектуальную и промышленную собственность, что предоставляет серьезный источник доходов для многих деловых предприятий. Мудрое решение по поводу регистрации интеллектуальной/промышленной собственности от имени компании, учрежденной в выгодной с налоговой точки зрения юрисдикции, такой как английская, позволяет компании достичь значительного уменьшения налогового бремя.</p>
-            </div>
-            <div class="offer-info wow fadeInUp" data-wow-duration="1s">
-                <div class="info-title">Право собственности на недвижимость</div>
-                <p>Иностранные компании также часто используются для арендованного недвижимого имущества в других странах. Право собственности компании зарегистрированной согласно местному законодательству делает возможным использования не только полной анонимности относительно права на недвижимость, но также платить налог по ставке близкой к нулю в случае продажи.</p>
-                <p>Избыточная ликвидность компаний может быть использована с пользой для других связанных компаний, используя технику взаимообмена, что управляется холдинговой компанией, действующей согласно выгодным налоговым соглашениям. Холдинговые компании, зачастую пользуются правом полного налогового освобождения на входящие и исходящие дивиденды и гарантируют абсолютную конфиденциальность относительно фактической собственности контролируемых компаний.</p>
-            </div>
-            <div class="offer-info wow fadeInUp" data-wow-duration="1s">
-                <div class="info-title">Фидуциарное право собственности на пакет акций</div>
-                <p>Полная конфиденциальность относительно недвижимости компании является гарантированной благодаря тому, что иностранная компания может управляться от имени наших локальных фидуциариев. Таким образом, Клиенты могут быть уверены в полном соответствии действий, как с внутригосударственными, так и с международными нормами, в то же время извлекать пользу от полной анонимности.</p>
-            </div>
-            <div class="offer-info wow fadeInUp" data-wow-duration="1s">
-                <div class="info-title">Компании, действующие согласно партнерским договорам</div>
-                <p>Законодательство Великобритании позволяет проводить коммерческие операции между английскими компаниями и компаниями стран Британского содружества в рамках чрезвычайно выгодных налоговых соглашений. Таким образом, согласно определенным условиям, сегодня стало возможным основание английских компаний, которые платят налоговую ставку всего лишь 1-2%.</p>
-            </div>
+    <section class="service-vnutr-info flags-vnutr-info offer-block-info">
+        <div class="title wow fadeInUp" data-wow-duration="1s">
+            <?php the_field('single_convenience_flag_title'); ?>
         </div>
+
+        <?php the_content(); ?>
+
     </section>
     <section class="feadback-form order-form">
         <div class="form-wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="title-form">ОФОРМЛЕНИЕ ЗАКАЗА</div>
+            <div class="title-form"><?php the_field('convenience_flag_page_form_title'); ?></div>
             <form action="">
-                <input type="text" placeholder="Имя">
-                <input type="email" placeholder="Email">
-                <textarea name="" placeholder="Текст"></textarea>
-                <input type="submit" value="Отправить">
+                <input type="text" placeholder="<?php the_field('single_convenience_flag_form_placeholder1'); ?>">
+                <input type="email" placeholder="<?php the_field('single_convenience_flag_form_placeholder2'); ?>">
+                <textarea name=""
+                          placeholder="<?php the_field('single_convenience_flag_form_placeholder3'); ?>"></textarea>
+                <input type="submit" value="<?php the_field('single_convenience_flag_form_button_text'); ?>">
             </form>
         </div>
     </section>
-    <section class="more-offer wow fadeInUp" data-wow-duration="1s">
-        <div class="title">Больше специальных предложений</div>
-        <div class="wrap">
-            <div class="owl-carousel carousel-3">
-                <a href="#" class="item">
-                    <div class="item-wrap">
-                        Учреждение и управление компаниями<br>
-                        в Дании
-                    </div>
-                </a>
-                <a href="#" class="item">
-                    <div class="item-wrap">
-                        Регистрация и сопровождение компаний в <br> Великобритании
-                    </div>
-                </a>
-                <a href="#" class="item">
-                    <div class="item-wrap">
-                        Учреждение и управление компаниями<br>
-                        в Дании
-                    </div>
-                </a>
-                <a href="#" class="item">
-                    <div class="item-wrap">
-                        Регистрация и сопровождение компаний в <br> Великобритании
-                    </div>
-                </a>
-                <a href="#" class="item">
-                    <div class="item-wrap">
-                        Учреждение и управление компаниями<br>
-                        в Дании
-                    </div>
-                </a>
-                <a href="#" class="item">
-                    <div class="item-wrap">
-                        Регистрация и сопровождение компаний в <br> Великобритании
-                    </div>
-                </a>
+    <section class="more-offer more-flags-vnutr">
+        <div class="wow fadeInUp" data-wow-duration="1s">
+            <div class="title"><?php the_field('single_convenience_flag_other_flags_title'); ?></div>
+            <div class="wrap">
+                <div class="owl-carousel carousel-3">
+
+
+                    <?php
+                    $id = get_the_ID();
+
+                    $args_last_convenience_flags = array(
+                        'numberposts' => -1,
+                        'post_type' => 'tax_special_offers',
+                        'posts_per_page' => get_field('single_convenience_flag_other_flags_amount'),
+                        'post__not_in' => array( $id ),
+                        'orderby' => 'rand'
+                    );
+
+                    // query
+                    $the_query_last_convenience_flags = new WP_Query($args_last_convenience_flags);
+                    if ($the_query_last_convenience_flags->have_posts()) {
+                        while ($the_query_last_convenience_flags->have_posts()) {
+                            $the_query_last_convenience_flags->the_post(); ?>
+                            <a href="<?php the_permalink(); ?>" class="item">
+                                <div class="item-wrap">
+                                    <?php the_title(); ?>
+                                </div>
+                            </a>
+                        <?php }
+                    } ?>
+                </div>
             </div>
         </div>
     </section>
 </main>
 <!-- End content -->
 <? get_footer() ?>
+
+<?php endwhile; ?>
+<?php endif; ?>
+
+<?php wp_reset_query();     // Restore global post data stomped by the_post(). ?>
