@@ -283,10 +283,8 @@
                         <div class="info-item">
                             <?php
 
-                            $buf = get_the_ID();
-                            $id_current_global = $buf;
-
                             $args_last_news = array(
+                                'post__not_in' => array(get_the_ID()),
                                 'numberposts' => -1,
                                 'post_type' => 'tax_helpful_inf',
                                 'posts_per_page' => get_field('news_single_read_more_block'),
@@ -298,9 +296,6 @@
                             if ($the_query_last_news->have_posts()) {
                                 while ($the_query_last_news->have_posts()) {
                                     $the_query_last_news->the_post();
-                                    if ($id_current_global == get_the_ID()) {
-                                        continue;
-                                    }
                                     ?>
                                     <div class="item">
                                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>

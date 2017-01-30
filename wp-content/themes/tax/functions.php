@@ -265,19 +265,85 @@ function convenience_flag_table()
 
 add_shortcode('table', 'convenience_flag_table');
 
+//next field copy from single-convenience_flag
+function serv_and_price_table()
+{
+    $table = '<script>
+                    window.onload = function() {
+                        var replaced_element = document.getElementsByClassName("registration");
+                        var replaced_element_2 = document.getElementsByClassName("support");
+                        var replaced_element_3 = document.getElementsByClassName("country");
+                        for(var i = 0; i < replaced_element.length; i++)
+                        {
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("до",\'g\'),"<span>до</span>");
+                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("до",\'g\'),"<span>до</span>");
+                            replaced_element_3[i].innerHTML =replaced_element_3[i].innerHTML.replace(new RegExp("до",\'g\'),"<span>до</span>");
+                            
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("более",\'g\'),"<span>более</span>");
+                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("более",\'g\'),"<span>более</span>");
+                            replaced_element_3[i].innerHTML =replaced_element_3[i].innerHTML.replace(new RegExp("более",\'g\'),"<span>более</span>");
+                            
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("от",\'g\'),"<span>от</span>");
+                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("от",\'g\'),"<span>от</span>");
+                            replaced_element_3[i].innerHTML =replaced_element_3[i].innerHTML.replace(new RegExp("от",\'g\'),"<span>от</span>");
+                           
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("USD",\'g\'),"<span>USD</span>");
+                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("USD",\'g\'),"<span>USD</span>");
+                            replaced_element_3[i].innerHTML =replaced_element_3[i].innerHTML.replace(new RegExp("USD",\'g\'),"<span>USD</span>");
+                           
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("грн.",\'g\'),"<span>грн.</span>");
+                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("грн.",\'g\'),"<span>грн.</span>");
+                            replaced_element_3[i].innerHTML =replaced_element_3[i].innerHTML.replace(new RegExp("грн.",\'g\'),"<span>грн.</span>");
+                            
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("грн",\'g\'),"<span>грн</span>");
+                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("грн",\'g\'),"<span>грн</span>");
+                            replaced_element_3[i].innerHTML =replaced_element_3[i].innerHTML.replace(new RegExp("грн",\'g\'),"<span>грн</span>");
+                            
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("EUR",\'g\'),"<span>EUR</span>");
+                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("EUR",\'g\'),"<span>EUR</span>");
+                            replaced_element_3[i].innerHTML =replaced_element_3[i].innerHTML.replace(new RegExp("EUR",\'g\'),"<span>EUR</span>");
+                        }
+                    }
+              </script>
+    <div class="table price wow fadeInUp" data-wow-duration="1s">
+                <div class="top row">
+                    <div class="country">Страны</div>
+                    <div class="registration">Регистрация</div>
+                    <div class="support">Поддержка*</div>
+                </div>
+';
+
+    $table_fields = get_field('single_convenience_flag_table');
+    foreach ($table_fields as $table_field) {
+        $table .= '<div class="row">';
+        $table .= '<div class="country">' . $table_field['single_convenience_flag_table_country'] . '</div>';
+        $table .= '<div class="registration">' . $table_field['single_convenience_flag_table_registration'] . '</div>';
+        $table .= '<div class="support">' . $table_field['single_convenience_flag_table_registration'] . '</div>';
+        $table .= '</div>';
+    }
+
+    $table .= '</div>';
+    return $table;
+
+}
+
+add_shortcode('table_serv', 'serv_and_price_table');
+
+
+
 function animation_start()
 {
     return '<div class="wow fadeInUp" data-wow-duration="1s">';
 }
 
-add_shortcode('animation_start', 'animation_start');
+add_shortcode('animation_start', 'astart');
 
 function animation_end()
 {
     return '</div>';
 }
 
-add_shortcode('animation_end', 'animation_end');
+add_shortcode('animation_end', 'aend');
 
 function new_raw()
 {

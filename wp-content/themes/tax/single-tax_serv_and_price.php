@@ -1,3 +1,22 @@
+<?php
+/**
+ * Template Name: tax_serv_and_price
+ */
+?>
+<?php
+// args
+$args = array(
+    'numberposts' => -1,
+    'post_type' => 'tax_serv_and_price',
+    'p' => get_the_ID()
+);
+
+
+// query
+$the_query = new WP_Query($args);
+if ($the_query->have_posts()):
+while ($the_query->have_posts()) :
+$the_query->the_post(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -5,8 +24,9 @@
 
     <meta charset="utf-8">
 
-    <title>Услуги и цены</title>
-    <meta name="description" content="">
+    <title><?php the_field('convenience_flag_page_title_meta'); ?></title>
+    <meta name="description" content="<?php the_field('convenience_flag_page_description_meta'); ?>">
+    <meta name="keywords" content="<?php the_field('convenience_flag_page_keywords_meta'); ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -27,6 +47,171 @@
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#000">
     <!-- Custom Browsers Color End -->
+    <script src='https://maps.googleapis.com/maps/api/js?key=&sensor=false&extension=.js'></script>
+    <script>
+        google.maps.event.addDomListener(window, 'load', init);
+        var map;
+        function init() {
+            var mapOptions = {
+                center: new google.maps.LatLng(50.483787, 30.493169999999964),
+                zoom: 15,
+                zoomControl: false,
+                disableDoubleClickZoom: true,
+                mapTypeControl: false,
+                scaleControl: false,
+                scrollwheel: false,
+                panControl: false,
+                streetViewControl: false,
+                draggable: true,
+                overviewMapControl: false,
+                overviewMapControlOptions: {
+                    opened: false,
+                },
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                styles: [{
+                    "featureType": "water",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#e9e9e9"}, {"lightness": 17}]
+                }, {
+                    "featureType": "landscape",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#f5f5f5"}, {"lightness": 20}]
+                }, {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.fill",
+                    "stylers": [{"color": "#ffffff"}, {"lightness": 17}]
+                }, {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.stroke",
+                    "stylers": [{"color": "#ffffff"}, {"lightness": 29}, {"weight": 0.2}]
+                }, {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#ffffff"}, {"lightness": 18}]
+                }, {
+                    "featureType": "road.local",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#ffffff"}, {"lightness": 16}]
+                }, {
+                    "featureType": "poi",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#f5f5f5"}, {"lightness": 21}]
+                }, {
+                    "featureType": "poi.park",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#dedede"}, {"lightness": 21}]
+                }, {
+                    "elementType": "labels.text.stroke",
+                    "stylers": [{"visibility": "on"}, {"color": "#ffffff"}, {"lightness": 16}]
+                }, {
+                    "elementType": "labels.text.fill",
+                    "stylers": [{"saturation": 36}, {"color": "#333333"}, {"lightness": 40}]
+                }, {"elementType": "labels.icon", "stylers": [{"visibility": "off"}]}, {
+                    "featureType": "transit",
+                    "elementType": "geometry",
+                    "stylers": [{"color": "#f2f2f2"}, {"lightness": 19}]
+                }, {
+                    "featureType": "administrative",
+                    "elementType": "geometry.fill",
+                    "stylers": [{"color": "#fefefe"}, {"lightness": 20}]
+                }, {
+                    "featureType": "administrative",
+                    "elementType": "geometry.stroke",
+                    "stylers": [{"color": "#fefefe"}, {"lightness": 17}, {"weight": 1.2}]
+                }],
+            }
+            var mapElement = document.getElementById('map');
+            var map = new google.maps.Map(mapElement, mapOptions);
+            var locations = [
+                ['Tax', 'undefined', 'undefined', 'undefined', 'undefined', 50.483787, 30.493169999999964, 'img/map-icon.png']
+            ];
+            for (i = 0; i < locations.length; i++) {
+                if (locations[i][1] == 'undefined') {
+                    description = '';
+                } else {
+                    description = locations[i][1];
+                }
+                if (locations[i][2] == 'undefined') {
+                    telephone = '';
+                } else {
+                    telephone = locations[i][2];
+                }
+                if (locations[i][3] == 'undefined') {
+                    email = '';
+                } else {
+                    email = locations[i][3];
+                }
+                if (locations[i][4] == 'undefined') {
+                    web = '';
+                } else {
+                    web = locations[i][4];
+                }
+                if (locations[i][7] == 'undefined') {
+                    markericon = '';
+                } else {
+                    markericon = locations[i][7];
+                }
+
+                marker = new google.maps.Marker({
+                    icon: markericon,
+                    position: new google.maps.LatLng(locations[i][5], locations[i][6]),
+                    map: map,
+                    title: locations[i][0],
+                    desc: description,
+                    tel: telephone,
+                    email: email,
+                    web: web
+                });
+                link = 'img/map-icon.png';
+            }
+        }
+    </script>
+    <style>
+        .flags-vnutr-info blockquote {
+            background-color: #fcfcfd;
+            padding: 40px 40px 38px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .flags-vnutr-info ul,
+        .flags-vnutr-info ol {
+            margin-bottom: 30px;
+            list-style: none;
+        }
+
+        .flags-vnutr-info strong {
+            font-weight: 700;
+        }
+
+        .flags-vnutr-info li {
+            color: #928f8f;
+            font-size: .8125rem;
+            font-weight: 400;
+            line-height: 34px;
+        }
+
+        .flags-vnutr-info li:before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: #3ca04f;
+            display: inline-block;
+            margin-bottom: 2px;
+            margin-right: 23px;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        .service-vnutr-info p {
+            font-size: .8125rem;
+            font-weight: 400;
+            color: #928f8f;
+            line-height: 22px;
+            padding-bottom: 15px;
+        }
+    </style>
+
     <?php wp_head() ?>
 </head>
 
@@ -36,160 +221,72 @@
 <? get_header() ?>
 <!-- Content -->
 <main>
-    <section class="top-block top-services">
-        <h1 class="page-title">Услуги и цены</h1>
+    <section class="top-block top-flags">
+        <h1 class="page-title">Удобные флаги</h1>
         <div class="breadcrumb">
             <ul>
                 <li><a href="index.html">Главная</a></li>
-                <li><a href="index.html">Услуги и цены</a></li>
-                <li><span>Офшорные компании</span></li>
+                <li><span>Специальные предложения</span></li>
             </ul>
         </div>
     </section>
+    <section class="service-vnutr-info flags-vnutr-info">
+        <div class="title wow fadeInUp" data-wow-duration="1s">
+            <?php the_field('single_convenience_flag_title'); ?>
+        </div>
+
+        <?php the_content(); ?>
+
+    </section>
+    <section class="feadback-form flags-form">
+        <div class="form-wrap wow fadeInUp" data-wow-duration="1s">
+            <div class="title-form"><?php the_field('convenience_flag_page_form_title'); ?></div>
+            <form action="">
+                <input type="text" placeholder="<?php the_field('single_convenience_flag_form_placeholder1'); ?>">
+                <input type="email" placeholder="<?php the_field('single_convenience_flag_form_placeholder2'); ?>">
+                <textarea name=""
+                          placeholder="<?php the_field('single_convenience_flag_form_placeholder3'); ?>"></textarea>
+                <input type="submit" value="<?php the_field('single_convenience_flag_form_button_text'); ?>">
+            </form>
+        </div>
+    </section>
     <section class="services-page service-vnutr-page">
-        <div class="service-vnutr-info">
-            <div class="title wow fadeInUp" data-wow-duration="1s">Оффшорные компании</div>
-            <div class="subtitle wow fadeInUp" data-wow-duration="1s">
-                <p>Учтены плата за регистрацию компании, нотариальные услуги, государственные сборы и пошлины.</p>
-                <p>Регистрация в других юрисдикциях по специальному заказу.</p>
-            </div>
-            <div class="table price wow fadeInUp" data-wow-duration="1s">
-                <div class="top row">
-                    <div class="country">Страны</div>
-                    <div class="registration">Регистрация</div>
-                    <div class="support">Поддержка*</div>
-                </div>
-                <div class="row">
-                    <div class="country">Сент-Винсент и Гренадины</div>
-                    <div class="registration">599 <span>USD</span></div>
-                    <div class="support">1295 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Белиз</div>
-                    <div class="registration">599 <span>USD</span></div>
-                    <div class="support">1395 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Невис LLC</div>
-                    <div class="registration">599 <span>USD</span></div>
-                    <div class="support">995 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Невис NBSO</div>
-                    <div class="registration">599 <span>USD</span></div>
-                    <div class="support">1395 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Сейшельские острова</div>
-                    <div class="registration">599 <span>USD</span></div>
-                    <div class="support">1395 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Панама</div>
-                    <div class="registration">599 <span>USD</span></div>
-                    <div class="support">1195 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Содружество Доминика</div>
-                    <div class="registration">599 <span>USD</span></div>
-                    <div class="support">1095 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Британские Виргинские острова</div>
-                    <div class="registration">599 <span>USD</span></div>
-                    <div class="support">1395 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Багамские острова</div>
-                    <div class="registration">599 <span>USD</span></div>
-                    <div class="support">1290 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Гонконг</div>
-                    <div class="registration">599 <span>USD</span></div>
-                    <div class="support">1590 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Маврикий GBCC2</div>
-                    <div class="registration">599 <span>USD</span></div>
-                    <div class="support">1495 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Маршалловы острова</div>
-                    <div class="registration">599 <span>USD</span></div>
-                    <div class="support">1195 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Британская Ангилья</div>
-                    <div class="registration">599 <span>USD</span></div>
-                    <div class="support">1195 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Самоа</div>
-                    <div class="registration">799 <span>USD</span></div>
-                    <div class="support">1395 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Арабские Эмираты</div>
-                    <div class="registration">999 <span>USD</span></div>
-                    <div class="support">1890 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Новая Зеландия</div>
-                    <div class="registration">599 <span>USD</span></div>
-                    <div class="support">1395 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Сингапур</div>
-                    <div class="registration">1890 <span>USD</span></div>
-                    <div class="support">2090 <span>USD</span></div>
-                </div>
-                <div class="row">
-                    <div class="country">Коста-Рика</div>
-                    <div class="registration">1890 <span>USD</span></div>
-                    <div class="support">1395<span>USD</span></div>
-                </div>
-            </div>
-            <div class="text wow fadeInUp" data-wow-duration="1s">
-                <p class="green">* Услуги зарегистрированного офиса, секретарские услуги, государственные пошлины и сборы, юридическая поддержка.</p>
-                <p>Этот документ не является предложением о продаже или предложением в приобретении услуг в любой юрисдикции, где это запрещено по закону. Консультации предоставляются нерезидентам Украины или выезжающим за рубеж.</p>
-            </div>
-        </div>
-        <div class="feadback-form order-form">
-            <div class="form-wrap wow fadeInUp" data-wow-duration="1s">
-                <div class="title-form">Оформление заказа</div>
-                <form action="">
-                    <input type="text" placeholder="Имя">
-                    <input type="email" placeholder="Email">
-                    <textarea name="" placeholder="Текст"></textarea>
-                    <input type="submit" value="Отправить">
-                </form>
-            </div>
-        </div>
         <div class="more-services wow fadeInUp" data-wow-duration="1s">
-            <div class="title">Оформление заказа</div>
+            <div class="title"><?php the_field('single_convenience_flag_other_flags_title'); ?></div>
             <div class="wrap">
-                <a href="" class="item">
-                    <div class="img-block">
-                        <img src="<?php bloginfo('template_url');?>/img/services-1.png" alt="">
-                    </div>
-                    <p>Оффшорные компании</p>
-                </a>
-                <a href="" class="item">
-                    <div class="img-block">
-                        <img src="<?php bloginfo('template_url');?>/img/services-2.png" alt="">
-                    </div>
-                    <p>Европейские компании</p>
-                </a>
-                <a href="" class="item">
-                    <div class="img-block">
-                        <img src="<?php bloginfo('template_url');?>/img/services-3.png" alt="">
-                    </div>
-                    <p>Компании США и Канады</p>
-                </a>
+
+                <?php
+                $id = get_the_ID();
+
+                $args_last_convenience_flags = array(
+                    'numberposts' => -1,
+                    'post_type' => 'tax_serv_and_price',
+                    'posts_per_page' => get_field('single_convenience_flag_other_flags_amount'),
+                    'post__not_in' => array( $id ),
+                    'orderby' => 'rand'
+                );
+
+                // query
+                $the_query_last_convenience_flags = new WP_Query($args_last_convenience_flags);
+                if ($the_query_last_convenience_flags->have_posts()) {
+                    while ($the_query_last_convenience_flags->have_posts()) {
+                        $the_query_last_convenience_flags->the_post(); ?>
+                        <a href="<?php the_permalink(); ?>" class="item">
+                            <div class="img-block">
+                                <img src="<?php the_field('single_helpful_inf_miniature') ?>" alt="">
+                            </div>
+                            <p><?php the_title(); ?></p>
+                        </a>
+                    <?php }
+                } ?>
             </div>
         </div>
     </section>
 </main>
 <!-- End content -->
 <? get_footer() ?>
+
+<?php endwhile; ?>
+<?php endif; ?>
+
+<?php wp_reset_query();     // Restore global post data stomped by the_post(). ?>
