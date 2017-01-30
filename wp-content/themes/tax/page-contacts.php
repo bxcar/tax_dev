@@ -59,7 +59,7 @@
             var mapElement = document.getElementById('map');
             var map = new google.maps.Map(mapElement, mapOptions);
             var locations = [
-                ['Tax', 'undefined', 'undefined', 'undefined', 'undefined', 50.483787, 30.493169999999964, 'img/map-icon.png']
+                ['Tax', 'undefined', 'undefined', 'undefined', 'undefined', 50.483787, 30.493169999999964, '<?= get_template_directory_uri()?>/img/map-icon.png']
             ];
             for (i = 0; i < locations.length; i++) {
                 if (locations[i][1] =='undefined'){ description ='';} else { description = locations[i][1];}
@@ -78,7 +78,7 @@
                     email: email,
                     web: web
                 });
-                link = 'img/map-icon.png';
+                link = '<?= get_template_directory_uri()?>/img/map-icon.png';
             }
         }
     </script>

@@ -24,8 +24,7 @@
     <link rel="apple-touch-icon" sizes="72x72" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon-114x114.png">
     <!-- Template Basic Images End -->
-
-
+    
     <!-- Custom Browsers Color Start -->
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#000">
