@@ -43,9 +43,23 @@
 	<!-- Custom Browsers Color End -->
 
 	<style>
-		.page-not-found {
+		body, html {
+			width: 100%;
+			height: 100%;
+		}
+
+		main, section {
+			min-width: 100%;
+			min-height: 100%;
+			position: relative;
+		}
+
+		main {
 			background: url(<?= get_template_directory_uri()?>/img/404-bg.jpg) no-repeat;
 			background-size: cover;
+		}
+
+		.page-not-found {
 			display: flex;
 			-webkit-box-align: center;
 			-webkit-align-items: center;
