@@ -69,6 +69,11 @@
             }
         }
 
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            color: #fff;
+        }
+
     </style>
 </head>
 
@@ -100,10 +105,12 @@
                     <div class="feadback-form" id="callback-form">
                         <div class="form-wrap">
                             <div class="title-form">Заказать обратный звонок</div>
-                            <form action="">
-                                <input type="text" placeholder="Имя">
-                                <input type="email" placeholder="Email">
-                                <textarea name="" placeholder="Текст"></textarea>
+                            <form action="<?= get_template_directory_uri()?>/sendemail.php" method="post">
+                                <input type="hidden" name="source" value="<?= get_page_template() ?>">
+                                <input type="hidden" name="order" value="Главная страница - заказать звонок">
+                                <input type="text" placeholder="Имя" name="name">
+                                <input type="email" placeholder="Email" name="email">
+                                <textarea name="text" placeholder="Текст"></textarea>
                                 <input type="submit" value="Отправить">
                             </form>
                         </div>
@@ -338,10 +345,12 @@
             <div class="title-form wow fadeInUp" data-wow-duration="1s">
                 <?php the_field('main_page_wo_title') ?>
             </div>
-            <form action="" class="wow fadeInUp" data-wow-duration="1s">
-                <input type="text" placeholder="<?php the_field('main_page_wo_placeholder1') ?>">
-                <input type="email" placeholder="<?php the_field('main_page_wo_placeholder2') ?>">
-                <textarea name="" placeholder="<?php the_field('main_page_wo_placeholder3') ?>"></textarea>
+            <form action="<?= get_template_directory_uri()?>/sendemail.php" method="post" class="wow fadeInUp" data-wow-duration="1s">
+                <input type="hidden" name="source" value="<?= get_page_template() ?>">
+                <input type="hidden" name="order" value="Главная страница - статичная форма">
+                <input name="name" type="text" placeholder="<?php the_field('main_page_wo_placeholder1') ?>">
+                <input name="email" type="email" placeholder="<?php the_field('main_page_wo_placeholder2') ?>">
+                <textarea name="text" placeholder="<?php the_field('main_page_wo_placeholder3') ?>"></textarea>
                 <input type="submit" value="<?php the_field('main_page_wo_button_text') ?>">
             </form>
         </div>
