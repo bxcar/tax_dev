@@ -82,6 +82,49 @@
             }
         }
     </script>
+
+    <style>
+         .facilities-services-info blockquote {
+            background-color: #fcfcfd;
+            padding: 40px 40px 38px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+         .facilities-services-info ul,
+         .facilities-services-info ol {
+            margin-bottom: 30px;
+            list-style: none;
+        }
+
+         .facilities-services-info strong {
+            color: #424242;
+            font-size: .9375rem;
+            font-weight: 700;
+            line-height: 26px;
+            padding: 10px 0;
+            font-family: georgia, sans-serif;
+        }
+
+         .facilities-services-info li {
+            color: #424242;
+            font-size: .8125rem;
+            font-weight: 400;
+            line-height: 22px;
+        }
+
+         .facilities-services-info li:before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: #3ca04f;
+            display: inline-block;
+            margin-bottom: 2px;
+            margin-right: 23px;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+    </style>
     <?php wp_head() ?>
 </head>
 

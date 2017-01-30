@@ -45,6 +45,18 @@
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#000">
     <!-- Custom Browsers Color End -->
+
+    <style>
+        .results {
+            background: url(<?php the_field('main_page_result_background_image') ?>) 50% no-repeat !important;
+            background-size: cover;
+        }
+
+        .advanteges {
+            background: url(<?php the_field('main_page_result_background_image_our_advantages') ?>) 50% no-repeat !important;
+            background-size: cover;
+        }
+    </style>
     <?php wp_head() ?>
 </head>
 

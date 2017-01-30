@@ -213,7 +213,7 @@
         },
         {
             "key": "field_588043008e8d6",
-            "label": "\u041e\u0444\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u043a\u0430\u0437\u0430",
+            "label": "\u0424\u043e\u0440\u043c\u0430",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -377,5 +377,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1485077527
+    "modified": 1485752160
 }
