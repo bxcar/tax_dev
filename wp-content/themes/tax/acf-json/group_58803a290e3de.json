@@ -383,7 +383,7 @@
                     "key": "field_5883c9b78ad8a",
                     "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
                     "name": "serach_online_chek_company_page_other_search_types_link",
-                    "type": "text",
+                    "type": "page_link",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -392,11 +392,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "post_type": [],
+                    "taxonomy": [],
+                    "allow_null": 0,
+                    "allow_archives": 1,
+                    "multiple": 0
                 }
             ]
         }
@@ -420,5 +420,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1485752119
+    "modified": 1485800069
 }

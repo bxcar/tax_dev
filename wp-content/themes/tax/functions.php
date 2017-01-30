@@ -143,9 +143,10 @@ function tax_scripts()
     wp_enqueue_style('main.min', get_template_directory_uri() . '/css/main.min.css');
 
     wp_enqueue_script('tax-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true);
-    wp_enqueue_script('lib.min', get_template_directory_uri() . '/js/lib.min.js');
-    wp_enqueue_script('common', get_template_directory_uri() . '/js/common.js');
     wp_enqueue_script('custom', get_template_directory_uri() . '/js/custom.js');
+    wp_enqueue_script('libs.min', get_template_directory_uri() . '/js/libs.min.js');
+    wp_enqueue_script('common', get_template_directory_uri() . '/js/in-view.js');
+    wp_enqueue_script('common', get_template_directory_uri() . '/js/common.js');
 
     wp_enqueue_script('tax-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true);
 

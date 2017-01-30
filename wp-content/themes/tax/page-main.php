@@ -30,11 +30,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Template Basic Images Start -->
-    <meta property="og:image" content="path/to/image.jpg">
-    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+    <meta property="og:image" content="<?= get_template_directory_uri();?>/path/to/image.jpg">
+    <link rel="shortcut icon" href="<?= get_template_directory_uri();?>/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon-114x114.png">
     <!-- Template Basic Images End -->
 
     <!-- Custom Browsers Color Start -->
@@ -46,18 +46,30 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#000">
     <!-- Custom Browsers Color End -->
 
+    <?php wp_head() ?>
     <style>
         .results {
-            background: url(<?php the_field('main_page_result_background_image') ?>) 50% no-repeat !important;
+            background: url(<?php the_field('main_page_result_background_image') ?>) 50% no-repeat;
             background-size: cover;
         }
 
         .advanteges {
-            background: url(<?php the_field('main_page_result_background_image_our_advantages') ?>) 50% no-repeat !important;
+            background: url(<?php the_field('main_page_result_background_image_our_advantages') ?>) 50% no-repeat;
             background-size: cover;
         }
+
+        @media (max-width: 991px) {
+            .advanteges {
+                background: url(<?php the_field('main_page_result_background_image_our_advantages') ?>) 100% no-repeat;
+            }
+
+            .results {
+                background: url(<?php the_field('main_page_result_background_image') ?>) no-repeat;
+                background-size: cover;
+            }
+        }
+
     </style>
-    <?php wp_head() ?>
 </head>
 
 <body>

@@ -222,9 +222,9 @@
                     },
                     "post_type": [],
                     "taxonomy": [],
-                    "allow_null": 1,
+                    "allow_null": 0,
                     "allow_archives": 1,
-                    "multiple": 1
+                    "multiple": 0
                 }
             ]
         },
@@ -497,5 +497,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1484635096
+    "modified": 1485800995
 }
