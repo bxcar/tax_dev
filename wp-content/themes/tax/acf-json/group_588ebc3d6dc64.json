@@ -185,25 +185,6 @@
                             "prepend": "",
                             "append": "",
                             "maxlength": ""
-                        },
-                        {
-                            "key": "field_588ebc3db1a64",
-                            "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
-                            "name": "serach_online_world_page_search_column_link",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
                         }
                     ]
                 }
@@ -229,5 +210,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1485750927
+    "modified": 1485901910
 }

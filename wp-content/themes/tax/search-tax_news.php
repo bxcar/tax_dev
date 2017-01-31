@@ -186,8 +186,8 @@
                             'screen_reader_text' => __('Posts navigation'),
                         );
 
-                        the_posts_pagination($args_pagination);
-                        wp_reset_query(); ?>
+                        //the_posts_pagination($args_pagination);
+                        //wp_reset_query(); ?>
                     </ul>
                 </div>
             </div>

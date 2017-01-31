@@ -34,6 +34,37 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#000">
     <!-- Custom Browsers Color End -->
     <?php wp_head() ?>
+    <!--<style>
+        .list ul input[type=submit] {
+            font-size: .8125rem;
+            font-weight: 400;
+            color: #928f8f;
+            -webkit-transition: all ease-in .25s;
+            transition: all ease-in .25s;
+            padding: 0;
+            background: none;
+            border: 0;
+            outline: none;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            line-height: 18px;
+        }
+
+        .list ul input[type=submit]::before {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #3ca04f;
+            border-radius: 50%;
+            margin-right: 22px;
+            margin-bottom: 2px;
+        }
+
+        .list ul input[type=submit]:hover {
+            text-decoration: none;
+            color: #2c2c2c;
+        }
+    </style>-->
 </head>
 
 <body>
@@ -64,7 +95,16 @@
                         <?php
                         foreach ($columns_single['serach_online_world_page_search_column'] as $columns_single_country) {
                             ?>
-                            <li><a href="<?=$columns_single_country['serach_online_world_page_search_column_link']?>">
+                            <li>
+                                <!--<form role="search" method="get" id="searchform" action="<?php /*echo home_url('/') */?>">
+                                    <input style="border-radius: 0;" type="hidden"
+                                           value="<?/*=$columns_single_country['serach_online_world_page_search_column_punkt']*/?>"
+                                           name="s" id="s"
+                                           placeholder="Поиск...">
+                                    <input type="submit" id="searchsubmit"
+                                           value="<?/*=$columns_single_country['serach_online_world_page_search_column_punkt']*/?>">
+                                </form>-->
+                                <a href="<?= get_home_url()."/?s=".$columns_single_country['serach_online_world_page_search_column_punkt']?>">
                                     <?=$columns_single_country['serach_online_world_page_search_column_punkt']?>
                                 </a>
                             </li>

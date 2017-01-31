@@ -599,6 +599,20 @@ function template_chooser($template)
 
 add_filter('template_include', 'template_chooser');
 
+//for relevanssi
+/*
+add_filter('relevanssi_modify_wp_query', 'rlv_test');
+function rlv_test($q) {
+    var_dump($q->query_vars);
+    return $q;
+}*/
+
+/*add_filter('relevanssi_modify_wp_query', 'rlv_remove_postlist');
+function rlv_remove_postlist($q) {
+    $q->set("post__in", null);
+    return $q;
+}*/
+
 
 //List archives by year, then month(work, but I use wp_custom_archive_new)
 function wp_custom_archive($post_type_cust = 'post', $args = '')
