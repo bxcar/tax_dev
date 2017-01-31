@@ -23,12 +23,74 @@
 					<div class="feadback-form" id="callback-form">
 						<div class="form-wrap">
 							<div class="title-form">Заказать обратный звонок</div>
-							<form action="">
-								<input type="text" placeholder="Имя">
-								<input type="email" placeholder="Email">
-								<textarea name="" placeholder="Текст"></textarea>
-								<input type="submit" value="Отправить">
+							<style>
+								.feadback-form input[type=tel]{
+									display: inline-block;
+									margin-left: 15px;
+									width: -webkit-calc(50% - 15px);
+									width: calc(50% - 15px);
+								}
+							</style>
+							<form id="popup-form" method="post">
+								<input type="hidden" name="source" value="<?= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
+								<input type="hidden" name="order" value="Заказать звонок">
+								<input type="hidden" name="sendto" value="<?= get_field('footer_target_email', 'options');?>">
+								<input style="color: #fff" required name="name" type="text" placeholder="<?php the_field('main_page_wo_placeholder1', 35) ?>">
+								<input style="color: #fff" required name="phone" type="tel" placeholder="Телефон">
+								<textarea name="text" placeholder="<?php the_field('main_page_wo_placeholder3', 35) ?>"></textarea>
+								<input id="submit-popup-form" type="submit" value="<?php the_field('main_page_wo_button_text', 35) ?>">
 							</form>
+							<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+							<script>
+								// this is the id of the form
+								$("#popup-form").submit(function(e) {
+
+									$("#submit-popup-form").attr( "value", "");
+									$("#submit-popup-form").css(
+										{"background-image" : "url(<?= get_template_directory_uri()?>/img/loader-form.gif)",
+											"background-size":"15%",
+											"background-repeat": "no-repeat",
+											"background-position-y": "50%",
+											"background-position-x": "50%"
+										}
+									);
+									var url = "<?= get_template_directory_uri()?>/sendemail.php"; // the script where you handle the form input.
+
+									$.ajax({
+										type: "POST",
+										url: url,
+										data: $("#popup-form").serialize(), // serializes the form's elements.
+										success: function(data)
+										{
+											if (data == 1){
+												$("#submit-popup-form").attr( "value", "Успешно отправлено");
+												$("#submit-popup-form").css({"background-image" : "none"});
+											}
+
+											else {
+												$("#submit-popup-form").attr( "value", "Произошла ошибка");
+												$("#submit-popup-form").css({"background-image" : "none"});
+											}
+//                                            alert(data);
+										},
+
+										error: function(data)
+										{
+											$("#submit-popup-form").attr( "value", "Произошла ошибка");
+											$("#submit-popup-form").css({"background-image" : "none"});
+										}
+									});
+
+									e.preventDefault(); // avoid to execute the actual submit of the form.
+
+									setTimeout(func, 10000);
+
+									function func() {
+										$("#submit-popup-form").attr( "value", "Отправить");
+										$("#submit-popup-form").css({"background-image" : "none"});
+									}
+								});
+							</script>
 						</div>
 					</div>
 				</div>

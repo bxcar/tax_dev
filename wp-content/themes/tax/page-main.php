@@ -105,14 +105,74 @@
                     <div class="feadback-form" id="callback-form">
                         <div class="form-wrap">
                             <div class="title-form">Заказать обратный звонок</div>
-                            <form action="<?= get_template_directory_uri()?>/sendemail.php" method="post">
-                                <input type="hidden" name="source" value="<?= get_page_template() ?>">
+                            <style>
+                                .feadback-form input[type=tel]{
+                                    display: inline-block;
+                                    margin-left: 15px;
+                                    width: -webkit-calc(50% - 15px);
+                                    width: calc(50% - 15px);
+                                }
+                            </style>
+                            <form id="popup-form" method="post">
+                                <input type="hidden" name="source" value="<?= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
                                 <input type="hidden" name="order" value="Главная страница - заказать звонок">
-                                <input type="text" placeholder="Имя" name="name">
-                                <input type="email" placeholder="Email" name="email">
-                                <textarea name="text" placeholder="Текст"></textarea>
-                                <input type="submit" value="Отправить">
+                                <input type="hidden" name="sendto" value="<?= get_field('footer_target_email', 'options');?>">
+                                <input style="color: #fff" required name="name" type="text" placeholder="<?php the_field('main_page_wo_placeholder1') ?>">
+                                <input style="color: #fff" required name="phone" type="tel" placeholder="Телефон">
+                                <textarea name="text" placeholder="<?php the_field('main_page_wo_placeholder3') ?>"></textarea>
+                                <input id="submit-popup-form" type="submit" value="<?php the_field('main_page_wo_button_text') ?>">
                             </form>
+                            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+                            <script>
+                                // this is the id of the form
+                                $("#popup-form").submit(function(e) {
+
+                                    $("#submit-popup-form").attr( "value", "");
+                                    $("#submit-popup-form").css(
+                                        {"background-image" : "url(<?= get_template_directory_uri()?>/img/loader-form.gif)",
+                                            "background-size":"15%",
+                                            "background-repeat": "no-repeat",
+                                            "background-position-y": "50%",
+                                            "background-position-x": "50%"
+                                        }
+                                    );
+                                    var url = "<?= get_template_directory_uri()?>/sendemail.php"; // the script where you handle the form input.
+
+                                    $.ajax({
+                                        type: "POST",
+                                        url: url,
+                                        data: $("#popup-form").serialize(), // serializes the form's elements.
+                                        success: function(data)
+                                        {
+                                            if (data == 1){
+                                                $("#submit-popup-form").attr( "value", "Успешно отправлено");
+                                                $("#submit-popup-form").css({"background-image" : "none"});
+                                            }
+
+                                            else {
+                                                $("#submit-popup-form").attr( "value", "Произошла ошибка");
+                                                $("#submit-popup-form").css({"background-image" : "none"});
+                                            }
+//                                            alert(data);
+                                        },
+
+                                        error: function(data)
+                                        {
+                                            $("#submit-popup-form").attr( "value", "Произошла ошибка");
+                                            $("#submit-popup-form").css({"background-image" : "none"});
+                                        }
+                                    });
+
+                                    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+                                    setTimeout(func, 10000);
+
+                                    function func() {
+                                        $("#submit-popup-form").attr( "value", "Отправить");
+                                        $("#submit-popup-form").css({"background-image" : "none"});
+                                    }
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -345,14 +405,66 @@
             <div class="title-form wow fadeInUp" data-wow-duration="1s">
                 <?php the_field('main_page_wo_title') ?>
             </div>
-            <form action="<?= get_template_directory_uri()?>/sendemail.php" method="post" class="wow fadeInUp" data-wow-duration="1s">
-                <input type="hidden" name="source" value="<?= get_page_template() ?>">
+            <form id="static-form" method="post">
+                <input type="hidden" name="source" value="<?= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
                 <input type="hidden" name="order" value="Главная страница - статичная форма">
-                <input name="name" type="text" placeholder="<?php the_field('main_page_wo_placeholder1') ?>">
-                <input name="email" type="email" placeholder="<?php the_field('main_page_wo_placeholder2') ?>">
+                <input type="hidden" name="sendto" value="<?= get_field('footer_target_email', 'options');?>">
+                <input style="color: #fff" required name="name" type="text" placeholder="<?php the_field('main_page_wo_placeholder1') ?>">
+                <input style="color: #fff" required name="email" type="email" placeholder="<?php the_field('main_page_wo_placeholder2') ?>">
                 <textarea name="text" placeholder="<?php the_field('main_page_wo_placeholder3') ?>"></textarea>
-                <input type="submit" value="<?php the_field('main_page_wo_button_text') ?>">
+                <input id="submit-static-form" type="submit" value="<?php the_field('main_page_wo_button_text') ?>">
             </form>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+            <script>
+                // this is the id of the form
+                $("#static-form").submit(function(e) {
+
+                    $("#submit-static-form").attr( "value", "");
+                    $("#submit-static-form").css(
+                        {"background-image" : "url(<?= get_template_directory_uri()?>/img/loader-form.gif)",
+                            "background-size":"15%",
+                            "background-repeat": "no-repeat",
+                            "background-position-y": "50%",
+                            "background-position-x": "50%"
+                        }
+                    );
+                    var url = "<?= get_template_directory_uri()?>/sendemail.php"; // the script where you handle the form input.
+
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: $("#static-form").serialize(), // serializes the form's elements.
+                        success: function(data)
+                        {
+                            if (data == 1){
+                                $("#submit-static-form").attr( "value", "Успешно отправлено");
+                                $("#submit-static-form").css({"background-image" : "none"});
+                            }
+
+                            else {
+                                $("#submit-static-form").attr( "value", "Произошла ошибка");
+                                $("#submit-static-form").css({"background-image" : "none"});
+                            }
+//                                            alert(data);
+                        },
+
+                        error: function(data)
+                        {
+                            $("#submit-static-form").attr( "value", "Произошла ошибка");
+                            $("#submit-static-form").css({"background-image" : "none"});
+                        }
+                    });
+
+                    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+                    setTimeout(func, 10000);
+
+                    function func() {
+                        $("#submit-static-form").attr( "value", "Отправить");
+                        $("#submit-static-form").css({"background-image" : "none"});
+                    }
+                });
+            </script>
         </div>
     </section>
     <section class="news-front">

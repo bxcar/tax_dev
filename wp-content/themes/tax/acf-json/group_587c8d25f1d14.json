@@ -134,6 +134,25 @@
             "maxlength": "",
             "rows": 1,
             "new_lines": "br"
+        },
+        {
+            "key": "field_58905cefd4f86",
+            "label": "Email \u043a\u0443\u0434\u0430 \u0431\u0443\u0434\u0443\u0442 \u043f\u0440\u0438\u0445\u043e\u0434\u0438\u0442\u044c \u0432\u0441\u0435 \u0437\u0430\u044f\u0432\u043a\u0438 \u0441 \u0441\u0430\u0439\u0442\u0430",
+            "name": "footer_target_email",
+            "type": "text",
+            "instructions": "\u041d\u0430 \u044d\u0442\u043e\u0442 email \u0431\u0443\u0434\u0443\u0442 \u043f\u0440\u0438\u0445\u043e\u0434\u0438\u0442\u044c \u0432\u0441\u0435 \u0437\u0430\u044f\u0432\u043a\u0438 \u0441 \u0444\u043e\u0440\u043c, \u0430 \u0442\u0430\u043a\u0436\u0435 \u0441 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0438 \u043d\u0430 \u0440\u0430\u0441\u0441\u044b\u043b\u043a\u0443. \u0412\u0432\u0435\u0441\u0442\u0438 \u043c\u043e\u0436\u043d\u043e \u043b\u0438\u0431\u043e \u043e\u0434\u0438\u043d email \u0430\u0434\u0440\u0435\u0441 \u043b\u0438\u0431\u043e \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0447\u0435\u0440\u0435\u0437 \u0437\u0430\u043f\u044f\u0442\u0443\u044e, \u043d\u0430\u043f\u0440\u0438\u043c\u0435\u0440 \u0442\u0430\u043a: example@mail.ru, admin@site.com",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "example@mail.ru, admin@site.com",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -153,5 +172,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1484628657
+    "modified": 1485856301
 }
