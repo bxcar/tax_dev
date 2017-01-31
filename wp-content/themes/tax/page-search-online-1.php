@@ -63,12 +63,21 @@
     <section class="feadback-form search-form">
         <div class="form-wrap wow fadeInUp" data-wow-duration="1s">
             <div class="title-form"><?php the_field('search_online_check_company_page_form_title') ?></div>
-            <form action="">
-                <input type="text" placeholder="<?php the_field('search_online_check_company_page_form_placeholder1') ?>">
-                <input type="email" placeholder="<?php the_field('search_online_check_company_page_form_placeholder2') ?>">
-                <textarea name="" placeholder="<?php the_field('search_online_check_company_page_form_placeholder3') ?>"></textarea>
-                <input type="submit" value="<?php the_field('search_online_check_company_page_button_text') ?>">
+
+            <form id="static-form" method="post">
+                <input type="hidden" name="source" value="<?= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
+                <input type="hidden" name="order" value="Проверить компанию - статичная форма">
+                <input type="hidden" name="sendto" value="<?= get_field('footer_target_email', 'options'); ?>">
+                <input style="color: #fff" required name="name" type="text"
+                       placeholder="<?php the_field('search_online_check_company_page_form_placeholder1') ?>">
+                <input style="color: #fff" required name="email" type="email"
+                       placeholder="<?php the_field('search_online_check_company_page_form_placeholder2') ?>">
+                <textarea name="text" placeholder="<?php the_field('search_online_check_company_page_form_placeholder3') ?>"></textarea>
+                <input id="submit-static-form" type="submit" value="<?php the_field('search_online_check_company_page_button_text') ?>">
             </form>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+            <?php include_once "js/static-form-ajax.php"?>
+
         </div>
     </section>
     <section class="search-online search-1 wow fadeInUp" data-wow-duration="1s">
