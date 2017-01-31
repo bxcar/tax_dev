@@ -11,6 +11,7 @@ $phone  =  strip_tags(trim($_POST['phone']));
 
 $order  =  strip_tags(trim($_POST['order']));
 $source =  strip_tags(trim($_POST['source']));
+$check_email_delivery =  strip_tags(trim($_POST['check-email-delivery']));
 
 // Формирование заголовка письма
 
@@ -24,7 +25,10 @@ $headers .= "Content-Type: text/html;charset=utf-8 \r\n";
 
 $msg  = "<html><body style='font-family:Arial,sans-serif;'>";
 $msg .= "<h2 style='font-weight:bold;border-bottom:1px dotted #ccc;'>Новая заявка - Tax.ua</h2>\r\n";
-$msg .= "<p><strong>Имя:</strong> ".$name."</p>\r\n";
+if(!empty($name)) {
+    $msg .= "<p><strong>Имя:</strong> ".$name."</p>\r\n";
+}
+
 if(!empty($email)) {
     $msg .= "<p><strong>Email:</strong> ".$email."</p>\r\n";
 }
@@ -33,12 +37,15 @@ if(!empty($phone)){
     $msg .= "<p><strong>Телефон:</strong> ".$phone."</p>\r\n";
 }
 
-$msg .= "<p><strong>Текст:</strong> ".$text."</p>\r\n";
+if(!empty($text)) {
+    $msg .= "<p><strong>Текст:</strong> ".$text."</p>\r\n";
+}
+
 $msg .= "<p><strong>Форма:</strong> ".$order."</p>\r\n";
 $msg .= "<p><strong>Источник:</strong> ".$source."</p>\r\n";
 $msg .= "</body></html>";
 
-if((!empty($email) && !empty($name)) || (!empty($name) && !empty($phone)))
+if((!empty($email) && !empty($name)) || (!empty($name) && !empty($phone)) || (!empty($check_email_delivery) && !empty($email)))
 {
 //     отправка сообщения
     if(mail($sendto, $subject, $msg, $headers)) {

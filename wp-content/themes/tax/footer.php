@@ -28,11 +28,57 @@
                 <?php wp_nav_menu(array('theme_location' => 'menu-3', 'menu_class' => '', 'container' => 'false')); ?>
             </div>
             <div class="item subscribe">
-                <div class="title"><?php the_field('footer_email_title', 'option') ?></div>
-                <form action="">
-                    <input type="email" placeholder="<?php the_field('footer_email_placeholder', 'option') ?>">
-                    <input type="submit" placeholder="">
+                <div class="title" id="email-delivery-title"><?php the_field('footer_email_title', 'option') ?></div>
+                <form id="email-delivery-form" action="">
+                    <input type="hidden" name="source" value="<?= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
+                    <input type="hidden" name="order" value="Подписка на рассылку">
+                    <input type="hidden" name="check-email-delivery" value="1">
+                    <input type="hidden" name="sendto" value="<?= get_field('footer_target_email', 'options');?>">
+                    <input name="email" type="email" placeholder="<?php the_field('footer_email_placeholder', 'option') ?>">
+                    <input id="email-delivery-form-submit" type="submit" placeholder="">
                 </form>
+                <script>
+                    // this is the id of the form
+                    $("#email-delivery-form").submit(function (e) {
+
+                        $("#email-delivery-form-submit").css(
+                            {
+                                "background-image": "url(<?= get_template_directory_uri()?>/img/loader-form.gif)",
+                                "background-size": "50%",
+                                "background-repeat": "no-repeat",
+                                "background-position-y": "50%",
+                                "background-position-x": "50%"
+                            }
+                        );
+
+                        var url = "<?= get_template_directory_uri()?>/sendemail.php"; // the script where you handle the form input.
+
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            data: $("#email-delivery-form").serialize(), // serializes the form's elements.
+                            success: function (data) {
+                                if (data == 1) {
+                                    $("#email-delivery-title").html('ПОДПИСКА ОФОРМЛЕНА');
+                                    $("#email-delivery-form-submit").css({"background-image": "url(<?= get_template_directory_uri() ?>/img/submit-bg.png)"});
+                                }
+
+                                else {
+                                    $("#email-delivery-title").html("Произошла ошибка, попробуйте еще раз");
+                                    $("#email-delivery-form-submit").css({"background-image": "url(<?= get_template_directory_uri() ?>/img/submit-bg.png)"});
+                                }
+//                                            alert(data);
+                            },
+
+                            error: function (data) {
+                                $("#email-delivery-title").html("Произошла ошибка, попробуйте еще раз");
+                                $("#email-delivery-form-submit").css({"background-image": "url(<?= get_template_directory_uri() ?>/img/submit-bg.png)"});
+                            }
+                        });
+
+                        e.preventDefault(); // avoid to execute the actual submit of the form.
+                    });
+                </script>
                 <div class="social-block small">
                     <div class="title"><?php the_field('footer_social_title', 'option') ?></div>
                     <div class="social-link">
