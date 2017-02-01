@@ -57,10 +57,10 @@
             <img src="<?php the_field('tax_finance_companies_image') ?>" alt="">
             <style>
                 .fin-companies-img #pulse-dot {
-                    top: -webkit-calc(49% - 1px);
-                    top: calc(49% - 1px);
-                    left: -webkit-calc(20% - 8px);
-                    left: calc(20% - 8px)
+                    top: -webkit-calc(<?php the_field('tax_finance_companies_image_puls_y_coordinat'); ?>% - 6px);
+                    top: calc(<?php the_field('tax_finance_companies_image_puls_y_coordinat'); ?>% - 6px);
+                    left: -webkit-calc(<?php the_field('tax_finance_companies_image_puls_x_coordinate'); ?>% - 4px);
+                    left: calc(<?php the_field('tax_finance_companies_image_puls_x_coordinate'); ?>% - 4px)
                 }
             </style>
             <div id="pulse-dot">

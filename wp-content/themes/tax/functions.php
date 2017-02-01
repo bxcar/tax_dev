@@ -985,11 +985,22 @@ function get_the_views_custom($display = true, $prefix = '', $postfix = '', $alw
 
 function custom_admin_js()
 {
-    $url = get_bloginfo('template_directory') . '/js/wp-admin.js';
     echo '"<script>
-document.querySelector(\'[data-name="tax_finance_companies_image"] img\').addEventListener(\'click\', function(event){alert((event.offsetX / this.width * 100) +\'x\'+ (event.offsetY / this.height * 100))}, false)
+                document.querySelector(\'[data-name="tax_finance_companies_image"] img\').addEventListener(\'click\', function(event){
+                
+                //(event.offsetX / this.width * 100) +\'x\'+ (event.offsetY / this.height * 100);
+                
+                var x_input = document.querySelector(\'[id="x-coord"] input\');
+                var x = event.offsetX / this.width * 100;
+                x_input.setAttribute("value", x.toString());
+                
+                var y_input = document.querySelector(\'[id="y-coord"] input\');
+                var y = event.offsetY / this.height * 100;
+                y_input.setAttribute("value", y.toString());
+                
+                }, false)
 
-</script>"';
+            </script>"';
 }
 
 add_action('admin_footer', 'custom_admin_js');
