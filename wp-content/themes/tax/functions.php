@@ -200,8 +200,8 @@ if (function_exists('acf_add_options_page')) {
     ));
 
     acf_add_options_sub_page(array(
-        'page_title' => 'Настройки подвала сайта',
-        'menu_title' => 'Футер',
+        'page_title' => 'Настройки подвала сайта и email',
+        'menu_title' => 'Футер и email',
         'menu_slug' => 'footer',
         'parent_slug' => 'theme-general-settings',
     ));

@@ -30,6 +30,14 @@
 									width: -webkit-calc(50% - 15px);
 									width: calc(50% - 15px);
 								}
+
+								@media (max-width: 450px)
+								{
+									.feadback-form input[type=tel]{
+										width: 100%;
+										margin-left: 0;
+									}
+								}
 							</style>
 							<form id="popup-form" method="post">
 								<input type="hidden" name="source" value="<?= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
