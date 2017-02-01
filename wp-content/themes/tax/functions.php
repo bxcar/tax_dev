@@ -147,6 +147,10 @@ function tax_scripts()
 //    wp_enqueue_script('libs.min', get_template_directory_uri() . '/js/libs.min.js');
     wp_enqueue_script('common', get_template_directory_uri() . '/js/in-view.js');
 //    wp_enqueue_script('common', get_template_directory_uri() . '/js/common.js');
+    /*if (is_admin()) {
+        wp_enqueue_script('custom_admin_script', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js', array('jquery'));
+        wp_enqueue_script('custom_admin_script_ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery_ui'));
+    }*/
 
     wp_enqueue_script('tax-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true);
 
@@ -329,7 +333,6 @@ function serv_and_price_table()
 }
 
 add_shortcode('table_serv', 'serv_and_price_table');
-
 
 
 function animation_start()
@@ -545,11 +548,9 @@ function set_posts_per_page($query)
     /*else*/
 
 
-
-
-   /* if ((!is_admin()) && ($query === $wp_the_query) && ($query->is_archive())) {
-        $query->set('posts_per_page', get_field('business_news_page_amount_news_per_page', 55));
-    }*/
+    /* if ((!is_admin()) && ($query === $wp_the_query) && ($query->is_archive())) {
+         $query->set('posts_per_page', get_field('business_news_page_amount_news_per_page', 55));
+     }*/
     if (!is_admin() && $query->is_main_query()) {
 
         if (get_queried_object()->taxonomy == 'customcat_for_tax_news' ||
@@ -980,3 +981,15 @@ function get_the_views_custom($display = true, $prefix = '', $postfix = '', $alw
 //        return $output;
     }
 }
+
+
+function custom_admin_js()
+{
+    $url = get_bloginfo('template_directory') . '/js/wp-admin.js';
+    echo '"<script>
+document.querySelector(\'[data-name="tax_finance_companies_image"] img\').addEventListener(\'click\', function(event){alert((event.offsetX / this.width * 100) +\'x\'+ (event.offsetY / this.height * 100))}, false)
+
+</script>"';
+}
+
+add_action('admin_footer', 'custom_admin_js');

@@ -96,7 +96,7 @@
         </div>
         <div class="footer-bottom">
             <p><?php the_field('footer_copyright', 'option') ?></p>
-            <a href="http://dizz.in.ua/ru">Сделано в Dizz.</a>
+            <a href="http://dizz.in.ua/ru">Сделано в Dizz Agency.</a>
         </div>
     </div>
 </footer>

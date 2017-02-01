@@ -1,3 +1,8 @@
+<?php
+/**
+ * Template Name: tax_finance_company
+ */
+?>
 <!DOCTYPE html>
 <html>
 
@@ -5,8 +10,9 @@
 
     <meta charset="utf-8">
 
-    <title>финансовые компании</title>
-    <meta name="description" content="">
+    <title><?php the_field('tax_finance_companies_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('tax_finance_companies_description_meta') ?>">
+    <meta name="keywords" content="<?php the_field('tax_finance_companies_keywords_meta') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -27,17 +33,16 @@
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#000">
     <!-- Custom Browsers Color End -->
-    <?php wp_head() ?>
+    <? wp_head(); ?>
 </head>
 
 <body>
-
 <!-- Custom HTML -->
-<? get_header() ?>
+<?php get_header() ?>
 <!-- Content -->
 <main>
     <section class="top-block top-finance-companies">
-        <h1 class="page-title">Финансовые компании</h1>
+        <h1 class="page-title"><?php the_field('tax_finance_companies_title_page') ?></h1>
         <div class="breadcrumb">
             <ul>
                 <li><a href="index.html">Главная</a></li>
@@ -47,10 +52,21 @@
         </div>
     </section>
     <section class="fin-companies-info">
-        <div class="subtitle wow fadeInUp" data-wow-duration="1s">Сент-Винсент и Гренадины:<br>
-            Страховые компании</div>
+        <div class="subtitle wow fadeInUp" data-wow-duration="1s"><?php the_field('tax_finance_companies_title_company') ?></div>
         <div class="fin-companies-img wow fadeInUp" data-wow-duration="1s">
-            <img src="<?php bloginfo('template_url');?>/img/finance-companies-1.png" alt="">
+            <img src="<?php the_field('tax_finance_companies_image') ?>" alt="">
+            <style>
+                .fin-companies-img #pulse-dot {
+                    top: -webkit-calc(49% - 1px);
+                    top: calc(49% - 1px);
+                    left: -webkit-calc(20% - 8px);
+                    left: calc(20% - 8px)
+                }
+            </style>
+            <div id="pulse-dot">
+                <div class="dot"></div>
+                <div class="pulse"></div>
+            </div>
         </div>
         <div class="wrap">
             <div class="company-info wow fadeInUp" data-wow-duration="1s">
@@ -132,4 +148,4 @@
     </section>
 </main>
 <!-- End content -->
-<? get_footer() ?>
+<?php get_footer(); ?>
