@@ -555,6 +555,7 @@ function set_posts_per_page($query)
         if (get_queried_object()->taxonomy == 'customcat_for_tax_news' ||
             basename(get_page_template()) == 'single-tax_news.php' ||
             basename(get_page_template()) == 'search-tax_news.php' ||
+            basename(get_search_template()) == 'search.php' ||
             basename(get_archive_template()) == 'archive-tax_news.php'
         ) {
             $query->set('posts_per_page', get_field('business_news_page_amount_news_per_page', 55));
