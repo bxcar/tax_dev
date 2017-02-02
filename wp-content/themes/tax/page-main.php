@@ -293,7 +293,7 @@
             </div>
         </div>
     </section>
-    <section class="our-work animate">
+    <section class="our-work">
         <div class="wrap">
             <div class="title wow fadeInUp" data-wow-duration="1s"><?php the_field('main_page_hww_title') ?></div>
             <div class="work-item wow fadeInUp" data-wow-duration="1s">

@@ -131,8 +131,14 @@
         <h1 class="page-title"><?php the_field('helpful_information_page_title', 51) ?></h1>
         <div class="breadcrumb">
             <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><span>Полезная информация</span></li>
+                <li><a href="<?php echo get_bloginfo('url');?>">Главная</a></li>
+                <li><a href="<?php echo get_bloginfo('url');?>/helpful_information">Полезная информация</a></li>
+                <li>
+                    <span><?php
+                       echo get_queried_object()->name;
+                        ?>
+                    </span>
+                </li>
             </ul>
         </div>
     </section>

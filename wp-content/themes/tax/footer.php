@@ -104,6 +104,7 @@
 <script>var scr = {
         "scripts": [
             {"src": "<?php bloginfo('template_url');?>/js/libs.min.js", "async": false},
+            {"src": "<?php bloginfo('template_url');?>/js/in-view.js", "async": false},
             {"src": "<?php bloginfo('template_url');?>/js/common.js", "async": false}
         ]
     };

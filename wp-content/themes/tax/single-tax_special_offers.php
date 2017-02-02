@@ -132,8 +132,9 @@ $the_query->the_post(); ?>
         <h1 class="page-title">СПЕЦИАЛЬНЫЕ ПРЕДЛОЖЕНИЯ</h1>
         <div class="breadcrumb">
             <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><span>Специальные предложения</span></li>
+                <li><a href="<?php echo get_bloginfo('url');?>">Главная</a></li>
+                <li><a href="<?php echo get_bloginfo('url');?>/special_offers">Специальные предложения</a></li>
+                <li><span><?php the_title();?></span></li>
             </ul>
         </div>
     </section>

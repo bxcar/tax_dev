@@ -145,8 +145,8 @@ function tax_scripts()
     wp_enqueue_script('tax-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true);
 //    wp_enqueue_script('custom', get_template_directory_uri() . '/js/custom.js');
 //    wp_enqueue_script('libs.min', get_template_directory_uri() . '/js/libs.min.js');
-    wp_enqueue_script('common', get_template_directory_uri() . '/js/in-view.js');
-//    wp_enqueue_script('common', get_template_directory_uri() . '/js/common.js');
+//    wp_enqueue_script('in-view', get_template_directory_uri() . '/js/in-view.js');
+//    wp_enqueue_script('common', get_template_directory_uri() . '/js/');
     /*if (is_admin()) {
         wp_enqueue_script('custom_admin_script', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js', array('jquery'));
         wp_enqueue_script('custom_admin_script_ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery_ui'));
