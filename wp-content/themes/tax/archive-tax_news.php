@@ -113,7 +113,9 @@
     <script>
         $(document).ready(function () {
 
+            <?php if($_SERVER['REQUEST_URI'] != "/tax_news") {?>
             $('#arch-hidden-block').css('display', 'block');
+
             $('#cat-hidden-block li.all-item').removeClass('all-item');
 
             $('#transform-right-arrow-arch').animate({borderSpacing: 90}, {
@@ -122,6 +124,7 @@
                 },
                 duration: 'slow'
             }, 'linear');
+            <?php }?>
         });
     </script>
     <script src="<?php bloginfo('template_url') ?>/js/animate-cat-arch.js"></script>

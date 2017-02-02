@@ -67,11 +67,11 @@
         }
 
         a.next::before {
-            content: url(/wp-content/themes/tax/img/next-post.png);
+            content: url(<?= get_template_directory_uri();?>/img/next-post.png);
         }
 
         a.prev::before {
-            content: url(/wp-content/themes/tax/img/prev-post.png);
+            content: url(<?= get_template_directory_uri();?>/img/prev-post.png);
             transform: scale(-1, 1);
         }
 
