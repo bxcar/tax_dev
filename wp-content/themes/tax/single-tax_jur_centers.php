@@ -1,3 +1,22 @@
+<?php
+/**
+ * Template Name: tax_jur_centers
+ */
+?>
+<?php
+// args
+$args = array(
+    'numberposts' => -1,
+    'post_type' => 'tax_jur_centers',
+    'p' => get_the_ID()
+);
+
+
+// query
+$the_query = new WP_Query($args);
+if ($the_query->have_posts()):
+    while ($the_query->have_posts()) :
+        $the_query->the_post(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -5,18 +24,21 @@
 
     <meta charset="utf-8">
 
-    <title>Удобные флаги</title>
-    <meta name="description" content="">
+    <title><?php the_field('tax_finance_companies_title_meta') ?></title>
+    <meta name="description" content="<?php the_field('tax_finance_companies_description_meta') ?>">
+    <meta name="keywords" content="<?php the_field('tax_finance_companies_keywords_meta') ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Template Basic Images Start -->
-    <meta property="og:image" content="<?= get_template_directory_uri();?>/path/to/image.jpg">
-    <link rel="shortcut icon" href="<?= get_template_directory_uri();?>/img/favicon/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon-114x114.png">
+    <meta property="og:image" content="<?= get_template_directory_uri(); ?>/path/to/image.jpg">
+    <link rel="shortcut icon" href="<?= get_template_directory_uri(); ?>/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="<?= get_template_directory_uri(); ?>/img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72"
+          href="<?= get_template_directory_uri(); ?>/img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114"
+          href="<?= get_template_directory_uri(); ?>/img/favicon/apple-touch-icon-114x114.png">
     <!-- Template Basic Images End -->
 
     <!-- Custom Browsers Color Start -->
@@ -27,17 +49,103 @@
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#000">
     <!-- Custom Browsers Color End -->
-    <?php wp_head() ?>
+    <?php wp_head();?>
+    <style>
+        .content-wrap blockquote {
+            background-color: #fcfcfd;
+            padding: 40px 40px 38px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .content-wrap ul,
+        .content-wrap ol {
+            margin-bottom: 30px;
+            list-style: none;
+        }
+
+        .content-wrap strong {
+            font-weight: 700;
+        }
+
+        .content-wrap li {
+            color: #928f8f;
+            font-size: .8125rem;
+            font-weight: 400;
+            line-height: 34px;
+        }
+
+        .content-wrap ul > li:before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: #3ca04f;
+            display: inline-block;
+            margin-bottom: 2px;
+            margin-right: 23px;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        .content-wrap ul li ol li {
+            list-style-type: none !important;
+        }
+
+        .content-wrap ol li::before {
+            counter-increment: myCounter;
+            content: counter(myCounter);
+            color: #424242;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 35px;
+            font-family: georgia, sans-serif;
+            padding-right: 10px;
+        }
+
+        .content-wrap p {
+            font-size: .8125rem;
+            font-weight: 400;
+            color: #928f8f;
+            line-height: 22px;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #424242;
+            font-family: georgia, sans-serif;
+            font-size: 1.1875rem;
+            font-weight: 700;
+            line-height: 51px;
+        }
+
+        h3::before {
+            content: '';
+            width: 5px;
+            height: 14px;
+            background-color: #3ca04f;
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        jQuery(document).ready(function () {
+            var ol = $('ol');
+
+            for(var i = 0; i < ol.length; i++) {
+                ol[i].className = 'number-list';
+            }
+        });
+    </script>
 </head>
 
 <body>
 
 <!-- Custom HTML -->
-<? get_header() ?>
+<?php get_header();?>
 <!-- Content -->
 <main>
     <section class="top-block top-jur-center">
-        <h1 class="page-title">Центр юрисдикций</h1>
+        <h1 class="page-title"><?php the_field('tax_finance_companies_title_page') ?></h1>
         <div class="breadcrumb">
             <ul>
                 <li><a href="index.html">Главная</a></li>
@@ -47,95 +155,78 @@
         </div>
     </section>
     <section class="fin-companies-info jur-center-info">
-        <div class="subtitle wow fadeInUp" data-wow-duration="1s">Сент-Винсент и Гренадины:</div>
-        <div class="fin-companies-img">
-            <img class="wow fadeInUp" data-wow-duration="1s" src="<?php bloginfo('template_url');?>/img/finance-companies-1.png" alt="">
+        <div class="subtitle wow fadeInUp" data-wow-duration="1s"><?php the_field('tax_finance_companies_title_company') ?></div>
+        <div class="fin-companies-img wow fadeInUp" data-wow-duration="1s">
+            <img src="<?php the_field('tax_finance_companies_image') ?>" alt="">
+            <style>
+                .fin-companies-img #pulse-dot {
+                    top: -webkit-calc(<?php the_field('tax_finance_companies_image_puls_y_coordinat'); ?>% - 6px);
+                    top: calc(<?php the_field('tax_finance_companies_image_puls_y_coordinat'); ?>% - 6px);
+                    left: -webkit-calc(<?php the_field('tax_finance_companies_image_puls_x_coordinate'); ?>% - 4px);
+                    left: calc(<?php the_field('tax_finance_companies_image_puls_x_coordinate'); ?>% - 4px)
+                }
+            </style>
+            <div id="pulse-dot">
+                <div class="dot"></div>
+                <div class="pulse"></div>
+            </div>
         </div>
-        <div class="wrap">
-            <div class="with-bg-block wow fadeInUp" data-wow-duration="1s">
-                <p><span class="strong">Государство Сент-Винсент и Гренадины</span> (Saint Vincent & the Grenadines) представляет собой группу из 18 крупных островов, расположенных в 100 милях к западу от Барбадоса и к северу от Венесуэлы. Острова получили независимость в 1979 году, но королева Великобритании остается главой государства и ее представляет генерал-губернатор. Сент-Винсент и Гренадины являются членом Британского Содружества наций, правовая система аналогична британской. Правительство настойчиво проводит в жизнь экономическую политику, нацеленную на создание крупного финансового центра. </p>
-            </div>
-            <div class="company-info wow fadeInUp" data-wow-duration="1s">
-                <div class="info-title">Области применения</div>
-                <p><span class="strong">Виды компаний</span> — Международные компании (International Companies — IC’s). Оффшорные компании в Сент-Винсент и Гренадинах может владеть счетами в банках, недвижимостью, авторскими правами, патентами, акциями других компаний, что позволяет получать доход в виде комиссии, процентных отчислений и т.п. на офшорный счет без налогообложения. Оффшорная компания может участвовать в международной торговле в качестве посредника, так чтобы основной доход накапливался на офшорном безналоговом счету. Это позволяет уменьшить налогооблагаемую прибыль владельца компании, проживающего в юрисдикции с высоким уровнем налогообложения.</p>
-            </div>
-            <div class="company-info wow fadeInUp" data-wow-duration="1s">
-                <div class="info-title">Налогообложение и отчетность компаний</div>
-                <p>Компания не платит никаких налогов на Сент-Винсенте кроме ежегодного налога на акционерный капитал в размере 0.35%. Отчетность и аудит не обязательны. Годовой отчет или финансовый отчет не вносится в государственный реестр, поэтому остается возможность сохранить полную анонимность.</p>
-            </div>
-            <div class="company-info wow fadeInUp" data-wow-duration="1s">
-                <div class="info-title">Требования к названию компании</div>
-                <p>Название компании должно заканчиваться словом Limited. Не следует употреблять в названии такие слова как Банк, Строительная компания, Коммерческая палата, Чартерная, Кооперативная, Имперская, Муниципальная, Королевская (Bank, Building Society, Chamber of Commerce, Chartered, Cooperative, Imperial, Municipal, Royal).</p>
-            </div>
-            <div class="company-info wow fadeInUp" data-wow-duration="1s">
-                <div class="info-title">Общие требования</div>
-                <div class="list">
-                    <ul>
-                        <li>Если клиенту требуются номинальные директоры, то в этом случае на его имя выдается нотариально заверенная и легализованная генеральная доверенность, по которой они полностью передают свои полномочия указанному лицу или лицам.</li>
-                        <li>Ежегодная пошлина уплачивается к 1 января каждого года. В случае неоплаты компания закрывается в кратчайшие сроки.</li>
-                        <li>Законодательство о компаниях Закон о международных компаниях (International Companies Act).</li>
-                        <li>Уставный капитал компании может быть заявлен и не выплачен.</li>
-                        <li>IBC могут выпускать акции на предъявителя</li>
-                        <li>Минимальное число акционеров: Два</li>
-                        <li>В соответствии с законодательством в качестве зарегистрированного офиса международной компании используется адрес ее местного представителя.</li>
-                        <li>Директора: минимальное число директоров — один. Директор не обязан быть резидентом. Допустимы корпоративные директора, в том числе и юридические лица.</li>
-                        <li>Собрания акционеров могут проводиться в любом месте по выбору акционеров или совета директоров.</li>
-                        <li>Компании не подвергаются валютному регулированию и другим финансовым ограничениям.</li>
-                        <li>В соответствии с законодательством лица, имеющие профессиональную квалификацию имеют право подавать заявления на регистрацию в St. Vincent Trust Authority.</li>
-                        <li>Возможна покупка готовой компании</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="wrap content-wrap">
+            <?php the_content(); ?>
         </div>
     </section>
     <section class="feadback-form flags-form">
         <div class="form-wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="title-form">Получить консультацию</div>
-            <form action="">
-                <input type="text" placeholder="Имя">
-                <input type="email" placeholder="Email">
-                <textarea name="" placeholder="Текст"></textarea>
-                <input type="submit" value="Отправить">
+            <div class="title-form"><?php the_field('tax_jur_centers_title_form');?></div>
+            <form id="static-form" method="post">
+                <input type="hidden" name="source" value="<?= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
+                <input type="hidden" name="order" value="<?php the_title(); ?> - статичная форма">
+                <input type="hidden" name="sendto" value="<?= get_field('footer_target_email', 'options');?>">
+                <input style="color: #fff" required name="name" type="text" placeholder="<?php the_field('tax_jur_centers_form_placeholder1') ?>">
+                <input style="color: #fff" required name="email" type="email" placeholder="<?php the_field('tax_jur_centers_form_placeholder2') ?>">
+                <textarea name="text" placeholder="<?php the_field('tax_jur_centers_form_placeholder3') ?>"></textarea>
+                <input id="submit-static-form" type="submit" value="<?php the_field('tax_jur_centers_form_button_text') ?>">
             </form>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+            <?php include_once "js/static-form-ajax.php"?>
         </div>
     </section>
     <section class="more-services more-jur-center vnutr wow fadeInUp" data-wow-duration="1s">
-        <div class="title">Другие Центры</div>
+        <div class="title"><?php the_field('tax_jur_centers_bottom_text');?></div>
         <div class="wrap">
             <div class="owl-carousel carousel-4">
-                <div>
-                    <a href="#" class="item">
-                        <span class="text">Австрия</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="#" class="item">
-                        <span class="text">Арабские Эмираты</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="#" class="item">
-                        <span class="text">Багамские острова</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="#" class="item">
-                        <span class="text">Австрия</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="#" class="item">
-                        <span class="text">Арабские Эмираты</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="#" class="item">
-                        <span class="text">Багамские острова</span>
-                    </a>
-                </div>
+                <?php
+
+                $args_last_news = array(
+//                    'post__not_in' => array(get_the_ID()),
+                    'numberposts' => -1,
+                    'post_type' => 'tax_jur_centers',
+                    'posts_per_page' => get_field('tax_jur_centers_bottom_centers_amount'),
+                    'orderby' => 'rand'
+                );
+
+                // query
+                $the_query_last_news = new WP_Query($args_last_news);
+                if ($the_query_last_news->have_posts()) {
+                    while ($the_query_last_news->have_posts()) {
+                        $the_query_last_news->the_post();
+                        ?>
+                        <div class="item">
+                            <a href="<?php the_permalink(); ?>" class="item">
+                                <span class="text"><?php the_title(); ?></span>
+                            </a>
+                        </div>
+                    <?php }
+                } ?>
+                <?php wp_reset_query();  // Restore global post data stomped by the_post(). ?>
             </div>
         </div>
     </section>
 </main>
 <!-- End content -->
-<? get_footer() ?>
+<?php get_footer();?>
+
+<?php endwhile; ?>
+<?php endif; ?>
+
+<?php wp_reset_query();     // Restore global post data stomped by the_post(). ?>

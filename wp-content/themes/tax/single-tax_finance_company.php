@@ -32,11 +32,13 @@ $the_query->the_post(); ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Template Basic Images Start -->
-    <meta property="og:image" content="<?= get_template_directory_uri();?>/path/to/image.jpg">
-    <link rel="shortcut icon" href="<?= get_template_directory_uri();?>/img/favicon/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon-114x114.png">
+    <meta property="og:image" content="<?= get_template_directory_uri(); ?>/path/to/image.jpg">
+    <link rel="shortcut icon" href="<?= get_template_directory_uri(); ?>/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="<?= get_template_directory_uri(); ?>/img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72"
+          href="<?= get_template_directory_uri(); ?>/img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114"
+          href="<?= get_template_directory_uri(); ?>/img/favicon/apple-touch-icon-114x114.png">
     <!-- Template Basic Images End -->
 
     <!-- Custom Browsers Color Start -->
@@ -73,7 +75,7 @@ $the_query->the_post(); ?>
             line-height: 34px;
         }
 
-        .content-wrap ul li:before {
+        .content-wrap ul > li:before {
             content: '';
             width: 6px;
             height: 6px;
@@ -85,12 +87,19 @@ $the_query->the_post(); ?>
             border-radius: 50%;
         }
 
-        .content-wrap ul li ol li:before {
-            display: none !important;
+        .content-wrap ul li ol li {
+            list-style-type: none !important;
         }
 
-        .content-wrap ul li ol li {
-            list-style-type: decimal !important;
+        .content-wrap ol li::before {
+            counter-increment: myCounter;
+            content: counter(myCounter);
+            color: #424242;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 35px;
+            font-family: georgia, sans-serif;
+            padding-right: 10px;
         }
 
         .content-wrap p {
@@ -100,7 +109,33 @@ $the_query->the_post(); ?>
             line-height: 22px;
             padding-bottom: 15px;
         }
+
+        h3 {
+            color: #424242;
+            font-family: georgia, sans-serif;
+            font-size: 1.1875rem;
+            font-weight: 700;
+            line-height: 51px;
+        }
+
+        h3::before {
+            content: '';
+            width: 5px;
+            height: 14px;
+            background-color: #3ca04f;
+            display: inline-block;
+            margin-right: 10px;
+        }
     </style>
+    <script>
+        jQuery(document).ready(function () {
+            var ol = $('ol');
+
+            for(var i = 0; i < ol.length; i++) {
+                ol[i].className = 'number-list';
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -119,7 +154,8 @@ $the_query->the_post(); ?>
         </div>
     </section>
     <section class="fin-companies-info">
-        <div class="subtitle wow fadeInUp" data-wow-duration="1s"><?php the_field('tax_finance_companies_title_company') ?></div>
+        <div class="subtitle wow fadeInUp"
+             data-wow-duration="1s"><?php the_field('tax_finance_companies_title_company') ?></div>
         <div class="fin-companies-img wow fadeInUp" data-wow-duration="1s">
             <img src="<?php the_field('tax_finance_companies_image') ?>" alt="">
             <style>
@@ -136,7 +172,7 @@ $the_query->the_post(); ?>
             </div>
         </div>
         <div class="wrap content-wrap">
-                <?php the_content(); ?>
+            <?php the_content(); ?>
         </div>
     </section>
 </main>
