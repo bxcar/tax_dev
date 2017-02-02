@@ -983,6 +983,7 @@ function get_the_views_custom($display = true, $prefix = '', $postfix = '', $alw
 }
 
 
+//define coordinate in admin panel for pulls dot on finance company 
 function custom_admin_js()
 {
     echo '"<script>
