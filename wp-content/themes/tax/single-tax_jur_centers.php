@@ -198,7 +198,7 @@ if ($the_query->have_posts()):
                 <?php
 
                 $args_last_news = array(
-//                    'post__not_in' => array(get_the_ID()),
+                    'post__not_in' => array(get_the_ID()),
                     'numberposts' => -1,
                     'post_type' => 'tax_jur_centers',
                     'posts_per_page' => get_field('tax_jur_centers_bottom_centers_amount'),
