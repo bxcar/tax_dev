@@ -3,6 +3,14 @@ if (!is_active_sidebar('sidebar-custom')) {
     return;
 }
 ?>
+
+<style>
+    @media (min-width: 769px) {
+        .blog-layaut .sidebar {
+            min-width: 310px;
+        }
+    }
+</style>
 <div class="sidebar">
 
     <div class="search wow fadeInUp" data-wow-duration="1s">
@@ -15,6 +23,7 @@ if (!is_active_sidebar('sidebar-custom')) {
             <input type="submit" id="searchsubmit">
         </form>
     </div>
+    <?php if(basename(get_current_template()) != 'single-tax_news.php') {?>
     <div class="category wow fadeInUp" data-wow-duration="1s">
         <div class="sidebar-title">
             <a class="display_cat_arch" id="link-display-cat">
@@ -62,54 +71,19 @@ if (!is_active_sidebar('sidebar-custom')) {
             ?>
         </ul>
     </div>
-    <div class="pop-news wow fadeInUp" data-wow-duration="1s">
-        <div class="sidebar-title"><?php the_field('business_news_page_title_popular_news', 55) ?></div>
-        <?php
+    <?php } ?>
+    <?php if (get_field('business_news_page_sidebar_popular_news_check_display')) { ?>
+        <div class="pop-news wow fadeInUp" data-wow-duration="1s">
+            <div class="sidebar-title"><?php the_field('business_news_page_title_popular_news', 55) ?></div>
+            <?php
 
-        //default popular news displayed randomly
-        if (!get_field('business_news_page_sidebar_popular_news', 55)) {
-
-            $args_popular_news = array(
-                'post_type' => 'tax_news', //slag
-                'posts_per_page' => 3,
-                'orderby' => 'rand'
-            );
-            $popular_news = new WP_Query($args_popular_news);
-
-            //loop
-            $i = 0;
-            if ($popular_news->have_posts()) :
-                $result = object_to_array($popular_news);
-
-                while ($popular_news->have_posts()) :
-                    $popular_news->the_post();
-                    //display list
-                    ?>
-                    <a href="<?php the_permalink(); ?>" class="item">
-                        <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
-                        <p><?php the_title(); ?></p>
-                        <div class="date"><?php echo get_the_date('j'); ?>
-                            &nbsp;<?php echo get_the_date('M');
-
-                            $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
-                            echo ' / ' . $cur_terms[0]->name;
-                            ?>
-                        </div>
-                    </a>
-                    <?php
-                endwhile;
-            endif;
-            wp_reset_postdata(); // return global variables to state of main query
-        }
-
-        //if pupular news defined in admin panel than displayed defined popular news
-        else {
-            $popular_news_all = get_field('business_news_page_sidebar_popular_news', 55);
-
-            foreach ($popular_news_all as $popular_news_single) {
+            //default popular news displayed randomly
+            if (!get_field('business_news_page_sidebar_popular_news', 55)) {
 
                 $args_popular_news = array(
-                    'post_type' => 'tax_news' //slag
+                    'post_type' => 'tax_news', //slag
+                    'posts_per_page' => 3,
+                    'orderby' => 'rand'
                 );
                 $popular_news = new WP_Query($args_popular_news);
 
@@ -120,30 +94,69 @@ if (!is_active_sidebar('sidebar-custom')) {
 
                     while ($popular_news->have_posts()) :
                         $popular_news->the_post();
-                        if (get_the_permalink() == $popular_news_single['business_news_page_sidebar_popular_news_single']) {
-                            //display list
-                            ?>
-                            <a href="<?php the_permalink(); ?>" class="item">
-                                <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
-                                <p><?php the_title(); ?></p>
-                                <div
-                                    class="date"><?php echo get_the_date('j'); ?>
-                                    &nbsp;<?php echo get_the_date('M');
+                        //display list
+                        ?>
+                        <a href="<?php the_permalink(); ?>" class="item">
+                            <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
+                            <p><?php the_title(); ?></p>
+                            <div class="date"><?php echo get_the_date('j'); ?>
+                                &nbsp;<?php echo get_the_date('M');
 
-                                    $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
-                                    echo ' / ' . $cur_terms[0]->name;
-                                    ?>
-                                </div>
-                            </a>
-                            <?php
-                        }
+                                $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
+                                echo ' / ' . $cur_terms[0]->name;
+                                ?>
+                            </div>
+                        </a>
+                        <?php
                     endwhile;
                 endif;
                 wp_reset_postdata(); // return global variables to state of main query
             }
-        }
-        ?>
-    </div>
+
+            //if pupular news defined in admin panel than displayed defined popular news
+            else {
+                $popular_news_all = get_field('business_news_page_sidebar_popular_news', 55);
+
+                foreach ($popular_news_all as $popular_news_single) {
+
+                    $args_popular_news = array(
+                        'post_type' => 'tax_news' //slag
+                    );
+                    $popular_news = new WP_Query($args_popular_news);
+
+                    //loop
+                    $i = 0;
+                    if ($popular_news->have_posts()) :
+                        $result = object_to_array($popular_news);
+
+                        while ($popular_news->have_posts()) :
+                            $popular_news->the_post();
+                            if (get_the_permalink() == $popular_news_single['business_news_page_sidebar_popular_news_single']) {
+                                //display list
+                                ?>
+                                <a href="<?php the_permalink(); ?>" class="item">
+                                    <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
+                                    <p><?php the_title(); ?></p>
+                                    <div
+                                        class="date"><?php echo get_the_date('j'); ?>
+                                        &nbsp;<?php echo get_the_date('M');
+
+                                        $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
+                                        echo ' / ' . $cur_terms[0]->name;
+                                        ?>
+                                    </div>
+                                </a>
+                                <?php
+                            }
+                        endwhile;
+                    endif;
+                    wp_reset_postdata(); // return global variables to state of main query
+                }
+            }
+            ?>
+        </div>
+    <?php } ?>
+    <?php if(basename(get_current_template()) != 'single-tax_news.php') {?>
     <div class="archive wow fadeInUp" data-wow-duration="1s">
         <div class="sidebar-title">
             <a class="display_cat_arch" id="link-display-arch">
@@ -156,4 +169,5 @@ if (!is_active_sidebar('sidebar-custom')) {
             <?php wp_custom_archive_new('tax_news'); ?>
         </ul>
     </div>
+    <?php } ?>
 </div>
