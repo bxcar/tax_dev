@@ -5815,7 +5815,7 @@ header.internal .collapsed ul li a {
     line-height: 14px
 }
 
-.top-block .breadcrumb li a {
+.top-block .breadcrumb li a, .top-block .breadcrumb li a span {
     color: #3ca04f
 }
 

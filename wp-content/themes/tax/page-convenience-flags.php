@@ -45,9 +45,8 @@
     <section class="top-block top-flags">
         <h1 class="page-title"><?php the_field('convenience_flags_page_title') ?></h1>
         <div class="breadcrumb">
-            <ul>
-                <li><a href="<?= home_url(); ?>">Главная</a></li>
-                <li><span>Удобные флаги</span></li>
+            <ul class="breadcrumbs">
+                <?php if(function_exists('bcn_display_list')) { bcn_display_list(); }?>
             </ul>
         </div>
     </section>

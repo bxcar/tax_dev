@@ -125,7 +125,7 @@
         <h1 class="page-title">Поиск онлайн</h1>
         <div class="breadcrumb">
             <ul>
-                <li><a href="<?php home_url(); ?>">Главная</a></li>
+                <li><a href="<?= deleteGET(get_home_url(), "page"); ?>">Главная</a></li>
                 <li><span>Поиск онлайн</span></li>
             </ul>
         </div>

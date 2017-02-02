@@ -178,8 +178,9 @@
         <h1 class="page-title"><?php the_field('news_page_title'); ?></h1>
         <div class="breadcrumb">
             <ul>
-                <li><a href="<?php home_url(); ?>">Главная</a></li>
-                <li><span>Полезная информация</span></li>
+                <li><a href="<?php echo get_bloginfo('url');?>">Главная</a></li>
+                <li><a href="<?php echo get_bloginfo('url');?>/helpful_information">Полезная информация</a></li>
+                <li><span><?php the_title();?></span></li>
             </ul>
         </div>
     </section>

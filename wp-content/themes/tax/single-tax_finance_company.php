@@ -147,9 +147,9 @@ $the_query->the_post(); ?>
         <h1 class="page-title"><?php the_field('tax_finance_companies_title_page') ?></h1>
         <div class="breadcrumb">
             <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="finance-companies.html">Предложения </a></li>
-                <li><span>Финансовык компании</span></li>
+                <li><a href="<?php echo get_bloginfo('url');?>">Главная</a></li>
+                <li><a href="<?php echo get_bloginfo('url');?>/finance_companies">Финансовые компании</a></li>
+                <li><span><?php the_title();?></span></li>
             </ul>
         </div>
     </section>

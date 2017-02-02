@@ -106,8 +106,9 @@ if ($the_query->have_posts()):
         <h1 class="page-title">Удобные флаги</h1>
         <div class="breadcrumb">
             <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><span>Удобные флаги</span></li>
+                <li><a href="<?php echo get_bloginfo('url');?>">Главная</a></li>
+                <li><a href="<?php echo get_bloginfo('url');?>/convenience_flag">Удобные флаги</a></li>
+                <li><span><?php the_title();?></span></li>
             </ul>
         </div>
     </section>

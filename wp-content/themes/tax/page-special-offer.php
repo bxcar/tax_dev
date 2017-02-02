@@ -45,9 +45,8 @@
     <section class="top-block special-offer">
         <h1 class="page-title"><?php the_field('special_offers_page_title') ?></h1>
         <div class="breadcrumb">
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><span>Специальные предложения</span></li>
+            <ul class="breadcrumbs">
+                <?php if(function_exists('bcn_display_list')) { bcn_display_list(); }?>
             </ul>
         </div>
     </section>

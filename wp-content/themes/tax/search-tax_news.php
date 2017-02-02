@@ -123,7 +123,7 @@
         <h1 class="page-title"><?php the_field('business_news_page_title', 55) ?></h1>
         <div class="breadcrumb">
             <ul>
-                <li><a href="index.html">Главная</a></li>
+                <li><a href="<?= deleteGET(get_home_url(), "page"); ?>">Главная</a></li>
                 <li><span>Новости</span></li>
             </ul>
         </div>
@@ -166,7 +166,7 @@
                 }
                 else {
                     ?>
-                    <div>По вашему запросу новостей не найдено< попробуйте сформулировать ваш вопрос иначе</div>
+                    <div>По вашему запросу новостей не найдено, попробуйте сформулировать ваш вопрос иначе</div>
                     <?php
                 }
                 ?>

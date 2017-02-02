@@ -45,10 +45,8 @@
     <section class="top-block top-finance-companies">
         <h1 class="page-title"><?php the_field('finance_companies_page_title') ?></h1>
         <div class="breadcrumb">
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="#">Предложения</a></li>
-                <li><span>Финансовые компании</span></li>
+            <ul class="breadcrumbs">
+                <?php if(function_exists('bcn_display_list')) { bcn_display_list(); }?>
             </ul>
         </div>
     </section>

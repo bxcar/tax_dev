@@ -86,7 +86,7 @@
             <a class="logo" href="<?= home_url(); ?>">
                 <img src="<?php
                 if(get_field('main_page_logo')) {
-                    the_field('main_page_logo');  
+                    the_field('main_page_logo');
                 }
                 ?>" alt="">
             </a>
@@ -98,7 +98,7 @@
                     ?></p>
                 <a href="#callback-form" class="popUp-btn"><?php
                     if(get_field('main_page_text_under_phone')) {
-                        the_field('main_page_text_under_phone'); 
+                        the_field('main_page_text_under_phone');
                     }
                     ?></a>
                 <div class="hidden">
@@ -112,7 +112,7 @@
                                     width: -webkit-calc(50% - 15px);
                                     width: calc(50% - 15px);
                                 }
-                                
+
                                 @media (max-width: 450px)
                                 {
                                     .feadback-form input[type=tel]{
@@ -293,7 +293,7 @@
             </div>
         </div>
     </section>
-    <section class="our-work">
+    <section class="our-work animate">
         <div class="wrap">
             <div class="title wow fadeInUp" data-wow-duration="1s"><?php the_field('main_page_hww_title') ?></div>
             <div class="work-item wow fadeInUp" data-wow-duration="1s">

@@ -123,7 +123,7 @@
         <h1 class="page-title"><?php the_field('helpful_information_page_title', 51) ?></h1>
         <div class="breadcrumb">
             <ul>
-                <li><a href="index.html">Главная</a></li>
+                <li><a href="<?= deleteGET(get_home_url(), "page"); ?>">Главная</a></li>
                 <li><span>Полезная информация</span></li>
             </ul>
         </div>
@@ -166,7 +166,7 @@
                 }
                 else {
                     ?>
-                    <div>По вашему запросу записей из раздела "Полезная информаиця" не найдено,
+                    <div>По вашему запросу записей из раздела "Полезная информация" не найдено,
                         попробуйте сформулировать ваш вопрос иначе</div>
                     <?php
                 }

@@ -9,7 +9,7 @@ if (!is_active_sidebar('sidebar-custom')) {
         <form role="search" method="get" id="searchform" action="<?php echo home_url('/') ?>">
             <input style="border-radius: 0;" type="text" value="<?php echo get_search_query() ?>" name="s" id="s"
                    placeholder="Поиск...">
-            <?php if (basename(get_search_template()) != 'search.php') { ?>
+            <?php if (get_current_template() != 'search.php') { ?>
                 <input type="hidden" name="post_type" value="tax_news"/>
             <?php } ?>
             <input type="submit" id="searchsubmit">

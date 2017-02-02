@@ -45,9 +45,8 @@
     <section class="top-block top-services">
         <h1 class="page-title"><?php the_field('services_main_title') ?></h1>
         <div class="breadcrumb">
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><span>Услуги и цены</span></li>
+            <ul class="breadcrumbs">
+                <?php if(function_exists('bcn_display_list')) { bcn_display_list(); }?>
             </ul>
         </div>
     </section>

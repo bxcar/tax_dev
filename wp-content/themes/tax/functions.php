@@ -37,7 +37,7 @@ if (!function_exists('tax_setup')) :
          * hard-coded <title> tag in the document head, and expect WordPress to
          * provide it for us.
          */
-        add_theme_support('title-tag');
+        //add_theme_support('title-tag');
 
         /*
          * Enable support for Post Thumbnails on posts and pages.
@@ -983,7 +983,7 @@ function get_the_views_custom($display = true, $prefix = '', $postfix = '', $alw
 }
 
 
-//define coordinate in admin panel for pulls dot on finance company 
+//define coordinate in admin panel for pulls dot on finance company
 function custom_admin_js()
 {
     echo '"<script>
@@ -1005,3 +1005,36 @@ function custom_admin_js()
 }
 
 add_action('admin_footer', 'custom_admin_js');
+
+//delete parameters from url(I use for breadcrumbs on search page)
+function deleteGET($url, $name, $amp = true)
+{
+    $url = str_replace("&amp;", "&", $url); // Заменяем сущности на амперсанд, если требуется
+    list($url_part, $qs_part) = array_pad(explode("?", $url), 2, ""); // Разбиваем URL на 2 части: до знака ? и после
+    parse_str($qs_part, $qs_vars); // Разбиваем строку с запросом на массив с параметрами и их значениями
+    unset($qs_vars[$name]); // Удаляем необходимый параметр
+    if (count($qs_vars) > 0) { // Если есть параметры
+        $url = $url_part . "?" . http_build_query($qs_vars); // Собираем URL обратно
+        if ($amp) $url = str_replace("&", "&amp;", $url); // Заменяем амперсанды обратно на сущности, если требуется
+    }
+    else $url = $url_part; // Если параметров не осталось, то просто берём всё, что идёт до знака ?
+    return $url; // Возвращаем итоговый URL
+}
+
+
+
+//for current template page, i use in search.php
+add_filter( 'template_include', 'var_template_include', 1000 );
+function var_template_include( $t ){
+    $GLOBALS['current_theme_template'] = basename($t);
+    return $t;
+}
+
+function get_current_template( $echo = false ) {
+    if( !isset( $GLOBALS['current_theme_template'] ) )
+        return false;
+    if( $echo )
+        echo $GLOBALS['current_theme_template'];
+    else
+        return $GLOBALS['current_theme_template'];
+}

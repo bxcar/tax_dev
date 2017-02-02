@@ -106,9 +106,9 @@ $the_query->the_post(); ?>
         <h1 class="page-title">Услуги и сервисы</h1>
         <div class="breadcrumb">
             <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="facilities-services.html">Услуги и сервисы</a></li>
-                <li><span>Консультация по счетам Paypal</span></li>
+                <li><a href="<?php echo get_bloginfo('url');?>">Главная</a></li>
+                <li><a href="<?php echo get_bloginfo('url');?>/facilities_and_services">Услуги и сервисы</a></li>
+                <li><span><?php the_title();?></span></li>
             </ul>
         </div>
     </section>

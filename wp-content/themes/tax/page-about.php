@@ -45,9 +45,8 @@
     <section class="top-block">
         <h1 class="page-title"><?php the_field('about_project_page_title') ?></h1>
         <div class="breadcrumb">
-            <ul>
-                <li><a href="<?=home_url();?>">Главная</a></li>
-                <li><span>О проекте</span></li>
+            <ul class="breadcrumbs">
+                <?php if(function_exists('bcn_display_list')) { bcn_display_list(); }?>
             </ul>
         </div>
     </section>
