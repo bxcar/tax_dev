@@ -66,7 +66,7 @@
                             foreach ($columns_single['serach_online_world_page_search_column'] as $columns_single_country) {
                                 ?>
                                 <li>
-                                    <a href="<?= get_home_url() . "/?s=" . $columns_single_country['serach_online_world_page_search_column_punkt'] ?>">
+                                    <a href="<?= $columns_single_country['serach_online_world_page_search_column_punkt_link'] ?>">
                                         <?= $columns_single_country['serach_online_world_page_search_column_punkt'] ?>
                                     </a>
                                 </li>
