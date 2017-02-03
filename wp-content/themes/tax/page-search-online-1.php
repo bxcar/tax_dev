@@ -18,11 +18,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Template Basic Images Start -->
-    <meta property="og:image" content="<?= get_template_directory_uri();?>/path/to/image.jpg">
-    <link rel="shortcut icon" href="<?= get_template_directory_uri();?>/img/favicon/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon-114x114.png">
+    <meta property="og:image" content="<?= get_template_directory_uri(); ?>/path/to/image.jpg">
+    <link rel="shortcut icon" href="<?= get_template_directory_uri(); ?>/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="<?= get_template_directory_uri(); ?>/img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72"
+          href="<?= get_template_directory_uri(); ?>/img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114"
+          href="<?= get_template_directory_uri(); ?>/img/favicon/apple-touch-icon-114x114.png">
     <!-- Template Basic Images End -->
 
     <!-- Custom Browsers Color Start -->
@@ -45,14 +47,22 @@
     <section class="top-block search">
         <h1 class="page-title"><?php the_field('serach_online_chek_company_page_title') ?></h1>
         <div class="breadcrumb">
-            <ul class="breadcrumbs">
-                <?php if(function_exists('bcn_display_list')) { bcn_display_list(); }?>
+            <ul>
+                <li><a href="<?php echo get_bloginfo('url'); ?>">Главная</a></li>
+                <li><a href="<?php echo get_bloginfo('url'); ?>/search_online">Поиск онлайн</a></li>
+                <li><span
+                        id="replace-question-sign"><?php the_field('serach_online_chek_company_page_subtitle') ?></span>
+                </li>
+                <script>
+                    var replaced_element = document.getElementById("replace-question-sign");
+                    replaced_element.innerHTML = replaced_element.innerHTML.replace(/\?/g, '');
+                </script>
             </ul>
         </div>
     </section>
     <section class="search-info">
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
-            <div class="item"><img src="<?php bloginfo('template_url');?>/img/search-online.png" alt=""></div>
+            <div class="item"><img src="<?php bloginfo('template_url'); ?>/img/search-online.png" alt=""></div>
             <div class="item">
                 <div class="title"><?php the_field('serach_online_chek_company_page_subtitle') ?></div>
                 <?php the_field('serach_online_chek_company_page_content') ?>
@@ -71,11 +81,13 @@
                        placeholder="<?php the_field('search_online_check_company_page_form_placeholder1') ?>">
                 <input style="color: #fff" required name="email" type="email"
                        placeholder="<?php the_field('search_online_check_company_page_form_placeholder2') ?>">
-                <textarea name="text" placeholder="<?php the_field('search_online_check_company_page_form_placeholder3') ?>"></textarea>
-                <input id="submit-static-form" type="submit" value="<?php the_field('search_online_check_company_page_button_text') ?>">
+                <textarea name="text"
+                          placeholder="<?php the_field('search_online_check_company_page_form_placeholder3') ?>"></textarea>
+                <input id="submit-static-form" type="submit"
+                       value="<?php the_field('search_online_check_company_page_button_text') ?>">
             </form>
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-            <?php include_once "js/static-form-ajax.php"?>
+            <?php include_once "js/static-form-ajax.php" ?>
 
         </div>
     </section>
@@ -86,11 +98,13 @@
             <?php $other_search_types = get_field('search_online_check_company_page_other_search_types');
             foreach ($other_search_types as $other_search_type) {
                 ?>
-                <a href="<?= $other_search_type['serach_online_chek_company_page_other_search_types_link']?>" class="item">
+                <a href="<?= $other_search_type['serach_online_chek_company_page_other_search_types_link'] ?>"
+                   class="item">
                     <div class="img-block">
-                        <img src="<?= $other_search_type['serach_online_chek_company_page_other_search_types_image']?>" alt="">
+                        <img src="<?= $other_search_type['serach_online_chek_company_page_other_search_types_image'] ?>"
+                             alt="">
                     </div>
-                    <p><?= $other_search_type['serach_online_chek_company_page_other_search_types_text']?></p>
+                    <p><?= $other_search_type['serach_online_chek_company_page_other_search_types_text'] ?></p>
                 </a>
                 <?php
             }

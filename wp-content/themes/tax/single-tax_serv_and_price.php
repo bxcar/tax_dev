@@ -103,7 +103,7 @@ $the_query->the_post(); ?>
 <!-- Content -->
 <main>
     <section class="top-block top-flags">
-        <h1 class="page-title">Удобные флаги</h1>
+        <h1 class="page-title">Услуги и цены</h1>
         <div class="breadcrumb">
             <ul>
                 <li><a href="<?php echo get_bloginfo('url');?>">Главная</a></li>

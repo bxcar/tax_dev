@@ -111,6 +111,25 @@
             "maxlength": ""
         },
         {
+            "key": "field_5894f2e648ee6",
+            "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u0430\u0437\u0434\u0435\u043b\u0430",
+            "name": "search_online_world_page_subtitle",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
             "key": "field_5880390624d04",
             "label": "\u0421\u0442\u0440\u0430\u043d\u044b",
             "name": "search_online_world_page_search",
@@ -210,5 +229,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1486099533
+    "modified": 1486156600
 }

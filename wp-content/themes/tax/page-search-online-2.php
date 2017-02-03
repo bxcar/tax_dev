@@ -47,14 +47,16 @@
     <section class="top-block search">
         <h1 class="page-title"><?php the_field('search_online_world_page_title') ?></h1>
         <div class="breadcrumb">
-            <ul class="breadcrumbs">
-                <?php if(function_exists('bcn_display_list')) { bcn_display_list(); }?>
+            <ul>
+                <li><a href="<?php echo get_bloginfo('url'); ?>">Главная</a></li>
+                <li><a href="<?php echo get_bloginfo('url'); ?>/search_online">Поиск онлайн</a></li>
+                <li><span><?php the_field('search_online_world_page_subtitle') ?></span></li>
             </ul>
         </div>
     </section>
     <section class="search-online-list wow fadeInUp" data-wow-duration="1s">
         <div class="wrap">
-            <div class="title">Мир</div>
+            <div class="title"><?php the_field('search_online_world_page_subtitle') ?></div>
             <div class="search-list">
 
                 <?php $columns_all = get_field('search_online_world_page_search');

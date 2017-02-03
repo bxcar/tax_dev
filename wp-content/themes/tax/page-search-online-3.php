@@ -45,8 +45,10 @@
     <section class="top-block search">
         <h1 class="page-title"><?php the_field('search_online_usa_page_title') ?></h1>
         <div class="breadcrumb">
-            <ul class="breadcrumbs">
-                <?php if(function_exists('bcn_display_list')) { bcn_display_list(); }?>
+            <ul>
+                <li><a href="<?php echo get_bloginfo('url'); ?>">Главная</a></li>
+                <li><a href="<?php echo get_bloginfo('url'); ?>/search_online">Поиск онлайн</a></li>
+                <li><span><?php the_field('search_online_usa_page_title_usa') ?></span></li>
             </ul>
         </div>
     </section>
