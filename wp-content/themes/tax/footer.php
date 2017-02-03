@@ -104,7 +104,9 @@
 <script>var scr = {
         "scripts": [
             {"src": "<?php bloginfo('template_url');?>/js/libs.min.js", "async": false},
+            <?php if(basename(get_current_template()) == 'page-main.php') { ?>
             {"src": "<?php bloginfo('template_url');?>/js/in-view.js", "async": false},
+            <?php } ?>
             {"src": "<?php bloginfo('template_url');?>/js/common.js", "async": false}
         ]
     };

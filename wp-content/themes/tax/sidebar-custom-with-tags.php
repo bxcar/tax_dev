@@ -23,6 +23,7 @@ if (!is_active_sidebar('sidebar-custom')) {
             <input type="submit" id="searchsubmit">
         </form>
     </div>
+    <?php if(basename(get_current_template()) != 'single-tax_helpful_inf.php') { ?>
     <div class="category wow fadeInUp" data-wow-duration="1s">
         <div class="sidebar-title">
             <a class="display_cat_arch" id="link-display-cat">
@@ -70,6 +71,7 @@ if (!is_active_sidebar('sidebar-custom')) {
             ?>
         </ul>
     </div>
+    <?php } ?>
     <div class="tags wow fadeInUp" data-wow-duration="1s">
         <div class="sidebar-title">Тэги</div>
         <?php

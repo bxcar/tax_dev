@@ -80,7 +80,7 @@
 <body>
 <!-- Custom HTML -->
 <!-- Header -->
-<header>
+<header class="front">
     <div class="wrap">
         <div class="left-side">
             <a class="logo" href="<?= home_url(); ?>">
