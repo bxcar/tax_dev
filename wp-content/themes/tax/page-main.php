@@ -12,17 +12,17 @@
     <meta charset="utf-8">
 
     <title><?php
-        if(get_field('main_page_title')) {
+        if (get_field('main_page_title')) {
             the_field('main_page_title');
         }
         ?></title>
     <meta name="description" content="<?php
-    if(get_field('main_page_description')) {
+    if (get_field('main_page_description')) {
         the_field('main_page_description');
     }
     ?>">
     <meta name="keywords" content="<?php
-    if(get_field('main_page_keywords')) {
+    if (get_field('main_page_keywords')) {
         the_field('main_page_keywords');
     }
     ?>">
@@ -30,11 +30,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Template Basic Images Start -->
-    <meta property="og:image" content="<?= get_template_directory_uri();?>/path/to/image.jpg">
-    <link rel="shortcut icon" href="<?= get_template_directory_uri();?>/img/favicon/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon-114x114.png">
+    <meta property="og:image" content="<?= get_template_directory_uri(); ?>/path/to/image.jpg">
+    <link rel="shortcut icon" href="<?= get_template_directory_uri(); ?>/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="<?= get_template_directory_uri(); ?>/img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72"
+          href="<?= get_template_directory_uri(); ?>/img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114"
+          href="<?= get_template_directory_uri(); ?>/img/favicon/apple-touch-icon-114x114.png">
     <!-- Template Basic Images End -->
 
     <!-- Custom Browsers Color Start -->
@@ -73,7 +75,6 @@
         input[type="email"]:focus {
             color: #fff;
         }
-
     </style>
 </head>
 
@@ -85,19 +86,19 @@
         <div class="left-side">
             <a class="logo" href="<?= home_url(); ?>">
                 <img src="<?php
-                if(get_field('main_page_logo')) {
+                if (get_field('main_page_logo')) {
                     the_field('main_page_logo');
                 }
                 ?>" alt="">
             </a>
             <div class="phone">
                 <p><i class="fa fa-phone" aria-hidden="true"></i><?php
-                    if(get_field('main_page_phone')) {
+                    if (get_field('main_page_phone')) {
                         the_field('main_page_phone');
                     }
                     ?></p>
                 <a href="#callback-form" class="popUp-btn"><?php
-                    if(get_field('main_page_text_under_phone')) {
+                    if (get_field('main_page_text_under_phone')) {
                         the_field('main_page_text_under_phone');
                     }
                     ?></a>
@@ -106,16 +107,15 @@
                         <div class="form-wrap">
                             <div class="title-form">Заказать обратный звонок</div>
                             <style>
-                                .feadback-form input[type=tel]{
+                                .feadback-form input[type=tel] {
                                     display: inline-block;
                                     margin-left: 15px;
                                     width: -webkit-calc(50% - 15px);
                                     width: calc(50% - 15px);
                                 }
 
-                                @media (max-width: 450px)
-                                {
-                                    .feadback-form input[type=tel]{
+                                @media (max-width: 450px) {
+                                    .feadback-form input[type=tel] {
                                         width: 100%;
                                         margin-left: 0;
                                     }
@@ -123,23 +123,29 @@
 
                             </style>
                             <form id="popup-form" method="post">
-                                <input type="hidden" name="source" value="<?= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
+                                <input type="hidden" name="source"
+                                       value="<?= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
                                 <input type="hidden" name="order" value="Главная страница - заказать звонок">
-                                <input type="hidden" name="sendto" value="<?= get_field('footer_target_email', 'options');?>">
-                                <input style="color: #fff" required name="name" type="text" placeholder="<?php the_field('main_page_wo_placeholder1') ?>">
+                                <input type="hidden" name="sendto"
+                                       value="<?= get_field('footer_target_email', 'options'); ?>">
+                                <input style="color: #fff" required name="name" type="text"
+                                       placeholder="<?php the_field('main_page_wo_placeholder1') ?>">
                                 <input style="color: #fff" required name="phone" type="tel" placeholder="Телефон">
-                                <textarea name="text" placeholder="<?php the_field('main_page_wo_placeholder3') ?>"></textarea>
-                                <input id="submit-popup-form" type="submit" value="<?php the_field('main_page_wo_button_text') ?>">
+                                <textarea name="text"
+                                          placeholder="<?php the_field('main_page_wo_placeholder3') ?>"></textarea>
+                                <input id="submit-popup-form" type="submit"
+                                       value="<?php the_field('main_page_wo_button_text') ?>">
                             </form>
                             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
                             <script>
                                 // this is the id of the form
-                                $("#popup-form").submit(function(e) {
+                                $("#popup-form").submit(function (e) {
 
-                                    $("#submit-popup-form").attr( "value", "");
+                                    $("#submit-popup-form").attr("value", "");
                                     $("#submit-popup-form").css(
-                                        {"background-image" : "url(<?= get_template_directory_uri()?>/img/loader-form.gif)",
-                                            "background-size":"15%",
+                                        {
+                                            "background-image": "url(<?= get_template_directory_uri()?>/img/loader-form.gif)",
+                                            "background-size": "15%",
                                             "background-repeat": "no-repeat",
                                             "background-position-y": "50%",
                                             "background-position-x": "50%"
@@ -151,26 +157,24 @@
                                         type: "POST",
                                         url: url,
                                         data: $("#popup-form").serialize(), // serializes the form's elements.
-                                        success: function(data)
-                                        {
-                                            if (data == 1){
-                                                $("#submit-popup-form").attr( "value", "Успешно отправлено");
-                                                $("#submit-popup-form").css({"background-image" : "none"});
+                                        success: function (data) {
+                                            if (data == 1) {
+                                                $("#submit-popup-form").attr("value", "Успешно отправлено");
+                                                $("#submit-popup-form").css({"background-image": "none"});
 
                                                 jQuery('#popup-form')[0].reset();
                                             }
 
                                             else {
-                                                $("#submit-popup-form").attr( "value", "Произошла ошибка");
-                                                $("#submit-popup-form").css({"background-image" : "none"});
+                                                $("#submit-popup-form").attr("value", "Произошла ошибка");
+                                                $("#submit-popup-form").css({"background-image": "none"});
                                             }
 //                                            alert(data);
                                         },
 
-                                        error: function(data)
-                                        {
-                                            $("#submit-popup-form").attr( "value", "Произошла ошибка");
-                                            $("#submit-popup-form").css({"background-image" : "none"});
+                                        error: function (data) {
+                                            $("#submit-popup-form").attr("value", "Произошла ошибка");
+                                            $("#submit-popup-form").css({"background-image": "none"});
                                         }
                                     });
 
@@ -179,10 +183,30 @@
                                     setTimeout(func, 10000);
 
                                     function func() {
-                                        $("#submit-popup-form").attr( "value", "Отправить");
-                                        $("#submit-popup-form").css({"background-image" : "none"});
+                                        $("#submit-popup-form").attr("value", "Отправить");
+                                        $("#submit-popup-form").css({"background-image": "none"});
                                     }
                                 });
+
+                                $(document).ready(function () {
+                                    $('.text-block').eq(0).addClass("active").fadeIn(1000); // Показываем первый блок, можно и не первый, если прописать нужную цифру в eq()
+                                    setInterval('blockAnimate();', 6000); // Вызываем функцию для смены блока каждые 5 секунд
+                                });
+
+                                // Функция для смены блоков, показывает блоки по очереди, начальный блок задаётся выше
+                                function blockAnimate() {
+                                    var length = $('.text-block').length - 1;
+                                    $('.text-block').each(function (index) {
+                                        if ($(this).hasClass('active') && index != length) {
+                                            $(this).removeClass("active").fadeOut(1000).next('.text-block').addClass("active").delay(1000).fadeIn(1000);
+                                            return false;
+                                        } else if (index == length) {
+                                            $(this).removeClass('active').fadeOut(1000);
+                                            $('.text-block').eq(0).addClass("active").delay(1000).fadeIn(1000);
+                                            return false;
+                                        }
+                                    });
+                                };
                             </script>
                         </div>
                     </div>
@@ -199,11 +223,19 @@
 <main>
     <section class="head-block">
         <video autoplay loop muted class="bgvideo" id="bgvideo">
-            <source src="<?php the_field('main_page_video') ?>" type="video/mp4"></source>
+            <source src="<?php the_field('main_page_video') ?>" type="video/mp4"/>
         </video>
         <div class="after-v-bg"></div>
         <div class="wrap">
-            <h1><?php the_field('main_page_content_title') ?></h1>
+                <?php $titles = get_field('main_page_content_title');
+                if ($titles) {
+                    foreach ($titles as $title) {
+                        ?>
+                        <h1 style="display: none;" class="text-block"><?= $title['main_page_content_title_single'] ?></h1>
+                        <?php
+                    }
+                }
+                ?>
             <a href="<?php the_field('main_page_button_link') ?>"><?php the_field('main_page_button_text') ?></a>
             <div class="icon-scroll"></div>
         </div>
@@ -221,11 +253,11 @@
                 <?php $services = get_field('main_page_os_services');
                 foreach ($services as $service) {
                     ?>
-                    <a href="<?=$service['main_page_os_services_single_service_link']?>" class="item">
-                        <img src="<?=$service['main_page_os_services_single_service_img']?>" alt="">
+                    <a href="<?= $service['main_page_os_services_single_service_link'] ?>" class="item">
+                        <img src="<?= $service['main_page_os_services_single_service_img'] ?>" alt="">
                         <p>
-                            <span><?=$service['main_page_os_services_single_service_number']?></span>
-                            <?=$service['main_page_os_services_single_service_text']?>
+                            <span><?= $service['main_page_os_services_single_service_number'] ?></span>
+                            <?= $service['main_page_os_services_single_service_text'] ?>
                         </p>
                     </a>
                     <?php
@@ -243,8 +275,8 @@
                     ?>
                     <div class="item">
                         <div class="item-wrap">
-                            <p><?=$offer['main_page_so_offers_single_offer_text']?></p>
-                            <a href="<?=$offer['main_page_so_offers_single_offer_link']?>">ПОДРОБНЕЕ<img
+                            <p><?= $offer['main_page_so_offers_single_offer_text'] ?></p>
+                            <a href="<?= $offer['main_page_so_offers_single_offer_link'] ?>">ПОДРОБНЕЕ<img
                                     src="<?php bloginfo('template_url'); ?>/img/right-arrow.png" alt=""></a>
                         </div>
                     </div>
@@ -379,8 +411,8 @@
                 foreach ($adventures as $adventure) {
                     ?>
                     <p class="wow fadeInUp" data-wow-duration="1s">
-                        <span><?=$adventure['main_page_oa_adv_number']?></span>
-                        <?=$adventure['main_page_oa_adv_text']?>
+                        <span><?= $adventure['main_page_oa_adv_number'] ?></span>
+                        <?= $adventure['main_page_oa_adv_text'] ?>
                     </p>
                     <?php
                 }
@@ -396,8 +428,8 @@
                 foreach ($helpful_information as $helpful_inf) {
                     ?>
                     <div class="item">
-                        <a href="<?=$helpful_inf['main_page_hi_inf_link']?>">
-                            <?=$helpful_inf['main_page_hi_inf_text']?>
+                        <a href="<?= $helpful_inf['main_page_hi_inf_link'] ?>">
+                            <?= $helpful_inf['main_page_hi_inf_text'] ?>
                         </a>
                     </div>
                     <?php
@@ -419,14 +451,16 @@
             <form id="static-form" method="post">
                 <input type="hidden" name="source" value="<?= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
                 <input type="hidden" name="order" value="Главная страница - статичная форма">
-                <input type="hidden" name="sendto" value="<?= get_field('footer_target_email', 'options');?>">
-                <input style="color: #fff" required name="name" type="text" placeholder="<?php the_field('main_page_wo_placeholder1') ?>">
-                <input style="color: #fff" required name="email" type="email" placeholder="<?php the_field('main_page_wo_placeholder2') ?>">
+                <input type="hidden" name="sendto" value="<?= get_field('footer_target_email', 'options'); ?>">
+                <input style="color: #fff" required name="name" type="text"
+                       placeholder="<?php the_field('main_page_wo_placeholder1') ?>">
+                <input style="color: #fff" required name="email" type="email"
+                       placeholder="<?php the_field('main_page_wo_placeholder2') ?>">
                 <textarea name="text" placeholder="<?php the_field('main_page_wo_placeholder3') ?>"></textarea>
                 <input id="submit-static-form" type="submit" value="<?php the_field('main_page_wo_button_text') ?>">
             </form>
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-            <?php include_once "js/static-form-ajax.php"?>
+            <?php include_once "js/static-form-ajax.php" ?>
         </div>
     </section>
     <section class="news-front">
