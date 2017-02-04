@@ -127,25 +127,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_587dae2030ead",
-            "label": "\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a",
-            "name": "services_page_s_title",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 2,
-            "new_lines": "br"
-        },
-        {
             "key": "field_587dae203167d",
             "label": "\u0423\u0441\u043b\u0443\u0433\u0438",
             "name": "services_page_s_services",
@@ -211,7 +192,7 @@
                     "key": "field_587dae20ab3d1",
                     "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
                     "name": "services_page_s_services_single_service_link",
-                    "type": "page_link",
+                    "type": "text",
                     "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
@@ -220,11 +201,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": [],
-                    "taxonomy": [],
-                    "allow_null": 0,
-                    "allow_archives": 1,
-                    "multiple": 0
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         },
@@ -459,7 +440,7 @@
                     "key": "field_587daf91698d7",
                     "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
                     "name": "services_page_ss_services_single_service_link",
-                    "type": "page_link",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -468,11 +449,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": [],
-                    "taxonomy": [],
-                    "allow_null": 0,
-                    "allow_archives": 1,
-                    "multiple": 0
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         }
@@ -497,5 +478,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1486067665
+    "modified": 1486209552
 }

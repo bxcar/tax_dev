@@ -23,6 +23,8 @@
                     $("#submit-static-form").attr("value", "Успешно отправлено");
                     $("#submit-static-form").css({"background-image": "none"});
 
+                    jQuery('#static-form')[0].reset();
+
                     setTimeout(func, 10000);
 
                     function func() {

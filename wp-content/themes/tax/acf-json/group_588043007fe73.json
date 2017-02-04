@@ -194,7 +194,7 @@
                     "key": "field_5883d88944896",
                     "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
                     "name": "special_offers_page_offer_link",
-                    "type": "page_link",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -203,11 +203,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": [],
-                    "taxonomy": [],
-                    "allow_null": 0,
-                    "allow_archives": 1,
-                    "multiple": 0
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         },
@@ -377,5 +377,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1485800448
+    "modified": 1486205163
 }

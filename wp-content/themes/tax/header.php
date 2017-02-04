@@ -73,6 +73,8 @@
 											if (data == 1){
 												$("#submit-popup-form").attr( "value", "Успешно отправлено");
 												$("#submit-popup-form").css({"background-image" : "none"});
+
+												jQuery('#popup-form')[0].reset();
 											}
 
 											else {

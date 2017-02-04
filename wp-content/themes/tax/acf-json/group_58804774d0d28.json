@@ -190,7 +190,7 @@
                                     "key": "field_588351575f7fe",
                                     "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
                                     "name": "convenience_flags_page_regions_punkts_in_one_column_description_link",
-                                    "type": "page_link",
+                                    "type": "text",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -199,11 +199,11 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "post_type": [],
-                                    "taxonomy": [],
-                                    "allow_null": 0,
-                                    "allow_archives": 1,
-                                    "multiple": 0
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
                                 },
                                 {
                                     "key": "field_5883518e5f7ff",
@@ -442,7 +442,7 @@
                     "key": "field_58835f435617b",
                     "label": "\u0421\u0441\u044b\u043b\u043a\u0430_1",
                     "name": "convenience_flags_page_other_offers_offer_link_1",
-                    "type": "page_link",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -451,11 +451,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": [],
-                    "taxonomy": [],
-                    "allow_null": 0,
-                    "allow_archives": 1,
-                    "multiple": 0
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 },
                 {
                     "key": "field_588364b1289b9",
@@ -504,7 +504,7 @@
                     "key": "field_588364c5289bb",
                     "label": "\u0421\u0441\u044b\u043b\u043a\u0430_2",
                     "name": "convenience_flags_page_other_offers_offer_link_2",
-                    "type": "page_link",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -513,11 +513,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": [],
-                    "taxonomy": [],
-                    "allow_null": 0,
-                    "allow_archives": 1,
-                    "multiple": 0
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         }
@@ -541,5 +541,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1485800624
+    "modified": 1486205336
 }

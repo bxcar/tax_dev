@@ -362,10 +362,8 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": [
-        "permalink"
-    ],
+    "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1486102402
+    "modified": 1486207760
 }

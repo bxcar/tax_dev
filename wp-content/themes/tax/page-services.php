@@ -51,7 +51,7 @@
         </div>
     </section>
     <section class="services-page">
-        <div class="title"><?php the_field('services_page_s_title') ?></div>
+<!--        <div class="title">--><?php //the_field('services_page_s_title') ?><!--</div>-->
         <div class="wrap wow fadeInUp" data-wow-duration="1s">
             <?php $services = get_field('services_page_s_services');
             foreach ($services as $service) {

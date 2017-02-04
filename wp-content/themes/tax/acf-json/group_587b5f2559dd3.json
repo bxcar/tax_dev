@@ -214,7 +214,7 @@
             "key": "field_587d274acc40a",
             "label": "\u0421\u0441\u044b\u043b\u043a\u0430 \u043a\u043d\u043e\u043f\u043a\u0438",
             "name": "main_page_button_link",
-            "type": "page_link",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -223,11 +223,11 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [],
-            "taxonomy": [],
-            "allow_null": 0,
-            "allow_archives": 1,
-            "multiple": 0
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_587cd26b678aa",
@@ -368,7 +368,7 @@
                     "key": "field_587cdbdd14931",
                     "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
                     "name": "main_page_os_services_single_service_link",
-                    "type": "page_link",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -377,11 +377,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": [],
-                    "taxonomy": [],
-                    "allow_null": 0,
-                    "allow_archives": 1,
-                    "multiple": 0
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         },
@@ -462,7 +462,7 @@
                     "key": "field_587ce29202116",
                     "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
                     "name": "main_page_so_offers_single_offer_link",
-                    "type": "page_link",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -471,11 +471,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": [],
-                    "taxonomy": [],
-                    "allow_null": 0,
-                    "allow_archives": 1,
-                    "multiple": 0
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         },
@@ -1058,7 +1058,7 @@
                     "key": "field_587cf5f270e0d",
                     "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
                     "name": "main_page_hi_inf_link",
-                    "type": "page_link",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -1067,11 +1067,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": [],
-                    "taxonomy": [],
-                    "allow_null": 0,
-                    "allow_archives": 1,
-                    "multiple": 0
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         },
@@ -1098,7 +1098,7 @@
             "key": "field_587cf64570e0f",
             "label": "\u0421\u0441\u044b\u043b\u043a\u0430 \u043a\u043d\u043e\u043f\u043a\u0438",
             "name": "main_page_hi_button_link",
-            "type": "page_link",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -1107,11 +1107,11 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [],
-            "taxonomy": [],
-            "allow_null": 0,
-            "allow_archives": 1,
-            "multiple": 0
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_587cf7149599d",
@@ -1280,5 +1280,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1485757706
+    "modified": 1486204400
 }

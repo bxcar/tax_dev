@@ -1001,7 +1001,12 @@ function custom_admin_js()
                 
                 }, false)
 
-            </script>"';
+           </script>"';
+    echo '"<style>
+                #edit-slug-buttons {
+                    display: none;
+                }
+           </style>"';
 }
 
 add_action('admin_footer', 'custom_admin_js');
