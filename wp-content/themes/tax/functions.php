@@ -223,49 +223,70 @@ function convenience_flag_table()
     $table = '<script>
                     window.onload = function() {
                         var replaced_element = document.getElementsByClassName("capital");
-                        var replaced_element_2 = document.getElementsByClassName("tax");
                         for(var i = 0; i < replaced_element.length; i++)
                         {
                             replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("до",\'g\'),"<span>до</span>");
-                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("до",\'g\'),"<span>до</span>");
-                            
                             replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("более",\'g\'),"<span>более</span>");
-                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("более",\'g\'),"<span>более</span>");
-                            
                             replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("от",\'g\'),"<span>от</span>");
-                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("от",\'g\'),"<span>от</span>");
-                           
                             replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("USD",\'g\'),"<span>USD</span>");
-                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("USD",\'g\'),"<span>USD</span>");
-                           
                             replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("грн.",\'g\'),"<span>грн.</span>");
-                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("грн.",\'g\'),"<span>грн.</span>");
-                            
                             replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("грн",\'g\'),"<span>грн</span>");
-                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("грн",\'g\'),"<span>грн</span>");
-                            
                             replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("EUR",\'g\'),"<span>EUR</span>");
-                            replaced_element_2[i].innerHTML =replaced_element_2[i].innerHTML.replace(new RegExp("EUR",\'g\'),"<span>EUR</span>");
                         }
                     }
               </script>
-    <div class="table wow fadeInUp" data-wow-duration="1s">
-                <div class="top row">
-                    <div class="capital">Капитал</div>
-                    <div class="tax">Сумма ежегодного сбора</div>
-                </div>';
+    <div class="table wow fadeInUp" data-wow-duration="1s">';
 
-    $table_fields = get_field('single_convenience_flag_table');
-    foreach ($table_fields as $table_field) {
-        $table .= '<div class="row">';
-        $table .= '<div class="capital">' . $table_field['single_convenience_flag_table_capital'] . '</div>';
-        $table .= '<div class="tax">' . $table_field['single_convenience_flag_table_dues_sum'] . '</div>';
+    $mas_table = array();
+
+    $table_block = get_field('single_convenience_flag_table');
+    if ($table_block) {
+        $i = 0;
+        foreach ($table_block as $table_row) {
+            $table_row_block = $table_row['single_convenience_flag_table_single_column'];
+
+            if ($table_row_block) {
+                $amount_rows = count($table_row_block);
+                for ($ix = 0; $ix < $amount_rows; $ix++) {
+                    global $i;
+                    $mas_table[$i][$ix] = $table_row_block[$ix]['single_convenience_flag_table_single_column_punkts'];
+                }
+            }
+            $i++;
+        }
+    }
+
+//    var_dump($mas_table);
+
+    $amount_colums = count($mas_table[1]);
+
+    for ($i = 0; $i < $amount_colums; $i++) {
+        if ($i == 0) {
+            $table .= '<div class="top row">';
+        }
+        else {
+            $table .= '<div class="row">';
+        }
+
+        foreach ($mas_table as $single_col) {
+            if ($i == 0) {
+
+                $table .= '<div class="capital">';
+                $table .= $single_col[$i];
+                $table .= '</div>';
+
+            }
+            else {
+                $table .= '<div class="capital">';
+                $table .= $single_col[$i];
+                $table .= '</div>';
+            }
+        }
         $table .= '</div>';
     }
 
     $table .= '</div>';
     return $table;
-
 }
 
 add_shortcode('table', 'convenience_flag_table');
@@ -1027,18 +1048,19 @@ function deleteGET($url, $name, $amp = true)
 }
 
 
-
 //for current template page, i use in search.php
-add_filter( 'template_include', 'var_template_include', 1000 );
-function var_template_include( $t ){
+add_filter('template_include', 'var_template_include', 1000);
+function var_template_include($t)
+{
     $GLOBALS['current_theme_template'] = basename($t);
     return $t;
 }
 
-function get_current_template( $echo = false ) {
-    if( !isset( $GLOBALS['current_theme_template'] ) )
+function get_current_template($echo = false)
+{
+    if (!isset($GLOBALS['current_theme_template']))
         return false;
-    if( $echo )
+    if ($echo)
         echo $GLOBALS['current_theme_template'];
     else
         return $GLOBALS['current_theme_template'];
