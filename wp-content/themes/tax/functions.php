@@ -221,15 +221,14 @@ if (function_exists('acf_add_options_page')) {
 function convenience_flag_table($atts = [])
 {
 
-
     $table = '<script>
                     window.onload = function() {
                         var replaced_element = document.getElementsByClassName("capital");
                         for(var i = 0; i < replaced_element.length; i++)
                         {
-                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("до",\'g\'),"<span>до</span>");
-                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("более",\'g\'),"<span>более</span>");
-                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("от",\'g\'),"<span>от</span>");
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("до ",\'g\'),"<span>до </span>");
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("более ",\'g\'),"<span>более </span>");
+                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("от ",\'g\'),"<span>от </span>");
                             replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("USD",\'g\'),"<span>USD</span>");
                             replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("грн.",\'g\'),"<span>грн.</span>");
                             replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("грн",\'g\'),"<span>грн</span>");
@@ -239,7 +238,6 @@ function convenience_flag_table($atts = [])
               </script>
     <div class="table wow fadeInUp" data-wow-duration="1s">';
 
-    $mas_table = array();
     if (isset($atts['number'])) {
         $number = $atts['number'];
     }
@@ -248,30 +246,33 @@ function convenience_flag_table($atts = [])
         $number = 1;
     }
     $table_number = $number - 1;
-//    echo $number;
+
+    $new_array = array();
 
     $all_tables = get_field('single_convenience_flag_tables');
-    ini_set('xdebug.var_display_max_depth', 10);
+    /*ini_set('xdebug.var_display_max_depth', 10);
     ini_set('xdebug.var_display_max_children', 256);
-    ini_set('xdebug.var_display_max_data', 1024);
+    ini_set('xdebug.var_display_max_data', 1024);*/
 
     $single_table_klon_field = $all_tables[$table_number]['single_convenience_flag_tables_single'];
-//    var_dump($single_table_klon_field);
     foreach ($single_table_klon_field as $value) {
 
         $single_table = $value;
 
         $table_block = $single_table['single_convenience_flag_table'];
         if ($table_block) {
+            $mas_table = array();
             $i = 0;
             foreach ($table_block as $table_row) {
                 $table_row_block = $table_row['single_convenience_flag_table_single_column'];
 
                 if ($table_row_block) {
                     $amount_rows = count($table_row_block);
+                    $mas_table = array();
                     for ($ix = 0; $ix < $amount_rows; $ix++) {
-                        global $i;
+                        global $mas_table;
                         $mas_table[$i][$ix] = $table_row_block[$ix]['single_convenience_flag_table_single_column_punkts'];
+                        $new_array[$i][$ix] = $mas_table[$i][$ix];
                     }
                 }
                 $i++;
@@ -280,9 +281,9 @@ function convenience_flag_table($atts = [])
     }
 
 
-    var_dump($mas_table);
+//    var_dump($new_array);
 
-    $amount_colums = count($mas_table[1]);
+    $amount_colums = count($new_array[1]);
 
     for ($iq = 0; $iq < $amount_colums; $iq++) {
         if ($iq == 0) {
@@ -292,7 +293,7 @@ function convenience_flag_table($atts = [])
             $table .= '<div class="row">';
         }
 
-        foreach ($mas_table as $single_col) {
+        foreach ($new_array as $single_col) {
             if ($iq == 0) {
 
                 $table .= '<div class="capital">';
