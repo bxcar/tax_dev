@@ -8703,9 +8703,16 @@ footer .wrap {
     color: #fff
 }
 
-main .comment-block .title {
+main .comment-block .title,
+main .blog .title{
     font-size: 38px;
     font-size: 2.375rem
+}
+
+main .blog div.title:nth-child(5):after {
+    left: 0;
+    margin-left: 0;
+    bottom: 45px;
 }
 
 main .comment-block .title:after {

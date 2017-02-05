@@ -51,7 +51,7 @@
         </div>
     </section>
     <section class="offer-block">
-        <div class="subtitle wow fadeInUp" data-wow-duration="1s">
+        <div class="footnote offer wow fadeInUp" data-wow-duration="1s">
             <?php the_field('special_offers_page_up_text') ?>
             </div>
         <div class="wrap">

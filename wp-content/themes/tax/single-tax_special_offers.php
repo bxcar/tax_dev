@@ -116,6 +116,9 @@ $the_query->the_post(); ?>
             line-height: 22px;
             padding-top: 20px;
         }
+
+        blockquote p {
+            color: #424242 !important;
         }
     </style>
 

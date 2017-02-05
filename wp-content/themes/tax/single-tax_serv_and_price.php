@@ -72,7 +72,7 @@ $the_query->the_post(); ?>
             line-height: 34px;
         }
 
-        .flags-vnutr-info li:before {
+        .flags-vnutr-info ul li:before {
             content: '';
             width: 6px;
             height: 6px;

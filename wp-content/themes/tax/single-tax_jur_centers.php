@@ -126,6 +126,10 @@ if ($the_query->have_posts()):
             display: inline-block;
             margin-right: 10px;
         }
+
+        blockquote p {
+            color: #424242 !important;
+        }
     </style>
     <script>
         jQuery(document).ready(function () {
