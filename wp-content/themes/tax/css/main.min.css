@@ -9998,6 +9998,10 @@ main .leave-comment input[type=email] {
     padding-bottom: 15px
 }
 
+em {
+    font-style: italic;
+}
+
 .fin-companies-info .number-list .title-list {
     padding: 10px 0 20px;
     color: #424242;
