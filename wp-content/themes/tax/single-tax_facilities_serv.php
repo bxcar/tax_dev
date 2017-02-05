@@ -66,7 +66,7 @@ $the_query->the_post(); ?>
         }
 
         .facilities-services-info li {
-            color: #928f8f;
+            color: #424242;
             font-size: .8125rem;
             font-weight: 400;
             line-height: 34px;

@@ -82,6 +82,7 @@
 <!-- Custom HTML -->
 <!-- Header -->
 <header class="front">
+    <div id="up-button"><img alt="Прокрутить вверх" src="<?= get_template_directory_uri();?>/img/up.png"></div>
     <div class="wrap">
         <div class="left-side">
             <a class="logo" href="<?= home_url(); ?>">

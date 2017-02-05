@@ -223,16 +223,24 @@ function convenience_flag_table($atts = [])
 
     $table = '<script>
                     window.onload = function() {
-                        var replaced_element = document.getElementsByClassName("capital");
-                        for(var i = 0; i < replaced_element.length; i++)
-                        {
-                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("до ",\'g\'),"<span>до </span>");
-                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("более ",\'g\'),"<span>более </span>");
-                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("от ",\'g\'),"<span>от </span>");
-                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("USD",\'g\'),"<span>USD</span>");
-                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("грн.",\'g\'),"<span>грн.</span>");
-                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("грн",\'g\'),"<span>грн</span>");
-                            replaced_element[i].innerHTML =replaced_element[i].innerHTML.replace(new RegExp("EUR",\'g\'),"<span>EUR</span>");
+                    var replaced_element = new Array();
+                        replaced_element[0] = document.getElementsByClassName("capital");
+                        replaced_element[1] = document.getElementsByClassName("country");
+                        replaced_element[2] = document.getElementsByClassName("registration");
+                        replaced_element[3] = document.getElementsByClassName("support");
+                        replaced_element[4] = document.getElementsByClassName("tax");
+                        for(var ix = 0; ix < 5; ix++) {
+                        var element = replaced_element[ix];
+                            for(var i = 0; i < element.length; i++)
+                            {
+                                element[i].innerHTML =element[i].innerHTML.replace(new RegExp("до ",\'g\'),"<span>до </span>");
+                                element[i].innerHTML =element[i].innerHTML.replace(new RegExp("более ",\'g\'),"<span>более </span>");
+                                element[i].innerHTML =element[i].innerHTML.replace(new RegExp("от ",\'g\'),"<span>от </span>");
+                                element[i].innerHTML =element[i].innerHTML.replace(new RegExp("USD",\'g\'),"<span>USD</span>");
+                                element[i].innerHTML =element[i].innerHTML.replace(new RegExp("грн.",\'g\'),"<span>грн.</span>");
+                                element[i].innerHTML =element[i].innerHTML.replace(new RegExp("грн",\'g\'),"<span>грн</span>");
+                                element[i].innerHTML =element[i].innerHTML.replace(new RegExp("EUR",\'g\'),"<span>EUR</span>");
+                            }
                         }
                     }
               </script>
@@ -294,12 +302,23 @@ function convenience_flag_table($atts = [])
         }
 
         $for_gree_color_counter = 0;
+        $counter_for_tax_capital_class = 0;
         //$i is amount of table columns
         foreach ($new_array as $single_col) {
-            if((get_current_template() == 'single-tax_serv_and_price.php') && ($for_gree_color_counter%$i == 0)) {
+            if ((get_current_template() == 'single-tax_serv_and_price.php') && ($for_gree_color_counter % $i == 0)) {
                 $table .= '<div class="country">';
             }
+            elseif ((get_current_template() == 'single-tax_serv_and_price.php') && ($for_gree_color_counter % $i == 1)) {
+                $table .= '<div class="registration">';
+            }
+            elseif ((get_current_template() == 'single-tax_serv_and_price.php') && ($for_gree_color_counter % $i == 2)) {
+                $table .= '<div class="support">';
+            }
+            elseif ((get_current_template() == 'single-tax_convenience_flag.php') && ($i == 2) && ($counter_for_tax_capital_class % 2 == 1)) {
+                $table .= '<div class="tax">';
+            }
             else {
+                $counter_for_tax_capital_class++;
                 $table .= '<div class="capital">';
             }
             $table .= $single_col[$iq];

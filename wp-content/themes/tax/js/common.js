@@ -106,5 +106,19 @@ $( document ).ready(function() {
 
     //Magnific popUp
     $('.popUp-btn').magnificPopup();
+
+    var top_show = $(window).height(); // В каком положении полосы прокрутки начинать показ кнопки "Наверх" (было 150)
+    var delay = 850; // Задержка прокрутки
+    $(document).ready(function() {
+        $(window).scroll(function () { // При прокрутке попадаем в эту функцию
+            /* В зависимости от положения полосы прокрукти и значения top_show, скрываем или открываем кнопку "Наверх" */
+            if ($(this).scrollTop() > top_show) $('#up-button').fadeIn();
+            else $('#up-button').fadeOut();
+        });
+        $('#up-button').click(function () { // При клике по кнопке "Наверх" попадаем в эту функцию
+            /* Плавная прокрутка наверх */
+            $('html, body').animate({scrollTop: 0}, delay);
+        });
+    });
 });
 
