@@ -150,7 +150,7 @@ $the_query->the_post(); ?>
                     'numberposts' => -1,
                     'post_type' => 'tax_serv_and_price',
                     'posts_per_page' => get_field('single_convenience_flag_other_flags_amount'),
-                    'post__not_in' => array( $id ),
+//                    'post__not_in' => array( $id ),
                     'orderby' => 'rand'
                 );
 
