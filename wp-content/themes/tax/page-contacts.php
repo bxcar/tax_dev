@@ -154,6 +154,11 @@
             }
         }
     </script>
+    <style>
+        footer .social-block {
+            display: none;
+        }
+    </style>
     <?php wp_head() ?>
 </head>
 
