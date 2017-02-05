@@ -250,11 +250,12 @@ function convenience_flag_table($atts = [])
     $new_array = array();
 
     $all_tables = get_field('single_convenience_flag_tables');
-    /*ini_set('xdebug.var_display_max_depth', 10);
+    /*ini_set('xdebug.var_display_max_depth', 100);
     ini_set('xdebug.var_display_max_children', 256);
     ini_set('xdebug.var_display_max_data', 1024);*/
 
     $single_table_klon_field = $all_tables[$table_number]['single_convenience_flag_tables_single'];
+    $i = 0;
     foreach ($single_table_klon_field as $value) {
 
         $single_table = $value;
@@ -262,7 +263,7 @@ function convenience_flag_table($atts = [])
         $table_block = $single_table['single_convenience_flag_table'];
         if ($table_block) {
             $mas_table = array();
-            $i = 0;
+//            $i = 0;
             foreach ($table_block as $table_row) {
                 $table_row_block = $table_row['single_convenience_flag_table_single_column'];
 
@@ -280,7 +281,6 @@ function convenience_flag_table($atts = [])
         }
     }
 
-
 //    var_dump($new_array);
 
     $amount_colums = count($new_array[1]);
@@ -293,19 +293,18 @@ function convenience_flag_table($atts = [])
             $table .= '<div class="row">';
         }
 
+        $for_gree_color_counter = 0;
+        //$i is amount of table columns
         foreach ($new_array as $single_col) {
-            if ($iq == 0) {
-
-                $table .= '<div class="capital">';
-                $table .= $single_col[$iq];
-                $table .= '</div>';
-
+            if((get_current_template() == 'single-tax_serv_and_price.php') && ($for_gree_color_counter%$i == 0)) {
+                $table .= '<div class="country">';
             }
             else {
                 $table .= '<div class="capital">';
-                $table .= $single_col[$iq];
-                $table .= '</div>';
             }
+            $table .= $single_col[$iq];
+            $table .= '</div>';
+            $for_gree_color_counter++;
         }
         $table .= '</div>';
     }
@@ -317,6 +316,7 @@ function convenience_flag_table($atts = [])
 add_shortcode('table', 'convenience_flag_table');
 
 //next field copy from single-convenience_flag
+//use [table number=%table number%] instead table_serv
 function serv_and_price_table()
 {
     $table = '<script>
@@ -1051,7 +1051,8 @@ function custom_admin_js()
     echo '"<style>
                 #edit-slug-button,
                 #edit-slug-buttons,
-                .acf-fields > .table-hidden{
+                .acf-fields > .table-hidden,
+                .acf-field-588e73b7e86df {  /*table in services and price*/
                     display: none;
                 }
            </style>"';
