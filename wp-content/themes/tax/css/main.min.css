@@ -9992,7 +9992,7 @@ main .leave-comment input[type=email] {
     border-radius: 50%
 }
 
-.fin-companies-info .number-list {
+.fin-companies-info .number-list, ol {
     counter-reset: myCounter;
     padding-top: 5px;
     padding-bottom: 15px
@@ -10014,6 +10014,18 @@ main .leave-comment input[type=email] {
     font-size: .8125rem;
     font-weight: 400;
     line-height: 34px
+}
+
+ol li:before {
+    counter-increment: myCounter;
+    content: counter(myCounter);
+    color: #424242;
+    font-size: 16px;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 35px;
+    font-family: georgia,sans-serif;
+    padding-right: 10px;
 }
 
 .fin-companies-info .number-list li:before {
