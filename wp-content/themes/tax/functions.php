@@ -218,8 +218,10 @@ if (function_exists('acf_add_options_page')) {
     ));
 }
 
-function convenience_flag_table()
+function convenience_flag_table($atts = [])
 {
+
+
     $table = '<script>
                     window.onload = function() {
                         var replaced_element = document.getElementsByClassName("capital");
@@ -238,30 +240,52 @@ function convenience_flag_table()
     <div class="table wow fadeInUp" data-wow-duration="1s">';
 
     $mas_table = array();
+    if (isset($atts['number'])) {
+        $number = $atts['number'];
+    }
 
-    $table_block = get_field('single_convenience_flag_table');
-    if ($table_block) {
-        $i = 0;
-        foreach ($table_block as $table_row) {
-            $table_row_block = $table_row['single_convenience_flag_table_single_column'];
+    else {
+        $number = 1;
+    }
+    $table_number = $number - 1;
+//    echo $number;
 
-            if ($table_row_block) {
-                $amount_rows = count($table_row_block);
-                for ($ix = 0; $ix < $amount_rows; $ix++) {
-                    global $i;
-                    $mas_table[$i][$ix] = $table_row_block[$ix]['single_convenience_flag_table_single_column_punkts'];
+    $all_tables = get_field('single_convenience_flag_tables');
+    ini_set('xdebug.var_display_max_depth', 10);
+    ini_set('xdebug.var_display_max_children', 256);
+    ini_set('xdebug.var_display_max_data', 1024);
+
+    $single_table_klon_field = $all_tables[$table_number]['single_convenience_flag_tables_single'];
+//    var_dump($single_table_klon_field);
+    foreach ($single_table_klon_field as $value) {
+
+        $single_table = $value;
+
+        $table_block = $single_table['single_convenience_flag_table'];
+        if ($table_block) {
+            $i = 0;
+            foreach ($table_block as $table_row) {
+                $table_row_block = $table_row['single_convenience_flag_table_single_column'];
+
+                if ($table_row_block) {
+                    $amount_rows = count($table_row_block);
+                    for ($ix = 0; $ix < $amount_rows; $ix++) {
+                        global $i;
+                        $mas_table[$i][$ix] = $table_row_block[$ix]['single_convenience_flag_table_single_column_punkts'];
+                    }
                 }
+                $i++;
             }
-            $i++;
         }
     }
 
-//    var_dump($mas_table);
+
+    var_dump($mas_table);
 
     $amount_colums = count($mas_table[1]);
 
-    for ($i = 0; $i < $amount_colums; $i++) {
-        if ($i == 0) {
+    for ($iq = 0; $iq < $amount_colums; $iq++) {
+        if ($iq == 0) {
             $table .= '<div class="top row">';
         }
         else {
@@ -269,16 +293,16 @@ function convenience_flag_table()
         }
 
         foreach ($mas_table as $single_col) {
-            if ($i == 0) {
+            if ($iq == 0) {
 
                 $table .= '<div class="capital">';
-                $table .= $single_col[$i];
+                $table .= $single_col[$iq];
                 $table .= '</div>';
 
             }
             else {
                 $table .= '<div class="capital">';
-                $table .= $single_col[$i];
+                $table .= $single_col[$iq];
                 $table .= '</div>';
             }
         }
@@ -1024,7 +1048,9 @@ function custom_admin_js()
 
            </script>"';
     echo '"<style>
-                #edit-slug-buttons {
+                #edit-slug-button,
+                #edit-slug-buttons,
+                .acf-fields > .table-hidden{
                     display: none;
                 }
            </style>"';
