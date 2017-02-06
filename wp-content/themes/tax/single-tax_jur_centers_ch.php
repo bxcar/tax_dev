@@ -1,13 +1,13 @@
 <?php
 /**
- * Template Name: tax_jur_centers
+ * Template Name: tax_jur_centers_ch
  */
 ?>
 <?php
 // args
 $args = array(
     'numberposts' => -1,
-    'post_type' => 'tax_jur_centers',
+    'post_type' => 'tax_jur_centers_ch',
     'p' => get_the_ID()
 );
 
@@ -15,8 +15,8 @@ $args = array(
 // query
 $the_query = new WP_Query($args);
 if ($the_query->have_posts()):
-    while ($the_query->have_posts()) :
-        $the_query->the_post(); ?>
+while ($the_query->have_posts()) :
+$the_query->the_post(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -154,6 +154,12 @@ if ($the_query->have_posts()):
             <ul>
                 <li><a href="<?php echo get_bloginfo('url');?>">Главная</a></li>
                 <li><a href="<?php echo get_bloginfo('url');?>/jur_center">Центры юрисдикций</a></li>
+                <?php if(get_field('tax_parent_post')) { ?>
+                <li><a href="<?php
+                    $parent_post_id = get_field('tax_parent_post');
+                    echo get_permalink($parent_post_id);
+                    ?>"><?php echo get_the_title($parent_post_id); ?></a></li>
+                <?php } ?>
                 <li><span><?php the_title();?></span></li>
             </ul>
         </div>
@@ -161,21 +167,21 @@ if ($the_query->have_posts()):
     <section class="fin-companies-info jur-center-info">
         <div class="subtitle wow fadeInUp" data-wow-duration="1s"><?php the_field('tax_finance_companies_title_company') ?></div>
         <?php if(get_field('tax_finance_companies_image')) { ?>
-        <div class="fin-companies-img wow fadeInUp" data-wow-duration="1s">
-            <img src="<?php the_field('tax_finance_companies_image') ?>" alt="">
-            <style>
-                .fin-companies-img #pulse-dot {
-                    top: -webkit-calc(<?php the_field('tax_finance_companies_image_puls_y_coordinat'); ?>% - 6px);
-                    top: calc(<?php the_field('tax_finance_companies_image_puls_y_coordinat'); ?>% - 6px);
-                    left: -webkit-calc(<?php the_field('tax_finance_companies_image_puls_x_coordinate'); ?>% - 4px);
-                    left: calc(<?php the_field('tax_finance_companies_image_puls_x_coordinate'); ?>% - 4px)
-                }
-            </style>
-            <div id="pulse-dot">
-                <div class="dot"></div>
-                <div class="pulse"></div>
+            <div class="fin-companies-img wow fadeInUp" data-wow-duration="1s">
+                <img src="<?php the_field('tax_finance_companies_image') ?>" alt="">
+                <style>
+                    .fin-companies-img #pulse-dot {
+                        top: -webkit-calc(<?php the_field('tax_finance_companies_image_puls_y_coordinat'); ?>% - 6px);
+                        top: calc(<?php the_field('tax_finance_companies_image_puls_y_coordinat'); ?>% - 6px);
+                        left: -webkit-calc(<?php the_field('tax_finance_companies_image_puls_x_coordinate'); ?>% - 4px);
+                        left: calc(<?php the_field('tax_finance_companies_image_puls_x_coordinate'); ?>% - 4px)
+                    }
+                </style>
+                <div id="pulse-dot">
+                    <div class="dot"></div>
+                    <div class="pulse"></div>
+                </div>
             </div>
-        </div>
         <?php } ?>
         <div class="wrap content-wrap">
             <?php the_content(); ?>

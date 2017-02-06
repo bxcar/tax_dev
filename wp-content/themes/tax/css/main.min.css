@@ -6708,7 +6708,8 @@ header.internal .collapsed ul li a {
     margin-bottom: 45px
 }
 
-.service-vnutr-info .table .row {
+.service-vnutr-info .table .row,
+.fin-companies-info .table .row {
     margin: 0;
     border: 1px solid #e1e3e6;
     border-top: 0;
@@ -6729,31 +6730,41 @@ header.internal .collapsed ul li a {
 }
 
 @media (max-width: 700px) {
-    .service-vnutr-info .table .row {
+    .service-vnutr-info .table .row,
+    .fin-companies-info .table .row {
         padding: 10px 20px
     }
 }
 
-.service-vnutr-info .table .row:nth-child(2n+1) {
+.service-vnutr-info .table .row:nth-child(2n+1),
+.fin-companies-info .table .row:nth-child(2n+1) {
     background-color: #f9fafb
 }
 
-.service-vnutr-info .table .row > div {
+.service-vnutr-info .table .row > div,
+.fin-companies-info .table .row > div {
     width: 40%
 }
 
-.service-vnutr-info .table .row .country {
+.fin-companies-info .table .row > div {
+    padding-right: 10px;
+}
+
+.service-vnutr-info .table .row .country,
+.fin-companies-info .table .row .country {
     color: #3ca04f;
     font-size: 13px;
     font-size: .8125rem;
     font-weight: 400;
 }
 
-.service-vnutr-info .table .row .support {
+.service-vnutr-info .table .row .support,
+.fin-companies-info .table .row .support {
     width: 20%
 }
 
-.service-vnutr-info .table .row .registration, .service-vnutr-info .table .row .support {
+.service-vnutr-info .table .row .registration, .service-vnutr-info .table .row .support,
+.fin-companies-info .table .row .registration, .fin-companies-info .table .row .support {
     text-transform: uppercase;
     color: #424242;
     font-size: 13px;
@@ -6761,7 +6772,8 @@ header.internal .collapsed ul li a {
     font-weight: 400
 }
 
-.service-vnutr-info .table .row .registration span, .service-vnutr-info .table .row .support span {
+.service-vnutr-info .table .row .registration span, .service-vnutr-info .table .row .support span,
+.fin-companies-info .table .row .registration span, .fin-companies-info .table .row .support span {
     color: #adadad;
     font-size: 11px;
     font-size: .6875rem;
@@ -6769,12 +6781,14 @@ header.internal .collapsed ul li a {
     display: inline-block
 }
 
-.service-vnutr-info .table .row.top {
+.service-vnutr-info .table .row.top,
+.fin-companies-info .table .row.top {
     min-height: 70px;
     background-color: #3ca04f
 }
 
-.service-vnutr-info .table .row.top .country, .service-vnutr-info .table .row.top .registration, .service-vnutr-info .table .row.top .support {
+.service-vnutr-info .table .row.top .country, .service-vnutr-info .table .row.top .registration, .service-vnutr-info .table .row.top .support,
+.fin-companies-info .table .row.top .country, .fin-companies-info .table .row.top .registration, .fin-companies-info .table .row.top .support {
     text-transform: uppercase;
     opacity: .7;
     color: #fff
@@ -8048,7 +8062,8 @@ header.internal .collapsed ul li a {
     margin-top: 20px
 }
 
-.flags-vnutr-info .table .top .capital, .flags-vnutr-info .table .top .tax {
+.flags-vnutr-info .table .top .capital, .flags-vnutr-info .table .top .tax,
+.fin-companies-info .table .top .capital, .fin-companies-info .table .top .tax {
     opacity: .7;
     color: #fff;
     font-size: 13px;
@@ -8057,14 +8072,16 @@ header.internal .collapsed ul li a {
     text-transform: uppercase
 }
 
-.flags-vnutr-info .table .capital, .flags-vnutr-info .table .tax {
+.flags-vnutr-info .table .capital, .flags-vnutr-info .table .tax,
+.fin-companies-info .table .capital, .fin-companies-info .table .tax {
     color: #424242;
     font-size: 13px;
     font-size: .8125rem;
     font-weight: 400
 }
 
-.flags-vnutr-info .table .capital span, .flags-vnutr-info .table .tax span {
+.flags-vnutr-info .table .capital span, .flags-vnutr-info .table .tax span,
+.fin-companies-info .capital span, .fin-companies-info .table .tax span {
     color: #adadad;
     font-size: 11px;
     font-size: .6875rem;
@@ -8072,12 +8089,14 @@ header.internal .collapsed ul li a {
 }
 
 @media (max-width: 500px) {
-    .flags-vnutr-info .table .capital {
+    .flags-vnutr-info .table .capital,
+    .fin-companies-info .table .capital {
         width: 70% !important;
         padding-right: 10px
     }
 
-    .flags-vnutr-info .table .row {
+    .flags-vnutr-info .table .row,
+    .fin-companies-info .table .row {
         padding: 10px 15px
     }
 

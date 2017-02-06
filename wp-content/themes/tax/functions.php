@@ -255,6 +255,13 @@ function convenience_flag_table($atts = [])
     }
     $table_number = $number - 1;
 
+    if (isset($atts['title'])) {
+        $title = $atts['title'];
+    }
+    else {
+        $title = true;
+    }
+
     $new_array = array();
 
     $all_tables = get_field('single_convenience_flag_tables');
@@ -294,10 +301,13 @@ function convenience_flag_table($atts = [])
     $amount_colums = count($new_array[1]);
 
     for ($iq = 0; $iq < $amount_colums; $iq++) {
-        if ($iq == 0) {
+        if ($iq == 0 && $title) {
             $table .= '<div class="top row">';
         }
-        else {
+        elseif($iq == 0) {
+            $table .= '<div class="row" style="border-top: 1px solid #e1e3e6;">';
+        }
+        else{
             $table .= '<div class="row">';
         }
 
@@ -314,7 +324,7 @@ function convenience_flag_table($atts = [])
             elseif ((get_current_template() == 'single-tax_serv_and_price.php') && ($for_gree_color_counter % $i == 2)) {
                 $table .= '<div class="support">';
             }
-            elseif ((get_current_template() == 'single-tax_convenience_flag.php') && ($i == 2) && ($counter_for_tax_capital_class % 2 == 1)) {
+            elseif (((get_current_template() == 'single-tax_convenience_flag.php') || (get_current_template() == 'single-tax_finance_company.php')) && ($i == 2) && ($counter_for_tax_capital_class % 2 == 1)) {
                 $table .= '<div class="tax">';
             }
             else {
