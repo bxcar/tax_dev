@@ -156,6 +156,7 @@ $the_query->the_post(); ?>
     <section class="fin-companies-info">
         <div class="subtitle wow fadeInUp"
              data-wow-duration="1s"><?php the_field('tax_finance_companies_title_company') ?></div>
+        <?php if(get_field('tax_finance_companies_image')) { ?>
         <div class="fin-companies-img wow fadeInUp" data-wow-duration="1s">
             <img src="<?php the_field('tax_finance_companies_image') ?>" alt="">
             <style>
@@ -171,6 +172,7 @@ $the_query->the_post(); ?>
                 <div class="pulse"></div>
             </div>
         </div>
+        <?php } ?>
         <div class="wrap content-wrap">
             <?php the_content(); ?>
         </div>
