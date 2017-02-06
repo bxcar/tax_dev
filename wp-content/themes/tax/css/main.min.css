@@ -10065,7 +10065,7 @@ em {
     line-height: 34px
 }
 
-ol li:before {
+ol > li:before { /*backend dev remark(was ol li:before*/
     counter-increment: myCounter;
     content: counter(myCounter);
     color: #424242;

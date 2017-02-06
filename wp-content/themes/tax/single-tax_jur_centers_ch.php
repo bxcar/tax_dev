@@ -92,7 +92,7 @@ $the_query->the_post(); ?>
             list-style-type: none !important;
         }
 
-        .content-wrap ol li::before {
+        .content-wrap ol > li::before {
             counter-increment: myCounter;
             content: counter(myCounter);
             color: #424242;
