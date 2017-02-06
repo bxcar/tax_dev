@@ -446,6 +446,7 @@ function register_my_custom_menu_page()
     add_submenu_page('custompage', 'Финансовые компании', 'Финансовые компании', 8, '/edit.php?post_type=tax_finance_company');
     add_submenu_page('custompage', 'Полезная информация', 'Полезная информация', 8, '/edit.php?post_type=tax_helpful_inf');
     add_submenu_page('custompage', 'Центры юрисдикций', 'Центры юрисдикций', 8, '/edit.php?post_type=tax_jur_centers');
+    add_submenu_page('custompage', 'Дочерние центры юрисдикций', 'Дочерние центры юрисдикций', 8, '/edit.php?post_type=tax_jur_centers_ch');
     add_submenu_page('custompage', 'Услуги и цены', 'Услуги и цены', 8, '/edit.php?post_type=tax_serv_and_price');
     add_submenu_page('custompage', 'Специальные предложения', 'Специальные предложения', 8, '/edit.php?post_type=tax_special_offers');
     remove_submenu_page('custompage', 'custompage');
