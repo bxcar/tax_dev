@@ -116,7 +116,7 @@ $the_query->the_post(); ?>
             font-family: georgia, sans-serif;
             font-size: 1.1875rem;
             font-weight: 700;
-            line-height: 51px;
+            line-height: 31px;
         }
 
         h3::before {
