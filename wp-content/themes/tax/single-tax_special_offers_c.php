@@ -7,7 +7,7 @@
 // args
 $args = array(
     'numberposts' => -1,
-    'post_type' => 'tax_special_offers',
+    'post_type' => 'tax_special_offers_c',
     'p' => get_the_ID()
 );
 
@@ -72,7 +72,7 @@ $the_query->the_post(); ?>
             line-height: 26px;
         }
 
-        .flags-vnutr-info li:before {
+        .flags-vnutr-info ul > li:before {
             content: '';
             width: 6px;
             height: 6px;
@@ -82,6 +82,21 @@ $the_query->the_post(); ?>
             margin-right: 23px;
             -webkit-border-radius: 50%;
             border-radius: 50%;
+        }
+
+        .flags-vnutr-info ul li ol li {
+            list-style-type: none !important;
+        }
+
+        .flags-vnutr-info ol > li::before {
+            counter-increment: myCounter;
+            content: counter(myCounter);
+            color: #424242;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 35px;
+            font-family: georgia, sans-serif;
+            padding-right: 10px;
         }
 
         .service-vnutr-info p {
@@ -97,7 +112,7 @@ $the_query->the_post(); ?>
             font-family: georgia,sans-serif;
             font-size: 1.1875rem;
             font-weight: 700;
-            line-height: 51px;
+            line-height: 31px;
         }
 
         .offer-block-info h3::before {
@@ -137,6 +152,12 @@ $the_query->the_post(); ?>
             <ul>
                 <li><a href="<?php echo get_bloginfo('url');?>">Главная</a></li>
                 <li><a href="<?php echo get_bloginfo('url');?>/special_offers">Специальные предложения</a></li>
+                <?php if(get_field('tax_parent_post')) { ?>
+                    <li><a href="<?php
+                        $parent_post_id = get_field('tax_parent_post');
+                        echo get_permalink($parent_post_id);
+                        ?>"><?php echo get_the_title($parent_post_id); ?></a></li>
+                <?php } ?>
                 <li><span><?php the_title();?></span></li>
             </ul>
         </div>

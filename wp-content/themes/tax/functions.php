@@ -449,6 +449,7 @@ function register_my_custom_menu_page()
     add_submenu_page('custompage', 'Дочерние центры юрисдикций', 'Дочерние центры юрисдикций', 8, '/edit.php?post_type=tax_jur_centers_ch');
     add_submenu_page('custompage', 'Услуги и цены', 'Услуги и цены', 8, '/edit.php?post_type=tax_serv_and_price');
     add_submenu_page('custompage', 'Специальные предложения', 'Специальные предложения', 8, '/edit.php?post_type=tax_special_offers');
+    add_submenu_page('custompage', 'Дочерние специальные предложения', 'Дочерние специальные предложения', 8, '/edit.php?post_type=tax_special_offers_c');
     remove_submenu_page('custompage', 'custompage');
 
     add_menu_page(
