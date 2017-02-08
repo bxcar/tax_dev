@@ -56,10 +56,21 @@ $the_query->the_post(); ?>
             padding: 40px 40px 38px;
             margin-top: 25px;
             margin-bottom: 25px;
+            color: #424242 !important;
         }
 
-        .content-wrap ul,
-        .content-wrap ol {
+        .content-wrap blockquote p {
+            color: #424242 !important;
+        }
+
+        .content-wrap > ul,
+        .content-wrap > ol {
+            margin-bottom: 30px;
+            list-style: none;
+        }
+
+        .content-wrap div > ul,
+        .content-wrap div > ol {
             margin-bottom: 30px;
             list-style: none;
         }
