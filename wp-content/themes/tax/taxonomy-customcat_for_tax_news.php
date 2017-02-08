@@ -134,10 +134,7 @@
                 <li><a href="<?php echo get_bloginfo('url');?>">Главная</a></li>
                 <li><a href="<?php echo get_bloginfo('url');?>/news">Новости</a></li>
                 <li>
-                    <span><?php
-                        echo get_queried_object()->name;
-                        ?>
-                    </span>
+                    <span><?php echo get_queried_object()->name; ?></span>
                 </li>
             </ul>
         </div>
@@ -151,8 +148,10 @@
                     while (have_posts()) {
                         the_post(); ?>
                         <div class="item">
+                        <?php if(get_field('news_image')) {?>
                             <img class="wow fadeInUp" data-wow-duration="1s" src="<?php the_field('news_image') ?>"
                                  alt="">
+                            <?php } ?>
                             <div class="text-info wow fadeInUp" data-wow-duration="1s">
                                 <div class="top">
                                     <div class="date"><?php echo get_the_date('j'); ?>
@@ -164,8 +163,10 @@
                                 <div class="sub-info">
                                     <?php
                                     $cur_terms = get_the_terms($post->ID, 'customcat_for_tax_news');
-                                    foreach ($cur_terms as $cur_term) {
-                                        echo '<span class="themes">' . $cur_term->name . '</span> ';
+                                    if($cur_terms) {
+                                        foreach ($cur_terms as $cur_term) {
+                                            echo '<span class="themes">' . $cur_term->name . '</span> ';
+                                        }  
                                     }
                                     ?>
                                     <span class="view"><?php if(function_exists('get_the_views_custom')) { echo get_the_views_custom(); } ?></span>

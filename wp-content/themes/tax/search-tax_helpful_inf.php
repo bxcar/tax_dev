@@ -124,7 +124,8 @@
         <div class="breadcrumb">
             <ul>
                 <li><a href="<?= deleteGET(get_home_url(), "page"); ?>">Главная</a></li>
-                <li><span>Полезная информация</span></li>
+                <li><a href="<?php get_template_directory_uri();?>/helpful_information">Полезная информация</a></li>
+                <li><span>Поиск онлайн</span></li>
             </ul>
         </div>
     </section>
@@ -136,8 +137,10 @@
                     while (have_posts()) {
                         the_post(); ?>
                         <div class="item">
+                        <?php if(get_field('news_image')) { ?>
                             <img class="wow fadeInUp" data-wow-duration="1s" src="<?php the_field('news_image') ?>"
                                  alt="">
+                            <?php } ?>
                             <div class="text-info wow fadeInUp" data-wow-duration="1s">
                                 <div class="top">
                                     <div class="date"><?php echo get_the_date('j'); ?>

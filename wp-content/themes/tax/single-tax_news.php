@@ -60,7 +60,7 @@
             color: #928f8f;
             font-size: .8125rem;
             font-weight: 400;
-            line-height: 34px;
+            line-height: 28px;
         }
 
         .news-content li:before {
@@ -202,8 +202,10 @@
                         while ($the_query->have_posts()) :
                             $the_query->the_post(); ?>
 
+                            <?php if(get_field('news_image')) {?>
                             <img class="wow fadeInUp" data-wow-duration="1s"
                                  src="<?php the_field('news_image'); ?>" alt="">
+                            <?php } ?>
                             <div class="text-info">
                                 <div class="top wow fadeInUp" data-wow-duration="1s">
                                     <div class="date"><?php echo get_the_date('j'); ?>

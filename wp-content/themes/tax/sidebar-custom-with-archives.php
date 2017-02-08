@@ -36,6 +36,10 @@ if (!is_active_sidebar('sidebar-custom')) {
                 <a href="<?= get_permalink(55); ?>">Все новости</a>
             </li>
             <?php
+            global $cat;
+            if (count(get_categories('child_of='.$cat))) {
+
+            }
 
             $args = array(
                 'show_option_all' => '',

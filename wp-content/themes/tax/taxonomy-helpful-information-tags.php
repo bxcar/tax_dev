@@ -121,10 +121,7 @@
                 <li><a href="<?php echo get_bloginfo('url');?>">Главная</a></li>
                 <li><a href="<?php echo get_bloginfo('url');?>/helpful_information">Полезная информация</a></li>
                 <li>
-                    <span><?php
-                        echo get_queried_object()->name;
-                        ?>
-                    </span>
+                    <span><?php echo get_queried_object()->name; ?></span>
                 </li>
             </ul>
         </div>
@@ -138,8 +135,10 @@
                     while (have_posts()) {
                         the_post(); ?>
                         <div class="item">
+                        <?php if(get_field('news_image')) { ?>
                             <img class="wow fadeInUp" data-wow-duration="1s" src="<?php the_field('news_image') ?>"
                                  alt="">
+                            <?php } ?>
                             <div class="text-info wow fadeInUp" data-wow-duration="1s">
                                 <div class="top">
                                     <div class="date"><?php echo get_the_date('j'); ?>
