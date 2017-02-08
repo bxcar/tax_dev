@@ -74,7 +74,14 @@
                         //repeater field in repeater field in repeater field (too complicated, but it works:))
                         foreach ($region_single_column_single_block_all_punkts as $region_single_column_single_block_single_punkts) {
                             ?>
-                            <a href="<?=$region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link']?>">
+                            <a href="<?php
+                            if($region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link_picker']['postid']) {
+                                the_permalink($region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link_picker']['postid']);
+                            }
+                            else {
+                                echo $region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link_picker']['url'];
+                            }
+                            ?>" target="<?php echo $region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link_picker']['target']; ?>">
                                 <?=$region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_text']?>
                             </a>
                             <?php

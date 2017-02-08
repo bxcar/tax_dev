@@ -340,23 +340,18 @@
                     "new_lines": "br"
                 },
                 {
-                    "key": "field_5883801c094ca",
+                    "key": "field_589b5a9803b1b",
                     "label": "\u0421\u0441\u044b\u043b\u043a\u0430",
-                    "name": "jur_centers_page_other_offers_punkts_link",
-                    "type": "text",
-                    "instructions": "",
+                    "name": "jur_centers_page_other_offers_punkts_link_picker",
+                    "type": "link_picker",
+                    "instructions": "\u041f\u0440\u0435\u0436\u0434\u0435 \u0447\u0435\u043c \u0437\u0430\u0434\u0430\u0432\u0430\u0442\u044c \u043d\u043e\u0432\u0443\u044e \u0441\u0441\u044b\u043b\u043a\u0443, \u0432\u043d\u0430\u0447\u0430\u043b\u0435 \u0443\u0434\u0430\u043b\u0438\u0442\u0435 \u0441\u0442\u0430\u0440\u0443\u044e(\u043d\u0430\u0436\u043c\u0438\u0442\u0435 Remove Link), \u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e!",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    }
                 }
             ]
         }
@@ -380,5 +375,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1486205687
+    "modified": 1486576342
 }

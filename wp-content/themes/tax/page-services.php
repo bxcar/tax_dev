@@ -56,7 +56,15 @@
             <?php $services = get_field('services_page_s_services');
             foreach ($services as $service) {
                 ?>
-                <a href="<?=$service['services_page_s_services_single_service_link']?>" class="item">
+                <a href="<?php
+                if($service['services_page_s_services_single_service_link_picker']['postid']) {
+                    the_permalink($service['services_page_s_services_single_service_link_picker']['postid']);
+                }
+                else {
+                    echo $service['services_page_s_services_single_service_link_picker']['url'];
+                }
+                ?>" target="<?php echo $service['services_page_s_services_single_service_link_picker']['target']; ?>"
+                   class="item">
                     <div class="img-block">
                         <img src="<?=$service['services_page_s_services_single_service_img']?>" alt="">
                     </div>
@@ -94,7 +102,15 @@
             <?php $services_and_facilities = get_field('services_page_ss_services');
             foreach ($services_and_facilities as $service_and_facility) {
                 ?>
-                <a href="<?=$service_and_facility['services_page_ss_services_single_service_link']?>" class="item">
+                <a href="<?php
+                if($service_and_facility['services_page_ss_services_single_service_link_picker']['postid']) {
+                    the_permalink($service_and_facility['services_page_ss_services_single_service_link_picker']['postid']);
+                }
+                else {
+                    echo $service_and_facility['services_page_ss_services_single_service_link_picker']['url'];
+                }
+                ?>" target="<?php echo $service_and_facility['services_page_ss_services_single_service_link_picker']['target']; ?>"
+                   class="item">
                 <span class="img-block">
                     <img src="<?=$service_and_facility['services_page_ss_services_single_service_img']?>" alt="">
                 </span>

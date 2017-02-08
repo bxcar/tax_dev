@@ -72,7 +72,7 @@ $the_query->the_post(); ?>
             color: #928f8f;
             font-size: .8125rem;
             font-weight: 400;
-            line-height: 34px;
+            line-height: 28px;
         }
 
         .content-wrap ul > li:before {

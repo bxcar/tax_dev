@@ -70,12 +70,20 @@
                         //repeater field in repeater field in repeater field (too complicated, but it works:))
                         foreach ($region_single_column_single_block_all_punkts as $region_single_column_single_block_single_punkts) {
                             ?>
-                            <a href="<?=$region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link']?>">
+                            <a href="<?php
+                            if($region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link_picker']['postid']) {
+                                the_permalink($region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link_picker']['postid']);
+                            }
+                            else {
+                                echo $region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link_picker']['url'];
+                            }
+                            ?>" target="<?php echo $region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link_picker']['target']; ?>">
                                 <?=$region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_text']?>
                             </a>
                             <?php
                         }
                     }
+//                    convenience_flags_page_regions_punkts_in_one_column_description_link_picker
                     ?>
                 </div>
                 <?php
@@ -110,7 +118,14 @@
                 foreach ($other_offers as $other_offer) {
                     ?>
                     <div>
-                        <a href="<?= $other_offer['jur_centers_page_other_offers_punkts_link']?>" class="item">
+                        <a href="<?php
+                        if($other_offer['jur_centers_page_other_offers_punkts_link_picker']['postid']) {
+                            the_permalink($other_offer['jur_centers_page_other_offers_punkts_link_picker']['postid']);
+                        }
+                        else {
+                            echo $other_offer['jur_centers_page_other_offers_punkts_link_picker']['url'];
+                        }
+                        ?>" target="<?php echo $other_offer['jur_centers_page_other_offers_punkts_link_picker']['target']; ?>" class="item">
                 <span class="img-block">
                     <img src="<?= $other_offer['jur_centers_page_other_offers_punkts_image']?>" alt="">
                 </span>

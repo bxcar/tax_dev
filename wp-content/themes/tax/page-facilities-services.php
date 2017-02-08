@@ -56,7 +56,14 @@
             <?php $services = get_field('facilities_and_services_page_services');
             foreach ($services as $service) {
                 ?>
-                <a href="<?=$service['facilities_and_services_page_services_link']?>" class="item">
+                <a href="<?php
+                if($service['facilities_and_services_page_services_link_picker']['postid']) {
+                    the_permalink($service['facilities_and_services_page_services_link_picker']['postid']);
+                }
+                else {
+                    echo $service['facilities_and_services_page_services_link_picker']['url'];
+                }
+                ?>" target="<?php echo $service['facilities_and_services_page_services_link_picker']['target']; ?>" class="item">
                 <span class="img-block">
                     <img src="<?=$service['facilities_and_services_page_services_image']?>" alt="">
                 </span>
