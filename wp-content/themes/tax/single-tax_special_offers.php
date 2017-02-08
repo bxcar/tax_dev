@@ -72,7 +72,7 @@ $the_query->the_post(); ?>
             line-height: 26px;
         }
 
-        .flags-vnutr-info li:before {
+        .flags-vnutr-info ul > li:before {
             content: '';
             width: 6px;
             height: 6px;
@@ -82,6 +82,21 @@ $the_query->the_post(); ?>
             margin-right: 23px;
             -webkit-border-radius: 50%;
             border-radius: 50%;
+        }
+
+        .flags-vnutr-info ul li ol li {
+            list-style-type: none !important;
+        }
+
+        .flags-vnutr-info ol > li::before {
+            counter-increment: myCounter;
+            content: counter(myCounter);
+            color: #424242;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 35px;
+            font-family: georgia, sans-serif;
+            padding-right: 10px;
         }
 
         .service-vnutr-info p {
