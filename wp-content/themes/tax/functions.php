@@ -1086,6 +1086,15 @@ function custom_admin_js()
                 .acf-field-588e73b7e86df {  /*table in services and price*/
                     display: none;
                 }
+                #wp-link #link-selector #search-panel li span.item-title {
+                width: 70% !important;
+                min-height: 70px;
+                }
+                
+                #wp-link #link-selector #search-panel li span.item-info {
+                width: 30% !important;
+                min-height: 70px;
+                }
            </style>"';
 }
 

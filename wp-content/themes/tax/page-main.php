@@ -454,7 +454,14 @@
                 foreach ($helpful_information as $helpful_inf) {
                     ?>
                     <div class="item">
-                        <a href="<?= $helpful_inf['main_page_hi_inf_link'] ?>">
+                        <a href="<?php
+                        if($helpful_inf['main_page_hi_inf_link_picker']['postid']) {
+                            the_permalink($helpful_inf['main_page_hi_inf_link_picker']['postid']);
+                        }
+                        else {
+                            echo $helpful_inf['main_page_hi_inf_link_picker']['url'];
+                        }
+                        ?>" target="<?php echo $helpful_inf['main_page_hi_inf_link_picker']['target']; ?>">
                             <?= $helpful_inf['main_page_hi_inf_text'] ?>
                         </a>
                     </div>
@@ -463,7 +470,14 @@
                 ?>
             </div>
             <div class="see-more">
-                <a href="<?php the_field('main_page_hi_button_link') ?>">
+                <a href="<?php
+                if(get_field('main_page_hi_button_link_picker')['postid']) {
+                    the_permalink(get_field('main_page_hi_button_link_picker')['postid']);
+                }
+                else {
+                    echo get_field('main_page_hi_button_link_picker')['url'];
+                }
+                ?>" target="<?php echo get_field('main_page_hi_button_link_picker')['target']; ?>">
                     <?php the_field('main_page_hi_button_text') ?>
                 </a>
             </div>
