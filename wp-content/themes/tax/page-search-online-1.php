@@ -53,11 +53,11 @@
                 <li><span
                         id="replace-question-sign"><?php the_field('serach_online_chek_company_page_subtitle') ?></span>
                 </li>
-                <script>
-                    var replaced_element = document.getElementById("replace-question-sign");
-                    replaced_element.innerHTML = replaced_element.innerHTML.replace(/\?/g, '');
-                </script>
             </ul>
+            <script>
+                var replaced_element = document.getElementById("replace-question-sign");
+                replaced_element.innerHTML = replaced_element.innerHTML.replace(/\?/g, '');
+            </script>
         </div>
     </section>
     <section class="search-info">
@@ -98,7 +98,14 @@
             <?php $other_search_types = get_field('search_online_check_company_page_other_search_types');
             foreach ($other_search_types as $other_search_type) {
                 ?>
-                <a href="<?= $other_search_type['serach_online_chek_company_page_other_search_types_link'] ?>"
+                <a href="<?php
+                if($other_search_type['serach_online_chek_company_page_other_search_types_link_picker']['postid']) {
+                    the_permalink($other_search_type['serach_online_chek_company_page_other_search_types_link_picker']['postid']);
+                }
+                else {
+                    echo $other_search_type['serach_online_chek_company_page_other_search_types_link_picker']['url'];
+                }
+                ?>" target="<?php echo $other_search_type['serach_online_chek_company_page_other_search_types_link_picker']['target']; ?>"
                    class="item">
                     <div class="img-block">
                         <img src="<?= $other_search_type['serach_online_chek_company_page_other_search_types_image'] ?>"

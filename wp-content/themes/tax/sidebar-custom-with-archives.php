@@ -139,7 +139,9 @@ if (!is_active_sidebar('sidebar-custom')) {
                                 //display list
                                 ?>
                                 <a href="<?php the_permalink(); ?>" class="item">
+                                    <?php if(get_field('news_image')) { ?>
                                     <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
+                                    <?php } ?>
                                     <p><?php the_title(); ?></p>
                                     <div
                                         class="date"><?php echo get_the_date('j'); ?>

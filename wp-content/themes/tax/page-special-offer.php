@@ -59,7 +59,14 @@
             <?php $special_offers = get_field('special_offers_page_special_offers');
             foreach ($special_offers as $special_offer) {
                 ?>
-                <a href="<?=$special_offer['about_project_page_oa_adv_number']?>" class="item wow fadeInUp" data-wow-duration="1s">
+                <a href="<?php
+                if($special_offer['special_offers_page_offer_link_picker']['postid']) {
+                    the_permalink($special_offer['special_offers_page_offer_link_picker']['postid']);
+                }
+                else {
+                    echo $special_offer['special_offers_page_offer_link_picker']['url'];
+                }
+                ?>" target="<?php echo $special_offer['special_offers_page_offer_link_picker']['target']; ?>" class="item wow fadeInUp" data-wow-duration="1s">
                 <span class="img-block">
                     <img src="<?=$special_offer['special_offers_offer_image']?>" alt="">
                 </span>

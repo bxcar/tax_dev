@@ -56,7 +56,14 @@
             <?php $search_punkts = get_field('serach_online_search_types');
             foreach ($search_punkts as $search_punkt) {
                 ?>
-                <a href="<?=$search_punkt['serach_online_search_types_link']?>" class="item">
+                <a href="<?php
+                if($search_punkt['serach_online_search_types_link_picker']['postid']) {
+                    the_permalink($search_punkt['serach_online_search_types_link_picker']['postid']);
+                }
+                else {
+                    echo $search_punkt['serach_online_search_types_link_picker']['url'];
+                }
+                ?>" target="<?php echo $search_punkt['serach_online_search_types_link_picker']['target']; ?>" class="item">
                     <div class="img-block">
                         <img src="<?=$search_punkt['serach_online_search_types_image']?>" alt="">
                     </div>

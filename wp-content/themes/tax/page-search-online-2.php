@@ -68,7 +68,14 @@
                             foreach ($columns_single['serach_online_world_page_search_column'] as $columns_single_country) {
                                 ?>
                                 <li>
-                                    <a href="<?= $columns_single_country['serach_online_world_page_search_column_punkt_link'] ?>">
+                                    <a href="<?php
+                                    if($columns_single_country['serach_online_world_page_search_column_punkt_link_picker']['postid']) {
+                                        the_permalink($columns_single_country['serach_online_world_page_search_column_punkt_link_picker']['postid']);
+                                    }
+                                    else {
+                                        echo $columns_single_country['serach_online_world_page_search_column_punkt_link_picker']['url'];
+                                    }
+                                    ?>" target="<?php echo $columns_single_country['serach_online_world_page_search_column_punkt_link_picker']['target']; ?>">
                                         <?= $columns_single_country['serach_online_world_page_search_column_punkt'] ?>
                                     </a>
                                 </li>

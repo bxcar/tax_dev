@@ -488,7 +488,7 @@
             <div class="title-form wow fadeInUp" data-wow-duration="1s">
                 <?php the_field('main_page_wo_title') ?>
             </div>
-            <form id="static-form" method="post">
+            <form id="static-form" method="post" class="wow fadeInUp" data-wow-duration="1s">
                 <input type="hidden" name="source" value="<?= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
                 <input type="hidden" name="order" value="Главная страница - статичная форма">
                 <input type="hidden" name="sendto" value="<?= get_field('footer_target_email', 'options'); ?>">

@@ -68,7 +68,14 @@
                         //repeater field in repeater field in repeater field (too complicated, but it works:))
                         foreach ($region_single_column_single_block_all_punkts as $region_single_column_single_block_single_punkts) {
                             ?>
-                            <a href="<?=$region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link']?>">
+                            <a href="<?php
+                            if($region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link_picker']['postid']) {
+                                the_permalink($region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link_picker']['postid']);
+                            }
+                            else {
+                                echo $region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link_picker']['url'];
+                            }
+                            ?>" target="<?php echo $region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_link_picker']['target']; ?>">
                                 <?=$region_single_column_single_block_single_punkts['convenience_flags_page_regions_punkts_in_one_column_description_text']?>
                             </a>
                             <?php
@@ -108,13 +115,28 @@
                 foreach ($offers as $offer) {
                     ?>
                     <div>
-                        <a href="<?=$offer['convenience_flags_page_other_offers_offer_link_1']?>" class="item">
+                        <a href="<?php
+                        if($offer['convenience_flags_page_other_offers_offer_link_1_picker']['postid']) {
+                            the_permalink($offer['convenience_flags_page_other_offers_offer_link_1_picker']['postid']);
+                        }
+                        else {
+                            echo $offer['convenience_flags_page_other_offers_offer_link_1_picker']['url'];
+                        }
+                        ?>" target="<?php echo $offer['convenience_flags_page_other_offers_offer_link_1_picker']['target']; ?>"
+                           class="item">
                 <span class="img-block">
                     <img src="<?=$offer['convenience_flags_page_other_offers_offer_image_1']?>" alt="">
                 </span>
                             <span class="text"><?=$offer['convenience_flags_page_other_offers_offer_title_1']?></span>
                         </a>
-                        <a href="<?=$offer['convenience_flags_page_other_offers_offer_link_2']?>" class="item">
+                        <a href="<?php
+                        if($offer['convenience_flags_page_other_offers_offer_link_2_picker']['postid']) {
+                            the_permalink($offer['convenience_flags_page_other_offers_offer_link_2_picker']['postid']);
+                        }
+                        else {
+                            echo $offer['convenience_flags_page_other_offers_offer_link_2_picker']['url'];
+                        }
+                        ?>" target="<?php echo $offer['convenience_flags_page_other_offers_offer_link_2_picker']['target']; ?>" class="item">
                 <span class="img-block">
                     <img src="<?=$offer['convenience_flags_page_other_offers_offer_image_2']?>" alt="">
                 </span>
