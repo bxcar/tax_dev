@@ -237,8 +237,18 @@
                     }
                 }
                 ?>
-            <a href="<?php the_field('main_page_button_link') ?>"><?php the_field('main_page_button_text') ?></a>
+            <a href="<?php
+
+            if(get_field('main_page_button_link_picker_2')['postid']) {
+                the_permalink(get_field('main_page_button_link_picker_2')['postid']);
+            }
+            else {
+                echo get_field('main_page_button_link_picker_2')['url'];
+            }
+
+            ?>" target="<?php echo get_field('main_page_button_link_picker_2')['target']; ?>"><?php the_field('main_page_button_text') ?></a>
             <div class="icon-scroll"></div>
+<!--            main_page_button_link_picker_2-->
         </div>
     </section>
     <section class="our-services">
@@ -254,7 +264,14 @@
                 <?php $services = get_field('main_page_os_services');
                 foreach ($services as $service) {
                     ?>
-                    <a href="<?= $service['main_page_os_services_single_service_link'] ?>" class="item">
+                    <a href="<?php
+                    if($service['main_page_os_services_single_service_link_picker']['postid']) {
+                        the_permalink($service['main_page_os_services_single_service_link_picker']['postid']);
+                    }
+                    else {
+                        echo $service['main_page_os_services_single_service_link_picker']['url'];
+                    }
+                    ?>" target="<?php echo $service['main_page_os_services_single_service_link_picker']['target']; ?>" class="item">
                         <img src="<?= $service['main_page_os_services_single_service_img'] ?>" alt="">
                         <p>
                             <span><?= $service['main_page_os_services_single_service_number'] ?></span>
@@ -277,8 +294,16 @@
                     <div class="item">
                         <div class="item-wrap">
                             <p><?= $offer['main_page_so_offers_single_offer_text'] ?></p>
-                            <a href="<?= $offer['main_page_so_offers_single_offer_link'] ?>">ПОДРОБНЕЕ<img
-                                    src="<?php bloginfo('template_url'); ?>/img/right-arrow.png" alt=""></a>
+                            <a href="<?php
+                            if($offer['main_page_so_offers_single_offer_link_picker']['postid']) {
+                                the_permalink($offer['main_page_so_offers_single_offer_link_picker']['postid']);
+                            }
+                            else {
+                                echo $offer['main_page_so_offers_single_offer_link_picker']['url'];
+                            }
+                            ?>" target="<?php echo $offer['main_page_so_offers_single_offer_link_picker']['target']; ?>">
+                                ПОДРОБНЕЕ
+                                <img src="<?php bloginfo('template_url'); ?>/img/right-arrow.png" alt=""></a>
                         </div>
                     </div>
                     <?php
