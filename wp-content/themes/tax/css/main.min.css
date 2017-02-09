@@ -9079,9 +9079,9 @@ main .leave-comment input[type=email] {
     margin-right: 20px;
     background-color: #3ca04f;
     display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+    /*display: -webkit-flex;*/
+    /*display: -ms-flexbox;*/
+    /*display: flex;*/
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -9097,12 +9097,14 @@ main .leave-comment input[type=email] {
     font-weight: 400;
     font-size: 22px;
     font-size: 1.375rem;
-    line-height: 22px
+    line-height: 22px;
+    text-align: center;
+    font-family: Helvetica, sans-serif;
 }
 
 .blog-layaut .blog > .item .text-info .top .date span {
-    font-size: 11px;
-    font-size: .6875rem;
+    font-size: 14px;
+    /*font-size: .6875rem;*/
     line-height: 17px;
     text-transform: uppercase
 }
