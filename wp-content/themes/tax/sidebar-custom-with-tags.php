@@ -39,7 +39,7 @@ if (!is_active_sidebar('sidebar-custom')) {
 
                 $args = array(
                     'show_option_all' => '',
-                    'show_option_none' => __('No categories'),
+                    'show_option_none' => '',
                     'orderby' => 'name',
                     'order' => 'DESC',
                     'show_last_update' => 0,

@@ -250,8 +250,7 @@
                     <div class="share">
                         <div class="share-title">Поделиться:</div>
                         <div class="link">
-                            <a href="<?php the_field('social_facebook_link', 'options') ?>"><i class="fa fa-facebook"
-                                                                                               aria-hidden="true"></i></a>
+                            <a class="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=<?= get_permalink($post->ID);?>&title=<?= get_the_title($post->ID);?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                             <a href="<?php the_field('social_google_link', 'options') ?>"><i class="fa fa-google-plus"
                                                                                              aria-hidden="true"></i></a>
                             <a href="<?php the_field('news_social_twitter_link', 'options') ?>"><i class="fa fa-twitter"
@@ -260,6 +259,23 @@
                                                                                               aria-hidden="true"></i></a>
                             <a href="<?php the_field('news_social_linckedin_link', 'options') ?>"><i
                                     class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <script>
+                                $(document).ready(function() {
+                                    $('.fb-share').click(function(e) {
+                                        e.preventDefault();
+                                        window.open($(this).attr('href'), 'fbShareWindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 275) + ', left=' + ($(window).width() / 2 - 225) + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+                                        return false;
+                                    });
+                                });
+                            </script>
+                            <?php
+                            $title=urlencode(get_the_title($post->ID));
+                            $url=urlencode(get_permalink($post->ID));
+                            $summary=urlencode(get_the_content($post->ID));
+                            $image=urlencode('http://front.dizz.in.ua/tax/img/results-bg.jpg');
+                            ?>
+
+                            <a onClick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php echo $title;?>&amp;p[summary]=<?php echo $summary;?>&amp;p[url]=<?php echo $url; ?>&amp;p[images][0]=<?php echo $image;?>','sharer','toolbar=0,status=0,width=548,height=325');" href="javascript: void(0)">Insert text or an image here.</a>
                         </div>
                     </div>
                 </div>
