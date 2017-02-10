@@ -255,11 +255,10 @@
                         <div class="share-title">Поделиться:</div>
                         <div class="link">
                             <a class="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=<?= get_permalink($post->ID);?>&title=<?= get_the_title($post->ID);?>&p[summary]=<?= get_field('news_page_description_meta'); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a class="fb-share"  href="https://plus.google.com/share?url=<?= get_permalink($post->ID);?>"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            <a class="fb-share" href="https://plus.google.com/share?url=<?= get_permalink($post->ID);?>"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                             <a class="fb-share" href="http://twitter.com/share?text=<?= get_the_title($post->ID);?>&url=<?= get_permalink($post->ID);?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                             <a class="fb-share" href="http://vk.com/share.php?url=<?= get_permalink($post->ID);?>&title=<?= get_the_title($post->ID);?>&description=<?= get_field('news_page_description_meta'); ?>&image=<?= get_field('news_image'); ?>"><i class="fa fa-vk" aria-hidden="true"></i></a>
-                            <a href="<?php the_field('news_social_linckedin_link', 'options') ?>"><i
-                                    class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <a class="fb-share" href="http://www.linkedin.com/shareArticle?mini=true&url=<?= get_permalink($post->ID);?>&title=<?= get_the_title($post->ID);?>&source=<?= home_url(); ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                             <script>
                                 $(document).ready(function() {
                                     $('.fb-share').click(function(e) {
