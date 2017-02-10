@@ -14,11 +14,15 @@
     <meta name="description" content="<?php the_field('news_page_description_meta'); ?>">
     <meta name="keywords" content="<?php the_field('news_page_keywords_meta'); ?>">
 
+    <meta property="og:url" content="<?php the_permalink()?>" />
+    <meta property="og:title" content="<?php the_field('news_page_title_meta'); ?>" />
+    <meta property="og:image" content="<?php the_field('news_image'); ?>" />
+    <meta property="og:description" content="<?php the_field('news_page_description_meta'); ?>" />
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Template Basic Images Start -->
-    <meta property="og:image" content="<?= get_template_directory_uri();?>/path/to/image.jpg">
     <link rel="shortcut icon" href="<?= get_template_directory_uri();?>/img/favicon/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon-72x72.png">
@@ -250,13 +254,10 @@
                     <div class="share">
                         <div class="share-title">Поделиться:</div>
                         <div class="link">
-                            <a class="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=<?= get_permalink($post->ID);?>&title=<?= get_the_title($post->ID);?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="<?php the_field('social_google_link', 'options') ?>"><i class="fa fa-google-plus"
-                                                                                             aria-hidden="true"></i></a>
-                            <a href="<?php the_field('news_social_twitter_link', 'options') ?>"><i class="fa fa-twitter"
-                                                                                                   aria-hidden="true"></i></a>
-                            <a href="<?php the_field('news_social_vk_link', 'options') ?>"><i class="fa fa-vk"
-                                                                                              aria-hidden="true"></i></a>
+                            <a class="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=<?= get_permalink($post->ID);?>&title=<?= get_the_title($post->ID);?>&p[summary]=<?= get_field('news_page_description_meta'); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a class="fb-share"  href="https://plus.google.com/share?url=<?= get_permalink($post->ID);?>"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            <a class="fb-share" href="http://twitter.com/share?text=<?= get_the_title($post->ID);?>&url=<?= get_permalink($post->ID);?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a class="fb-share" href="http://vk.com/share.php?url=<?= get_permalink($post->ID);?>&title=<?= get_the_title($post->ID);?>&description=<?= get_field('news_page_description_meta'); ?>&image=<?= get_field('news_image'); ?>"><i class="fa fa-vk" aria-hidden="true"></i></a>
                             <a href="<?php the_field('news_social_linckedin_link', 'options') ?>"><i
                                     class="fa fa-linkedin" aria-hidden="true"></i></a>
                             <script>
@@ -268,14 +269,7 @@
                                     });
                                 });
                             </script>
-                            <?php
-                            $title=urlencode(get_the_title($post->ID));
-                            $url=urlencode(get_permalink($post->ID));
-                            $summary=urlencode(get_the_content($post->ID));
-                            $image=urlencode('http://front.dizz.in.ua/tax/img/results-bg.jpg');
-                            ?>
-
-                            <a onClick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php echo $title;?>&amp;p[summary]=<?php echo $summary;?>&amp;p[url]=<?php echo $url; ?>&amp;p[images][0]=<?php echo $image;?>','sharer','toolbar=0,status=0,width=548,height=325');" href="javascript: void(0)">Insert text or an image here.</a>
+<!--                            <a href="http://www.facebook.com/sharer.php?s= 100&amp;p[title]=La Vita È Bella&amp;p[url]=http://www.lavitaebella.co.uk/teachers/resources.html&amp;p[images][0]=http://www.lavitaebella.co.uk/images/imageforfacebook.gif&amp;p[summary]=Drawing on Italy’s most famous export – great-tasting, healthy, colourful food – La Vita é Bella brings families together to experience mealtimes the Italian way">qwerty</a>-->
                         </div>
                     </div>
                 </div>
