@@ -10,15 +10,19 @@
 
     <meta charset="utf-8">
     <title><?php the_field('news_page_title_meta'); ?></title>
+    
+    <meta name="description" content="<?= str_replace("\"", "'", get_field('news_page_description_meta')); ?>">
+    <meta name="keywords" content="<?= str_replace("\"", "'", get_field('news_page_keywords_meta')); ?>">
 
-    <meta name="description" content="<?php the_field('news_page_description_meta'); ?>">
-    <meta name="keywords" content="<?php the_field('news_page_keywords_meta'); ?>">
+    <meta property="og:url" content="<?php the_permalink()?>" />
+    <meta property="og:title" content="<?= str_replace("\"", "'", get_field('news_page_title_meta')); ?>" />
+    <meta property="og:image" content="<?php the_field('news_image'); ?>" />
+    <meta property="og:description" content="<?= str_replace("\"", "'", get_field('news_page_description_meta')); ?>" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Template Basic Images Start -->
-    <meta property="og:image" content="<?= get_template_directory_uri();?>/path/to/image.jpg">
     <link rel="shortcut icon" href="<?= get_template_directory_uri();?>/img/favicon/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="<?= get_template_directory_uri();?>/img/favicon/apple-touch-icon-72x72.png">
@@ -273,16 +277,20 @@
                     <div class="share">
                         <div class="share-title">Поделиться:</div>
                         <div class="link">
-                            <a href="<?php the_field('social_facebook_link', 'options') ?>"><i class="fa fa-facebook"
-                                                                                               aria-hidden="true"></i></a>
-                            <a href="<?php the_field('social_google_link', 'options') ?>"><i class="fa fa-google-plus"
-                                                                                             aria-hidden="true"></i></a>
-                            <a href="<?php the_field('news_social_twitter_link', 'options') ?>"><i class="fa fa-twitter"
-                                                                                                   aria-hidden="true"></i></a>
-                            <a href="<?php the_field('news_social_vk_link', 'options') ?>"><i class="fa fa-vk"
-                                                                                              aria-hidden="true"></i></a>
-                            <a href="<?php the_field('news_social_linckedin_link', 'options') ?>"><i
-                                    class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <a class="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=<?= get_permalink($post->ID);?>&title=<?= str_replace("\"", "'", get_the_title($post->ID));?>&p[summary]=<?= str_replace("\"", "'", get_field('news_page_description_meta')); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a class="fb-share" href="https://plus.google.com/share?url=<?= get_permalink($post->ID);?>"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            <a class="fb-share" href="http://twitter.com/share?text=<?= str_replace("\"", "'", get_the_title($post->ID));?>&url=<?= get_permalink($post->ID);?>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a class="fb-share" href="http://vk.com/share.php?url=<?= get_permalink($post->ID);?>&title=<?= str_replace("\"", "'", get_the_title($post->ID));?>&description=<?= str_replace("\"", "'", get_field('news_page_description_meta')); ?>&image=<?= get_field('news_image'); ?>"><i class="fa fa-vk" aria-hidden="true"></i></a>
+                            <a class="fb-share" href="http://www.linkedin.com/shareArticle?mini=true&url=<?= get_permalink($post->ID);?>&title=<?= str_replace("\"", "'", get_the_title($post->ID));?>&source=<?= home_url(); ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <script>
+                                $(document).ready(function() {
+                                    $('.fb-share').click(function(e) {
+                                        e.preventDefault();
+                                        window.open($(this).attr('href'), 'fbShareWindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 275) + ', left=' + ($(window).width() / 2 - 225) + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+                                        return false;
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
