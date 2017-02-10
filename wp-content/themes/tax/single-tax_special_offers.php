@@ -57,7 +57,7 @@ $the_query->the_post(); ?>
 
         .flags-vnutr-info ul,
         .flags-vnutr-info ol {
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             list-style: none;
         }
 

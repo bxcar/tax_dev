@@ -298,7 +298,7 @@
                     <?php if (get_permalink(get_adjacent_post(false, '', true)) != get_the_permalink()) {
                         ?>
                         <a href="<?= get_permalink(get_adjacent_post(false, '', true)); ?>" class="prev">Предыдущая
-                            новость</a>
+                            запись</a>
                         <?php
                     } ?>
 
@@ -306,7 +306,7 @@
                         ?>
                         <a href="#"></a>
                         <a style="" href="<?= get_permalink(get_adjacent_post(false, '', false)); ?>" class="next">Слудующая
-                            новость</a>
+                            запись</a>
                         <?php
                     } ?>
                 </div>

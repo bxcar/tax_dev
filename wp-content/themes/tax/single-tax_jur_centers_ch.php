@@ -61,7 +61,7 @@ $the_query->the_post(); ?>
 
         .content-wrap ul,
         .content-wrap ol {
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             list-style: none;
         }
 

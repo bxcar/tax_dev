@@ -60,7 +60,7 @@ if ($the_query->have_posts()):
 
         .content-wrap ul,
         .content-wrap ol {
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             list-style: none;
         }
 
@@ -91,7 +91,7 @@ if ($the_query->have_posts()):
             list-style-type: none !important;
         }
 
-        .content-wrap ol li::before {
+        .content-wrap ol > li::before {
             counter-increment: myCounter;
             content: counter(myCounter);
             color: #424242;
