@@ -268,7 +268,6 @@
                                     });
                                 });
                             </script>
-<!--                            <a href="http://www.facebook.com/sharer.php?s= 100&amp;p[title]=La Vita È Bella&amp;p[url]=http://www.lavitaebella.co.uk/teachers/resources.html&amp;p[images][0]=http://www.lavitaebella.co.uk/images/imageforfacebook.gif&amp;p[summary]=Drawing on Italy’s most famous export – great-tasting, healthy, colourful food – La Vita é Bella brings families together to experience mealtimes the Italian way">qwerty</a>-->
                         </div>
                     </div>
                 </div>
