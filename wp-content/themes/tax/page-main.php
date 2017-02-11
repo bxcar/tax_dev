@@ -11,21 +11,10 @@
 
     <meta charset="utf-8">
 
-    <title><?php
-        if (get_field('main_page_title')) {
-            the_field('main_page_title');
-        }
-        ?></title>
-    <meta name="description" content="<?php
-    if (get_field('main_page_description')) {
-        the_field('main_page_description');
-    }
-    ?>">
-    <meta name="keywords" content="<?php
-    if (get_field('main_page_keywords')) {
-        the_field('main_page_keywords');
-    }
-    ?>">
+    <title><?php the_field('main_page_title'); ?></title>
+    <meta name="description" content="<?= str_replace("\"", "'", get_field('main_page_description')); ?>">
+    <meta name="keywords" content="<?= str_replace("\"", "'", get_field('main_page_keywords')); ?>">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 

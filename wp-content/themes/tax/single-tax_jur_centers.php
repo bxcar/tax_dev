@@ -25,8 +25,8 @@ if ($the_query->have_posts()):
     <meta charset="utf-8">
 
     <title><?php the_field('tax_finance_companies_title_meta') ?></title>
-    <meta name="description" content="<?php the_field('tax_finance_companies_description_meta') ?>">
-    <meta name="keywords" content="<?php the_field('tax_finance_companies_keywords_meta') ?>">
+    <meta name="description" content="<?= str_replace("\"", "'", get_field('tax_finance_companies_description_meta')); ?>">
+    <meta name="keywords" content="<?= str_replace("\"", "'", get_field('tax_finance_companies_keywords_meta')); ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

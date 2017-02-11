@@ -11,8 +11,8 @@
     <meta charset="utf-8">
 
     <title><?php the_field('helpful_information_page_title_meta', 51) ?></title>
-    <meta name="description" content="<?php the_field('helpful_information_page_description_meta', 51) ?>">
-    <meta name="keywords" content="<?php the_field('helpful_information_page_keywords', 51) ?>">
+    <meta name="description" content="<?= str_replace("\"", "'", get_field('helpful_information_page_description_meta', 51)); ?>">
+    <meta name="keywords" content="<?= str_replace("\"", "'", get_field('helpful_information_page_keywords', 51)); ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

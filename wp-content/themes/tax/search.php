@@ -11,7 +11,7 @@
     <meta charset="utf-8">
 
     <title>Поиск онлайн</title>
-    <meta name="description" content="Поиск по сайту tax.ua">
+    <meta name="description" content="Поиск по сайту <?php echo $_SERVER['HTTP_HOST']; ?>">
     <meta name="keywords" content="Поиск онлайн, tax">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

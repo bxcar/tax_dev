@@ -6,8 +6,8 @@
     <meta charset="utf-8">
 
     <title><?php the_field('business_news_page_title_meta', 55) ?></title>
-    <meta name="description" content="<?php the_field('business_news_page_description_meta', 55) ?>">
-    <meta name="keywords" content="<?php the_field('business_news_page_keywords', 55) ?>">
+    <meta name="description" content="<?= str_replace("\"", "'", get_field('business_news_page_description_meta', 55)) ?>">
+    <meta name="keywords" content="<?= str_replace("\"", "'", get_field('business_news_page_keywords', 55)); ?>">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
