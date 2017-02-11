@@ -58,9 +58,17 @@
             list-style: none;
         }
 
-        .news-content strong {
+        .news-content h3, h2 {
             color: #424242;
             font-size: .9375rem;
+            font-weight: 700;
+            line-height: 26px;
+            padding: 10px 0;
+            font-family: georgia, sans-serif;
+        }
+        .news-content h2 {
+            color: #424242;
+            font-size: 1.2rem;
             font-weight: 700;
             line-height: 26px;
             padding: 10px 0;
