@@ -57,8 +57,12 @@ if ($the_query->have_posts()):
 
         .flags-vnutr-info ul,
         .flags-vnutr-info ol {
-            margin-bottom: 30px;
+            /*margin-bottom: 10px;*/
             list-style: none;
+        }
+
+        .flags-vnutr-info ul {
+            margin-bottom: 20px;
         }
 
         .flags-vnutr-info strong {

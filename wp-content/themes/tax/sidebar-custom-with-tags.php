@@ -76,15 +76,24 @@ if (!is_active_sidebar('sidebar-custom')) {
         <div class="sidebar-title">Тэги</div>
         <a class="tag" href="<?php get_template_directory_uri(); ?>/helpful_information">Все записи</a>
         <?php
-        $terms = get_terms(array(
-            'taxonomy' => 'helpful-information-tags',
-//            'hide_empty' => false,
-        ));
 
+//        add_action( 'init', 'wpse27111_tester', 999 );
+//        function wpse27111_tester()
+//        {
+//            $terms = get_terms();
+//            return $terms;
+//        }
+
+        $terms = get_terms();
+        $terms = object_to_array($terms);
+        
         foreach ($terms as $term) {
-            ?>
-            <a class="tag" href="<?= get_term_link($term->slug, 'helpful-information-tags'); ?>"><?= $term->name ?></a>
-            <?php
+            if($term['taxonomy'] == 'helpful-information-tags') {
+                ?>
+                <a class="tag"
+                   href="<?= get_term_link($term['term_id']); ?>"><?= $term['name'] ?></a>
+                <?php
+            }
         }
         ?>
     </div>
