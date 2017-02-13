@@ -506,11 +506,11 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-	color: royalblue;
+	color: #3ca04f;
 }
 
 a:visited {
-	color: #3343b7;
+	color: #3ca04f;
 }
 
 a:hover,
