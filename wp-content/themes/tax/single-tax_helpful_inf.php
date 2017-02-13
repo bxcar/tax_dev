@@ -98,7 +98,7 @@
             list-style-type: none !important;
         }
 
-        .news-content ol li::before {
+        .news-content ol > li::before {
             counter-increment: myCounter;
             content: counter(myCounter);
             color: #424242;

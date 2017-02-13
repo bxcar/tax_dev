@@ -58,10 +58,13 @@ if ($the_query->have_posts()):
             margin-bottom: 25px;
         }
 
-        .content-wrap ul,
-        .content-wrap ol {
-            margin-bottom: 10px;
+        .content-wrap ol,
+        .content-wrap ul {
             list-style: none;
+        }
+
+        .content-wrap ul {
+            margin-bottom: 10px;
         }
 
         .content-wrap strong {

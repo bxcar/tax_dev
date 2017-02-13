@@ -65,14 +65,25 @@ $the_query->the_post(); ?>
 
         .content-wrap > ul,
         .content-wrap > ol {
-            margin-bottom: 30px;
             list-style: none;
         }
 
+        .content-wrap > ul {
+            margin-bottom: 30px;
+        }
+
+
         .content-wrap div > ul,
         .content-wrap div > ol {
-            margin-bottom: 30px;
             list-style: none;
+        }
+        
+        p + ol {
+            margin-top: -15px;
+        }
+
+        .content-wrap div > ul {
+            margin-bottom: 30px;
         }
 
         .content-wrap strong {
