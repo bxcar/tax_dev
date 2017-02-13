@@ -825,6 +825,7 @@ function wp_custom_archive_new($post_type_cust = 'post')
     <?php
 }
 
+
 //c
 function mytheme_comment($comment, $args, $depth)
 {
@@ -858,7 +859,6 @@ function mytheme_comment($comment, $args, $depth)
                         <?php endif; ?>
                     </div>
                 </li>
-
                 <?php
                 break;
             case 'pingback'  :
@@ -915,6 +915,7 @@ function mytheme_comment($comment, $args, $depth)
 }
 
 add_filter('comment_reply_link', 'replace_reply_link_class');
+
 
 //comment form button
 function awesome_comment_form_submit_button($button)
