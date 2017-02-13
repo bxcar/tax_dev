@@ -5513,47 +5513,10 @@ header .menu-collapser {
         width: calc(100% + 30px);
         margin-left: -15px;
         margin-right: -15px;
-        margin-top: 0px;
+        margin-top: 10px;
         background-color: rgba(111, 105, 105, .57);
     }
-
-    header .menu-collapser {
-        position: absolute;
-        top: 0;
-    }
-
-    header .menu.collapsed {
-        position: absolute;
-        top: 48px;
-    }
 }
-
-@media (max-width: 500px) {
-    header .menu.collapsed,
-    header .menu-collapser {
-        position: relative;
-    }
-
-    header .menu.collapsed {
-        top: 0;
-    }
-}
-
-@media (max-device-width: 700px) and (orientation: landscape) {
-    header .left-side {
-        display: none;
-    }
-
-    .head-block .wrap h1 br {
-        display: none;
-    }
-}
-/*
-@media (max-width: 700px), and (orientation: portrait) {!**!
-    header .left-side {
-        display: flex;
-    }
-}*/
 
 header .menu-collapser .collapse-button {
     background-color: #3ca04f

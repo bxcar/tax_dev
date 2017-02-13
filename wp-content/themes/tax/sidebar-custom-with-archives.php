@@ -99,7 +99,19 @@ if (!is_active_sidebar('sidebar-custom')) {
                         //display list
                         ?>
                         <a href="<?php the_permalink(); ?>" class="item">
+                            <style>
+                                .blog-layaut .sidebar .pop-news .item {
+                                    padding-left: 10px;
+                                }
+                            </style>
+                            <?php if(get_field('news_image')) {?>
+                                <style>
+                                    .blog-layaut .sidebar .pop-news .item {
+                                        padding-left: 94px;
+                                    }
+                                </style>
                             <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
+                            <?php } ?>
                             <p><?php the_title(); ?></p>
                             <div class="date"><?php echo get_the_date('j'); ?>
                                 &nbsp;<?php echo get_the_date('M');
@@ -122,7 +134,8 @@ if (!is_active_sidebar('sidebar-custom')) {
                 foreach ($popular_news_all as $popular_news_single) {
 
                     $args_popular_news = array(
-                        'post_type' => 'tax_news' //slag
+                        'post_type' => 'tax_news', //slag
+                        'posts_per_page' => -1
                     );
                     $popular_news = new WP_Query($args_popular_news);
 
@@ -137,7 +150,17 @@ if (!is_active_sidebar('sidebar-custom')) {
                                 //display list
                                 ?>
                                 <a href="<?php the_permalink(); ?>" class="item">
+                                    <style>
+                                        .blog-layaut .sidebar .pop-news .item {
+                                            padding-left: 10px;
+                                        }
+                                    </style>
                                     <?php if(get_field('news_image')) { ?>
+                                        <style>
+                                            .blog-layaut .sidebar .pop-news .item {
+                                                padding-left: 94px;
+                                            }
+                                        </style>
                                     <img width="70" height="70" src="<?php the_field('news_image') ?>" alt="">
                                     <?php } ?>
                                     <p><?php the_title(); ?></p>

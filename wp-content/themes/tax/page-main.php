@@ -64,6 +64,55 @@
         input[type="email"]:focus {
             color: #fff;
         }
+
+        @media (max-width: 600px) {
+            .page-not-found .error-block .sutitle {
+                position: relative;
+                top: -40px;
+            }
+
+            .page-not-found .error-block p {
+                position: relative;
+                top: 40px;
+            }
+        }
+
+        @media (max-width: 800px) {
+            header .menu-collapser {
+                margin-top: 0px;
+            }
+
+            header .menu-collapser {
+                position: absolute;
+                top: 0;
+            }
+
+            header .menu.collapsed {
+                position: absolute;
+                top: 48px;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            header .menu.collapsed,
+            header .menu-collapser {
+                position: relative;
+            }
+
+            header .menu.collapsed {
+                top: 0;
+            }
+        }
+
+        @media (max-device-width: 700px) and (orientation: landscape) {
+            header .left-side {
+                display: none;
+            }
+
+            .head-block .wrap h1 br {
+                display: none;
+            }
+        }
     </style>
 </head>
 
