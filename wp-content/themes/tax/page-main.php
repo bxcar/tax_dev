@@ -14,7 +14,7 @@
     <title><?php the_field('main_page_title'); ?></title>
     <meta name="description" content="<?= str_replace("\"", "'", get_field('main_page_description')); ?>">
     <meta name="keywords" content="<?= str_replace("\"", "'", get_field('main_page_keywords')); ?>">
-    
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -92,7 +92,7 @@
                 top: 48px;
             }
         }
-        
+
         @media (max-width: 500px) {
             header .menu.collapsed,
             header .menu-collapser {
@@ -120,7 +120,7 @@
 <!-- Custom HTML -->
 <!-- Header -->
 <header class="front">
-    <div id="up-button"><img alt="Прокрутить вверх" src="<?= get_template_directory_uri();?>/img/up.png"></div>
+    <div id="up-button"><img alt="Прокрутить вверх" src="<?= get_template_directory_uri(); ?>/img/up.png"></div>
     <div class="wrap">
         <div class="left-side">
             <a class="logo" href="<?= home_url(); ?>">
@@ -227,6 +227,8 @@
                                     }
                                 });
 
+                                <?php $titles = get_field('main_page_content_title');
+                                if(count($titles) > 1) {?>
                                 $(document).ready(function () {
                                     $('.text-block').eq(0).addClass("active").fadeIn(1000); // Показываем первый блок, можно и не первый, если прописать нужную цифру в eq()
                                     setInterval('blockAnimate();', 6000); // Вызываем функцию для смены блока каждые 5 секунд
@@ -245,7 +247,15 @@
                                             return false;
                                         }
                                     });
-                                };
+                                }
+                                <?php }
+                                else {
+                                ?>
+                                $(document).ready(function () {
+                                    $('.text-block').eq(0).addClass("active").fadeIn(1);
+                                });
+                                <?php
+                                }?>
                             </script>
                         </div>
                     </div>
@@ -266,27 +276,28 @@
         </video>
         <div class="after-v-bg"></div>
         <div class="wrap">
-                <?php $titles = get_field('main_page_content_title');
-                if ($titles) {
-                    foreach ($titles as $title) {
-                        ?>
-                        <h1 style="display: none;" class="text-block"><?= $title['main_page_content_title_single'] ?></h1>
-                        <?php
-                    }
+            <?php $titles = get_field('main_page_content_title');
+            if ($titles) {
+                foreach ($titles as $title) {
+                    ?>
+                    <h1 style="display: none;" class="text-block"><?= $title['main_page_content_title_single'] ?></h1>
+                    <?php
                 }
-                ?>
+            }
+            ?>
             <a href="<?php
 
-            if(get_field('main_page_button_link_picker_2')['postid']) {
+            if (get_field('main_page_button_link_picker_2')['postid']) {
                 the_permalink(get_field('main_page_button_link_picker_2')['postid']);
             }
             else {
                 echo get_field('main_page_button_link_picker_2')['url'];
             }
 
-            ?>" target="<?php echo get_field('main_page_button_link_picker_2')['target']; ?>"><?php the_field('main_page_button_text') ?></a>
+            ?>"
+               target="<?php echo get_field('main_page_button_link_picker_2')['target']; ?>"><?php the_field('main_page_button_text') ?></a>
             <div class="icon-scroll"></div>
-<!--            main_page_button_link_picker_2-->
+            <!--            main_page_button_link_picker_2-->
         </div>
     </section>
     <section class="our-services">
@@ -303,13 +314,14 @@
                 foreach ($services as $service) {
                     ?>
                     <a href="<?php
-                    if($service['main_page_os_services_single_service_link_picker']['postid']) {
+                    if ($service['main_page_os_services_single_service_link_picker']['postid']) {
                         the_permalink($service['main_page_os_services_single_service_link_picker']['postid']);
                     }
                     else {
                         echo $service['main_page_os_services_single_service_link_picker']['url'];
                     }
-                    ?>" target="<?php echo $service['main_page_os_services_single_service_link_picker']['target']; ?>" class="item">
+                    ?>" target="<?php echo $service['main_page_os_services_single_service_link_picker']['target']; ?>"
+                       class="item">
                         <img src="<?= $service['main_page_os_services_single_service_img'] ?>" alt="">
                         <p>
                             <span><?= $service['main_page_os_services_single_service_number'] ?></span>
@@ -333,13 +345,14 @@
                         <div class="item-wrap">
                             <p><?= $offer['main_page_so_offers_single_offer_text'] ?></p>
                             <a href="<?php
-                            if($offer['main_page_so_offers_single_offer_link_picker']['postid']) {
+                            if ($offer['main_page_so_offers_single_offer_link_picker']['postid']) {
                                 the_permalink($offer['main_page_so_offers_single_offer_link_picker']['postid']);
                             }
                             else {
                                 echo $offer['main_page_so_offers_single_offer_link_picker']['url'];
                             }
-                            ?>" target="<?php echo $offer['main_page_so_offers_single_offer_link_picker']['target']; ?>">
+                            ?>"
+                               target="<?php echo $offer['main_page_so_offers_single_offer_link_picker']['target']; ?>">
                                 ПОДРОБНЕЕ
                                 <img src="<?php bloginfo('template_url'); ?>/img/right-arrow.png" alt=""></a>
                         </div>
@@ -493,7 +506,7 @@
                     ?>
                     <div class="item">
                         <a href="<?php
-                        if($helpful_inf['main_page_hi_inf_link_picker']['postid']) {
+                        if ($helpful_inf['main_page_hi_inf_link_picker']['postid']) {
                             the_permalink($helpful_inf['main_page_hi_inf_link_picker']['postid']);
                         }
                         else {
@@ -509,7 +522,7 @@
             </div>
             <div class="see-more">
                 <a href="<?php
-                if(get_field('main_page_hi_button_link_picker')['postid']) {
+                if (get_field('main_page_hi_button_link_picker')['postid']) {
                     the_permalink(get_field('main_page_hi_button_link_picker')['postid']);
                 }
                 else {
