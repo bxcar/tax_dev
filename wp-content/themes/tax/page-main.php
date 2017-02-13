@@ -230,20 +230,21 @@
                                 <?php $titles = get_field('main_page_content_title');
                                 if(count($titles) > 1) {?>
                                 $(document).ready(function () {
-                                    $('.text-block').eq(0).addClass("active").fadeIn(1000); // Показываем первый блок, можно и не первый, если прописать нужную цифру в eq()
-                                    setInterval('blockAnimate();', 6000); // Вызываем функцию для смены блока каждые 5 секунд
+                                    $('.text-block').eq(0).addClass("active").fadeIn(<?php the_field('main_page_animation_speed');?>); // Показываем первый блок, можно и не первый, если прописать нужную цифру в eq()
+                                    setInterval('blockAnimate();', <?php the_field('main_page_title_change_speed');?>); // Вызываем функцию для смены блока каждые 5 секунд
                                 });
 
                                 // Функция для смены блоков, показывает блоки по очереди, начальный блок задаётся выше
                                 function blockAnimate() {
+                                    var anim = <?php the_field('main_page_animation_speed');?>;
                                     var length = $('.text-block').length - 1;
                                     $('.text-block').each(function (index) {
                                         if ($(this).hasClass('active') && index != length) {
-                                            $(this).removeClass("active").fadeOut(1000).next('.text-block').addClass("active").delay(1000).fadeIn(1000);
+                                            $(this).removeClass("active").fadeOut(anim).next('.text-block').addClass("active").delay(anim).fadeIn(anim);
                                             return false;
                                         } else if (index == length) {
-                                            $(this).removeClass('active').fadeOut(1000);
-                                            $('.text-block').eq(0).addClass("active").delay(1000).fadeIn(1000);
+                                            $(this).removeClass('active').fadeOut(anim);
+                                            $('.text-block').eq(0).addClass("active").delay(anim).fadeIn(anim);
                                             return false;
                                         }
                                     });
