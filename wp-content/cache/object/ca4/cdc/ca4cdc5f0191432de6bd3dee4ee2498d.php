@@ -1,0 +1,1 @@
+i7£X<?php exit; ?>a:1:{s:7:"content";s:210:"a:3:{s:25:"relevanssi/relevanssi.php";s:20:"relevanssi_uninstall";s:40:"uptolike-share/uptolike_share_widget.php";s:22:"uptolike_delete_plugin";s:27:"wp-super-cache/wp-cache.php";s:22:"wpsupercache_uninstall";}";}

@@ -105,8 +105,10 @@
         }
 
         @media (max-device-width: 700px) and (orientation: landscape) {
-            header .left-side {
-                display: none;
+            header .left-side, .dop-menu {
+                position: relative;
+                top: -50px;
+                /*display: none;*/
             }
 
             .head-block .wrap h1 br {
@@ -265,6 +267,57 @@
         </div>
         <div class="menu">
             <?php wp_nav_menu(array('theme_location' => 'menu-1', 'menu_class' => '', 'container' => 'false')); ?>
+            <a href="#dop-menu-block" class="dop-menu popUp-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+    </div>
+    <div class="hidden">
+        <div class="dop-m-block" id="dop-menu-block">
+            <div class="dop-menu-layout">
+                <ul class="menu">
+                    <li><a href="<?php home_url();?>">ГЛАВНАЯ</a></li>
+                    <li><span><?php the_field('footer_h_f_m', 'option') ?></span>
+                        <div class="caret"></div>
+                        <div class="submenu">
+                            <style>
+                                #menu-primarymenu-1 .page-item-35 {
+                                    display: none;
+                                }
+                            </style>
+                            <?php wp_nav_menu(array('theme_location' => 'menu-1', 'menu_class' => '', 'container' => 'false')); ?>
+                        </div>
+                    </li>
+                    <li><span><?php the_field('footer_h_s_m', 'option') ?></span>
+                        <div class="caret"></div>
+                        <div class="submenu">
+                            <?php wp_nav_menu(array('theme_location' => 'menu-2', 'menu_class' => '', 'container' => 'false')); ?>
+                        </div>
+                    </li>
+                    <li><span><?php the_field('footer_h_t_m', 'option') ?></span>
+                        <div class="caret"></div>
+                        <div class="submenu">
+                            <?php wp_nav_menu(array('theme_location' => 'menu-3', 'menu_class' => '', 'container' => 'false')); ?>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="social-block small">
+                    <div class="title">Мы в соцсетях</div>
+                    <div class="social-link">
+                        <a href="<?php the_field('social_linckedin_link', 'options') ?>" class="linked"><i
+                                class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="<?php the_field('social_instagram_link', 'options') ?>" class="inst"><i
+                                class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a class="fb" href="<?php the_field('social_facebook_link', 'options') ?>"><i
+                                class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="<?php the_field('social_twitter_link', 'options') ?>" class="tw"><i
+                                class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </header>
