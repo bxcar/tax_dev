@@ -18,6 +18,8 @@
  * @package WordPress
  */
 
+define('WP_CACHE', true); //Added by WP-Cache Manager
+define( 'WPCACHEHOME', 'C:\MAMP\htdocs\tax_dev\wp-content\plugins\wp-super-cache/' ); //Added by WP-Cache Manager
 define( 'WP_HOME', 'http://192.168.0.98'); //101
 define( 'WP_SITEURL', 'http://192.168.0.98');
 // ** Параметры MySQL: Эту информацию можно получить у вашего хостинг-провайдера ** //

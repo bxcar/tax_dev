@@ -143,15 +143,6 @@ function tax_scripts()
     wp_enqueue_style('main.min', get_template_directory_uri() . '/css/main.min.css');
 
     wp_enqueue_script('tax-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true);
-//    wp_enqueue_script('custom', get_template_directory_uri() . '/js/custom.js');
-//    wp_enqueue_script('libs.min', get_template_directory_uri() . '/js/libs.min.js');
-//    wp_enqueue_script('in-view', get_template_directory_uri() . '/js/in-view.js');
-//    wp_enqueue_script('common', get_template_directory_uri() . '/js/');
-    /*if (is_admin()) {
-        wp_enqueue_script('custom_admin_script', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js', array('jquery'));
-        wp_enqueue_script('custom_admin_script_ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery_ui'));
-    }*/
-
     wp_enqueue_script('tax-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true);
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
@@ -512,90 +503,15 @@ function get_previous_posts_link_custom($label = null)
 }
 
 
-/*
-function paginate_links_func($atts='') {
-    global $WP_Views;
-    $page = $WP_Views->get_current_page_number();
-    if (!isset($page)){
-        $page = 0;
-    }
-    $add_args = $_GET;
-    if (!is_array($add_args)) {
-        $add_args = array();
-    }
-    if (!array_key_exists('wpv_view_count', $add_args)) {
-        $add_args['wpv_view_count'] = $WP_Views->get_view_count();
-    }
-    if (array_key_exists('wpv_paged', $add_args)) {
-        unset($add_args['wpv_paged']);
-    }
-    $args = array(
-        'base' => '%_%',
-        'format' => '?wpv_view_count='.$add_args['wpv_view_count'].'&wpv_paged=%#%',
-        'total' => $WP_Views->get_max_pages(),
-        'current' => $page,
-        'show_all' => False,
-        'end_size' => 1,
-        'mid_size' => 2,
-        'prev_next' => True,
-        'prev_text' => __('Â" Previous','ec'),
-        'next_text' => __('Next Â"','ec'),
-        'type' => 'list',
-        'add_args' => $add_args,
-        'add_fragment' => false
-    );
-    return paginate_links($args);
-}*/
-
-/*next_posts_link( 'Older Entries', $the_query_last_news->max_num_pages );
-previous_posts_link( 'Newer Entries' );*/
-//                    next_posts_link('Older Entries');
-//                    previous_posts_link('Newer Entries');
-//posts_nav_link();
-//echo paginate_links_func();
-
 add_filter('navigation_markup_template', 'my_navigation_template', 10, 2);
 function my_navigation_template($template, $class)
 {
-    /*
-    Вид базового шаблона:
-    <nav class="navigation %1$s" role="navigation">
-        <h2 class="screen-reader-text">%2$s</h2>
-        <div class="nav-links">%3$s</div>
-    </nav>
-    */
-
     return '
 	<nav class="navigation %1$s" role="navigation">
 		<div class="nav-links">%3$s</div>
 	</nav>    
 	';
 }
-
-
-function my_post_queries($query)
-{
-    // do not alter the query on wp-admin pages and only alter it if it's the main query
-    if (!is_admin() && $query->is_main_query()) {
-
-        // alter the query for the home and category pages
-
-        /* if(is_home()){
-             $query->set('posts_per_page', 1);
-         }*/
-
-        /*if (is_category('customcat_for_tax_news')) {
-            $query->set('posts_per_page', get_field('business_news_page_amount_news_per_page', 55));
-        }
-        else {
-            $query->set('posts_per_page', get_field('helpful_information_page_amount_help_inf_per_page', 51));
-        }*/
-
-    }
-}
-
-add_action('pre_get_posts', 'my_post_queries');
-
 
 function object_to_array($data)
 {
@@ -614,20 +530,6 @@ function object_to_array($data)
 add_action('pre_get_posts', 'set_posts_per_page');
 function set_posts_per_page($query)
 {
-
-    /*global $wp_the_query;
-    global $wp_query;*/
-    $post_type = get_query_var('post_type');
-
-    /* if ( ( ! is_admin() ) && ( $query === $wp_the_query ) && ( $query->is_search() ) ) {
-         $query->set( 'posts_per_page', 3 );
-     }*/
-    /*else*/
-
-
-    /* if ((!is_admin()) && ($query === $wp_the_query) && ($query->is_archive())) {
-         $query->set('posts_per_page', get_field('business_news_page_amount_news_per_page', 55));
-     }*/
     if (!is_admin() && $query->is_main_query()) {
 
         if (get_queried_object()->taxonomy == 'customcat_for_tax_news' ||
@@ -643,18 +545,6 @@ function set_posts_per_page($query)
             $query->set('posts_per_page', get_field('helpful_information_page_amount_help_inf_per_page', 51));
         }
     }
-
-
-    /*if( is_category() ) {
-        $post_type = get_query_var('post_type');
-        if($post_type)
-            $post_type = $post_type;
-        else
-            $post_type = array('nav_menu_item', 'post', 'movies'); // don't forget nav_menu_item to allow menus to work!
-        $query->set('post_type',$post_type);
-        return $query;
-    }*/
-    // Etc..
 
     return $query;
 }
@@ -677,20 +567,6 @@ function template_chooser($template)
 
 
 add_filter('template_include', 'template_chooser');
-
-//for relevanssi
-/*
-add_filter('relevanssi_modify_wp_query', 'rlv_test');
-function rlv_test($q) {
-    var_dump($q->query_vars);
-    return $q;
-}*/
-
-/*add_filter('relevanssi_modify_wp_query', 'rlv_remove_postlist');
-function rlv_remove_postlist($q) {
-    $q->set("post__in", null);
-    return $q;
-}*/
 
 
 //List archives by year, then month(work, but I use wp_custom_archive_new)
