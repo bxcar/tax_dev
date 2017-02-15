@@ -1,1 +1,1 @@
-q7�X<?php exit; ?>a:1:{s:7:"content";s:22:"ПРЕДЛОЖЕНИЯ";}
+\�X<?php exit; ?>a:1:{s:7:"content";s:22:"ПРЕДЛОЖЕНИЯ";}

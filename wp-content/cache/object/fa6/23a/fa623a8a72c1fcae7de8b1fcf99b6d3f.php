@@ -1,4 +1,4 @@
-p7�X<?php exit; ?>a:1:{s:7:"content";O:8:"stdClass":24:{s:2:"ID";i:1267;s:11:"post_author";s:1:"1";s:9:"post_date";s:19:"2017-02-09 05:43:27";s:13:"post_date_gmt";s:19:"2017-02-09 03:43:27";s:12:"post_content";s:17492:"[astart]
+]�X<?php exit; ?>a:1:{s:7:"content";O:8:"stdClass":24:{s:2:"ID";i:1267;s:11:"post_author";s:1:"1";s:9:"post_date";s:19:"2017-02-09 05:43:27";s:13:"post_date_gmt";s:19:"2017-02-09 03:43:27";s:12:"post_content";s:17492:"[astart]
 
 <b>Безналоговые компании</b>
 

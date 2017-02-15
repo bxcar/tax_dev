@@ -62,7 +62,10 @@ img.emoji {
                 return window.open(url, '', 'width=800,height=600,status=no,toolbar=no,menubar=no,scrollbars=yes');
             }
         </script>
-            <link rel='https://api.w.org/' href='http://192.168.0.98/wp-json/' />
+            <script type="text/javascript" src="http://192.168.0.98/wp-content/cache/minify/ebbd6.js"></script>
+
+
+<link rel='https://api.w.org/' href='http://192.168.0.98/wp-json/' />
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://192.168.0.98/xmlrpc.php?rsd" />
 <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://192.168.0.98/wp-includes/wlwmanifest.xml" /> 
 <meta name="generator" content="WordPress 4.7.2" />
@@ -186,7 +189,67 @@ img.emoji {
 <li id="menu-item-84" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84"><a href="http://192.168.0.98/about">О проекте</a></li>
 <li id="menu-item-81" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-66 current_page_item menu-item-81"><a href="http://192.168.0.98/services">Услуги и цены</a></li>
 <li id="menu-item-72" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72"><a href="http://192.168.0.98/contacts">Контакты</a></li>
-</ul>		</div>
+</ul>			<a href="#dop-menu-block" class="dop-menu popUp-btn">
+				<span></span>
+				<span></span>
+				<span></span>
+			</a>
+		</div>
+		<div class="hidden">
+			<div class="dop-m-block" id="dop-menu-block">
+				<div class="dop-menu-layout">
+					<ul class="menu">
+						<li><a href="">ГЛАВНАЯ</a></li>
+						<li><span>МЕНЮ</span>
+							<div class="caret"></div>
+							<div class="submenu">
+								<style>
+									#menu-primarymenu-1 .page-item-35 {
+										display: none;
+									}
+								</style>
+								<ul id="menu-primarymenu-1" class=""><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-70"><a href="http://192.168.0.98/">Главная</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84"><a href="http://192.168.0.98/about">О проекте</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-66 current_page_item menu-item-81"><a href="http://192.168.0.98/services">Услуги и цены</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72"><a href="http://192.168.0.98/contacts">Контакты</a></li>
+</ul>							</div>
+						</li>
+						<li><span>ПРЕДЛОЖЕНИЯ</span>
+							<div class="caret"></div>
+							<div class="submenu">
+								<ul id="menu-offersmenu" class=""><li id="menu-item-88" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88"><a href="http://192.168.0.98/special_offers">Специальные предложения</a></li>
+<li id="menu-item-89" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89"><a href="http://192.168.0.98/jur_center">Центры юрисдикций</a></li>
+<li id="menu-item-90" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90"><a href="http://192.168.0.98/finance_companies">Финансовые компании</a></li>
+<li id="menu-item-91" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-91"><a href="http://192.168.0.98/convenience_flag">Удобные флаги</a></li>
+</ul>							</div>
+						</li>
+						<li><span>НОВОСТИ</span>
+							<div class="caret"></div>
+							<div class="submenu">
+								<ul id="menu-newsmenu" class=""><li id="menu-item-94" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-94"><a href="http://192.168.0.98/news">Новости бизнеса</a></li>
+<li id="menu-item-96" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-96"><a href="http://192.168.0.98/facilities_and_services">Услуги и сервисы</a></li>
+<li id="menu-item-95" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-95"><a href="http://192.168.0.98/helpful_information">Полезная информация</a></li>
+<li id="menu-item-93" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-93"><a href="http://192.168.0.98/search_online">Поиск онлайн</a></li>
+</ul>							</div>
+						</li>
+					</ul>
+
+					<div class="social-block small">
+						<div class="title">Мы в соцсетях</div>
+						<div class="social-link">
+							<a href="https://www.linkedin.com" class="linked"><i
+									class="fa fa-linkedin" aria-hidden="true"></i></a>
+							<a href="https://www.instagram.com/" class="inst"><i
+									class="fa fa-instagram" aria-hidden="true"></i></a>
+							<a class="fb" href="https://www.facebook.com"><i
+									class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="https://twitter.com" class="tw"><i
+									class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </header>
 <!-- End header -->
@@ -391,24 +454,24 @@ img.emoji {
         <div class="footer-top">
             <div class="item">
                 <div class="title">МЕНЮ</div>
-                <ul id="menu-primarymenu-1" class=""><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-70"><a href="http://192.168.0.98/">Главная</a></li>
+                <ul id="menu-primarymenu-2" class=""><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-70"><a href="http://192.168.0.98/">Главная</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84"><a href="http://192.168.0.98/about">О проекте</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-66 current_page_item menu-item-81"><a href="http://192.168.0.98/services">Услуги и цены</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72"><a href="http://192.168.0.98/contacts">Контакты</a></li>
 </ul>            </div>
             <div class="item">
                 <div class="title">ПРЕДЛОЖЕНИЯ</div>
-                <ul id="menu-offersmenu" class=""><li id="menu-item-88" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88"><a href="http://192.168.0.98/special_offers">Специальные предложения</a></li>
-<li id="menu-item-89" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89"><a href="http://192.168.0.98/jur_center">Центры юрисдикций</a></li>
-<li id="menu-item-90" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90"><a href="http://192.168.0.98/finance_companies">Финансовые компании</a></li>
-<li id="menu-item-91" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-91"><a href="http://192.168.0.98/convenience_flag">Удобные флаги</a></li>
+                <ul id="menu-offersmenu-1" class=""><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88"><a href="http://192.168.0.98/special_offers">Специальные предложения</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89"><a href="http://192.168.0.98/jur_center">Центры юрисдикций</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90"><a href="http://192.168.0.98/finance_companies">Финансовые компании</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-91"><a href="http://192.168.0.98/convenience_flag">Удобные флаги</a></li>
 </ul>            </div>
             <div class="item">
                 <div class="title">НОВОСТИ</div>
-                <ul id="menu-newsmenu" class=""><li id="menu-item-94" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-94"><a href="http://192.168.0.98/news">Новости бизнеса</a></li>
-<li id="menu-item-96" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-96"><a href="http://192.168.0.98/facilities_and_services">Услуги и сервисы</a></li>
-<li id="menu-item-95" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-95"><a href="http://192.168.0.98/helpful_information">Полезная информация</a></li>
-<li id="menu-item-93" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-93"><a href="http://192.168.0.98/search_online">Поиск онлайн</a></li>
+                <ul id="menu-newsmenu-1" class=""><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-94"><a href="http://192.168.0.98/news">Новости бизнеса</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-96"><a href="http://192.168.0.98/facilities_and_services">Услуги и сервисы</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-95"><a href="http://192.168.0.98/helpful_information">Полезная информация</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-93"><a href="http://192.168.0.98/search_online">Поиск онлайн</a></li>
 </ul>            </div>
             <div class="item subscribe">
                 <div class="title" id="email-delivery-title">ПОДПИСАТЬСЯ НА РАССЫЛКУ</div>
@@ -510,7 +573,37 @@ img.emoji {
     }(window, document, scr);
 </script>
 <!-- Optimized loading JS End -->
-
+		<script type="text/javascript">
+		// Added by Ajax_the_views 
+		jQuery(document).ready(function($) {
+			var postIDs = new Array();
+			var i = 0;
+			// get a list of post id numbers that need the number of views
+			$('.ajax-the-views').each(function(){
+				postIDs[i] = $(this).attr('id').replace('ajax-the-views-','');
+				i++;
+			});
+			// create the JSON string to go to the server (only if there's a views field on the page)
+			if (postIDs.length > 0) {
+				var sjcJSON = '{';
+				for (i=0; i<=postIDs.length-1; i++) {
+					sjcJSON += '"'+i+'":"'+ postIDs[i] + '"';
+					if (i<postIDs.length-1) {
+						sjcJSON += ',';
+					}
+				}
+				sjcJSON += '}';
+				// Send the Ajax request to the server and update the number of views appropriately
+				var thisURL = 'http://192.168.0.98/wp-content/plugins/ajax-the-views/ajax-the-views-server.php?_wpnonce=40a3866c13&ajax_the_views='+sjcJSON;
+				$.getJSON(thisURL , function(data) {
+					for (i=0; i<=postIDs.length-1; i++) {
+						$('#ajax-the-views-'+postIDs[i]).text(data[i]);
+					}
+				});
+			}
+		});
+		</script>
+		
 
 
 <script type="text/javascript" src="http://192.168.0.98/wp-content/cache/minify/c365f.js"></script>
@@ -551,7 +644,7 @@ img.emoji {
 		<li id="wp-admin-bar-background" class="hide-if-customize"><a class="ab-item" href="http://192.168.0.98/wp-admin/themes.php?page=custom-background">Фон</a>		</li>
 		<li id="wp-admin-bar-header" class="hide-if-customize"><a class="ab-item" href="http://192.168.0.98/wp-admin/themes.php?page=custom-header">Заголовок</a>		</li></ul></div>		</li>
 		<li id="wp-admin-bar-customize" class="hide-if-no-customize"><a class="ab-item" href="http://192.168.0.98/wp-admin/customize.php?url=http%3A%2F%2F192.168.0.98%2Fservices">Настроить</a>		</li>
-		<li id="wp-admin-bar-updates"><a class="ab-item" href="http://192.168.0.98/wp-admin/update-core.php" title="3 обновления плагинов, Обновления переводов"><span class="ab-icon"></span><span class="ab-label">4</span><span class="screen-reader-text">3 обновления плагинов, Обновления переводов</span></a>		</li>
+		<li id="wp-admin-bar-updates"><a class="ab-item" href="http://192.168.0.98/wp-admin/update-core.php" title="2 обновления плагинов, Обновления переводов"><span class="ab-icon"></span><span class="ab-label">3</span><span class="screen-reader-text">2 обновления плагинов, Обновления переводов</span></a>		</li>
 		<li id="wp-admin-bar-comments"><a class="ab-item" href="http://192.168.0.98/wp-admin/edit-comments.php"><span class="ab-icon"></span><span class="ab-label awaiting-mod pending-count count-0" aria-hidden="true">0</span><span class="screen-reader-text">0 комментариев ожидают проверки</span></a>		</li>
 		<li id="wp-admin-bar-new-content" class="menupop"><a class="ab-item" aria-haspopup="true" href="http://192.168.0.98/wp-admin/post-new.php"><span class="ab-icon"></span><span class="ab-label">Добавить</span></a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-new-content-default" class="ab-submenu">
 		<li id="wp-admin-bar-new-post"><a class="ab-item" href="http://192.168.0.98/wp-admin/post-new.php">Запись</a>		</li>
@@ -560,35 +653,35 @@ img.emoji {
 		<li id="wp-admin-bar-new-user"><a class="ab-item" href="http://192.168.0.98/wp-admin/user-new.php">Пользователя</a>		</li></ul></div>		</li>
 		<li id="wp-admin-bar-edit"><a class="ab-item" href="http://192.168.0.98/wp-admin/post.php?post=66&#038;action=edit">Редактировать страницу</a>		</li>
 		<li id="wp-admin-bar-w3tc" class="menupop"><a class="ab-item" aria-haspopup="true" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_dashboard"><img src="http://192.168.0.98/wp-content/plugins/w3-total-cache/pub/img/w3tc-sprite-admin-bar.png" style="vertical-align:middle; margin-right:5px; width: 29px; height: 29px" />Performance</a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-w3tc-default" class="ab-submenu">
-		<li id="wp-admin-bar-w3tc_flush_all"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_dashboard&#038;w3tc_flush_all&#038;_wpnonce=cd6a70c4b8">Purge All Caches</a>		</li>
+		<li id="wp-admin-bar-w3tc_flush_all"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_dashboard&#038;w3tc_flush_all&#038;_wpnonce=9e22f1eae0">Purge All Caches</a>		</li>
 		<li id="wp-admin-bar-w3tc_flush" class="menupop"><div class="ab-item ab-empty-item" aria-haspopup="true">Purge Modules</div><div class="ab-sub-wrapper"><ul id="wp-admin-bar-w3tc_flush-default" class="ab-submenu">
-		<li id="wp-admin-bar-w3tc_flush_pgcache"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_dashboard&#038;w3tc_flush_pgcache&#038;_wpnonce=cd6a70c4b8">Page Cache: All</a>		</li>
-		<li id="wp-admin-bar-w3tc_pgcache_flush_post"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_dashboard&#038;w3tc_flush_post&#038;post_id=66&#038;_wpnonce=cd6a70c4b8">Page Cache: Current Page</a>		</li>
-		<li id="wp-admin-bar-w3tc_flush_minify"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_dashboard&#038;w3tc_flush_minify&#038;_wpnonce=cd6a70c4b8">Minify</a>		</li>
-		<li id="wp-admin-bar-w3tc_flush_dbcache"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_dashboard&#038;w3tc_flush_dbcache&#038;_wpnonce=cd6a70c4b8">Database</a>		</li>
-		<li id="wp-admin-bar-w3tc_flush_objectcache"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_dashboard&#038;w3tc_flush_objectcache&#038;_wpnonce=cd6a70c4b8">Object Cache</a>		</li></ul></div>		</li>
-		<li id="wp-admin-bar-w3tc_settings_general"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_general&#038;_wpnonce=cd6a70c4b8">General Settings</a>		</li>
-		<li id="wp-admin-bar-w3tc_settings_extensions"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_extensions&#038;_wpnonce=cd6a70c4b8">Manage Extensions</a>		</li>
-		<li id="wp-admin-bar-w3tc_settings_faq"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_faq&#038;_wpnonce=cd6a70c4b8">FAQ</a>		</li>
+		<li id="wp-admin-bar-w3tc_flush_pgcache"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_dashboard&#038;w3tc_flush_pgcache&#038;_wpnonce=9e22f1eae0">Page Cache: All</a>		</li>
+		<li id="wp-admin-bar-w3tc_pgcache_flush_post"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_dashboard&#038;w3tc_flush_post&#038;post_id=66&#038;_wpnonce=9e22f1eae0">Page Cache: Current Page</a>		</li>
+		<li id="wp-admin-bar-w3tc_flush_minify"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_dashboard&#038;w3tc_flush_minify&#038;_wpnonce=9e22f1eae0">Minify</a>		</li>
+		<li id="wp-admin-bar-w3tc_flush_dbcache"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_dashboard&#038;w3tc_flush_dbcache&#038;_wpnonce=9e22f1eae0">Database</a>		</li>
+		<li id="wp-admin-bar-w3tc_flush_objectcache"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_dashboard&#038;w3tc_flush_objectcache&#038;_wpnonce=9e22f1eae0">Object Cache</a>		</li></ul></div>		</li>
+		<li id="wp-admin-bar-w3tc_settings_general"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_general&#038;_wpnonce=9e22f1eae0">General Settings</a>		</li>
+		<li id="wp-admin-bar-w3tc_settings_extensions"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_extensions&#038;_wpnonce=9e22f1eae0">Manage Extensions</a>		</li>
+		<li id="wp-admin-bar-w3tc_settings_faq"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_faq&#038;_wpnonce=9e22f1eae0">FAQ</a>		</li>
 		<li id="wp-admin-bar-w3tc_support"><a class="ab-item" href="http://192.168.0.98/wp-admin/admin.php?page=w3tc_support">Support</a>		</li></ul></div>		</li></ul><ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
 		<li id="wp-admin-bar-search" class="admin-bar-search"><div class="ab-item ab-empty-item" tabindex="-1"><form action="http://192.168.0.98/" method="get" id="adminbarsearch"><input class="adminbar-input" name="s" id="adminbar-search" type="text" value="" maxlength="150" /><label for="adminbar-search" class="screen-reader-text">Поиск</label><input type="submit" class="adminbar-button" value="Поиск"/></form></div>		</li>
 		<li id="wp-admin-bar-my-account" class="menupop with-avatar"><a class="ab-item" aria-haspopup="true" href="http://192.168.0.98/wp-admin/profile.php">Привет, tax_user<img alt='' src='http://1.gravatar.com/avatar/7cb22cd6b373c0a9c076d43bb90450ac?s=26&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/7cb22cd6b373c0a9c076d43bb90450ac?s=52&amp;d=mm&amp;r=g 2x' class='avatar avatar-26 photo' height='26' width='26' /></a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-user-actions" class="ab-submenu">
 		<li id="wp-admin-bar-user-info"><a class="ab-item" tabindex="-1" href="http://192.168.0.98/wp-admin/profile.php"><img alt='' src='http://1.gravatar.com/avatar/7cb22cd6b373c0a9c076d43bb90450ac?s=64&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/7cb22cd6b373c0a9c076d43bb90450ac?s=128&amp;d=mm&amp;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' /><span class='display-name'>tax_user</span></a>		</li>
 		<li id="wp-admin-bar-edit-profile"><a class="ab-item" href="http://192.168.0.98/wp-admin/profile.php">Изменить профиль</a>		</li>
-		<li id="wp-admin-bar-logout"><a class="ab-item" href="http://192.168.0.98/wp-login.php?action=logout&#038;_wpnonce=749ee4ee57">Выйти</a>		</li></ul></div>		</li></ul>			</div>
-						<a class="screen-reader-shortcut" href="http://192.168.0.98/wp-login.php?action=logout&#038;_wpnonce=749ee4ee57">Выйти</a>
+		<li id="wp-admin-bar-logout"><a class="ab-item" href="http://192.168.0.98/wp-login.php?action=logout&#038;_wpnonce=569f813aef">Выйти</a>		</li></ul></div>		</li></ul>			</div>
+						<a class="screen-reader-shortcut" href="http://192.168.0.98/wp-login.php?action=logout&#038;_wpnonce=569f813aef">Выйти</a>
 					</div>
 
 		</body>
 </html>
 <!-- Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
 
-Object Caching 1588/1928 objects using disk
+Object Caching 2076/2444 objects using disk
 Page Caching using disk: enhanced
 Page cache debug info:
 Engine:             disk: enhanced
 Cache key:          192.168.0.98/services/_index.html
-Creation Time:      1487088088.000s
+Creation Time:      1487140873.000s
 Header info:
 X-Powered-By:        PHP/7.0.9
 Expires:             Wed, 11 Jan 1984 05:00:00 GMT
@@ -597,6 +690,6 @@ Content-Type:        text/html; charset=UTF-8
 Link:                <http://192.168.0.98/wp-json/>; rel="https://api.w.org/"
 Link:                <http://192.168.0.98/?p=66>; rel=shortlink
 Minified using disk
-Database Caching using disk (Request-wide User is logged in)
+Database Caching 24/61 queries in 0.115 seconds using disk
 
- Served from: 192.168.0.98 @ 2017-02-14 18:01:28 by W3 Total Cache -->
+ Served from: 192.168.0.98 @ 2017-02-15 08:41:13 by W3 Total Cache -->

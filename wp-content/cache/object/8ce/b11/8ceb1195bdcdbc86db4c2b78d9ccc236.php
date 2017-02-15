@@ -1,0 +1,1 @@
+{¤X<?php exit; ?>a:1:{s:7:"content";a:1:{i:0;O:8:"stdClass":4:{s:7:"meta_id";s:3:"504";s:7:"post_id";s:1:"1";s:8:"meta_key";s:12:"_wp_old_slug";s:10:"meta_value";s:64:"%d0%bf%d1%80%d0%b8%d0%b2%d0%b5%d1%82-%d0%bc%d0%b8%d1%80__trashed";}}}

@@ -1,4 +1,4 @@
-p7�X<?php exit; ?>a:6:{s:10:"last_error";s:0:"";s:10:"last_query";s:46:"SELECT * FROM wp_posts WHERE ID = 1311 LIMIT 1";s:11:"last_result";a:1:{i:0;O:8:"stdClass":23:{s:2:"ID";s:4:"1311";s:11:"post_author";s:1:"1";s:9:"post_date";s:19:"2017-02-08 20:53:34";s:13:"post_date_gmt";s:19:"2017-02-08 18:53:34";s:12:"post_content";s:883:"[astart]
+\�X<?php exit; ?>a:6:{s:10:"last_error";s:0:"";s:10:"last_query";s:46:"SELECT * FROM wp_posts WHERE ID = 1311 LIMIT 1";s:11:"last_result";a:1:{i:0;O:8:"stdClass":23:{s:2:"ID";s:4:"1311";s:11:"post_author";s:1:"1";s:9:"post_date";s:19:"2017-02-08 20:53:34";s:13:"post_date_gmt";s:19:"2017-02-08 18:53:34";s:12:"post_content";s:883:"[astart]
 
 <a href="../tax_special_offers_c/vybor-yurisdiktsii">Выбор юрисдикции </a>
 

@@ -1,4 +1,4 @@
-p7�X<?php exit; ?>a:6:{s:10:"last_error";s:0:"";s:10:"last_query";s:46:"SELECT * FROM wp_posts WHERE ID = 1269 LIMIT 1";s:11:"last_result";a:1:{i:0;O:8:"stdClass":23:{s:2:"ID";s:4:"1269";s:11:"post_author";s:1:"1";s:9:"post_date";s:19:"2017-02-08 06:08:27";s:13:"post_date_gmt";s:19:"2017-02-08 04:08:27";s:12:"post_content";s:3207:"[astart]
+]�X<?php exit; ?>a:6:{s:10:"last_error";s:0:"";s:10:"last_query";s:46:"SELECT * FROM wp_posts WHERE ID = 1269 LIMIT 1";s:11:"last_result";a:1:{i:0;O:8:"stdClass":23:{s:2:"ID";s:4:"1269";s:11:"post_author";s:1:"1";s:9:"post_date";s:19:"2017-02-08 06:08:27";s:13:"post_date_gmt";s:19:"2017-02-08 04:08:27";s:12:"post_content";s:3207:"[astart]
 
 Изменения в Инструкцию о порядке выдачи индивидуальных лицензий на осуществление инвестиций за границу:
 

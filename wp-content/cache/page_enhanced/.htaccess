@@ -1,5 +1,6 @@
 # BEGIN W3TC Page Cache cache
 AddDefaultCharset UTF-8
+FileETag MTime Size
 <IfModule mod_mime.c>
     AddType text/html .html_gzip
     AddEncoding gzip .html_gzip
@@ -9,5 +10,14 @@ AddDefaultCharset UTF-8
 <IfModule mod_setenvif.c>
     SetEnvIfNoCase Request_URI \.html_gzip$ no-gzip
     SetEnvIfNoCase Request_URI \.xml_gzip$ no-gzip
+</IfModule>
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html M3600
+</IfModule>
+<IfModule mod_headers.c>
+    Header set Vary "Accept-Encoding, Cookie"
+    Header set Pragma "public"
+    Header append Cache-Control "public"
 </IfModule>
 # END W3TC Page Cache cache

@@ -2,6 +2,7 @@
 <IfModule mod_negotiation.c>
     Options -MultiViews
 </IfModule>
+FileETag MTime Size
 <IfModule mod_mime.c>
     AddEncoding gzip .gzip
     <Files *.css.gzip>
@@ -16,8 +17,15 @@
         SetEnvIfNoCase Request_URI \.gzip$ no-gzip
     </IfModule>
 </IfModule>
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css M31536000
+    ExpiresByType application/x-javascript M31536000
+</IfModule>
 <IfModule mod_headers.c>
     Header set Vary "Accept-Encoding"
+    Header set Pragma "public"
+    Header append Cache-Control "public"
 </IfModule>
 # END W3TC Minify cache
 # BEGIN W3TC Minify core

@@ -1,0 +1,1 @@
+{¤X<?php exit; ?>a:1:{s:7:"content";a:2:{s:10:"_edit_lock";a:1:{i:0;s:12:"1486389715:1";}s:12:"_wp_old_slug";a:1:{i:0;s:64:"%d0%bf%d1%80%d0%b8%d0%b2%d0%b5%d1%82-%d0%bc%d0%b8%d1%80__trashed";}}}
